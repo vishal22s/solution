@@ -6,25 +6,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Business Deluxe" />
-  <title>Business - Deluxe Board Game</title>
+  <title>Business - Indian Property Board Game</title>
   <style>
     :root {
-      --bg-wood: #1e130c;
-      --felt: #0c3823;
-      --felt-inner: #0f472c;
-      --gold: #f5b300;
-      --gold-light: #ffd166;
-      --red: #e63946;
-      --green: #2a9d8f;
-      --blue: #1d3557;
-      --text: #ffffff;
-      --tile-bg: #fffdfa;
-      --tile-border: #3b2314;
+      --board-cream: #f4efe4;
+      --board-border: #8b1d1d;
+      --tile-bg: #fffefb;
+      --wood-dark: #1b1008;
+      --ink: #111111;
+      --gold: #d4af37;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     body {
-      background: radial-gradient(circle, #2a1a10 0%, #100a06 100%);
-      color: var(--text);
+      background: radial-gradient(circle, #2e180d 0%, #120904 100%);
+      color: #fff;
       overflow: hidden;
       display: flex;
       height: 100vh;
@@ -35,12 +30,12 @@
       display: flex;
       width: 100vw;
       height: 100vh;
-      padding: 12px;
-      gap: 14px;
+      padding: 10px;
+      gap: 12px;
       position: relative;
     }
 
-    /* BOARD AREA */
+    /* BOARD WRAPPER */
     #board-container {
       flex: 1;
       height: 100%;
@@ -49,48 +44,52 @@
       justify-content: center;
       position: relative;
     }
-
     #board {
-      width: min(94vh, 94vw - 360px);
-      height: min(94vh, 94vw - 360px);
-      background: var(--felt);
+      width: min(95vh, 95vw - 340px);
+      height: min(95vh, 95vw - 340px);
+      background: var(--board-cream);
       display: grid;
       grid-template-columns: repeat(10, 1fr);
       grid-template-rows: repeat(10, 1fr);
-      gap: 2px;
-      border: 10px solid #4a2810;
-      border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 100px rgba(0,0,0,0.5);
+      gap: 1.5px;
+      border: 8px solid var(--board-border);
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.85);
       position: relative;
     }
 
-    /* TILES */
+    /* AUTHENTIC TILES */
     .tile {
       background: var(--tile-bg);
-      color: #111;
+      color: var(--ink);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
-      border: 1px solid #d4af37;
+      border: 0.5px solid #bba;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .tile:active { transform: scale(0.96); }
     .tile-header {
       height: 16px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8px;
+      font-size: 8.5px;
       font-weight: 900;
       color: white;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-      border-bottom: 1.5px solid #222;
+      text-shadow: 0 1px 1px #000;
+      border-bottom: 1px solid #333;
+    }
+    .tile-img {
+      width: 100%;
+      height: 28px;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.05);
+      border-bottom: 0.5px solid rgba(0,0,0,0.15);
     }
     .tile-body {
-      padding: 2px;
+      padding: 2px 1px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -98,13 +97,39 @@
       align-items: center;
       text-align: center;
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.05;
     }
-    .tile-name { font-size: 8px; text-transform: uppercase; word-break: break-word; color: #1a1a1a; }
-    .tile-price { font-size: 8px; color: #b8860b; font-weight: 900; }
-    .corner { background: #fdfbf7; justify-content: center; align-items: center; text-align: center; }
+    .tile-name { font-size: 7.5px; text-transform: uppercase; word-break: break-word; color: #111; font-weight: 900; }
+    .tile-price { font-size: 7.5px; color: #8b1d1d; font-weight: 900; }
+    .corner { background: #fbf8f0; justify-content: center; align-items: center; text-align: center; }
 
-    /* TOKEN & HOP ANIMATION */
+    /* HOUSES & HOTELS ON TILES */
+    .improvements-holder {
+      position: absolute;
+      top: 17px;
+      left: 2px;
+      display: flex;
+      gap: 1px;
+      z-index: 10;
+    }
+    .house-dot { width: 6.5px; height: 6.5px; background: #2e7d32; border-radius: 1px; border: 0.5px solid #000; }
+    .hotel-dot { width: 8px; height: 8px; background: #c62828; border-radius: 1px; border: 0.5px solid #000; }
+    .mortgaged-banner {
+      position: absolute;
+      top: 35%;
+      left: -15%;
+      right: -15%;
+      background: rgba(198, 40, 40, 0.95);
+      color: #fff;
+      font-size: 7px;
+      text-align: center;
+      font-weight: 900;
+      transform: rotate(-25deg);
+      padding: 1px 0;
+      z-index: 15;
+    }
+
+    /* PLAYER PEGS */
     .tokens-holder {
       position: absolute;
       bottom: 2px;
@@ -113,383 +138,293 @@
       display: flex;
       justify-content: center;
       gap: 2px;
-      z-index: 20;
+      z-index: 25;
       flex-wrap: wrap;
     }
     .token {
-      font-size: 14px;
-      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.7));
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 13px;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8));
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .token.hop {
-      animation: tokenHop 0.25s ease-in-out;
-    }
+    .token.hop { animation: tokenHop 0.22s ease-in-out; }
     @keyframes tokenHop {
       0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-14px) scale(1.4); }
+      50% { transform: translateY(-12px) scale(1.4); }
       100% { transform: translateY(0) scale(1); }
     }
 
-    .improvements-holder {
-      position: absolute;
-      top: 17px;
-      left: 2px;
-      display: flex;
-      gap: 1.5px;
-      z-index: 10;
-    }
-    .house-dot {
-      width: 7px; height: 7px; background: #28a745; border-radius: 2px;
-      border: 1px solid #145a27; box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    }
-    .hotel-dot {
-      width: 9px; height: 9px; background: #e63946; border-radius: 2px;
-      border: 1px solid #7a0c16; box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    }
-    .mortgaged-stamp {
-      position: absolute;
-      top: 35%;
-      left: -10%;
-      right: -10%;
-      background: rgba(220,53,69,0.92);
-      color: white;
-      font-size: 7.5px;
-      text-align: center;
-      font-weight: 900;
-      transform: rotate(-25deg);
-      padding: 1px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      z-index: 15;
-    }
-
-    /* CENTER BOARD */
+    /* REAL RETRO BOARD CENTER */
     #center-board {
       grid-column: 2 / 10;
       grid-row: 2 / 10;
-      background: radial-gradient(circle, #0f4f31 0%, #08291a 100%);
+      background: #fdfaf3 url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=20') center/cover no-repeat;
+      background-blend-mode: overlay;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 18px;
-      border-radius: 8px;
-      border: 2px solid rgba(245, 179, 0, 0.4);
-      box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+      padding: 14px;
+      border: 2px solid #8b1d1d;
       position: relative;
+    }
+    .retro-banner {
+      background: #8b1d1d;
+      color: #fff;
+      padding: 4px 24px;
+      border-radius: 4px;
+      border: 2px solid #f5b300;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
     .brand-title {
-      font-size: 40px;
+      font-size: 32px;
       font-weight: 900;
-      letter-spacing: 6px;
-      color: #ff4757;
-      text-shadow: 0 3px 0 #800c19, 0 8px 15px rgba(0,0,0,0.7);
-      margin-top: 2px;
-    }
-    .brand-subtitle {
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      font-weight: 700;
-      margin-top: -6px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    }
-
-    /* 3D TUMBLING DICE */
-    .dice-stage {
-      perspective: 600px;
-      display: flex;
-      gap: 25px;
-      margin: 12px 0;
-    }
-    .dice-cube {
-      width: 52px;
-      height: 52px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
-    }
-    .dice-cube.rolling {
-      animation: diceRollAnim 0.6s infinite linear;
-    }
-    @keyframes diceRollAnim {
-      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-      100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
-    }
-    .dice-face {
-      position: absolute;
-      width: 52px;
-      height: 52px;
-      background: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.5);
-      display: grid;
-      grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-      padding: 6px;
-    }
-    .dot {
-      width: 8px; height: 8px; background: #222; border-radius: 50%;
-      justify-self: center; align-self: center; visibility: hidden;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
-    }
-    .face-front  { transform: rotateY(  0deg) translateZ(26px); }
-    .face-back   { transform: rotateY(180deg) translateZ(26px); }
-    .face-right  { transform: rotateY( 90deg) translateZ(26px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(26px); }
-    .face-top    { transform: rotateX( 90deg) translateZ(26px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(26px); }
-
-    /* ACTION HUD */
-    .action-prompt {
-      font-size: 15px;
-      min-height: 42px;
+      letter-spacing: 5px;
       color: #fff;
-      font-weight: 700;
+      text-shadow: 2px 2px 0px #000;
+    }
+    .brand-sub {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffd166;
+      font-weight: 800;
+      margin-top: -3px;
+    }
+
+    /* CHANCE & COMMUNITY DECK TRAYS IN CENTER */
+    .card-decks-row {
       display: flex;
+      gap: 16px;
+      width: 100%;
+      justify-content: center;
+      margin: 6px 0;
+    }
+    .deck-tray {
+      width: 135px;
+      height: 75px;
+      border-radius: 6px;
+      border: 2px dashed rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
       text-align: center;
-      background: rgba(0,0,0,0.3);
-      padding: 6px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-      width: 90%;
+      padding: 6px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
     }
-    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-    button {
-      background: linear-gradient(180deg, #ff4757 0%, #c0392b 100%);
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 14px;
+    .deck-chance { background: #2a9d8f; color: #fff; }
+    .deck-comm { background: #e9c46a; color: #264653; }
+    .deck-title { font-size: 11px; font-weight: 900; letter-spacing: 1px; }
+    .deck-desc { font-size: 8px; font-weight: 700; opacity: 0.9; margin-top: 2px; line-height: 1.1; }
+
+    /* PHYSICAL 3D DICE & CUP */
+    .shaker-tray {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(0,0,0,0.06);
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+    .dice-cube {
+      width: 44px;
+      height: 44px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+    .dice-cube.shaking { animation: shakeAnim 0.5s infinite linear; }
+    @keyframes shakeAnim {
+      0% { transform: rotateX(0) rotateY(0); }
+      50% { transform: rotateX(180deg) rotateY(180deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+    .dice-face {
+      position: absolute; width: 44px; height: 44px; background: #ffffff;
+      border: 1px solid #bbb; border-radius: 8px; box-shadow: inset 0 0 5px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.3);
+      display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); padding: 5px;
+    }
+    .dot { width: 7px; height: 7px; background: #111; border-radius: 50%; justify-self: center; align-self: center; visibility: hidden; }
+    .face-front  { transform: rotateY(  0deg) translateZ(22px); }
+    .face-back   { transform: rotateY(180deg) translateZ(22px); }
+    .face-right  { transform: rotateY( 90deg) translateZ(22px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(22px); }
+    .face-top    { transform: rotateX( 90deg) translateZ(22px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(22px); }
+
+    /* ACTION BAR */
+    .status-bubble {
+      background: #8b1d1d;
+      color: #fff;
+      font-size: 13px;
       font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.4);
-      transition: transform 0.1s, filter 0.2s;
+      padding: 6px 14px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      border: 1px solid #ffd166;
     }
-    button:active { transform: scale(0.95); }
-    button.success { background: linear-gradient(180deg, #2ed573 0%, #20bf6b 100%); }
-    button.warning { background: linear-gradient(180deg, #ffa502 0%, #e67e22 100%); color: #111; }
-    button.secondary { background: #2f3542; color: #fff; }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    button {
+      background: #8b1d1d;
+      color: #fff;
+      border: 1.5px solid #ffd166;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      transition: transform 0.1s;
+    }
+    button:active { transform: scale(0.96); }
+    button.btn-buy { background: #2e7d32; }
+    button.btn-pass { background: #b26a00; }
+    button.btn-alt { background: #37474f; }
 
     /* SIDEBAR */
     #sidebar {
-      width: 340px;
+      width: 320px;
       height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
-    .hud-card {
-      background: rgba(25, 30, 42, 0.95);
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .players-container { display: flex; flex-direction: column; gap: 10px; }
-    .player-row {
-      background: #1c2230;
+    .hud-box {
+      background: #25160c;
+      border: 2px solid #5a341a;
       border-radius: 10px;
-      padding: 10px 12px;
+      padding: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .player-row {
+      background: #180d07;
+      border-radius: 6px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-left: 6px solid transparent;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: all 0.3s;
+      border-left: 5px solid transparent;
+      margin-bottom: 6px;
     }
     .player-row.active {
-      border-left-color: var(--gold);
-      background: #283145;
-      transform: translateX(4px);
+      border-left-color: #ffd166;
+      background: #341e10;
     }
-    .player-name {
-      font-weight: 800;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .player-cash {
-      font-size: 14px;
-      font-weight: 900;
-      color: #2ed573;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    }
-    .log-box {
+    .player-title { font-size: 13px; font-weight: 800; display: flex; align-items: center; gap: 6px; }
+    .player-funds { font-size: 13px; font-weight: 900; color: #4ade80; }
+    .log-view {
       flex: 1;
       overflow-y: auto;
-      background: #151a24;
-      border-radius: 10px;
-      padding: 10px;
-      font-size: 11.5px;
+      background: #120904;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 11px;
       line-height: 1.4;
-      color: #cbd5e1;
+      color: #d1d5db;
     }
-    .log-entry {
-      margin-bottom: 6px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
+    .log-line { margin-bottom: 4px; padding-bottom: 3px; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
 
-    /* RETRO TITLE DEED CARD MODAL */
+    /* EXACT RETRO TITLE DEED CARD MODAL */
     .modal-overlay {
       position: fixed; inset: 0;
       background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(3px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      padding: 16px;
+      padding: 14px;
     }
-    .deed-card {
-      width: 280px;
+    .retro-deed {
+      width: 290px;
       background: #fff;
       color: #000;
-      border-radius: 8px;
+      border-radius: 6px;
       border: 2px solid #000;
       padding: 10px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
       position: relative;
     }
-    .deed-header {
-      background: #c0392b;
-      color: white;
+    .deed-top-banner {
+      background: #8b1d1d;
+      color: #fff;
       text-align: center;
-      padding: 8px 4px;
+      padding: 6px 4px;
       border: 2px solid #000;
       position: relative;
     }
-    .deed-card-no {
+    .deed-number-box {
       position: absolute;
-      top: 4px; left: 6px;
-      font-size: 10px;
-      border: 1px solid white;
+      top: 3px; left: 6px;
+      border: 1px solid #fff;
       padding: 0 4px;
-      font-weight: bold;
+      font-size: 10px;
+      font-weight: 900;
     }
-    .deed-title { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-    .deed-price { font-size: 12px; font-weight: 800; margin-top: 2px; }
-    .deed-table { width: 100%; font-size: 11px; font-weight: 700; margin: 10px 0; border-collapse: collapse; }
+    .deed-city-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+    .deed-city-price { font-size: 12px; font-weight: 900; }
+    .deed-table { width: 100%; font-size: 11.5px; font-weight: 800; margin: 8px 0; border-collapse: collapse; }
     .deed-table td { padding: 2px 0; }
     .deed-table td:last-child { text-align: right; }
-    .deed-subtext {
+    .deed-subnote {
       font-size: 9px; font-style: italic; text-align: center; line-height: 1.2;
-      border-top: 1px solid #aaa; border-bottom: 1px solid #aaa; padding: 4px 0; margin-bottom: 8px;
+      border-top: 1px solid #999; border-bottom: 1px solid #999; padding: 4px 0; margin: 6px 0;
     }
-    .deed-footer { font-size: 10.5px; font-weight: 700; display: flex; flex-direction: column; gap: 2px; }
-
-    /* FLOATING RUPEE PARTICLES */
-    .coin-particle {
-      position: fixed;
-      font-size: 20px;
-      color: var(--gold-light);
-      pointer-events: none;
-      animation: coinFly 1s forwards ease-out;
-      z-index: 9999;
-    }
-    @keyframes coinFly {
-      0% { transform: translateY(0) scale(0.5); opacity: 1; }
-      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-    }
+    .deed-costs { font-size: 11px; font-weight: 800; line-height: 1.3; }
   </style>
 </head>
 <body>
 
 <div id="app">
-  <!-- THE BOARD -->
   <div id="board-container">
     <div id="board">
       <div id="center-board">
-        <div>
+        <div class="retro-banner">
           <div class="brand-title">BUSINESS</div>
-          <div class="brand-subtitle">The Property Trading Game</div>
+          <div class="brand-sub">The Property Trading Board Game</div>
         </div>
 
-        <!-- 3D DICE -->
-        <div class="dice-stage">
+        <div class="card-decks-row">
+          <div class="deck-tray deck-chance" onclick="game.openHelp('chance')">
+            <div class="deck-title">CHANCE</div>
+            <div class="deck-desc">Resolved by Dice Arrival Roll (2–12)</div>
+          </div>
+          <div class="deck-tray deck-comm" onclick="game.openHelp('community')">
+            <div class="deck-title">COMMUNITY CHEST</div>
+            <div class="deck-desc">Resolved by Dice Arrival Roll (2–12)</div>
+          </div>
+        </div>
+
+        <div class="shaker-tray">
           <div class="dice-cube" id="cube1">
-            <div class="dice-face face-front">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-            </div>
-            <div class="dice-face face-back">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-right">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-left">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-top">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-bottom">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
+            <div class="dice-face face-front"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dice-face face-back"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-right"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-left"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-top"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-bottom"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
           </div>
-
           <div class="dice-cube" id="cube2">
-            <div class="dice-face face-front">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-            </div>
-            <div class="dice-face face-back">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-right">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-left">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-top">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
-            <div class="dice-face face-bottom">
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-              <div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div>
-              <div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div>
-            </div>
+            <div class="dice-face face-front"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dice-face face-back"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-right"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-left"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-top"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
+            <div class="dice-face face-bottom"><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div><div class="dot"></div><div class="dot" style="visibility:visible;"></div></div>
           </div>
         </div>
 
-        <div class="action-prompt" id="action-prompt">🎲 Tap Roll to begin the game!</div>
+        <div class="status-bubble" id="status-bubble">Tap "Roll Dice" to play!</div>
 
-        <div class="btn-row" id="control-buttons">
-          <button id="btn-roll" onclick="game.onRollClick()">🎲 Roll Dice</button>
-          <button id="btn-buy" class="success" style="display:none;" onclick="game.onBuyClick()">Buy Property</button>
-          <button id="btn-pass" class="warning" style="display:none;" onclick="game.onPassClick()">Pass</button>
-          <button id="btn-jail-pay" class="warning" style="display:none;" onclick="game.payJailFine()">Bail Out (₹500)</button>
-          <button id="btn-end" class="secondary" style="display:none;" onclick="game.onEndTurnClick()">End Turn ➔</button>
+        <div class="btn-row" id="controls">
+          <button id="btn-roll" onclick="game.userRoll()">🎲 Roll Dice</button>
+          <button id="btn-buy" class="btn-buy" style="display:none;" onclick="game.userBuy()">Buy</button>
+          <button id="btn-pass" class="btn-pass" style="display:none;" onclick="game.userPass()">Pass</button>
+          <button id="btn-bail" class="btn-pass" style="display:none;" onclick="game.userBail()">Pay Fine (Rs. 500)</button>
+          <button id="btn-end" class="btn-alt" style="display:none;" onclick="game.userEndTurn()">End Turn ➔</button>
         </div>
       </div>
     </div>
@@ -497,166 +432,151 @@
 
   <!-- SIDEBAR -->
   <div id="sidebar">
-    <div class="hud-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-        <span style="font-weight:900; font-size:15px; letter-spacing:1px; color:var(--gold);">PLAYERS</span>
-        <button style="padding:6px 12px; font-size:11px;" class="warning" onclick="game.openPropertyManager()">🏗️ Build / Portfolio</button>
+    <div class="hud-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-weight:900; font-size:14px; color:#ffd166;">PLAYERS</span>
+        <button style="padding:4px 10px; font-size:11px;" onclick="game.openPortfolio()">Buildings & Loans</button>
       </div>
-      <div class="players-container" id="players-container"></div>
+      <div id="players-list"></div>
     </div>
-    <div class="hud-card" style="flex: 1; display:flex; flex-direction:column; min-height:0;">
-      <span style="font-weight:900; font-size:13px; margin-bottom:8px; color:#a8b2d1; letter-spacing:0.5px;">GAME LEDGER</span>
-      <div class="log-box" id="game-log"></div>
+    <div class="hud-box" style="flex:1; display:flex; flex-direction:column; min-height:0;">
+      <span style="font-weight:900; font-size:12px; margin-bottom:6px; color:#ffd166;">FINANCIAL RECORD</span>
+      <div class="log-view" id="game-log"></div>
     </div>
   </div>
 </div>
 
-<!-- RETRO TITLE DEED MODAL (CLICK ON ANY TILE TO VIEW) -->
+<!-- RETRO PHYSICAL TITLE DEED CARD MODAL -->
 <div class="modal-overlay" id="deed-modal" onclick="document.getElementById('deed-modal').style.display='none'">
-  <div class="deed-card" onclick="event.stopPropagation()">
-    <div class="deed-header" id="deed-hdr">
-      <span class="deed-card-no" id="deed-no">16</span>
-      <div class="deed-title" id="deed-name">JAIPUR</div>
-      <div class="deed-price" id="deed-price">Rs. 3000</div>
+  <div class="retro-deed" onclick="event.stopPropagation()">
+    <div class="deed-top-banner" id="deed-top-banner">
+      <div class="deed-number-box" id="deed-num">16</div>
+      <div class="deed-city-name" id="deed-name">JAIPUR</div>
+      <div class="deed-city-price" id="deed-price">Rs. 3000</div>
     </div>
     <table class="deed-table" id="deed-table"></table>
-    <div class="deed-subtext">If a player owns THREE sites of any colour-group, the rent is Doubled on Unimproved sites in that group.</div>
-    <div class="deed-footer" id="deed-footer"></div>
-    <button style="margin-top:10px; width:100%; padding:8px;" onclick="document.getElementById('deed-modal').style.display='none'">Close Card</button>
+    <div class="deed-subnote">If a player owns THREE sites of any colour-group, the rent is Doubled on Unimproved sites in that group.</div>
+    <div class="deed-costs" id="deed-costs"></div>
+    <button style="margin-top:10px; width:100%; padding:6px;" onclick="document.getElementById('deed-modal').style.display='none'">Put Card Back</button>
   </div>
 </div>
 
 <!-- EVENT DIALOG MODAL -->
 <div class="modal-overlay" id="event-modal">
-  <div class="deed-card" style="text-align:center; max-width:320px;">
-    <div class="deed-title" id="event-title" style="color:#c0392b; margin-bottom:10px;">CHANCE</div>
-    <div id="event-body" style="font-size:13px; font-weight:700; margin: 15px 0; line-height:1.4;"></div>
-    <button class="success" onclick="game.closeEventModal()">OK</button>
+  <div class="retro-deed" style="text-align:center;">
+    <div class="deed-top-banner" id="event-banner" style="background:#2a9d8f;">CHANCE</div>
+    <div id="event-msg" style="font-size:13px; font-weight:800; margin:16px 0; line-height:1.4;"></div>
+    <button class="btn-buy" onclick="game.closeEvent()">Acknowledge</button>
   </div>
 </div>
 
-<!-- PROPERTY MANAGER MODAL -->
-<div class="modal-overlay" id="prop-modal">
-  <div class="deed-card" style="max-width:380px; width:95%;">
-    <div class="deed-title" style="color:#c0392b; text-align:center; margin-bottom:10px;">BUILD & MORTGAGE</div>
-    <div style="max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;" id="my-prop-list"></div>
-    <button style="margin-top:12px;" onclick="document.getElementById('prop-modal').style.display='none'">Close</button>
+<!-- PORTFOLIO MODAL -->
+<div class="modal-overlay" id="portfolio-modal">
+  <div class="retro-deed" style="max-width:360px; width:95%;">
+    <div class="deed-top-banner" style="background:#5a341a;">MANAGE ASSETS</div>
+    <div style="max-height:260px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; margin:10px 0;" id="portfolio-items"></div>
+    <button style="width:100%;" onclick="document.getElementById('portfolio-modal').style.display='none'">Done</button>
   </div>
 </div>
 
 <script>
-// PROCEDURAL AUDIO ENGINE
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function playTone(freq, duration, type='sine', gainVal=0.15) {
+// RETRO SOUND SYNTHESIZER
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+function beep(freq, duration, type='sine') {
   try {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = type; osc.frequency.value = freq;
-    osc.connect(gain); gain.connect(audioCtx.destination);
-    gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-    osc.start(); osc.stop(audioCtx.currentTime + duration);
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = freq;
+    o.connect(g); g.connect(ctx.destination);
+    g.gain.setValueAtTime(0.18, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    o.start(); o.stop(ctx.currentTime + duration);
   } catch(e){}
 }
-function sfxHop() { playTone(440, 0.06, 'triangle', 0.1); }
-function sfxDiceRattle() {
-  for(let i=0; i<6; i++) {
-    setTimeout(() => playTone(150 + Math.random()*200, 0.04, 'square', 0.08), i * 60);
-  }
-}
-function sfxCash() {
-  playTone(987, 0.1, 'sine', 0.2);
-  setTimeout(() => playTone(1318, 0.25, 'sine', 0.2), 80);
-}
-function sfxJail() {
-  playTone(130, 0.4, 'sawtooth', 0.3);
-  setTimeout(() => playTone(98, 0.6, 'sawtooth', 0.3), 150);
-}
-function sfxFanfare() {
-  const notes = [523, 659, 783, 1046];
-  notes.forEach((n, idx) => setTimeout(() => playTone(n, 0.2, 'triangle', 0.25), idx * 100));
-}
+function sfxClack() { beep(320, 0.05, 'triangle'); }
+function sfxDice() { for (let i=0; i<5; i++) setTimeout(() => beep(140 + Math.random()*150, 0.04, 'square'), i*65); }
+function sfxRegister() { beep(880, 0.09, 'sine'); setTimeout(() => beep(1320, 0.22, 'sine'), 80); }
+function sfxBuzzer() { beep(120, 0.3, 'sawtooth'); }
 
-// 36 BOARD TILES
+// 36 BOARD TILES WITH REAL IMAGERY
 const TILES_DATA = [
-  { id: 0, name: "START", type: "start", row: 10, col: 10 },
-  { id: 1, name: "Mumbai", cardNo: 1, cost: 8500, rents: [1200, 4000, 5500, 7500, 9000], houseCost: 7500, mortgage: 4250, group: "brown", color: "#8B4513", row: 10, col: 9 },
-  { id: 2, name: "Water Works", cardNo: 26, cost: 3200, rent: 400, comboRent: 900, mortgage: 1600, pairedWith: 6, group: "util", color: "#5c6b73", row: 10, col: 8 },
-  { id: 3, name: "Delhi", cardNo: 2, cost: 6000, rents: [750, 3000, 4300, 5500, 7500], houseCost: 5000, mortgage: 3000, group: "brown", color: "#8B4513", row: 10, col: 7 },
-  { id: 4, name: "Darjeeling", cardNo: 4, cost: 2500, rents: [200, 1200, 2500, 3500, 5000], houseCost: 3000, mortgage: 2000, group: "brown", color: "#8B4513", row: 10, col: 6 },
-  { id: 5, name: "Income Tax", type: "tax", sub: "income", row: 10, col: 5 },
-  { id: 6, name: "Air India", cardNo: 25, cost: 10500, rent: 1200, comboRent: 1500, mortgage: 5250, pairedWith: 2, group: "transport", color: "#2b2d42", row: 10, col: 4 },
-  { id: 7, name: "Chance", type: "chance", row: 10, col: 3 },
-  { id: 8, name: "Srinagar", cardNo: 3, cost: 5000, rents: [550, 3500, 5000, 7000, 8000], houseCost: 6000, mortgage: 2500, group: "cyan", color: "#0077b6", row: 10, col: 2 },
-  { id: 9, name: "JAIL", type: "jail", row: 10, col: 1 },
+  { id: 0, name: "START", type: "start", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=150&q=80", row: 10, col: 10 },
+  { id: 1, name: "Mumbai", cardNo: 1, cost: 8500, rents: [1200, 4000, 5500, 7500, 9000], houseCost: 7500, mortgage: 4250, group: "brown", color: "#8B4513", img: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=150&q=80", row: 10, col: 9 },
+  { id: 2, name: "Water Works", cardNo: 26, cost: 3200, rent: 400, comboRent: 900, mortgage: 1600, pairedWith: 6, group: "util", color: "#546e7a", img: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=150&q=80", row: 10, col: 8 },
+  { id: 3, name: "Delhi", cardNo: 2, cost: 6000, rents: [750, 3000, 4300, 5500, 7500], houseCost: 5000, mortgage: 3000, group: "brown", color: "#8B4513", img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=150&q=80", row: 10, col: 7 },
+  { id: 4, name: "Darjeeling", cardNo: 4, cost: 2500, rents: [200, 1200, 2500, 3500, 5000], houseCost: 3000, mortgage: 2000, group: "brown", color: "#8B4513", img: "https://images.unsplash.com/photo-1626014903708-4100d0246a41?auto=format&fit=crop&w=150&q=80", row: 10, col: 6 },
+  { id: 5, name: "Income Tax", type: "tax", sub: "income", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=150&q=80", row: 10, col: 5 },
+  { id: 6, name: "Air India", cardNo: 25, cost: 10500, rent: 1200, comboRent: 1500, mortgage: 5250, pairedWith: 2, group: "transport", color: "#263238", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=150&q=80", row: 10, col: 4 },
+  { id: 7, name: "Chance", type: "chance", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=150&q=80", row: 10, col: 3 },
+  { id: 8, name: "Srinagar", cardNo: 3, cost: 5000, rents: [550, 3500, 5000, 7000, 8000], houseCost: 6000, mortgage: 2500, group: "cyan", color: "#00838f", img: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=150&q=80", row: 10, col: 2 },
+  { id: 9, name: "JAIL", type: "jail", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=150&q=80", row: 10, col: 1 },
 
-  { id: 10, name: "Indore", cardNo: 11, cost: 1500, rents: [200, 600, 1500, 2500, 3600], houseCost: 2000, mortgage: 750, group: "cyan", color: "#0077b6", row: 9, col: 1 },
-  { id: 11, name: "Kanpur", cardNo: 13, cost: 4000, rents: [400, 1500, 3000, 4500, 5500], houseCost: 4500, mortgage: 2000, group: "cyan", color: "#0077b6", row: 8, col: 1 },
-  { id: 12, name: "Electric Co.", cardNo: 23, cost: 2500, diceMult: 30, comboDiceMult: 100, mortgage: 1250, pairedWith: 32, group: "util", color: "#5c6b73", row: 7, col: 1 },
-  { id: 13, name: "Community Chest", type: "community", row: 6, col: 1 },
-  { id: 14, name: "Jaipur", cardNo: 16, cost: 3000, rents: [250, 1500, 2750, 4000, 5500], houseCost: 4000, mortgage: 1500, group: "red", color: "#d90429", row: 5, col: 1 },
-  { id: 15, name: "Amritsar", cardNo: 17, cost: 3300, rents: [300, 1400, 2600, 4000, 5000], houseCost: 4500, mortgage: 1650, group: "red", color: "#d90429", row: 4, col: 1 },
-  { id: 16, name: "Patna", cardNo: 18, cost: 2000, rents: [150, 800, 2000, 3000, 4000], houseCost: 2500, mortgage: 1000, group: "red", color: "#d90429", row: 3, col: 1 },
-  { id: 17, name: "Railway", cardNo: 21, cost: 9500, rent: 1000, comboRent: 1350, mortgage: 1750, pairedWith: 23, group: "transport", color: "#2b2d42", row: 2, col: 1 },
-  { id: 18, name: "CLUB", type: "club", row: 1, col: 1 },
+  { id: 10, name: "Indore", cardNo: 11, cost: 1500, rents: [200, 600, 1500, 2500, 3600], houseCost: 2000, mortgage: 750, group: "cyan", color: "#00838f", img: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=150&q=80", row: 9, col: 1 },
+  { id: 11, name: "Kanpur", cardNo: 13, cost: 4000, rents: [400, 1500, 3000, 4500, 5500], houseCost: 4500, mortgage: 2000, group: "cyan", color: "#00838f", img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=150&q=80", row: 8, col: 1 },
+  { id: 12, name: "Electric Co.", cardNo: 23, cost: 2500, diceMult: 30, comboDiceMult: 100, mortgage: 1250, pairedWith: 32, group: "util", color: "#546e7a", img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=150&q=80", row: 7, col: 1 },
+  { id: 13, name: "Community", type: "community", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=150&q=80", row: 6, col: 1 },
+  { id: 14, name: "Jaipur", cardNo: 16, cost: 3000, rents: [250, 1500, 2750, 4000, 5500], houseCost: 4000, mortgage: 1500, group: "red", color: "#b71c1c", img: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=150&q=80", row: 5, col: 1 },
+  { id: 15, name: "Amritsar", cardNo: 17, cost: 3300, rents: [300, 1400, 2600, 4000, 5000], houseCost: 4500, mortgage: 1650, group: "red", color: "#b71c1c", img: "https://images.unsplash.com/photo-1609946860431-89d5351a0279?auto=format&fit=crop&w=150&q=80", row: 4, col: 1 },
+  { id: 16, name: "Patna", cardNo: 18, cost: 2000, rents: [150, 800, 2000, 3000, 4000], houseCost: 2500, mortgage: 1000, group: "red", color: "#b71c1c", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=150&q=80", row: 3, col: 1 },
+  { id: 17, name: "Railway", cardNo: 21, cost: 9500, rent: 1000, comboRent: 1350, mortgage: 1750, pairedWith: 23, group: "transport", color: "#263238", img: "https://images.unsplash.com/photo-1532105956626-9569c03602f6?auto=format&fit=crop&w=150&q=80", row: 2, col: 1 },
+  { id: 18, name: "CLUB", type: "club", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=150&q=80", row: 1, col: 1 },
 
-  { id: 19, name: "Bengaluru", cardNo: 5, cost: 4000, rents: [400, 1500, 3000, 4500, 5500], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e85d04", row: 1, col: 2 },
-  { id: 20, name: "Ahmedabad", cardNo: 6, cost: 4000, rents: [400, 1500, 3000, 4200, 5000], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e85d04", row: 1, col: 3 },
-  { id: 21, name: "Goa", cardNo: 20, cost: 4000, rents: [400, 2200, 3500, 5000, 6500], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e85d04", row: 1, col: 4 },
-  { id: 22, name: "Chance", type: "chance", row: 1, col: 5 },
-  { id: 23, name: "BEST", cardNo: 24, cost: 3500, rent: 600, comboRent: 1100, mortgage: 1750, pairedWith: 17, group: "transport", color: "#2b2d42", row: 1, col: 6 },
-  { id: 24, name: "Chandigarh", cardNo: 7, cost: 2500, rents: [200, 900, 1600, 2500, 3500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f48c06", row: 1, col: 7 },
-  { id: 25, name: "Agra", cardNo: 8, cost: 2500, rents: [200, 900, 1600, 2500, 3500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f48c06", row: 1, col: 8 },
-  { id: 26, name: "Mysore", cardNo: 10, cost: 2500, rents: [200, 1000, 2250, 3500, 4500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f48c06", row: 1, col: 9 },
-  { id: 27, name: "REST HOUSE", type: "resthouse", row: 1, col: 10 },
+  { id: 19, name: "Bengaluru", cardNo: 5, cost: 4000, rents: [400, 1500, 3000, 4500, 5500], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e65100", img: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=150&q=80", row: 1, col: 2 },
+  { id: 20, name: "Ahmedabad", cardNo: 6, cost: 4000, rents: [400, 1500, 3000, 4200, 5000], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e65100", img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=150&q=80", row: 1, col: 3 },
+  { id: 21, name: "Goa", cardNo: 20, cost: 4000, rents: [400, 2200, 3500, 5000, 6500], houseCost: 4500, mortgage: 2000, group: "orange", color: "#e65100", img: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=150&q=80", row: 1, col: 4 },
+  { id: 22, name: "Chance", type: "chance", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=150&q=80", row: 1, col: 5 },
+  { id: 23, name: "BEST", cardNo: 24, cost: 3500, rent: 600, comboRent: 1100, mortgage: 1750, pairedWith: 17, group: "transport", color: "#263238", img: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=150&q=80", row: 1, col: 6 },
+  { id: 24, name: "Chandigarh", cardNo: 7, cost: 2500, rents: [200, 900, 1600, 2500, 3500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f57f17", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=150&q=80", row: 1, col: 7 },
+  { id: 25, name: "Agra", cardNo: 8, cost: 2500, rents: [200, 900, 1600, 2500, 3500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f57f17", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=150&q=80", row: 1, col: 8 },
+  { id: 26, name: "Mysore", cardNo: 10, cost: 2500, rents: [200, 1000, 2250, 3500, 4500], houseCost: 3000, mortgage: 1250, group: "yellow", color: "#f57f17", img: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=150&q=80", row: 1, col: 9 },
+  { id: 27, name: "REST HOUSE", type: "resthouse", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=150&q=80", row: 1, col: 10 },
 
-  { id: 28, name: "Shimla", cardNo: 12, cost: 2200, rents: [200, 1000, 2000, 2750, 4000], houseCost: 3500, mortgage: 1100, group: "green", color: "#2b9348", row: 2, col: 10 },
-  { id: 29, name: "Kolkatta", cardNo: 9, cost: 6500, rents: [800, 3200, 4500, 6500, 8000], houseCost: 6000, mortgage: 3250, group: "green", color: "#2b9348", row: 3, col: 10 },
-  { id: 30, name: "Hyderabad", cardNo: 14, cost: 3500, rents: [300, 1200, 2600, 4000, 5000], houseCost: 5000, mortgage: 1750, group: "green", color: "#2b9348", row: 4, col: 10 },
-  { id: 31, name: "Community Chest", type: "community", row: 5, col: 10 },
-  { id: 32, name: "Motor Boat", cardNo: 22, cost: 5500, diceMult: 100, comboDiceMult: 200, mortgage: 2750, pairedWith: 12, group: "transport", color: "#2b2d42", row: 6, col: 10 },
-  { id: 33, name: "Cochin", cardNo: 15, cost: 3000, rents: [300, 1200, 2000, 4250, 5500], houseCost: 4000, mortgage: 1500, group: "purple", color: "#7209b7", row: 7, col: 10 },
-  { id: 34, name: "Wealth Tax", type: "tax", sub: "wealth", row: 8, col: 10 },
-  { id: 35, name: "GO TO JAIL", type: "gotojail", row: 9, col: 10 }
+  { id: 28, name: "Shimla", cardNo: 12, cost: 2200, rents: [200, 1000, 2000, 2750, 4000], houseCost: 3500, mortgage: 1100, group: "green", color: "#1b5e20", img: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=150&q=80", row: 2, col: 10 },
+  { id: 29, name: "Kolkatta", cardNo: 9, cost: 6500, rents: [800, 3200, 4500, 6500, 8000], houseCost: 6000, mortgage: 3250, group: "green", color: "#1b5e20", img: "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=150&q=80", row: 3, col: 10 },
+  { id: 30, name: "Hyderabad", cardNo: 14, cost: 3500, rents: [300, 1200, 2600, 4000, 5000], houseCost: 5000, mortgage: 1750, group: "green", color: "#1b5e20", img: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=150&q=80", row: 4, col: 10 },
+  { id: 31, name: "Community", type: "community", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=150&q=80", row: 5, col: 10 },
+  { id: 32, name: "Motor Boat", cardNo: 22, cost: 5500, diceMult: 100, comboDiceMult: 200, mortgage: 2750, pairedWith: 12, group: "transport", color: "#263238", img: "https://images.unsplash.com/photo-1559310589-2673bfe16970?auto=format&fit=crop&w=150&q=80", row: 6, col: 10 },
+  { id: 33, name: "Cochin", cardNo: 15, cost: 3000, rents: [300, 1200, 2000, 4250, 5500], houseCost: 4000, mortgage: 1500, group: "purple", color: "#4a148c", img: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=150&q=80", row: 7, col: 10 },
+  { id: 34, name: "Wealth Tax", type: "tax", sub: "wealth", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=150&q=80", row: 8, col: 10 },
+  { id: 35, name: "GO TO JAIL", type: "gotojail", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=150&q=80", row: 9, col: 10 }
 ];
 
 class BusinessGame {
   constructor() {
     this.players = [
-      { id: 0, name: "Player 1", avatar: "🏎️", color: "#ff4757", isAI: false, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false },
-      { id: 1, name: "Rahul (AI)", avatar: "🚂", color: "#1e90ff", isAI: true, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false },
-      { id: 2, name: "Amit (AI)", avatar: "✈️", color: "#2ed573", isAI: true, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false },
-      { id: 3, name: "Vikram (AI)", avatar: "🛺", color: "#ffa502", isAI: true, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false }
+      { id: 0, name: "You", avatar: "🏎️", isAI: false, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false },
+      { id: 1, name: "Rahul (Bot)", avatar: "🚂", isAI: true, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false },
+      { id: 2, name: "Amit (Bot)", avatar: "✈️", isAI: true, cash: 30000, pos: 0, inJail: false, jailTurns: 0, skipTurn: false, bankrupt: false }
     ];
     this.ownership = {};
-    this.currentPlayerIdx = 0;
+    this.currentIdx = 0;
     this.consecutiveDoubles = 0;
     this.lastRoll = [1, 1];
     this.isRolling = false;
-    this.pendingAction = null;
-    this.initBoard();
-    this.updateHUD();
-    this.log("🎉 Deluxe Business Game Loaded! Starting Capital: ₹30,000.");
+    this.pendingChoice = false;
+    this.buildBoard();
+    this.refreshHUD();
+    this.recordLog("Game started with Rs. 30,000 capital each.");
   }
 
-  get activePlayer() { return this.players[this.currentPlayerIdx]; }
+  get activePlayer() { return this.players[this.currentIdx]; }
 
-  initBoard() {
-    const board = document.getElementById('board');
+  buildBoard() {
+    const b = document.getElementById('board');
     TILES_DATA.forEach(t => {
       const el = document.createElement('div');
       el.className = 'tile';
       el.id = `tile-${t.id}`;
       el.style.gridRow = t.row;
       el.style.gridColumn = t.col;
-      el.onclick = () => this.inspectTile(t.id);
+      el.onclick = () => this.showCard(t.id);
 
       if (t.cost) {
         el.innerHTML = `
           <div class="tile-header" style="background:${t.color};">${t.cardNo ? `[${t.cardNo}]` : ''}</div>
+          <img src="${t.img}" class="tile-img" alt="${t.name}" loading="lazy" />
           <div class="tile-body">
             <span class="tile-name">${t.name}</span>
-            <span class="tile-price">₹${t.cost}</span>
+            <span class="tile-price">Rs.${t.cost}</span>
           </div>
           <div class="improvements-holder" id="impr-${t.id}"></div>
           <div class="tokens-holder" id="tokens-${t.id}"></div>
@@ -664,120 +584,107 @@ class BusinessGame {
       } else {
         el.classList.add('corner');
         el.innerHTML = `
+          <img src="${t.img}" class="tile-img" style="height:38px;" alt="${t.name}" loading="lazy" />
           <div class="tile-body" style="justify-content:center;">
-            <span class="tile-name" style="font-size:9.5px; font-weight:900;">${t.name}</span>
+            <span class="tile-name">${t.name}</span>
           </div>
           <div class="tokens-holder" id="tokens-${t.id}"></div>
         `;
       }
-      board.appendChild(el);
+      b.appendChild(el);
     });
-    this.renderTokens();
+    this.drawTokens();
   }
 
-  renderTokens() {
+  drawTokens() {
     TILES_DATA.forEach(t => {
-      const holder = document.getElementById(`tokens-${t.id}`);
-      if (holder) holder.innerHTML = '';
+      const h = document.getElementById(`tokens-${t.id}`);
+      if (h) h.innerHTML = '';
     });
     this.players.forEach(p => {
       if (!p.bankrupt) {
-        const holder = document.getElementById(`tokens-${p.pos}`);
-        if (holder) {
-          const t = document.createElement('div');
-          t.className = 'token';
-          t.id = `token-avatar-${p.id}`;
-          t.innerText = p.avatar;
-          holder.appendChild(t);
+        const h = document.getElementById(`tokens-${p.pos}`);
+        if (h) {
+          const s = document.createElement('span');
+          s.className = 'token';
+          s.id = `token-avatar-${p.id}`;
+          s.innerText = p.avatar;
+          h.appendChild(s);
         }
       }
     });
   }
 
-  log(msg) {
-    const l = document.getElementById('game-log');
-    const d = document.createElement('div');
-    d.className = 'log-entry';
-    d.innerHTML = msg;
-    l.prepend(d);
+  recordLog(txt) {
+    const box = document.getElementById('game-log');
+    const div = document.createElement('div');
+    div.className = 'log-line';
+    div.innerHTML = txt;
+    box.prepend(div);
   }
 
-  spawnCoins(x, y) {
-    for (let i = 0; i < 5; i++) {
-      const coin = document.createElement('div');
-      coin.className = 'coin-particle';
-      coin.innerText = '₹';
-      coin.style.left = (x || window.innerWidth/2) + (Math.random()*60 - 30) + 'px';
-      coin.style.top = (y || window.innerHeight/2) + (Math.random()*60 - 30) + 'px';
-      document.body.appendChild(coin);
-      setTimeout(() => coin.remove(), 1000);
-    }
-  }
-
-  updateHUD() {
-    const cont = document.getElementById('players-container');
-    cont.innerHTML = '';
-    this.players.forEach((p, idx) => {
+  refreshHUD() {
+    const list = document.getElementById('players-list');
+    list.innerHTML = '';
+    this.players.forEach((p, i) => {
       const row = document.createElement('div');
-      row.className = `player-row ${idx === this.currentPlayerIdx ? 'active' : ''}`;
+      row.className = `player-row ${i === this.currentIdx ? 'active' : ''}`;
       row.innerHTML = `
-        <div class="player-name">
-          <span style="font-size:16px;">${p.avatar}</span>
-          ${p.name} ${p.inJail ? '<span style="color:#ff4757; font-size:10px;">[JAIL]</span>' : ''}
+        <div class="player-title">
+          <span>${p.avatar}</span>
+          ${p.name} ${p.inJail ? '<span style="color:#ef4444;">[JAIL]</span>' : ''}
         </div>
-        <div class="player-cash">₹${p.cash}</div>
+        <div class="player-funds">Rs. ${p.cash}</div>
       `;
-      cont.appendChild(row);
+      list.appendChild(row);
     });
 
     const p = this.activePlayer;
-    const btnPayJail = document.getElementById('btn-jail-pay');
-
-    if (p.inJail && !this.pendingAction) {
-      btnPayJail.style.display = p.cash >= 500 ? 'inline-block' : 'none';
+    const btnBail = document.getElementById('btn-bail');
+    if (p.inJail && !this.pendingChoice && !p.isAI) {
+      btnBail.style.display = p.cash >= 500 ? 'inline-block' : 'none';
     } else {
-      btnPayJail.style.display = 'none';
+      btnBail.style.display = 'none';
     }
 
-    if (p.isAI && !this.pendingAction) {
-      setTimeout(() => this.aiTurn(), 800);
+    if (p.isAI && !this.pendingChoice && !this.isRolling) {
+      setTimeout(() => this.runBotTurn(), 600);
     }
   }
 
-  async onRollClick() {
-    if (this.isRolling || this.pendingAction) return;
+  async userRoll() {
+    if (this.isRolling || this.pendingChoice) return;
     this.isRolling = true;
-    sfxDiceRattle();
+    sfxDice();
 
-    const cube1 = document.getElementById('cube1');
-    const cube2 = document.getElementById('cube2');
-    cube1.classList.add('rolling');
-    cube2.classList.add('rolling');
+    const c1 = document.getElementById('cube1');
+    const c2 = document.getElementById('cube2');
+    c1.classList.add('shaking');
+    c2.classList.add('shaking');
 
     const d1 = Math.floor(Math.random() * 6) + 1;
     const d2 = Math.floor(Math.random() * 6) + 1;
 
-    await new Promise(r => setTimeout(r, 600));
+    await new Promise(r => setTimeout(r, 500));
 
-    cube1.classList.remove('rolling');
-    cube2.classList.remove('rolling');
-
-    this.setDiceTransform(cube1, d1);
-    this.setDiceTransform(cube2, d2);
+    c1.classList.remove('shaking');
+    c2.classList.remove('shaking');
+    this.orientDie(c1, d1);
+    this.orientDie(c2, d2);
 
     this.lastRoll = [d1, d2];
-    const rollSum = d1 + d2;
+    const total = d1 + d2;
     const isDouble = d1 === d2;
     const p = this.activePlayer;
 
-    document.getElementById('action-prompt').innerText = `${p.name} rolled ${d1} + ${d2} = ${rollSum}${isDouble ? ' (DOUBLES!)' : ''}`;
+    document.getElementById('status-bubble').innerText = `${p.name} rolled ${d1}+${d2} = ${total}${isDouble ? ' (DOUBLES!)' : ''}`;
 
     if (isDouble) {
       this.consecutiveDoubles++;
       if (this.consecutiveDoubles === 3) {
-        this.log(`⚠️ ${p.name} rolled 3 consecutive doubles! Sent to Jail.`);
-        this.sendToJail(p);
-        this.finishTurn();
+        this.recordLog(`⚠️ ${p.name} rolled 3 consecutive doubles! Sent to Jail.`);
+        this.incarcerate(p);
+        this.concludeTurn();
         return;
       }
     } else {
@@ -786,468 +693,425 @@ class BusinessGame {
 
     if (p.inJail) {
       if (isDouble) {
-        this.log(`🎲 ${p.name} rolled doubles and escaped Jail!`);
-        p.inJail = false;
-        p.jailTurns = 0;
-        await this.stepTokenMovement(p, rollSum);
+        this.recordLog(`🎲 ${p.name} rolled doubles and broke out of Jail!`);
+        p.inJail = false; p.jailTurns = 0;
+        await this.stepMove(p, total);
       } else {
         p.jailTurns++;
-        this.log(`${p.name} failed doubles in Jail (Turn ${p.jailTurns}/3).`);
+        this.recordLog(`${p.name} missed doubles in Jail (Turn ${p.jailTurns}/3).`);
         if (p.jailTurns >= 3) {
-          this.log(`🔓 3 turns served! Released automatically without fine.`);
-          p.inJail = false;
-          p.jailTurns = 0;
-          await this.stepTokenMovement(p, rollSum);
+          this.recordLog(`🔓 3 turns served! Freed without fine.`);
+          p.inJail = false; p.jailTurns = 0;
+          await this.stepMove(p, total);
         } else {
-          this.finishTurn();
+          this.concludeTurn();
         }
       }
       return;
     }
 
-    await this.stepTokenMovement(p, rollSum);
+    await this.stepMove(p, total);
   }
 
-  setDiceTransform(cube, val) {
-    const angles = {
-      1: 'rotateY(0deg)',
-      6: 'rotateY(180deg)',
-      3: 'rotateY(-90deg)',
-      4: 'rotateY(90deg)',
-      5: 'rotateX(-90deg)',
-      2: 'rotateX(90deg)'
-    };
-    cube.style.transform = angles[val];
+  orientDie(cube, val) {
+    const rot = { 1:'rotateY(0deg)', 6:'rotateY(180deg)', 3:'rotateY(-90deg)', 4:'rotateY(90deg)', 5:'rotateX(-90deg)', 2:'rotateX(90deg)' };
+    cube.style.transform = rot[val];
   }
 
-  async stepTokenMovement(player, steps) {
-    for (let i = 0; i < steps; i++) {
+  async stepMove(player, count) {
+    for (let i = 0; i < count; i++) {
       player.pos = (player.pos + 1) % 36;
-      this.renderTokens();
-      const tokenEl = document.getElementById(`token-avatar-${player.id}`);
-      if (tokenEl) tokenEl.classList.add('hop');
-      sfxHop();
+      this.drawTokens();
+      const el = document.getElementById(`token-avatar-${player.id}`);
+      if (el) el.classList.add('hop');
+      sfxClack();
 
-      // Passing START rule
       if (player.pos === 0) {
         player.cash += 1500;
-        sfxCash();
-        this.spawnCoins();
-        this.log(`🏁 ${player.name} passed START and collected ₹1,500.`);
+        sfxRegister();
+        this.recordLog(`🏁 ${player.name} passed START and collected Rs. 1,500.`);
       }
-
-      await new Promise(r => setTimeout(r, 160));
+      await new Promise(r => setTimeout(r, 140));
     }
-    this.handleTileLanding(player, steps);
+    this.processLanding(player, count);
   }
 
-  handleTileLanding(p, arrivalRoll) {
+  processLanding(p, rollSum) {
     const tile = TILES_DATA[p.pos];
-    document.getElementById('action-prompt').innerText = `${p.name} landed on ${tile.name}.`;
+    document.getElementById('status-bubble').innerText = `${p.name} landed on ${tile.name}.`;
 
     // UNOWNED PROPERTY
     if (tile.cost && !this.ownership[tile.id]) {
-      this.pendingAction = 'buy_decision';
+      this.pendingChoice = true;
       if (p.isAI) {
         if (p.cash >= tile.cost + 2000) {
-          this.buyProperty(p, tile);
+          this.executeBuy(p, tile);
         } else {
-          this.log(`${p.name} passed on ${tile.name}.`);
+          this.recordLog(`${p.name} declined to buy ${tile.name}.`);
         }
-        this.pendingAction = null;
-        this.finishTurn();
+        this.pendingChoice = false;
+        this.concludeTurn();
       } else {
         document.getElementById('btn-roll').style.display = 'none';
         document.getElementById('btn-buy').style.display = 'inline-block';
         document.getElementById('btn-pass').style.display = 'inline-block';
-        document.getElementById('btn-buy').innerText = `Buy ₹${tile.cost}`;
+        document.getElementById('btn-buy').innerText = `Buy Rs. ${tile.cost}`;
+        this.showCard(tile.id);
       }
       return;
     }
 
-    // OWNED PROPERTY -> PAY RENT
+    // RENT PAYMENT
     if (tile.cost && this.ownership[tile.id]) {
       const prop = this.ownership[tile.id];
       if (prop.ownerId !== p.id && !prop.mortgaged) {
         const owner = this.players[prop.ownerId];
-        let rent = this.calculateRent(tile, arrivalRoll);
+        let rent = this.calcRent(tile, rollSum);
         if (owner.inJail) {
           rent = Math.floor(rent / 2);
-          this.log(`🏛️ Owner in Jail! 50% half-rent applied.`);
+          this.recordLog(`🏛️ Property owner is in Jail! Half-rent rule applied.`);
         }
-        this.log(`💸 ${p.name} paid ₹${rent} rent to ${owner.name} for ${tile.name}.`);
         p.cash -= rent;
         owner.cash += rent;
-        sfxCash();
-        this.spawnCoins();
-        this.checkBankruptcy(p);
+        sfxRegister();
+        this.recordLog(`💸 ${p.name} paid Rs. ${rent} rent to ${owner.name} for ${tile.name}.`);
+        this.verifySolvency(p);
       }
     }
 
-    // TAXES (with rulebook Rs. 500 cap)
+    // TAX SPACES
     if (tile.type === 'tax') {
       let tax = 0;
       if (tile.sub === 'income') {
-        const sites = Object.values(this.ownership).filter(o => o.ownerId === p.id).length;
-        tax = Math.min(500, sites * 100);
-        this.log(`🏛️ Income Tax: ${p.name} owns ${sites} sites. Paid ₹${tax}.`);
+        const count = Object.values(this.ownership).filter(o => o.ownerId === p.id).length;
+        tax = Math.min(500, count * 100);
+        this.recordLog(`🏛️ Income Tax: ${p.name} owns ${count} sites. Paid Rs. ${tax} (max Rs. 500).`);
       } else {
-        let items = 0;
-        Object.values(this.ownership).forEach(o => {
-          if (o.ownerId === p.id) { items += o.houses + (o.hotel ? 1 : 0); }
-        });
-        tax = Math.min(500, items * 100);
-        this.log(`🏛️ Wealth Tax: ${p.name} owns ${items} buildings. Paid ₹${tax}.`);
+        let bldgs = 0;
+        Object.values(this.ownership).forEach(o => { if (o.ownerId === p.id) bldgs += o.houses + (o.hotel ? 1 : 0); });
+        tax = Math.min(500, bldgs * 100);
+        this.recordLog(`🏛️ Wealth Tax: ${p.name} owns ${bldgs} buildings. Paid Rs. ${tax} (max Rs. 500).`);
       }
       p.cash -= tax;
-      this.checkBankruptcy(p);
+      this.verifySolvency(p);
     }
 
     // REST HOUSE
     if (tile.type === 'resthouse') {
-      let collected = 0;
-      this.players.forEach(o => {
-        if (o.id !== p.id && !o.bankrupt) {
-          o.cash -= 100;
-          collected += 100;
-        }
-      });
-      p.cash += collected;
-      sfxCash();
-      this.spawnCoins();
-      this.log(`🏨 Rest House: ${p.name} collected ₹100 from all players.`);
+      let sum = 0;
+      this.players.forEach(o => { if (o.id !== p.id && !o.bankrupt) { o.cash -= 100; sum += 100; } });
+      p.cash += sum;
+      sfxRegister();
+      this.recordLog(`🏨 Rest House: ${p.name} received Rs. 100 from every player.`);
     }
 
     // CLUB
     if (tile.type === 'club') {
       let paid = 0;
-      this.players.forEach(o => {
-        if (o.id !== p.id && !o.bankrupt) {
-          o.cash += 100;
-          paid += 100;
-        }
-      });
+      this.players.forEach(o => { if (o.id !== p.id && !o.bankrupt) { o.cash += 100; paid += 100; } });
       p.cash -= paid;
-      this.log(`🍷 Club: ${p.name} paid ₹100 to all players.`);
-      this.checkBankruptcy(p);
+      this.recordLog(`🍷 Club: ${p.name} paid Rs. 100 to every player.`);
+      this.verifySolvency(p);
     }
 
     // GO TO JAIL
     if (tile.type === 'gotojail') {
-      this.sendToJail(p);
-      this.finishTurn();
+      this.incarcerate(p);
+      this.concludeTurn();
       return;
     }
 
-    // CHANCE & COMMUNITY CHEST
+    // CHANCE & COMMUNITY CHEST BY EXACT ARRIVAL ROLL
     if (tile.type === 'chance') {
-      this.triggerChance(p, arrivalRoll);
+      this.handleChance(p, rollSum);
       return;
     }
     if (tile.type === 'community') {
-      this.triggerCommunity(p, arrivalRoll);
+      this.handleCommunity(p, rollSum);
       return;
     }
 
-    this.finishTurn();
+    this.concludeTurn();
   }
 
-  calculateRent(tile, roll) {
+  calcRent(tile, roll) {
     const prop = this.ownership[tile.id];
     if (tile.rents) {
       if (prop.hotel) return tile.rents[4];
       if (prop.houses > 0) return tile.rents[prop.houses];
-      if (this.checkFullSet(prop.ownerId, tile.group)) return tile.rents[0] * 2;
+      if (this.hasFullSet(prop.ownerId, tile.group)) return tile.rents[0] * 2;
       return tile.rents[0];
     }
     if (tile.id === 17 || tile.id === 23) {
-      const paired = this.ownership[tile.pairedWith]?.ownerId === prop.ownerId;
-      return paired ? tile.comboRent : tile.rent;
+      return this.ownership[tile.pairedWith]?.ownerId === prop.ownerId ? tile.comboRent : tile.rent;
     }
     if (tile.id === 6 || tile.id === 2) {
-      const paired = this.ownership[tile.pairedWith]?.ownerId === prop.ownerId;
-      return paired ? tile.comboRent : tile.rent;
+      return this.ownership[tile.pairedWith]?.ownerId === prop.ownerId ? tile.comboRent : tile.rent;
     }
     if (tile.id === 32 || tile.id === 12) {
-      const paired = this.ownership[tile.pairedWith]?.ownerId === prop.ownerId;
-      const mult = paired ? tile.comboDiceMult : tile.diceMult;
+      const mult = this.ownership[tile.pairedWith]?.ownerId === prop.ownerId ? tile.comboDiceMult : tile.diceMult;
       return roll * mult;
     }
     return 0;
   }
 
-  checkFullSet(ownerId, group) {
-    if (!group || group === 'util' || group === 'transport') return false;
-    const groupTiles = TILES_DATA.filter(t => t.group === group);
-    return groupTiles.every(t => this.ownership[t.id]?.ownerId === ownerId);
+  hasFullSet(ownerId, grp) {
+    if (!grp || grp === 'util' || grp === 'transport') return false;
+    return TILES_DATA.filter(t => t.group === grp).every(t => this.ownership[t.id]?.ownerId === ownerId);
   }
 
-  buyProperty(p, tile) {
+  executeBuy(p, tile) {
     if (p.cash >= tile.cost) {
       p.cash -= tile.cost;
       this.ownership[tile.id] = { ownerId: p.id, houses: 0, hotel: false, mortgaged: false };
-      sfxCash();
-      this.spawnCoins();
-      this.log(`🏠 ${p.name} purchased ${tile.name} for ₹${tile.cost}.`);
-      this.updateTileBadge(tile.id);
+      sfxRegister();
+      this.recordLog(`🏠 ${p.name} purchased ${tile.name} for Rs. ${tile.cost}.`);
+      this.refreshTileBadge(tile.id);
     }
   }
 
-  updateTileBadge(tileId) {
-    const prop = this.ownership[tileId];
-    const impr = document.getElementById(`impr-${tileId}`);
+  refreshTileBadge(tid) {
+    const prop = this.ownership[tid];
+    const impr = document.getElementById(`impr-${tid}`);
     if (!impr) return;
     impr.innerHTML = '';
     if (prop.mortgaged) {
-      impr.innerHTML = '<div class="mortgaged-stamp">MORTGAGE</div>';
+      impr.innerHTML = '<div class="mortgaged-banner">MORTGAGE</div>';
       return;
     }
     if (prop.hotel) {
       impr.innerHTML = '<div class="hotel-dot"></div>';
     } else {
-      for (let i = 0; i < prop.houses; i++) {
-        impr.innerHTML += '<div class="house-dot"></div>';
-      }
+      for (let i = 0; i < prop.houses; i++) impr.innerHTML += '<div class="house-dot"></div>';
     }
   }
 
-  triggerChance(p, roll) {
+  handleChance(p, roll) {
     const isOdd = roll % 2 !== 0;
-    let title = `CHANCE (Rolled ${roll})`;
     let msg = "";
-
     if (isOdd) {
-      if (roll === 3) { msg = "🎟️ Lottery Prize! Collect ₹2,500 from Bank."; p.cash += 2500; sfxCash(); this.spawnCoins(); }
-      else if (roll === 5) { msg = "📰 Crossword Competition! Collect ₹1,000 from Bank."; p.cash += 1000; sfxCash(); }
-      else if (roll === 7) { msg = "🎰 JACKPOT! Collect ₹2,000 from Bank."; p.cash += 2000; sfxFanfare(); this.spawnCoins(); }
-      else if (roll === 9) {
-        msg = "🚂 Return to Bombay/Start! Collect ₹1,500 and advance to Darjeeling.";
-        p.cash += 1500; p.pos = 4; this.renderTokens(); sfxCash();
-      }
-      else if (roll === 11) { msg = "🏆 Best Export Performance! Collect ₹3,000 from Bank."; p.cash += 3000; sfxFanfare(); this.spawnCoins(); }
+      if (roll === 3) { msg = "Lottery Prize! Collect Rs. 2,500 from Bank."; p.cash += 2500; sfxRegister(); }
+      else if (roll === 5) { msg = "Won Crossword Competition! Collect Rs. 1,000 from Bank."; p.cash += 1000; sfxRegister(); }
+      else if (roll === 7) { msg = "Jack Pot! Collect Rs. 2,000 from Bank."; p.cash += 2000; sfxRegister(); }
+      else if (roll === 9) { msg = "Go back to Bombay/Start! Collect Rs. 1,500 and advance to Darjeeling."; p.cash += 1500; p.pos = 4; this.drawTokens(); sfxRegister(); }
+      else if (roll === 11) { msg = "Prize for Best performance in Export! Collect Rs. 3,000."; p.cash += 3000; sfxRegister(); }
     } else {
-      if (roll === 2) { msg = "📉 Stock Market Crash! Pay ₹2,000 to Bank."; p.cash -= 2000; }
-      else if (roll === 4) { msg = "🍺 Fine for driving under influence! Pay ₹1,000 to Bank."; p.cash -= 1000; }
-      else if (roll === 6) { msg = "🔨 House Repairs! Pay ₹2,000 to Bank."; p.cash -= 2000; }
-      else if (roll === 8) { msg = "🔥 Godown Fire Loss! Pay ₹3,000 to Bank."; p.cash -= 3000; }
-      else if (roll === 10) { msg = "🚨 Direct Order: GO TO JAIL!"; this.sendToJail(p); }
-      else if (roll === 12) { msg = "🏨 Go to Rest House and miss your next turn."; p.pos = 27; p.skipTurn = true; this.renderTokens(); }
+      if (roll === 2) { msg = "Loss in Share Market. Pay Rs. 2,000 to Bank."; p.cash -= 2000; }
+      else if (roll === 4) { msg = "Fine for driving under liquor influence. Pay Rs. 1,000."; p.cash -= 1000; }
+      else if (roll === 6) { msg = "House Repairs. Pay Rs. 2,000 to Bank."; p.cash -= 2000; }
+      else if (roll === 8) { msg = "Loss due to fire in godown. Pay Rs. 3,000 to Bank."; p.cash -= 3000; }
+      else if (roll === 10) { msg = "Direct Order: GO TO JAIL!"; this.incarcerate(p); }
+      else if (roll === 12) { msg = "Go to Rest House. Miss your next turn."; p.pos = 27; p.skipTurn = true; this.drawTokens(); }
     }
-
-    this.showEventModal(title, msg);
-    this.checkBankruptcy(p);
+    this.popEvent("CHANCE", `Dice Roll: ${roll}<br><br>${msg}`);
+    this.verifySolvency(p);
   }
 
-  triggerCommunity(p, roll) {
+  handleCommunity(p, roll) {
     const isOdd = roll % 2 !== 0;
-    let title = `COMMUNITY CHEST (Rolled ${roll})`;
     let msg = "";
-
     if (!isOdd) {
       if (roll === 2) {
-        msg = "🎂 It's your Birthday! Collect ₹500 from each player.";
+        msg = "It is your Birthday! Collect Rs. 500 from each player.";
         this.players.forEach(o => { if (o.id !== p.id && !o.bankrupt) { o.cash -= 500; p.cash += 500; } });
-        sfxCash(); this.spawnCoins();
+        sfxRegister();
       }
-      else if (roll === 4) { msg = "👑 1st Prize in Beauty Contest! Collect ₹2,500 from Bank."; p.cash += 2500; sfxFanfare(); this.spawnCoins(); }
-      else if (roll === 6) { msg = "💵 Income Tax Refund! Collect ₹2,000 from Bank."; p.cash += 2000; sfxCash(); }
-      else if (roll === 8) { msg = "🏨 Go to Rest House and miss your next turn."; p.pos = 27; p.skipTurn = true; this.renderTokens(); }
-      else if (roll === 10) { msg = "📈 Dividend on Shares! Collect ₹1,500 from Bank."; p.cash += 1500; sfxCash(); }
-      else if (roll === 12) { msg = "💰 Sale of Stocks! Collect ₹3,000 from Bank."; p.cash += 3000; sfxCash(); this.spawnCoins(); }
+      else if (roll === 4) { msg = "1st Prize in Beauty Contest! Collect Rs. 2,500 from Bank."; p.cash += 2500; sfxRegister(); }
+      else if (roll === 6) { msg = "Income Tax Refund! Collect Rs. 2,000 from Bank."; p.cash += 2000; sfxRegister(); }
+      else if (roll === 8) { msg = "Go to Rest House. Miss your next turn."; p.pos = 27; p.skipTurn = true; this.drawTokens(); }
+      else if (roll === 10) { msg = "Received interest on shares. Collect Rs. 1,500 from Bank."; p.cash += 1500; sfxRegister(); }
+      else if (roll === 12) { msg = "Sale of Stocks! Collect Rs. 3,000 from Bank."; p.cash += 3000; sfxRegister(); }
     } else {
-      if (roll === 3) { msg = "🚨 Direct Order: GO TO JAIL!"; this.sendToJail(p); }
-      else if (roll === 5) { msg = "🩺 School & Medical fees! Pay ₹1,000 to Bank."; p.cash -= 1000; }
-      else if (roll === 7) { msg = "🎉 Marriage Celebration! Pay ₹2,000 to Bank."; p.cash -= 2000; }
+      if (roll === 3) { msg = "Direct Order: GO TO JAIL!"; this.incarcerate(p); }
+      else if (roll === 5) { msg = "School and Medical fees. Pay Rs. 1,000 to Bank."; p.cash -= 1000; }
+      else if (roll === 7) { msg = "Marriage Celebration. Pay Rs. 2,000 to Bank."; p.cash -= 2000; }
       else if (roll === 9) {
-        let cost = 0;
-        Object.values(this.ownership).forEach(o => {
-          if (o.ownerId === p.id) { cost += (o.houses * 500) + (o.hotel ? 100 : 0); }
-        });
-        msg = `🔧 General Property Repairs: ₹500/house, ₹100/hotel. Total paid: ₹${cost}.`;
-        p.cash -= cost;
+        let sum = 0;
+        Object.values(this.ownership).forEach(o => { if (o.ownerId === p.id) sum += (o.houses*500) + (o.hotel?100:0); });
+        msg = `General Repairs: Rs. 500/house, Rs. 100/hotel. Total paid: Rs. ${sum}.`;
+        p.cash -= sum;
       }
-      else if (roll === 11) { msg = "📜 Insurance Premium! Pay ₹1,500 to Bank."; p.cash -= 1500; }
+      else if (roll === 11) { msg = "Pay Insurance premium. Pay Rs. 1,500 to Bank."; p.cash -= 1500; }
     }
-
-    this.showEventModal(title, msg);
-    this.checkBankruptcy(p);
+    this.popEvent("COMMUNITY CHEST", `Dice Roll: ${roll}<br><br>${msg}`);
+    this.verifySolvency(p);
   }
 
-  showEventModal(title, msg) {
-    document.getElementById('event-title').innerText = title;
-    document.getElementById('event-body').innerText = msg;
+  popEvent(title, msg) {
+    const banner = document.getElementById('event-banner');
+    banner.innerText = title;
+    banner.style.background = title === 'CHANCE' ? '#2a9d8f' : '#e9c46a';
+    banner.style.color = title === 'CHANCE' ? '#fff' : '#264653';
+    document.getElementById('event-msg').innerHTML = msg;
     document.getElementById('event-modal').style.display = 'flex';
-    this.log(`📜 ${title}: ${msg}`);
+    this.recordLog(`📜 ${title}: ${msg}`);
   }
 
-  closeEventModal() {
+  closeEvent() {
     document.getElementById('event-modal').style.display = 'none';
-    this.finishTurn();
+    this.concludeTurn();
   }
 
-  sendToJail(p) {
-    p.pos = 9;
-    p.inJail = true;
-    p.jailTurns = 0;
-    sfxJail();
-    this.renderTokens();
-    this.log(`🔒 ${p.name} locked in JAIL.`);
+  incarcerate(p) {
+    p.pos = 9; p.inJail = true; p.jailTurns = 0;
+    sfxBuzzer();
+    this.drawTokens();
+    this.recordLog(`🔒 ${p.name} locked behind bars in JAIL.`);
   }
 
-  payJailFine() {
+  userBail() {
     const p = this.activePlayer;
     if (p.cash >= 500) {
-      p.cash -= 500;
-      p.inJail = false;
-      p.jailTurns = 0;
-      sfxCash();
-      this.log(`🔓 ${p.name} paid ₹500 fine and was released.`);
-      this.updateHUD();
-      this.onRollClick();
+      p.cash -= 500; p.inJail = false; p.jailTurns = 0;
+      sfxRegister();
+      this.recordLog(`🔓 ${p.name} paid Rs. 500 bail fine.`);
+      this.refreshHUD();
+      this.userRoll();
     }
   }
 
-  onBuyClick() {
+  userBuy() {
     const p = this.activePlayer;
     const tile = TILES_DATA[p.pos];
-    this.buyProperty(p, tile);
+    this.executeBuy(p, tile);
     document.getElementById('btn-buy').style.display = 'none';
     document.getElementById('btn-pass').style.display = 'none';
-    this.pendingAction = null;
-    this.finishTurn();
+    this.pendingChoice = false;
+    document.getElementById('deed-modal').style.display = 'none';
+    this.concludeTurn();
   }
 
-  onPassClick() {
-    this.log(`${this.activePlayer.name} passed on purchasing.`);
+  userPass() {
+    this.recordLog(`${this.activePlayer.name} passed on ${TILES_DATA[this.activePlayer.pos].name}.`);
     document.getElementById('btn-buy').style.display = 'none';
     document.getElementById('btn-pass').style.display = 'none';
-    this.pendingAction = null;
-    this.finishTurn();
+    this.pendingChoice = false;
+    document.getElementById('deed-modal').style.display = 'none';
+    this.concludeTurn();
   }
 
-  finishTurn() {
+  concludeTurn() {
     this.isRolling = false;
-    this.updateHUD();
+    this.refreshHUD();
 
     if (this.lastRoll[0] === this.lastRoll[1] && !this.activePlayer.inJail && this.consecutiveDoubles > 0) {
-      document.getElementById('action-prompt').innerText = `${this.activePlayer.name} rolled doubles! Roll again.`;
+      document.getElementById('status-bubble').innerText = `${this.activePlayer.name} rolled doubles! Roll again.`;
       document.getElementById('btn-roll').style.display = 'inline-block';
       document.getElementById('btn-end').style.display = 'none';
       return;
     }
 
     if (this.activePlayer.isAI) {
-      this.onEndTurnClick();
+      this.userEndTurn();
     } else {
       document.getElementById('btn-roll').style.display = 'none';
       document.getElementById('btn-end').style.display = 'inline-block';
     }
   }
 
-  onEndTurnClick() {
+  userEndTurn() {
     document.getElementById('btn-end').style.display = 'none';
     document.getElementById('btn-roll').style.display = 'inline-block';
     this.consecutiveDoubles = 0;
 
     do {
-      this.currentPlayerIdx = (this.currentPlayerIdx + 1) % this.players.length;
+      this.currentIdx = (this.currentIdx + 1) % this.players.length;
     } while (this.activePlayer.bankrupt);
 
     if (this.activePlayer.skipTurn) {
-      this.log(`⏸️ ${this.activePlayer.name} skips their turn (Rest House).`);
+      this.recordLog(`⏸️ ${this.activePlayer.name} skips their turn (Rest House).`);
       this.activePlayer.skipTurn = false;
-      this.onEndTurnClick();
+      this.userEndTurn();
       return;
     }
 
-    document.getElementById('action-prompt').innerText = `${this.activePlayer.name}'s turn.`;
-    this.updateHUD();
+    document.getElementById('status-bubble').innerText = `${this.activePlayer.name}'s turn.`;
+    this.refreshHUD();
   }
 
-  checkBankruptcy(p) {
+  verifySolvency(p) {
     if (p.cash < 0) {
       p.bankrupt = true;
-      this.log(`💥 ${p.name} is BANKRUPT and eliminated!`);
+      this.recordLog(`💥 ${p.name} is BANKRUPT and out of the game!`);
       Object.keys(this.ownership).forEach(k => {
         if (this.ownership[k].ownerId === p.id) {
           delete this.ownership[k];
-          this.updateTileBadge(k);
+          this.refreshTileBadge(k);
         }
       });
-      this.renderTokens();
-      const alive = this.players.filter(x => !x.bankrupt);
-      if (alive.length === 1) {
-        sfxFanfare();
-        alert(`🏆 GAME OVER! ${alive[0].name} has won the Business championship!`);
+      this.drawTokens();
+      const living = this.players.filter(x => !x.bankrupt);
+      if (living.length === 1) {
+        alert(`🏆 GAME OVER! ${living[0].name} has won the championship!`);
       }
     }
   }
 
-  aiTurn() {
+  runBotTurn() {
     if (this.activePlayer.inJail) {
-      if (this.activePlayer.cash > 5000) this.payJailFine();
-      else this.onRollClick();
+      if (this.activePlayer.cash > 4000) this.userBail();
+      else this.userRoll();
       return;
     }
-    this.onRollClick();
+    this.userRoll();
   }
 
-  // INSPECT TITLE DEED (AUTHENTIC RETRO CARD VIEW)
-  inspectTile(tileId) {
-    const tile = TILES_DATA[tileId];
-    if (!tile.cost) return;
+  // PHYSICAL RETRO TITLE DEED INSPECTION
+  showCard(tileId) {
+    const t = TILES_DATA[tileId];
+    if (!t.cost) return;
 
     const modal = document.getElementById('deed-modal');
-    const hdr = document.getElementById('deed-hdr');
-    hdr.style.background = tile.color || '#333';
-    document.getElementById('deed-no').innerText = tile.cardNo || '';
-    document.getElementById('deed-name').innerText = tile.name;
-    document.getElementById('deed-price').innerText = `Rs. ${tile.cost}`;
+    const hdr = document.getElementById('deed-top-banner');
+    hdr.style.background = t.color || '#333';
+    document.getElementById('deed-num').innerText = t.cardNo || '';
+    document.getElementById('deed-name').innerText = t.name;
+    document.getElementById('deed-price').innerText = `Rs. ${t.cost}`;
 
     const tbl = document.getElementById('deed-table');
-    const ftr = document.getElementById('deed-footer');
+    const ftr = document.getElementById('deed-costs');
 
-    if (tile.rents) {
+    if (t.rents) {
       tbl.innerHTML = `
-        <tr><td>RENT site only</td><td>Rs. ${tile.rents[0]}</td></tr>
-        <tr><td>RENT with 1 House</td><td>Rs. ${tile.rents[1]}</td></tr>
-        <tr><td>RENT with 2 Houses</td><td>Rs. ${tile.rents[2]}</td></tr>
-        <tr><td>RENT with 3 Houses</td><td>Rs. ${tile.rents[3]}</td></tr>
-        <tr><td>RENT with Hotel</td><td>Rs. ${tile.rents[4]}</td></tr>
+        <tr><td>RENT site only</td><td>Rs. ${t.rents[0]}</td></tr>
+        <tr><td>RENT with 1 House</td><td>Rs. ${t.rents[1]}</td></tr>
+        <tr><td>RENT with 2 Houses</td><td>Rs. ${t.rents[2]}</td></tr>
+        <tr><td>RENT with 3 Houses</td><td>Rs. ${t.rents[3]}</td></tr>
+        <tr><td>RENT with Hotel</td><td>Rs. ${t.rents[4]}</td></tr>
       `;
       ftr.innerHTML = `
-        <div>Cost of House Rs. ${tile.houseCost}</div>
-        <div>Cost of Hotel Rs. ${tile.houseCost}</div>
-        <div>BANK MORTGAGE VALUE Rs. ${tile.mortgage}</div>
+        <div>Cost of House: Rs. ${t.houseCost}</div>
+        <div>Cost of Hotel: Rs. ${t.houseCost}</div>
+        <div>BANK MORTGAGE VALUE: Rs. ${t.mortgage}</div>
       `;
     } else {
       tbl.innerHTML = `
         <tr><td colspan="2" style="text-align:center; padding:12px 0;">
-          ${tile.diceMult ? `Rent is ${tile.diceMult}x Dice Throw.<br>Combo Rent is ${tile.comboDiceMult}x Dice Throw.` : `Base Rent: Rs. ${tile.rent}<br>Combo Rent: Rs. ${tile.comboRent}`}
+          ${t.diceMult ? `Base: ${t.diceMult}x dice roll.<br>Combo: ${t.comboDiceMult}x dice roll.` : `Base: Rs. ${t.rent}<br>Combo: Rs. ${t.comboRent}`}
         </td></tr>
       `;
-      ftr.innerHTML = `<div>BANK MORTGAGE VALUE Rs. ${tile.mortgage}</div>`;
+      ftr.innerHTML = `<div>BANK MORTGAGE VALUE: Rs. ${t.mortgage}</div>`;
     }
-
     modal.style.display = 'flex';
   }
 
-  openPropertyManager() {
-    const list = document.getElementById('my-prop-list');
+  openPortfolio() {
+    const list = document.getElementById('portfolio-items');
     list.innerHTML = '';
-    const myProps = Object.entries(this.ownership).filter(([tid, o]) => o.ownerId === this.activePlayer.id);
+    const owned = Object.entries(this.ownership).filter(([tid, o]) => o.ownerId === this.activePlayer.id);
 
-    if (myProps.length === 0) {
-      list.innerHTML = '<div style="text-align:center; padding:14px; color:#888;">No properties owned yet.</div>';
+    if (owned.length === 0) {
+      list.innerHTML = '<div style="text-align:center; padding:14px; color:#555;">You do not own any properties yet.</div>';
     }
 
-    myProps.forEach(([tid, prop]) => {
+    owned.forEach(([tid, prop]) => {
       const tile = TILES_DATA[tid];
-      const hasFullSet = this.checkFullSet(prop.ownerId, tile.group);
+      const hasSet = this.hasFullSet(prop.ownerId, tile.group);
       const row = document.createElement('div');
-      row.style.background = '#f5f5f5';
+      row.style.background = '#f9f9f9';
       row.style.padding = '8px';
-      row.style.borderRadius = '6px';
+      row.style.borderRadius = '4px';
+      row.style.border = '1px solid #ccc';
       row.style.display = 'flex';
       row.style.justifyContent = 'space-between';
       row.style.alignItems = 'center';
@@ -1256,76 +1120,86 @@ class BusinessGame {
       row.innerHTML = `
         <div>
           <strong style="color:${tile.color || '#333'}">${tile.name}</strong>
-          <div style="font-size:10px; color:#666;">
-            ${prop.hotel ? '🏨 Hotel' : `🏠 ${prop.houses} Houses`} | ${prop.mortgaged ? '<span style="color:red; font-weight:bold;">MORTGAGED</span>' : 'Active'}
+          <div style="font-size:10.5px; color:#555;">
+            ${prop.hotel ? '🏨 Hotel' : `🏠 ${prop.houses} Houses`} | ${prop.mortgaged ? '<span style="color:#b71c1c; font-weight:bold;">MORTGAGED</span>' : 'Active'}
           </div>
         </div>
         <div style="display:flex; gap:4px;">
-          ${tile.houseCost && hasFullSet && !prop.mortgaged ? `
-            <button style="padding:4px 8px; font-size:10px;" class="success" onclick="game.buildHouse(${tid})">Build (₹${tile.houseCost})</button>
+          ${tile.houseCost && hasSet && !prop.mortgaged ? `
+            <button style="padding:4px 8px; font-size:10px;" class="btn-buy" onclick="game.build('${tid}')">Build (Rs.${tile.houseCost})</button>
           ` : ''}
           ${!prop.mortgaged && prop.houses === 0 ? `
-            <button style="padding:4px 8px; font-size:10px;" class="warning" onclick="game.toggleMortgage(${tid})">Mortgage</button>
+            <button style="padding:4px 8px; font-size:10px;" class="btn-pass" onclick="game.mortgage('${tid}')">Mortgage (+Rs.${tile.mortgage})</button>
           ` : ''}
           ${prop.mortgaged ? `
-            <button style="padding:4px 8px; font-size:10px;" class="success" onclick="game.toggleMortgage(${tid})">Lift (+10%)</button>
+            <button style="padding:4px 8px; font-size:10px;" class="btn-buy" onclick="game.lift('${tid}')">Lift (-Rs.${Math.floor(tile.mortgage*1.1)})</button>
           ` : ''}
         </div>
       `;
       list.appendChild(row);
     });
 
-    document.getElementById('prop-modal').style.display = 'flex';
+    document.getElementById('portfolio-modal').style.display = 'flex';
   }
 
-  buildHouse(tileId) {
-    const tile = TILES_DATA[tileId];
-    const prop = this.ownership[tileId];
+  build(tid) {
+    const tile = TILES_DATA[tid];
+    const prop = this.ownership[tid];
     const p = this.activePlayer;
 
     if (p.cash >= tile.houseCost) {
       if (prop.houses < 3) {
         p.cash -= tile.houseCost;
         prop.houses++;
-        sfxCash();
-        this.spawnCoins();
-        this.log(`🔨 Built house on ${tile.name} (Now ${prop.houses}).`);
+        sfxRegister();
+        this.recordLog(`🔨 Built house on ${tile.name} (${prop.houses}/3).`);
       } else if (prop.houses === 3 && !prop.hotel) {
         p.cash -= tile.houseCost;
         prop.houses = 0;
         prop.hotel = true;
-        sfxFanfare();
-        this.spawnCoins();
-        this.log(`🏨 Upgraded to HOTEL on ${tile.name}!`);
+        sfxRegister();
+        this.recordLog(`🏨 Upgraded ${tile.name} to a HOTEL!`);
       }
-      this.updateTileBadge(tileId);
-      this.openPropertyManager();
-      this.updateHUD();
+      this.refreshTileBadge(tid);
+      this.openPortfolio();
+      this.refreshHUD();
     }
   }
 
-  toggleMortgage(tileId) {
-    const tile = TILES_DATA[tileId];
-    const prop = this.ownership[tileId];
-    const p = this.activePlayer;
+  mortgage(tid) {
+    const tile = TILES_DATA[tid];
+    const prop = this.ownership[tid];
+    p = this.activePlayer;
+    p.cash += tile.mortgage;
+    prop.mortgaged = true;
+    sfxRegister();
+    this.recordLog(`🏦 Mortgaged ${tile.name} for Rs. ${tile.mortgage}.`);
+    this.refreshTileBadge(tid);
+    this.openPortfolio();
+    this.refreshHUD();
+  }
 
-    if (!prop.mortgaged) {
-      p.cash += tile.mortgage;
-      prop.mortgaged = true;
-      sfxCash();
-      this.log(`🏦 Mortgaged ${tile.name} for ₹${tile.mortgage}.`);
-    } else {
-      const liftCost = Math.floor(tile.mortgage * 1.1);
-      if (p.cash >= liftCost) {
-        p.cash -= liftCost;
-        prop.mortgaged = false;
-        sfxCash();
-        this.log(`🏦 Lifted mortgage on ${tile.name} for ₹${liftCost} (+10% interest).`);
-      }
+  lift(tid) {
+    const tile = TILES_DATA[tid];
+    const prop = this.ownership[tid];
+    const p = this.activePlayer;
+    const cost = Math.floor(tile.mortgage * 1.1);
+    if (p.cash >= cost) {
+      p.cash -= cost;
+      prop.mortgaged = false;
+      sfxRegister();
+      this.recordLog(`🏦 Lifted mortgage on ${tile.name} for Rs. ${cost}.`);
+      this.refreshTileBadge(tid);
+      this.openPortfolio();
+      this.refreshHUD();
     }
-    this.updateTileBadge(tileId);
-    this.openPropertyManager();
-    this.updateHUD();
+  }
+
+  openHelp(type) {
+    const isChance = type === 'chance';
+    this.popEvent(isChance ? 'CHANCE INFO' : 'COMMUNITY CHEST INFO',
+      `In this game, when you land on ${isChance ? 'Chance' : 'Community Chest'}, your event is resolved by the <b>exact dice roll sum (2–12)</b> that landed you there! Odd rolls bring good fortune while even rolls bring penalties.`
+    );
   }
 }
 
