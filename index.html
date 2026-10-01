@@ -11,13 +11,13 @@
           onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
   <style>
     :root {
-      --primary: #0f172a;
-      --secondary: #2563eb;
+      --primary: #000000;
+      --secondary: #1d4ed8;
       --accent: #b91c1c;
       --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text: #111827;
-      --border: #94a3b8;
+      --text: #000000;
+      --border: #64748b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,46 +25,48 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      font-size: 1.15rem; /* Increased base screen font */
+      font-size: 1.45rem; /* Extra Large Screen Base Font */
       line-height: 1.6;
-      padding-bottom: 60px;
+      padding-bottom: 80px;
+      font-weight: 500;
     }
 
-    /* Scaled up math equations */
+    /* Extra large KaTeX math equations */
     .katex {
-      font-size: 1.22em !important;
+      font-size: 1.45em !important;
+      font-weight: 700 !important;
     }
 
     header.app-bar {
       position: sticky;
       top: 0;
       background: #ffffff;
-      border-bottom: 3px solid var(--secondary);
+      border-bottom: 4px solid var(--secondary);
       padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.15);
     }
     .app-title h1 {
-      font-size: 1.35rem;
+      font-size: 1.6rem;
       color: var(--primary);
-      font-weight: 800;
+      font-weight: 900;
     }
     .app-title p {
-      font-size: 0.95rem;
-      color: #475569;
-      font-weight: 600;
+      font-size: 1.1rem;
+      color: #334155;
+      font-weight: 700;
     }
 
     .btn-pdf {
       background: var(--accent);
       color: #fff;
-      padding: 10px 22px;
+      padding: 12px 26px;
       border-radius: 8px;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.25rem;
+      font-weight: 900;
       cursor: pointer;
       border: none;
       transition: background 0.2s;
@@ -73,18 +75,18 @@
 
     .nav-tabs {
       display: flex;
-      gap: 10px;
-      padding: 12px 24px;
+      gap: 12px;
+      padding: 14px 24px;
       background: #cbd5e1;
       overflow-x: auto;
     }
     .tab-btn {
-      padding: 8px 18px;
-      border: 1px solid #94a3b8;
+      padding: 10px 22px;
+      border: 2px solid #475569;
       border-radius: 6px;
       background: #fff;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 800;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -95,7 +97,7 @@
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1050px;
       margin: 24px auto;
       padding: 0 16px;
     }
@@ -103,122 +105,125 @@
     .unit-header {
       background: var(--primary);
       color: #fff;
-      padding: 14px 20px;
+      padding: 16px 22px;
       border-radius: 8px;
-      margin: 36px 0 20px;
-      font-size: 1.35rem;
-      font-weight: 800;
+      margin: 40px 0 24px;
+      font-size: 1.6rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .card {
       background: var(--card-bg);
-      border: 2px solid var(--border);
+      border: 3px solid #000;
       border-radius: 10px;
       padding: 24px;
-      margin-bottom: 26px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      margin-bottom: 28px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.08);
     }
 
     .q-title {
-      font-size: 1.25rem;
-      font-weight: 800;
+      font-size: 1.45rem;
+      font-weight: 900;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.4;
     }
     .q-text {
       background: #f1f5f9;
-      border-left: 5px solid var(--secondary);
+      border-left: 6px solid var(--secondary);
       padding: 14px 18px;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       margin-bottom: 18px;
-      font-weight: 600;
-      color: #0f172a;
+      font-weight: 700;
+      color: #000000;
     }
 
     .step-box {
-      margin-bottom: 18px;
-      font-size: 1.15rem;
+      margin-bottom: 20px;
+      font-size: 1.35rem;
     }
     .step-name {
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: #0f172a;
-      margin-bottom: 6px;
-      border-bottom: 2px solid #cbd5e1;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: #000000;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #000;
       padding-bottom: 4px;
     }
 
     .result-badge {
       display: inline-block;
       background: #e0f2fe;
-      color: #0369a1;
-      padding: 6px 14px;
+      color: #0284c7;
+      padding: 8px 16px;
       border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-top: 8px;
-      border: 1px solid #7dd3fc;
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-top: 10px;
+      border: 2px solid #0284c7;
     }
 
-    /* Print & PDF Export Optimization */
+    /* Print & PDF Export (Ultra Large Font) */
     @media print {
       body {
-        background: #fff;
-        color: #000;
-        font-size: 13.5pt !important; /* Large, bold print size */
-        line-height: 1.5;
-        padding-bottom: 0;
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 18pt !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+        padding-bottom: 0 !important;
       }
       .katex {
-        font-size: 1.28em !important;
+        font-size: 1.55em !important;
+        font-weight: 800 !important;
       }
       .no-print, header.app-bar, .nav-tabs {
         display: none !important;
       }
       .container {
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .card {
-        border: 2px solid #000;
-        box-shadow: none;
-        page-break-inside: avoid;
-        margin-bottom: 18px;
-        padding: 16px;
+        border: 2.5px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 20px !important;
+        padding: 16px !important;
       }
       .unit-header {
-        background: #000;
-        color: #fff;
-        page-break-before: always;
-        padding: 10px 16px;
-        font-size: 16pt;
+        background: #000 !important;
+        color: #fff !important;
+        page-break-before: always !important;
+        padding: 10px 16px !important;
+        font-size: 20pt !important;
       }
       .unit-header:first-of-type {
-        page-break-before: avoid;
+        page-break-before: avoid !important;
       }
       .q-title {
-        font-size: 14pt;
-        color: #000;
+        font-size: 18pt !important;
+        color: #000 !important;
+        font-weight: 900 !important;
       }
       .q-text {
-        background: #f8fafc;
-        border-left: 4px solid #000;
-        font-size: 12.5pt;
-        padding: 8px 12px;
+        background: #f8fafc !important;
+        border-left: 5px solid #000 !important;
+        font-size: 16pt !important;
+        padding: 10px 14px !important;
       }
       .step-name {
-        font-size: 13.5pt;
-        border-bottom: 2px solid #000;
+        font-size: 17pt !important;
+        border-bottom: 2.5px solid #000 !important;
       }
       .result-badge {
-        background: #f1f5f9;
-        color: #000;
-        border: 1.5px solid #000;
-        font-size: 12.5pt;
+        background: #fff !important;
+        color: #000 !important;
+        border: 2.5px solid #000 !important;
+        font-size: 16pt !important;
       }
     }
   </style>
@@ -228,7 +233,7 @@
   <header class="app-bar no-print">
     <div class="app-title">
       <h1>DME Complete Exam Solutions & Cheat Sheet</h1>
-      <p>Large Print Edition (Units II, III, IV — Complete Bearing Numericals)</p>
+      <p>Extra-Large Font Edition (Units II, III, IV)</p>
     </div>
     <button class="btn-pdf" onclick="window.print()">🖨️ Download / Print as PDF</button>
   </header>
@@ -237,18 +242,18 @@
     <button class="tab-btn active" onclick="filterUnit('all')">Show All</button>
     <button class="tab-btn" onclick="filterUnit('unit2')">Unit II: Screws & Springs</button>
     <button class="tab-btn" onclick="filterUnit('unit3')">Unit III: Couplings & Keys</button>
-    <button class="tab-btn" onclick="filterUnit('unit4')">Unit IV: All Journal Bearings & Flywheel</button>
+    <button class="tab-btn" onclick="filterUnit('unit4')">Unit IV: Bearings & Flywheel</button>
   </nav>
 
   <div class="container">
 
-    <!-- ==================== UNIT IV: ALL JOURNAL BEARINGS ==================== -->
+    <!-- ==================== UNIT IV: ALL JOURNAL BEARINGS & DERIVATIONS ==================== -->
     <div class="unit-group" id="group-unit4">
-      <div class="unit-header">Unit IV: All Journal Bearing Problems & Theory</div>
+      <div class="unit-header">Unit IV: Journal Bearings, Flywheels & Derivations</div>
 
       <!-- Bearing Problem 1 -->
       <div class="card">
-        <div class="q-title">Q.1 Journal Bearing for Centrifugal Pump: 20 kN, 900 rpm (Summer-2026 Q.7a / Summer-2025 Q.7b — 15 Marks)</div>
+        <div class="q-title">Q.1 Centrifugal Pump Bearing: 20 kN, 900 rpm (Summer-2026 Q.7a / Summer-2025 Q.7b — 15 Marks)</div>
         <div class="q-text">
           <b>Question:</b> Design a journal bearing for a centrifugal pump from the following data:<br>
           Load on journal = 20 kN; Speed of journal = 900 r.p.m.; Atmospheric temperature of oil = 15.5°C; Absolute viscosity of oil at 55°C = 0.017 kg/m-s; Operating temperature of oil = 55°C; Diameter of Journal = 100 mm; Clearance ratio = 0.0013; Heat dissipation coefficient = 1232 W/m²/°C; Maximum bearing pressure = 1.5 N/mm². Calculate also mass of lubricating oil required for artificial cooling, if rise of temperature of oil be limited to 10°C. Take specific heat of oil = 1900 J/kg/°C.
@@ -256,20 +261,20 @@
 
         <div class="step-box">
           <div class="step-name">Step 1: Length of Bearing ($l$) and Pressure Verification ($p$)</div>
-          Choose standard length-to-diameter ratio for centrifugal pumps: $\frac{l}{d} = 1.6$<br>
+          Choose standard length-to-diameter ratio: $\frac{l}{d} = 1.6$<br>
           $$l = 1.6 \times d = 1.6 \times 100 = \mathbf{160\text{ mm} = 0.16\text{ m}}$$
           Actual operating bearing pressure:
           $$p = \frac{W}{l \times d} = \frac{20,000}{160 \times 100} = \mathbf{1.25\text{ N/mm}^2}$$
-          Since $p = 1.25\text{ N/mm}^2 < p_{\text{max}} = 1.5\text{ N/mm}^2$, the chosen size is <b>SAFE</b>.
+          Since $p = 1.25\text{ N/mm}^2 < p_{\text{max}} = 1.5\text{ N/mm}^2 \implies$ <b>SAFE</b>.
         </div>
 
         <div class="step-box">
-          <div class="step-name">Step 2: Coefficient of Friction ($\mu$) (Data Book Page 72)</div>
+          <div class="step-name">Step 2: Coefficient of Friction ($\mu$) (Page 72)</div>
           $$\mu = \frac{33}{10^8} \left(\frac{Z \cdot N}{p}\right) \left(\frac{d}{c}\right) + k$$
           Given: $\frac{c}{d} = 0.0013 \implies \frac{d}{c} = \frac{1}{0.0013} = 769.23$<br>
-          For $\frac{l}{d} = 1.6$, end leakage factor $k = 0.002$<br>
+          For $\frac{l}{d} = 1.6$, factor $k = 0.002$<br>
           Characteristic number: $\frac{Z \cdot N}{p} = \frac{0.017 \times 900}{1.25} = 12.24$<br>
-          $$\mu = \frac{33}{10^8} \times (12.24) \times (769.23) + 0.002 = 0.003107 + 0.002 = \mathbf{0.00511}$$
+          $$\mu = \frac{33}{10^8} \times (12.24) \times (769.23) + 0.002 = 0.00311 + 0.002 = \mathbf{0.00511}$$
         </div>
 
         <div class="step-box">
@@ -293,9 +298,9 @@
         <div class="step-box">
           <div class="step-name">Step 5: Artificial Cooling Requirement ($m$)</div>
           Since $Q_g (481.6\text{ W}) > Q_d (389.3\text{ W})$, artificial cooling is mandatory.<br>
-          Excess heat to be removed:
+          Excess heat:
           $$Q_a = Q_g - Q_d = 481.6 - 389.3 = \mathbf{92.3\text{ Watts}}$$
-          Mass flow rate of cooling oil required:
+          Mass of cooling oil required:
           $$m = \frac{Q_a}{S \cdot \Delta t} = \frac{92.3}{1900 \times 10} = \mathbf{0.00486\text{ kg/s} = 0.291\text{ kg/min}}$$
           <div class="result-badge">Q_g = 481.6 W | Q_d = 389.3 W | Oil Flow m = 0.291 kg/min</div>
         </div>
@@ -303,174 +308,145 @@
 
       <!-- Bearing Problem 2 -->
       <div class="card">
-        <div class="q-title">Q.2 Journal Bearing: 12000 N, 1500 rpm, Viscosity in Centipoise (Winter-2025 Q.7a — 15 Marks)</div>
+        <div class="q-title">Q.2 Journal Bearing: 12000 N, 1500 rpm, Centipoise Viscosity (Winter-2025 Q.7a — 15 Marks)</div>
         <div class="q-text">
-          <b>Question:</b> Design a suitable journal bearing for a centrifugal pump from available data:<br>
-          Load on bearing = 12000 N; Diameter of journal = 70 mm; Speed = 1500 rpm; Atmospheric temperature = 30°C; Operating temperature of oil = 60°C; Viscosity of oil at 70°C is 22 centipoises; Specific heat of oil = 1800 J/kg/°C. Determine: (1) Amount of cooling required, (2) Amount of cooling required to temp rise 10°C, (3) Oil film thickness when no side leakage. Bearing is unventilated and projected to air.
+          <b>Question:</b> Load on bearing = 12000 N; Dia. = 70 mm; Speed = 1500 rpm; ta = 30°C; to = 60°C; Viscosity at 70°C = 22 centipoises; Specific heat = 1800 J/kg/°C. Determine: (1) Cooling required, (2) Oil mass for temp rise 10°C, (3) Oil film thickness. Bearing is unventilated.
         </div>
 
         <div class="step-box">
           <div class="step-name">Step 1: Length and Pressure</div>
-          Assuming standard $\frac{l}{d} = 1.5$ for centrifugal pumps:
           $$l = 1.5 \times d = 1.5 \times 70 = \mathbf{105\text{ mm} = 0.105\text{ m}}$$
-          Actual bearing pressure ($p$):
           $$p = \frac{W}{l \times d} = \frac{12,000}{105 \times 70} = \mathbf{1.633\text{ N/mm}^2}$$
         </div>
 
         <div class="step-box">
           <div class="step-name">Step 2: Friction Factor ($\mu$) (Page 72)</div>
-          Viscosity conversion from centipoise (Page 72 pencil note):
-          $$Z = 22\text{ centipoises} = 22 \times 10^{-3}\text{ kg/(m}\cdot\text{s)} = \mathbf{0.022\text{ kg/(m}\cdot\text{s)}}$$
-          Standard clearance ratio from Table 14.2: $\frac{c}{d} = 0.001 \implies \frac{d}{c} = 1000$<br>
-          Characteristic number: $\frac{Z \cdot N}{p} = \frac{0.022 \times 1500}{1.633} = 20.21$<br>
-          For $\frac{l}{d} = 1.5$, end leakage factor $k = 0.002$<br>
+          $$Z = 22\text{ cP} = 22 \times 10^{-3}\text{ kg/(m}\cdot\text{s)} = \mathbf{0.022\text{ kg/(m}\cdot\text{s)}}$$
+          Standard $\frac{d}{c} = 1000, \quad k = 0.002, \quad \frac{Z \cdot N}{p} = \frac{0.022 \times 1500}{1.633} = 20.21$<br>
           $$\mu = \frac{33}{10^8}(20.21)(1000) + 0.002 = 0.00667 + 0.002 = \mathbf{0.00867}$$
         </div>
 
         <div class="step-box">
           <div class="step-name">Step 3: Heat Balance & Cooling Required</div>
-          Rubbing velocity:
-          $$V = \frac{\pi \cdot d \cdot N}{60,000} = \frac{\pi \times 70 \times 1500}{60,000} = \mathbf{5.498\text{ m/s}}$$
-          Heat generated:
+          $$V = \frac{\pi \times 70 \times 1500}{60,000} = \mathbf{5.498\text{ m/s}}$$
           $$Q_g = \mu \cdot W \cdot V = 0.00867 \times 12,000 \times 5.498 = \mathbf{572.0\text{ Watts}}$$
-          Projected area: $A = \frac{105 \times 70}{10^6} = 0.00735\text{ m}^2$<br>
-          Temperature difference: $(t_b - t_a) = \frac{1}{2}(60 - 30) = 15^\circ\text{C}$<br>
-          For unventilated bearing in still air: $C = 280\text{ W/m}^2/^\circ\text{C}$ (Page 71 pencil note)<br>
+          $$A = \frac{105 \times 70}{10^6} = 0.00735\text{ m}^2, \quad (t_b - t_a) = \frac{1}{2}(60 - 30) = \mathbf{15^\circ\text{C}}$$
+          For unventilated bearing ($C = 280\text{ W/m}^2/^\circ\text{C}$):
           $$Q_d = 280 \times 0.00735 \times 15 = \mathbf{30.87\text{ Watts}}$$
-          <i>(Note: If assumed ventilated with $C = 1232$, $Q_d = 1232 \times 0.00735 \times 15 = 135.8\text{ W}$.)</i><br>
           <b>Amount of cooling required:</b>
           $$Q_a = Q_g - Q_d = 572.0 - 30.87 = \mathbf{541.13\text{ Watts}}$$
         </div>
 
         <div class="step-box">
-          <div class="step-name">Step 4: Mass of Oil Required for 10°C Rise</div>
+          <div class="step-name">Step 4: Oil Flow and Film Thickness ($h_o$)</div>
           $$m = \frac{Q_a}{S \cdot \Delta t} = \frac{541.13}{1800 \times 10} = \mathbf{0.0301\text{ kg/s} = 1.80\text{ kg/min}}$$
-        </div>
-
-        <div class="step-box">
-          <div class="step-name">Step 5: Minimum Oil Film Thickness ($h_o$)</div>
-          Diametral clearance: $c = 0.001 \times d = 0.001 \times 70 = 0.07\text{ mm}$<br>
-          Radial clearance: $c_1 = \frac{c}{2} = 0.035\text{ mm}$<br>
-          Sommerfeld number:
-          $$S = \left(\frac{d}{c}\right)^2 \left(\frac{Z \cdot n_s}{p}\right) = (1000)^2 \times \frac{0.022 \times (1500/60)}{1.633 \times 10^6} = 0.337$$
-          For $S = 0.337$ and $l/d = 1.5$, eccentricity ratio $\epsilon \approx 0.6$<br>
-          $$h_o = c_1 (1 - \epsilon) = 0.035(1 - 0.6) = \mathbf{0.014\text{ mm} = 14\text{ }\mu\text{m}}$$
+          Radial clearance: $c_1 = \frac{0.001 \times 70}{2} = 0.035\text{ mm}$<br>
+          For Sommerfeld number $S = 0.337 \implies \epsilon \approx 0.6$<br>
+          $$h_o = c_1(1 - \epsilon) = 0.035(1 - 0.6) = \mathbf{0.014\text{ mm} = 14\text{ }\mu\text{m}}$$
           <div class="result-badge">Q_a = 541.1 W | m = 1.80 kg/min | h_o = 0.014 mm</div>
         </div>
       </div>
 
       <!-- Bearing Problem 3 -->
       <div class="card">
-        <div class="q-title">Q.3 Systematic Design of Journal Bearing: 10 kN, 1200 rpm, d = 60 mm (15 Marks)</div>
+        <div class="q-title">Q.3 Systematic Bearing Design: 10 kN, 1200 rpm, d = 60 mm (15 Marks)</div>
         <div class="q-text">
-          <b>Question:</b> Following data is given for a journal bearing:<br>
-          Radial load = 10 kN; Speed = 1200 rpm; Diameter of journal = 60 mm; Atmospheric Temperature of oil = 16°C; Operating Temperature of oil = 60°C; Viscosity of oil at 60°C = 0.020 kg/m-s. Give systematic design of bearing.
+          <b>Question:</b> Radial load = 10 kN; Speed = 1200 rpm; Dia = 60 mm; Atmospheric temp = 16°C; Operating temp = 60°C; Viscosity at 60°C = 0.020 kg/m-s. Systematic design of bearing.
         </div>
 
         <div class="step-box">
           <div class="step-name">Step 1: Length and Pressure</div>
-          Assume $\frac{l}{d} = 1.5$:
           $$l = 1.5 \times 60 = \mathbf{90\text{ mm} = 0.09\text{ m}}$$
-          Operating bearing pressure:
-          $$p = \frac{W}{l \times d} = \frac{10,000}{90 \times 60} = \mathbf{1.852\text{ N/mm}^2}$$
+          $$p = \frac{10,000}{90 \times 60} = \mathbf{1.852\text{ N/mm}^2}$$
         </div>
 
         <div class="step-box">
           <div class="step-name">Step 2: Friction Factor ($\mu$) (Page 72)</div>
-          Assume clearance ratio: $\frac{c}{d} = 0.001 \implies \frac{d}{c} = 1000$<br>
-          Characteristic number: $\frac{Z \cdot N}{p} = \frac{0.020 \times 1200}{1.852} = 12.96$<br>
-          End leakage factor: $k = 0.002$<br>
-          $$\mu = \frac{33}{10^8}(12.96)(1000) + 0.002 = 0.00428 + 0.002 = \mathbf{0.00628}$$
+          Assume $\frac{d}{c} = 1000, \quad k = 0.002, \quad \frac{Z \cdot N}{p} = \frac{0.020 \times 1200}{1.852} = 12.96$<br>
+          $$\mu = \frac{33}{10^8}(12.96)(1000) + 0.002 = \mathbf{0.00628}$$
         </div>
 
         <div class="step-box">
-          <div class="step-name">Step 3: Heat Balance and Artificial Cooling</div>
-          Rubbing velocity:
-          $$V = \frac{\pi \cdot d \cdot N}{60,000} = \frac{\pi \times 60 \times 1200}{60,000} = \mathbf{3.77\text{ m/s}}$$
-          Heat generated:
-          $$Q_g = \mu \cdot W \cdot V = 0.00628 \times 10,000 \times 3.77 = \mathbf{236.75\text{ Watts}}$$
-          Projected area: $A = \frac{90 \times 60}{10^6} = 0.0054\text{ m}^2$<br>
-          Temperature difference: $(t_b - t_a) = \frac{1}{2}(60 - 16) = \mathbf{22^\circ\text{C}}$<br>
-          Assuming ventilated bearing ($C = 1232\text{ W/m}^2/^\circ\text{C}$):
+          <div class="step-name">Step 3: Heat Balance and Cooling</div>
+          $$V = \frac{\pi \times 60 \times 1200}{60,000} = \mathbf{3.77\text{ m/s}}$$
+          $$Q_g = 0.00628 \times 10,000 \times 3.77 = \mathbf{236.75\text{ Watts}}$$
+          $$A = \frac{90 \times 60}{10^6} = 0.0054\text{ m}^2, \quad (t_b - t_a) = \frac{1}{2}(60 - 16) = \mathbf{22^\circ\text{C}}$$
+          For ventilated ($C = 1232$):
           $$Q_d = 1232 \times 0.0054 \times 22 = \mathbf{146.36\text{ Watts}}$$
-          Excess heat to be artificially removed:
-          $$Q_a = Q_g - Q_d = 236.75 - 146.36 = \mathbf{90.39\text{ Watts}}$$
-          Mass of oil required (assuming standard $S = 1900\text{ J/kg}\cdot^\circ\text{C}$, $\Delta t = 10^\circ\text{C}$):
-          $$m = \frac{Q_a}{S \cdot \Delta t} = \frac{90.39}{1900 \times 10} = \mathbf{0.00476\text{ kg/s} = 0.285\text{ kg/min}}$$
+          $$Q_a = 236.75 - 146.36 = \mathbf{90.39\text{ Watts}}$$
+          $$m = \frac{90.39}{1900 \times 10} = \mathbf{0.00476\text{ kg/s} = 0.285\text{ kg/min}}$$
           <div class="result-badge">d = 60 mm, l = 90 mm | Q_g = 236.75 W | Q_d = 146.36 W | m = 0.285 kg/min</div>
         </div>
       </div>
 
       <!-- Bearing Problem 4 -->
       <div class="card">
-        <div class="q-title">Q.4 Steam Engine Journal Bearing: Heat Generated & Dissipated (10 Marks)</div>
+        <div class="q-title">Q.4 Steam Engine Bearing: 3 kN, 1600 rpm (10 Marks)</div>
         <div class="q-text">
-          <b>Question:</b> A Journal bearing is designed for a steam engine with following data:<br>
-          Load on journal = 3 kN; Dia. of journal = 50 mm; Bearing length = 75 mm; Speed = 1600 rpm; Diametral clearance = 0.001 mm (ratio c/d = 0.001); Ambient temperature = 15°C; Oil SAE 10 is used for film temperature = 60°C; Absolute viscosity at 60°C = 0.014 kg/m-s. Determine heat generated and heat dissipated.
+          <b>Question:</b> Load = 3 kN; Dia = 50 mm; Length = 75 mm; Speed = 1600 rpm; c/d = 0.001; Ambient temp = 15°C; Oil temp = 60°C; Viscosity = 0.014 kg/m-s. Determine heat generated and heat dissipated.
         </div>
 
         <div class="step-box">
-          <div class="step-name">Step 1: Bearing Pressure ($p$)</div>
-          $$p = \frac{W}{l \times d} = \frac{3,000}{75 \times 50} = \mathbf{0.80\text{ N/mm}^2}$$
+          <div class="step-name">Step 1: Pressure & Friction ($\mu$)</div>
+          $$p = \frac{3,000}{75 \times 50} = \mathbf{0.80\text{ N/mm}^2}$$
+          $$\frac{Z \cdot N}{p} = \frac{0.014 \times 1600}{0.80} = 28.0, \quad \frac{d}{c} = 1000, \quad k = 0.002$$
+          $$\mu = \frac{33}{10^8}(28.0)(1000) + 0.002 = \mathbf{0.01124}$$
         </div>
 
         <div class="step-box">
-          <div class="step-name">Step 2: Coefficient of Friction ($\mu$) (Page 72)</div>
-          Operating ratio: $\frac{l}{d} = \frac{75}{50} = 1.5 \implies k = 0.002$<br>
-          Standard clearance ratio from book: $\frac{c}{d} = 0.001 \implies \frac{d}{c} = 1000$<br>
-          Characteristic number: $\frac{Z \cdot N}{p} = \frac{0.014 \times 1600}{0.80} = 28.0$<br>
-          $$\mu = \frac{33}{10^8}(28.0)(1000) + 0.002 = 0.00924 + 0.002 = \mathbf{0.01124}$$
-        </div>
-
-        <div class="step-box">
-          <div class="step-name">Step 3: Heat Generated ($Q_g$)</div>
-          Rubbing velocity:
-          $$V = \frac{\pi \cdot d \cdot N}{60,000} = \frac{\pi \times 50 \times 1600}{60,000} = \mathbf{4.189\text{ m/s}}$$
-          Heat generated:
+          <div class="step-name">Step 2: Heat Generated & Dissipated</div>
+          $$V = \frac{\pi \times 50 \times 1600}{60,000} = \mathbf{4.189\text{ m/s}}$$
           $$Q_g = \mu \cdot W \cdot V = 0.01124 \times 3,000 \times 4.189 = \mathbf{141.25\text{ Watts}}$$
-        </div>
-
-        <div class="step-box">
-          <div class="step-name">Step 4: Heat Dissipated ($Q_d$)</div>
-          Projected area:
-          $$A = \frac{l \times d}{10^6} = \frac{75 \times 50}{10^6} = \mathbf{0.00375\text{ m}^2}$$
-          Surface temperature difference:
-          $$(t_b - t_a) = \frac{1}{2}(t_o - t_a) = \frac{1}{2}(60 - 15) = \mathbf{22.5^\circ\text{C}}$$
-          Case A (Ventilated bearing, $C = 1232\text{ W/m}^2/^\circ\text{C}$):
+          $$A = \frac{75 \times 50}{10^6} = 0.00375\text{ m}^2, \quad (t_b - t_a) = \frac{1}{2}(60 - 15) = \mathbf{22.5^\circ\text{C}}$$
+          Case A (Ventilated, $C = 1232$):
           $$Q_d = 1232 \times 0.00375 \times 22.5 = \mathbf{103.95\text{ Watts}}$$
-          Case B (Still air unventilated, $C = 280\text{ W/m}^2/^\circ\text{C}$):
+          Case B (Still air, $C = 280$):
           $$Q_d = 280 \times 0.00375 \times 22.5 = \mathbf{23.63\text{ Watts}}$$
           <div class="result-badge">Heat Generated Q_g = 141.25 W | Heat Dissipated Q_d = 103.95 W</div>
         </div>
       </div>
 
-      <!-- Unit IV Theory & Derivations -->
+      <!-- Connecting Rod Complete Derivation (Both Parts) -->
       <div class="card">
-        <div class="q-title">Q.5 Derivation: Connecting Rod Buckling Strength $I_{xx} = 4I_{yy}$ (Summer-2026 Q.7b — 6 Marks)</div>
+        <div class="q-title">Q.5 Connecting Rod Buckling & I-Section Derivations (Page 76–77 — 6 Marks)</div>
+        
         <div class="step-box">
-          <b>In the X-X Plane (Plane of Motion / Crank Rotation):</b><br>
-          The rod is free to rotate on the wrist pin and crankpin. Both ends act as hinged.<br>
-          Effective length: $L_{ex} = L$<br>
-          Euler's critical buckling load:
-          $$P_{cr(x)} = \frac{\pi^2 \cdot E \cdot I_{xx}}{L^2}$$
-          <b>In the Y-Y Plane (Perpendicular to Motion):</b><br>
-          The ends are restrained from tilting by the long bearing bushes, acting as fixed ends.<br>
-          Effective length: $L_{ey} = \frac{L}{2}$<br>
-          Euler's critical buckling load:
-          $$P_{cr(y)} = \frac{\pi^2 \cdot E \cdot I_{yy}}{(L/2)^2} = \frac{4 \pi^2 \cdot E \cdot I_{yy}}{L^2}$$
-          <b>For Equal Resistance to Buckling in Both Planes:</b><br>
-          Equating the two buckling capacities:
-          $$P_{cr(x)} = P_{cr(y)} \implies \frac{\pi^2 E I_{xx}}{L^2} = \frac{4 \pi^2 E I_{yy}}{L^2} \implies \mathbf{I_{xx} = 4 I_{yy}}$$
+          <div class="step-name">Part 1: Proof for Equal Buckling Strength ($I_{xx} = 4I_{yy}$)</div>
+          <b>About X-X Axis (Plane of Motion):</b> Both ends hinged $\implies L_{ex} = l$<br>
+          Rankine buckling load:
+          $$W_{B(x)} = \frac{\sigma_c \cdot A}{1 + a\left(\frac{l}{k_{xx}}\right)^2}$$
+          <b>About Y-Y Axis:</b> Restrained by bearing bushes $\implies$ both ends fixed $\implies L_{ey} = \frac{l}{2}$<br>
+          Rankine buckling load:
+          $$W_{B(y)} = \frac{\sigma_c \cdot A}{1 + a\left(\frac{l/2}{k_{yy}}\right)^2} = \frac{\sigma_c \cdot A}{1 + a\left(\frac{l}{2k_{yy}}\right)^2}$$
+          <b>Equating for Equal Strength:</b> $W_{B(x)} = W_{B(y)}$<br>
+          $$1 + a\left(\frac{l}{k_{xx}}\right)^2 = 1 + a\left(\frac{l}{2k_{yy}}\right)^2 \implies k_{xx}^2 = 4k_{yy}^2$$
+          Multiply by Area $A \implies \mathbf{I_{xx} = 4I_{yy}}$ (or $\mathbf{4I_{yy} = I_{xx}}$).
+        </div>
+
+        <div class="step-box">
+          <div class="step-name">Part 2: Derivation of Standard I-Section Proportions (Page 77)</div>
+          Proportions: Flange $B = 4t$, Depth $H = 5t$, Web thickness = $t$, Web depth $h = 3t$.<br>
+          1. <b>Cross-Sectional Area ($A$):</b>
+          $$A = 2(4t \times t) + (3t \times t) = 8t^2 + 3t^2 = \mathbf{11t^2}$$
+          2. <b>Moment of Inertia about X-X ($I_{xx}$):</b>
+          $$I_{xx} = \frac{B \cdot H^3}{12} - \frac{(B - t) \cdot h^3}{12} = \frac{4t(5t)^3}{12} - \frac{3t(3t)^3}{12}$$
+          $$I_{xx} = \frac{500t^4 - 81t^4}{12} = \mathbf{\frac{419}{12}t^4 = 34.92t^4}$$
+          3. <b>Moment of Inertia about Y-Y ($I_{yy}$):</b>
+          $$I_{yy} = 2\left[\frac{t(4t)^3}{12}\right] + \left[\frac{3t(t)^3}{12}\right] = \frac{128t^4 + 3t^4}{12} = \mathbf{\frac{131}{12}t^4 = 10.92t^4}$$
+          4. <b>Ratio & Radius of Gyration:</b>
+          $$\frac{I_{xx}}{I_{yy}} = \frac{419}{131} \approx \mathbf{3.2}, \quad k_{xx} = \sqrt{\frac{I_{xx}}{A}} = \sqrt{\frac{34.92t^4}{11t^2}} = \mathbf{1.78t}$$
+          <div class="result-badge">A = 11t² | I_xx = (419/12)t⁴ | I_yy = (131/12)t⁴ | k_xx = 1.78t</div>
         </div>
       </div>
 
+      <!-- Flywheel Problem -->
       <div class="card">
         <div class="q-title">Q.6 Steam Engine Flywheel Rim Design (Summer-2026 Q.8a — 15 Marks)</div>
         <div class="q-text">
-          Single cylinder double acting engine: 150 kW at 80 rpm. Energy fluctuation Ce = 0.1. Speed fluctuation Cs = ±2% = 0.04. Mean rim dia = 2 m. Rim provides 95% of inertia. Cast iron density = 7200 kg/m³. Find rim mass and cross-section (b = 2t).
+          Engine develops 150 kW at 80 rpm. Energy fluctuation Ce = 0.1, speed fluctuation Cs = ±2% = 0.04. Mean rim dia = 2 m. Rim carries 95% of inertia. Cast iron density = 7200 kg/m³. Find rim mass and cross-section (b = 2t).
         </div>
         <div class="step-box">
-          $$\omega = \frac{2 \pi (80)}{60} = 8.378\text{ rad/s}, \quad \text{Work done per cycle} = \frac{150,000 \times 60}{80} = 112,500\text{ J}$$
+          $$\omega = \frac{2 \pi (80)}{60} = \mathbf{8.378\text{ rad/s}}, \quad \text{Work per cycle} = \frac{150,000 \times 60}{80} = \mathbf{112,500\text{ J}}$$
           $$\Delta E_{\text{rim}} = 0.95 \times (0.1 \times 112,500) = \mathbf{10,687.5\text{ J}}$$
           $$\Delta E_{\text{rim}} = m \cdot R^2 \cdot \omega^2 \cdot C_s \implies 10,687.5 = m(1)^2(8.378)^2(0.04) = 2.8076 \cdot m$$
           $$m = \frac{10,687.5}{2.8076} = \mathbf{3,806.6\text{ kg}}$$
@@ -486,9 +462,9 @@
       <div class="unit-header">Unit II: Power Screws & Leaf Springs</div>
 
       <div class="card">
-        <div class="q-title">Q.1 Horizontal Power Screw with Motor Drive (Summer-2026 Q.3b — 8 Marks)</div>
+        <div class="q-title">Q.1 Horizontal Power Screw (Summer-2026 Q.3b — 8 Marks)</div>
         <div class="q-text">
-          An electric motor driven power screw moves a nut horizontally against 75 kN at 300 mm/min. Single square thread of 6 mm pitch on 40 mm major diameter. Thread friction = 0.1. Estimate power of the motor.
+          Motor driven screw moves nut horizontally against 75 kN at 300 mm/min. Square thread 6 mm pitch on 40 mm major dia. Friction = 0.1. Estimate motor power.
         </div>
         <div class="step-box">
           $$d_m = d - \frac{p}{2} = 40 - 3 = 37\text{ mm}, \quad \tan \alpha = \frac{6}{\pi \times 37} = 0.0516 \implies \alpha = 2.95^\circ$$
@@ -503,7 +479,7 @@
       <div class="card">
         <div class="q-title">Q.2 Broaching Machine Power Screw with Collar (Summer-2026 Q.3a — 12 Marks)</div>
         <div class="q-text">
-          Broaching cutter pulled by square thread screw (d = 55 mm, p = 10 mm). Axial load = 400 N. Flat nut face D1 = 60 mm, D2 = 90 mm. Friction = 0.15 on all faces. Cutting speed = 6 m/min. Determine motor power and drive efficiency.
+          Square thread screw (d = 55 mm, p = 10 mm). Axial load = 400 N. Flat nut face D1 = 60 mm, D2 = 90 mm. Friction = 0.15 on all faces. Speed = 6 m/min. Determine motor power and drive efficiency.
         </div>
         <div class="step-box">
           $$d_m = 50\text{ mm}, \quad \tan(\alpha + \phi) = \frac{0.0637 + 0.15}{1 - (0.15 \times 0.0637)} = 0.2157$$
@@ -529,7 +505,7 @@
       </div>
 
       <div class="card">
-        <div class="q-title">Q.4 Proof: Self-Locking Power Screw Efficiency &lt; 50% & Nipping Theory (10 Marks)</div>
+        <div class="q-title">Q.4 Proof: Self-Locking Efficiency &lt; 50% & Nipping Theory (10 Marks)</div>
         <div class="step-box">
           <b>Self-Locking Efficiency Proof:</b><br>
           $$\eta = \frac{\tan \alpha}{\tan(\alpha + \phi)}$$
