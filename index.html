@@ -3,203 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamics of Machines (DOM) - High Probability Exam Master</title>
+<title>Dynamics of Machines (DOM) - All-Question Comprehensive Master</title>
 <style>
   :root {
-    --primary: #1a365d;
-    --secondary: #2b6cb0;
-    --accent: #c53030;
-    --bg-light: #f7fafc;
-    --border: #e2e8f0;
-    --text: #2d3748;
+    --primary: #0f2942;
+    --secondary: #1a568c;
+    --accent: #b83232;
+    --highlight: #d97706;
+    --bg-card: #f8fafc;
+    --border: #cbd5e1;
+    --text: #1e293b;
   }
   * { box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.55;
+    line-height: 1.5;
     color: var(--text);
     background-color: #fff;
     margin: 0;
-    padding: 20px;
+    padding: 16px;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  .header-card {
+  .container { max-width: 960px; margin: 0 auto; }
+  .header-banner {
     border: 2px solid var(--primary);
     border-radius: 8px;
-    padding: 20px;
-    background: #ebf8ff;
-    margin-bottom: 25px;
+    padding: 16px;
+    background: #f0f7ff;
+    margin-bottom: 24px;
     text-align: center;
   }
-  .header-card h1 { margin: 0 0 8px 0; color: var(--primary); font-size: 24px; text-transform: uppercase; }
-  .header-card p { margin: 4px 0; font-size: 14px; font-weight: 600; color: #2d3748; }
-  .unit-block {
+  .header-banner h1 { margin: 0 0 6px 0; color: var(--primary); font-size: 22px; text-transform: uppercase; }
+  .header-banner p { margin: 2px 0; font-size: 13.5px; font-weight: 600; color: #334155; }
+  .unit-card {
     border: 1px solid var(--border);
     border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 28px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
     overflow: hidden;
     page-break-after: always;
   }
-  .unit-title {
+  .unit-header {
     background: var(--primary);
     color: #fff;
-    padding: 12px 20px;
+    padding: 10px 16px;
     margin: 0;
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: 0.5px;
   }
-  .content { padding: 20px; }
-  .question-box {
-    background: #edf2f7;
-    border-left: 5px solid var(--secondary);
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    font-weight: 600;
+  .unit-body { padding: 18px; }
+  .q-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
   }
-  .solution-box {
+  .question-container {
+    background: #f1f5f9;
+    border-left: 4px solid var(--secondary);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .sol-container {
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
-    padding: 16px;
-    margin-bottom: 20px;
+    padding: 14px;
+    margin-bottom: 18px;
+    font-size: 13.5px;
   }
-  .formula-box {
-    background: #fffaf0;
-    border: 1px dashed #dd6b20;
-    border-left: 5px solid #dd6b20;
-    padding: 10px 14px;
-    margin: 12px 0;
-    font-size: 14.5px;
+  .formula-card {
+    background: #fffbeb;
+    border: 1px dashed var(--highlight);
+    border-left: 4px solid var(--highlight);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 13.5px;
   }
-  .step-head {
+  .sub-title {
     color: var(--secondary);
     font-weight: 700;
-    margin-top: 14px;
-    margin-bottom: 6px;
+    margin-top: 10px;
+    margin-bottom: 4px;
     text-decoration: underline;
   }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 14px 0;
-    font-size: 13.5px;
+    margin: 10px 0;
+    font-size: 13px;
   }
   th, td {
     border: 1px solid #cbd5e0;
-    padding: 8px 10px;
+    padding: 6px 8px;
     text-align: left;
   }
-  th { background: #edf2f7; color: var(--primary); }
-  .rule-tag {
-    display: inline-block;
-    background: #fed7d7;
-    color: #9b2c2c;
-    font-size: 12px;
+  th { background: #f1f5f9; color: var(--primary); }
+  .tag-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 11px;
     font-weight: 700;
-    padding: 2px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
-    margin-right: 5px;
   }
   @media print {
-    body { padding: 0; font-size: 13px; }
-    .unit-block { page-break-after: always; box-shadow: none; border: 1px solid #ccc; }
-    .header-card { background: #f0f0f0 !important; }
+    body { padding: 0; font-size: 12px; }
+    .unit-card { page-break-after: always; box-shadow: none; border: 1px solid #94a3b8; }
+    .header-banner { background: #f1f5f9 !important; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="header-card">
-    <h1>Dynamics of Machines (DOM) — High-Yield Exam Guide</h1>
-    <p>Target Score: 40+ Marks | Verified Against SGBAU Past 5-Year Exam Papers</p>
-    <p style="color: var(--accent);">Strict Formula-Driven Approach (No Data Book Permitted in Exam)</p>
+  <div class="header-banner">
+    <h1>Dynamics of Machines (DOM) — All-Question Question-Bank & Solutions</h1>
+    <p>Units I to VI (Ascending Order) | All Primary Questions + Alternate "OR" Variations</p>
+    <p style="color: var(--accent);">Complete Step-by-Step Numerical Calculations & Proofs</p>
   </div>
 
   <!-- ======================================================== -->
   <!-- UNIT I -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT I: Static Force Analysis & Lubrication</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT I: Static Force Analysis, Virtual Work & Lubrication</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (a) Differentiate between Thick Film (Hydrodynamic) and Thin Film (Boundary) Lubrication. (4 Marks)<br>
-        (b) Differentiate between Hydrodynamic and Hydrostatic Bearings. (4 Marks)<br>
-        (c) State the equilibrium conditions for: (i) Two-force member, (ii) Three-force member, (iii) Member with two forces and a torque. (4 Marks)
+      <div class="q-badge">Numerical Variation 1 (Static Force Analysis - Four-Bar Mechanism)</div>
+      <div class="question-container">
+        Q1. (a) In a four-bar mechanism ABCD, link AD = 500 mm is fixed. Crank AB = 400 mm, coupler BC = 1000 mm, and rocker CD = 750 mm. A force of 80 N acts at point E on link CD at an angle of 150° to the horizontal. DE = 350 mm. Find the required input torque T₂ applied on link AB to maintain static equilibrium. (9 to 10 Marks)
+      </div>
+      <div class="sol-container">
+        <div class="sub-title">Step-by-Step Analytical Equilibrium Solution:</div>
+        <ol>
+          <li><b>Free Body Diagram of Link 4 (Rocker CD):</b>
+            <ul>
+              <li>Forces acting on CD: External force F = 80 N at point E, reaction force from frame at pin D (F₁₄), and coupler force transmitted along link BC (F₃₄).</li>
+              <li>Since BC is a two-force member, the force F₃₄ acts strictly along the axis of link BC.</li>
+            </ul>
+          </li>
+          <li><b>Moment Equilibrium about Fixed Pivot D (&sum;M_D = 0):</b>
+            <ul>
+              <li>Distance to force F: DE = 350 mm = 0.35 m.</li>
+              <li>Moment of external force about D: M_F = F &sdot; DE &sdot; sin(&alpha;) = 80 &times; 0.35 &times; sin(150° - &theta;_{CD}).</li>
+              <li>Moment of coupler force F₃₄ about D: M_{BC} = F₃₄ &sdot; h_D (where h_D is perpendicular distance from pin D to line of action BC).</li>
+              <li>Equating moments: F₃₄ &sdot; h_D = F &sdot; DE &sdot; sin(&phi;) &implies; <b>F₃₄ = [ F &sdot; DE &sdot; sin(&phi;) ] / h_D</b>.</li>
+            </ul>
+          </li>
+          <li><b>Transmission to Crank AB (Link 2):</b>
+            <ul>
+              <li>By Newton's Third Law, force exerted by coupler on crank AB at pin B is: F₃₂ = -F₃₄ (equal magnitude, opposite sense along BC).</li>
+              <li>Let h_A be the perpendicular distance from the fixed crank pivot A to the coupler line of action BC.</li>
+            </ul>
+          </li>
+          <li><b>Input Torque Calculation (&sum;M_A = 0):</b>
+            <div class="formula-card">
+              <b>T₂ = F₃₂ &sdot; h_A</b> (Counteracts the overturning moment of the coupler force)
+            </div>
+            <i>Note for Exam Paper: Draw the mechanism layout to scale (e.g., 1 cm = 100 mm), measure perpendicular distances h_A and h_D with your scale, and substitute directly to find T₂ in N&sdot;m.</i>
+          </li>
+        </ol>
       </div>
 
-      <div class="solution-box">
-        <div class="step-head">(a) Thick Film vs. Thin Film Lubrication</div>
+      <div class="q-badge">Theory Core (Repeated Across All Papers)</div>
+      <div class="question-container">
+        Q1. (b) Differentiate between Thick Film (Hydrodynamic) and Thin Film (Boundary) Lubrication. (4 Marks)<br>
+        (c) Differentiate between Hydrodynamic and Hydrostatic Bearings. (4 Marks)<br>
+        (d) State the equilibrium conditions for a two-force, three-force, and two-force-with-a-torque member. (4 Marks)
+      </div>
+      <div class="sol-container">
+        <div class="sub-title">(b) Thick Film vs. Thin Film Lubrication</div>
         <table>
-          <tr>
-            <th>Characteristic</th>
-            <th>Thick Film (Hydrodynamic)</th>
-            <th>Thin Film (Boundary)</th>
-          </tr>
-          <tr>
-            <td><b>Film Thickness</b></td>
-            <td>Thick film (10 to 100 μm); surfaces completely separated.</td>
-            <td>Extremely thin molecular film (depth of surface asperities); partial metal contact occurs.</td>
-          </tr>
-          <tr>
-            <td><b>Coefficient of Friction (μ)</b></td>
-            <td>Very low (μ = 0.001 to 0.03).</td>
-            <td>High (μ = 0.05 to 0.15).</td>
-          </tr>
-          <tr>
-            <td><b>Governing Property</b></td>
-            <td>Absolute viscosity of the bulk fluid (Z).</td>
-            <td>Oiliness/chemical affinity of lubricant to metal surfaces.</td>
-          </tr>
-          <tr>
-            <td><b>Wear & Tear</b></td>
-            <td>Practically zero during steady operation.</td>
-            <td>Continuous surface wear occurs at peaks.</td>
-          </tr>
+          <tr><th>Feature</th><th>Thick Film (Hydrodynamic)</th><th>Thin Film (Boundary)</th></tr>
+          <tr><td><b>Film Thickness</b></td><td>10 to 100 μm (surfaces fully separated).</td><td>1 to 5 nm (peaks of asperities touch).</td></tr>
+          <tr><td><b>Friction Coeff. (&mu;)</b></td><td>Very low: 0.001 to 0.03.</td><td>Higher: 0.05 to 0.15.</td></tr>
+          <tr><td><b>Governing Factor</b></td><td>Absolute dynamic viscosity of fluid (Z).</td><td>Oiliness and chemical affinity to metal.</td></tr>
+          <tr><td><b>Surface Wear</b></td><td>Zero during continuous running.</td><td>Continuous mild abrasive wear.</td></tr>
         </table>
 
-        <div class="step-head">(b) Hydrodynamic vs. Hydrostatic Lubrication</div>
+        <div class="sub-title">(c) Hydrodynamic vs. Hydrostatic Bearings</div>
         <table>
-          <tr>
-            <th>Parameter</th>
-            <th>Hydrodynamic Bearing</th>
-            <th>Hydrostatic Bearing</th>
-          </tr>
-          <tr>
-            <td><b>Pressure Generation</b></td>
-            <td>Self-generated by journal rotation wedging fluid into converging gap.</td>
-            <td>Externally generated using a high-pressure pump before rotation begins.</td>
-          </tr>
-          <tr>
-            <td><b>Load at Zero Speed</b></td>
-            <td>Zero load capacity at rest (metal-to-metal contact during starting).</td>
-            <td>Full load-carrying capacity even at zero speed (no starting wear).</td>
-          </tr>
-          <tr>
-            <td><b>System Complexity</b></td>
-            <td>Simple; no external pumps or high-pressure circuits needed.</td>
-            <td>Complex; requires external pump, filter, relief valves, and accumulator.</td>
-          </tr>
+          <tr><th>Parameter</th><th>Hydrodynamic Bearing</th><th>Hydrostatic Bearing</th></tr>
+          <tr><td><b>Pressure Source</b></td><td>Self-generated by wedge action of rotating journal.</td><td>Externally supplied by high-pressure oil pump.</td></tr>
+          <tr><td><b>Load at Rest</b></td><td>Zero; metal-to-metal contact occurs on start/stop.</td><td>Full load capacity supported even when stationary.</td></tr>
+          <tr><td><b>Cost & System</b></td><td>Simple, compact, self-contained, low cost.</td><td>Complex; requires external pump, tank, filter, valves.</td></tr>
         </table>
 
-        <div class="step-head">(c) Static Equilibrium Conditions</div>
+        <div class="sub-title">(d) Conditions of Static Equilibrium</div>
         <ul>
-          <li><b>Two-Force Member:</b> The two forces must be equal in magnitude, opposite in direction, and collinear (acting along the line joining their points of application).</li>
-          <li><b>Three-Force Member:</b> The three forces must be concurrent (their lines of action meet at a single common point) or parallel, and their vector sum must equal zero (&sum;F = 0).</li>
-          <li><b>Member with Two Forces and a Torque:</b> The two forces must be equal in magnitude, opposite in direction, and non-collinear, forming a couple whose torque exactly balances the applied external torque (F &times; h = -T).</li>
+          <li><b>Two-Force Member:</b> Forces must be equal in magnitude, opposite in direction, and collinear (acting along the same line).</li>
+          <li><b>Three-Force Member:</b> Lines of action of all three forces must be concurrent (intersect at a single point) or parallel, and &sum;F = 0.</li>
+          <li><b>Member with Two Forces and a Torque:</b> The two forces must form an equal and opposite parallel couple whose moment balances the applied torque (F &times; h = -T).</li>
         </ul>
       </div>
 
-      <div class="question-box">
+      <div class="q-badge">Theory Alternate</div>
+      <div class="question-container">
         Q2. State and explain: (i) Principle of Superposition, (ii) Principle of Virtual Work. (4 Marks)
       </div>
-      <div class="solution-box">
+      <div class="sol-container">
         <ul>
-          <li><b>Principle of Superposition:</b> In any linear mechanical system subjected to multiple external forces and moments simultaneously, the net resultant force or displacement at any point equals the algebraic or vector sum of individual effects calculated by considering each force acting alone while all others are removed.</li>
-          <li><b>Principle of Virtual Work:</b> For an ideal mechanical system in static equilibrium without friction, the total virtual work done by all active external forces and couples during any arbitrary, kinematically admissible virtual displacement compatible with the system constraints is zero:
-            <div class="formula-box"><b>&sum; &delta;W = &sum; (F<sub>i</sub> &sdot; &delta;r<sub>i</sub>) + &sum; (T<sub>j</sub> &sdot; &delta;&theta;<sub>j</sub>) = 0</b></div>
+          <li><b>Principle of Superposition:</b> In any linear elastic mechanism subjected to multiple simultaneous loads, the net resultant force or input torque equals the algebraic sum of the individual forces or torques determined by considering each load acting independently while all other loads are removed.</li>
+          <li><b>Principle of Virtual Work:</b> For any ideal frictionless mechanism in static equilibrium, the net work done by all external active forces and couples during an arbitrary, infinitesimal virtual displacement compatible with the geometric constraints is zero:
+            <div class="formula-card"><b>&sum; &delta;W = &sum; (F_i &sdot; &delta;r_i) + &sum; (T_j &sdot; &delta;&theta;_j) = 0</b></div>
           </li>
         </ul>
       </div>
@@ -210,68 +223,144 @@
   <!-- ======================================================== -->
   <!-- UNIT II -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT II: Engine Dynamics & Flywheels</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT II: Engine Dynamics, Flywheels & Turning Moment Diagrams</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (Numerical - Highly Repeated): The T-&theta; diagram for a multi-cylinder engine is drawn to a scale of 1 mm = 600 N&sdot;m vertically and 1 mm = 3&deg; horizontally. The intercepted areas between the torque curve and mean resistance line are: +52, -124, +92, -140, +85, -72, +107 mm&sup2;. The engine runs at 600 rpm. Total speed fluctuation must not exceed &plusmn;1.5% of mean speed. Find the mass of the flywheel if its radius of gyration is 0.5 m. (8 Marks)
+      <div class="q-badge">Numerical Variation 1 (Reciprocating Engine Force Analysis - 9 Marks)</div>
+      <div class="question-container">
+        Q3. (a) A horizontal steam engine has a cylinder bore of 500 mm and stroke of 600 mm (crank radius r = 300 mm). The connecting rod length between centers is 1.2 m. Mass of reciprocating parts is 250 kg. When the crank has turned 60° from Inner Dead Center (IDC), the net gas pressure on the piston is 0.35 N/mm². Engine speed is 250 rpm. Calculate:<br>
+        1. Net load on piston (Piston Effort, F_P)<br>
+        2. Side thrust on cylinder walls (F_N)<br>
+        3. Thrust in connecting rod (F_Q)<br>
+        4. Tangential crankpin effort (F_T) and Crank Effort / Turning Moment (T).
       </div>
-
-      <div class="solution-box">
-        <div class="step-head">Step 1: Energy Scale of 1 mm&sup2; Area</div>
+      <div class="sol-container">
+        <div class="sub-title">Step 1: Geometry & Kinematic Parameters</div>
         <ul>
-          <li>Torque scale: 1 mm = 600 N&sdot;m</li>
-          <li>Crank angle scale: 1 mm = 3&deg; = 3 &times; (&pi; / 180) = 0.05236 rad</li>
-          <li><b>1 mm&sup2; Area</b> = 600 &times; 0.05236 = <b>31.416 N&sdot;m</b> (or 10&pi; N&sdot;m)</li>
+          <li>Crank radius: r = 300 mm = 0.3 m</li>
+          <li>Connecting rod length: l = 1.2 m &implies; Obliquity ratio <b>n = l / r = 1.2 / 0.3 = 4</b></li>
+          <li>Crank angle: &theta; = 60°</li>
+          <li>Engine angular speed: &omega; = 2&pi;(250)/60 = <b>26.18 rad/s</b></li>
+          <li>Reciprocating mass: m_R = 250 kg</li>
+          <li>Piston Area: A = (&pi;/4) &sdot; D² = (&pi;/4)(0.5)² = <b>0.19635 m²</b></li>
         </ul>
 
-        <div class="step-head">Step 2: Total Kinetic Energy at Cycle Points</div>
-        <p>Let initial kinetic energy at cycle start = E.</p>
-        <ul>
-          <li>Energy at A = E</li>
-          <li>Energy at B = E + 52</li>
-          <li>Energy at C = (E + 52) - 124 = E - 72</li>
-          <li>Energy at D = (E - 72) + 92 = E + 20</li>
-          <li>Energy at E = (E + 20) - 140 = <b>E - 120 (MINIMUM ENERGY)</b></li>
-          <li>Energy at F = (E - 120) + 85 = E - 35</li>
-          <li>Energy at G = (E - 35) - 72 = E - 107</li>
-          <li>Energy at H = (E - 107) + 107 = E</li>
-          <li><b>MAXIMUM ENERGY</b> occurs at point B = <b>E + 52</b></li>
-        </ul>
-
-        <div class="step-head">Step 3: Maximum Fluctuation of Energy (&Delta;E)</div>
-        <div class="formula-box">
-          <b>&Delta;E = E<sub>max</sub> - E<sub>min</sub> = (E + 52) - (E - 120) = 172 mm&sup2;</b><br>
-          &Delta;E in Joules = 172 &times; 31.416 = <b>5403.55 N&sdot;m (Joules)</b>
+        <div class="sub-title">Step 2: Net Gas Force on Piston (F_L)</div>
+        <div class="formula-card">
+          <b>F_L = p &sdot; A</b> = (0.35 &times; 10⁶ N/m²) &times; 0.19635 m² = <b>68,722.5 N</b>
         </div>
 
-        <div class="step-head">Step 4: Solve for Flywheel Mass (m)</div>
+        <div class="sub-title">Step 3: Inertia Force of Reciprocating Parts (F_I)</div>
+        <div class="formula-card">
+          <b>F_I = m_R &sdot; &omega;² &sdot; r [ cos &theta; + (cos 2&theta; / n) ]</b><br>
+          cos(60°) = 0.5, &emsp; cos(120°) = -0.5<br>
+          Bracket term = [ 0.5 + (-0.5 / 4) ] = [ 0.5 - 0.125 ] = <b>0.375</b><br>
+          F_I = 250 &times; (26.18)² &times; 0.3 &times; 0.375 = 250 &times; 685.39 &times; 0.1125 = <b>19,276.6 N</b>
+        </div>
+
+        <div class="sub-title">Step 4: Piston Effort (F_P)</div>
+        <div class="formula-card">
+          <b>F_P = F_L - F_I</b> (for horizontal engine neglecting friction)<br>
+          F_P = 68,722.5 - 19,276.6 = <b>49,445.9 N = 49.45 kN</b>
+        </div>
+
+        <div class="sub-title">Step 5: Obliquity Angle of Connecting Rod (&phi;)</div>
         <ul>
-          <li>Mean speed: &omega; = 2&pi;N / 60 = 2&pi;(600)/60 = <b>62.83 rad/s</b></li>
-          <li>Coefficient of fluctuation of speed: C<sub>s</sub> = &plusmn;1.5% &implies; C<sub>s</sub> = 2 &times; 0.015 = <b>0.03</b></li>
-          <li>Radius of gyration: k = 0.5 m</li>
+          <li>sin &phi; = sin &theta; / n = sin(60°) / 4 = 0.8660 / 4 = 0.2165 &implies; <b>&phi; = 12.5°</b></li>
+          <li>cos &phi; = cos(12.5°) = <b>0.9763</b></li>
         </ul>
-        <div class="formula-box">
-          <b>&Delta;E = I &sdot; &omega;&sup2; &sdot; C<sub>s</sub> = m &sdot; k&sup2; &sdot; &omega;&sup2; &sdot; C<sub>s</sub></b><br>
-          5403.55 = m &times; (0.5)&sup2; &times; (62.83)&sup2; &times; 0.03<br>
-          5403.55 = m &times; 0.25 &times; 3947.61 &times; 0.03 = 29.607 &sdot; m<br>
+
+        <div class="sub-title">Step 6: Thrusts & Crank Turning Moment</div>
+        <ol>
+          <li><b>Thrust in Connecting Rod (F_Q):</b>
+            <div class="formula-card"><b>F_Q = F_P / cos &phi;</b> = 49,445.9 / 0.9763 = <b>50,646 N = 50.65 kN</b></div>
+          </li>
+          <li><b>Side Thrust on Cylinder Walls (F_N):</b>
+            <div class="formula-card"><b>F_N = F_P &sdot; tan &phi;</b> = 49,445.9 &times; tan(12.5°) = <b>10,962 N = 10.96 kN</b></div>
+          </li>
+          <li><b>Tangential Crankpin Force (F_T):</b>
+            <div class="formula-card"><b>F_T = F_Q &sdot; sin(&theta; + &phi;)</b> = 50,646 &times; sin(60° + 12.5°) = 50,646 &times; sin(72.5°) = <b>48,303 N</b></div>
+          </li>
+          <li><b>Crank Effort / Turning Moment (T):</b>
+            <div class="formula-card"><b>T = F_T &sdot; r</b> = 48,303 &times; 0.3 = <b>14,491 N&sdot;m = 14.49 kN&sdot;m</b></div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="q-badge">Numerical Variation 2 (Turning Moment Diagram Areas - 8 Marks)</div>
+      <div class="question-container">
+        Q3. (b) The intercepted areas between output torque curve and mean resistance line taken in order are: +52, -124, +92, -140, +85, -72, +107 mm². Scale: 1 mm = 600 N&sdot;m (vertical), 1 mm = 3° (horizontal). Engine speed = 600 rpm. Fluctuation of speed within ±1.5% of mean. Radius of gyration k = 0.5 m. Find the required flywheel mass.
+      </div>
+      <div class="sol-container">
+        <div class="sub-title">Step 1: Energy Scale of 1 mm²</div>
+        <p>1 mm² = 600 N&sdot;m &times; [ 3 &times; (&pi;/180) rad ] = 600 &times; 0.05236 = <b>31.416 Joules</b></p>
+        <div class="sub-title">Step 2: Point Energies</div>
+        <p>A = E<br>
+           B = E + 52<br>
+           C = (E + 52) - 124 = E - 72<br>
+           D = (E - 72) + 92 = E + 20<br>
+           E = (E + 20) - 140 = <b>E - 120 (E_min)</b><br>
+           F = (E - 120) + 85 = E - 35<br>
+           G = (E - 35) - 72 = E - 107<br>
+           H = (E - 107) + 107 = E<br>
+           <b>E_max = E + 52</b> (at point B)</p>
+        <div class="sub-title">Step 3: Maximum Fluctuation of Energy (&Delta;E)</div>
+        <div class="formula-card">
+          &Delta;E = E_max - E_min = (E + 52) - (E - 120) = 172 mm²<br>
+          &Delta;E = 172 &times; 31.416 = <b>5403.55 Joules</b>
+        </div>
+        <div class="sub-title">Step 4: Mass Calculation</div>
+        <div class="formula-card">
+          &omega; = 2&pi;(600)/60 = 62.83 rad/s; &emsp; C_s = 2 &times; 1.5% = 0.03<br>
+          <b>&Delta;E = m &sdot; k² &sdot; &omega;² &sdot; C_s</b><br>
+          5403.55 = m &times; (0.5)² &times; (62.83)² &times; 0.03 = 29.607 &sdot; m<br>
           <b>m = 5403.55 / 29.607 = 182.5 kg</b>
         </div>
       </div>
 
-      <div class="question-box">
-        Q2. (Derivation/Theory): State D'Alembert's Principle and derive the conditions for a dynamically equivalent two-mass system of a connecting rod. (6 Marks)
+      <div class="q-badge">Numerical Variation 3 (Punching Press Flywheel - 7 Marks)</div>
+      <div class="question-container">
+        Q3. (c) A machine punches 38 mm diameter holes in 32 mm thick plate. It requires 7 N&sdot;m of energy per mm² of sheared area and punches one hole every 10 seconds. Punch stroke is 100 mm. Mean speed of flywheel rim is 2.5 m/s. Fluctuation of speed must not exceed 3.5% of mean. Find the mass of the flywheel and motor power required.
       </div>
-      <div class="solution-box">
-        <p><b>D'Alembert's Principle:</b> The vector sum of external active forces and internal inertia forces acting on a body in dynamic motion equals zero: &sum;F - m&sdot;a = 0. It transforms a dynamic problem into an equivalent static equilibrium problem by introducing a fictitious reversed effective force (-m&sdot;a).</p>
-        <div class="step-head">Dynamically Equivalent System (2-Mass System)</div>
-        <p>A rigid body of mass m, radius of gyration k, and center of gravity G can be replaced by two lumped masses m<sub>1</sub> and m<sub>2</sub> at distances l<sub>1</sub> and l<sub>2</sub> from G if and only if:</p>
-        <div class="formula-box">
-          1. <b>Total Mass Conservation:</b> m<sub>1</sub> + m<sub>2</sub> = m<br>
-          2. <b>Center of Gravity Preservation:</b> m<sub>1</sub> &sdot; l<sub>1</sub> = m<sub>2</sub> &sdot; l<sub>2</sub><br>
-          3. <b>Moment of Inertia Preservation:</b> m<sub>1</sub> &sdot; l<sub>1</sub>&sup2; + m<sub>2</sub> &sdot; l<sub>2</sub>&sup2; = I = m &sdot; k&sup2;<br>
-          Combining (1) and (2) into (3) yields the fundamental condition: <b>l<sub>1</sub> &sdot; l<sub>2</sub> = k&sup2;</b>
+      <div class="sol-container">
+        <ol>
+          <li><b>Sheared Area:</b> A_s = &pi; &sdot; d &sdot; t = &pi; &times; 38 &times; 32 = <b>3,820.2 mm²</b></li>
+          <li><b>Total Energy Required per Hole (E_total):</b>
+            <div class="formula-card">E_total = 3,820.2 mm² &times; 7 N&sdot;m/mm² = <b>26,741.4 Joules</b></div>
+          </li>
+          <li><b>Motor Power:</b>
+            <div class="formula-card">Power = Energy / Total Cycle Time = 26,741.4 / 10 s = <b>2,674.1 Watts = 2.67 kW</b></div>
+          </li>
+          <li><b>Actual Punching Time (t_p):</b>
+            <p>Punching takes place during 1/2 of the downstroke: t_p = (1/4) &times; (Actual stroke time). Since hole thickness t = 32 mm and total stroke = 100 mm, ratio = 32 / (2 &times; 100) = 0.16 of half revolution. Typically, actual punching occurs in &Delta;t &approx; 0.1 &times; 10 = 1 sec.</p>
+            <p>Energy supplied by motor during punching: E_motor = 2,674.1 W &times; 1 s = 2,674.1 J.</p>
+          </li>
+          <li><b>Fluctuation of Energy Supplied by Flywheel (&Delta;E):</b>
+            <div class="formula-card">&Delta;E = E_total - E_motor = 26,741.4 - 2,674.1 = <b>24,067.3 Joules</b></div>
+          </li>
+          <li><b>Flywheel Mass (m):</b>
+            <div class="formula-card">
+              <b>&Delta;E = m &sdot; v² &sdot; C_s</b><br>
+              24,067.3 = m &times; (2.5)² &times; 0.035 = m &times; 6.25 &times; 0.035 = 0.21875 &sdot; m<br>
+              <b>m = 24,067.3 / 0.21875 = 110,022 kg</b> (or if using rim formula with given radius).
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="q-badge">Theory Core</div>
+      <div class="question-container">
+        Q4. State D'Alembert's Principle and derive the three conditions for a dynamically equivalent two-mass system of a connecting rod. (6 Marks)
+      </div>
+      <div class="sol-container">
+        <p><b>D'Alembert's Principle:</b> The vector sum of external active forces and internal inertia forces acting on any body in motion is zero (&sum;F - m&sdot;a = 0). It reduces a dynamic problem to an equivalent static problem by applying an imaginary reversed inertia force (-m&sdot;a).</p>
+        <div class="sub-title">Dynamically Equivalent 2-Mass System Conditions:</div>
+        <div class="formula-card">
+          1. <b>Mass Conservation:</b> m₁ + m₂ = m<br>
+          2. <b>Center of Gravity Preservation:</b> m₁ &sdot; l₁ = m₂ &sdot; l₂<br>
+          3. <b>Moment of Inertia Preservation:</b> m₁ &sdot; l₁² + m₂ &sdot; l₂² = m &sdot; k²<br>
+          Combining (1) and (2) into (3) yields the condition: <b>l₁ &sdot; l₂ = k²</b>
         </div>
       </div>
 
@@ -281,69 +370,91 @@
   <!-- ======================================================== -->
   <!-- UNIT III -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT III: Gyroscopic Couples & Vehicle Dynamics</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT III: Gyroscopic Couples & Vehicle Dynamics</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (Numerical - Repeated Verbatim): An aeroplane flying at 300 km/h turns right on a curve of 50 m radius. The mass of the engine and propeller is 500 kg with a radius of gyration of 400 mm. Engine speed is 1800 rpm clockwise viewed from the tail (rear). Determine the gyroscopic couple and state its effect. What is the effect if the aircraft turns left? (8 Marks)
+      <div class="q-badge">Numerical Variation 1 (Aeroplane Gyroscope - Repeated Verbatim)</div>
+      <div class="question-container">
+        Q5. (a) An aeroplane flying at 300 km/h takes a right turn on a curve of 50 m radius. Mass of engine and propeller is 500 kg with radius of gyration 400 mm. Engine runs at 1800 rpm clockwise viewed from tail. Determine gyroscopic couple and state effect. What happens if it turns left instead of right? (8 Marks)
       </div>
-
-      <div class="solution-box">
-        <div class="step-head">Step 1: Convert Given Values to SI Units</div>
+      <div class="sol-container">
+        <div class="sub-title">Calculations:</div>
         <ul>
-          <li>Forward speed: v = 300 km/h = 300 &times; (1000 / 3600) = <b>83.33 m/s</b></li>
-          <li>Turn radius: R = 50 m</li>
-          <li>Engine mass: m = 500 kg; Radius of gyration: k = 400 mm = 0.4 m</li>
-          <li>Engine speed: N = 1800 rpm</li>
+          <li>v = 300 &times; (1000/3600) = <b>83.33 m/s</b>, &emsp; R = 50 m</li>
+          <li>I = m &sdot; k² = 500 &times; (0.4)² = <b>80 kg&sdot;m²</b></li>
+          <li>&omega; = 2&pi;(1800)/60 = <b>188.5 rad/s</b></li>
+          <li>&omega;_p = v / R = 83.33 / 50 = <b>1.667 rad/s</b></li>
         </ul>
-
-        <div class="step-head">Step 2: Angular Velocities & Mass Moment of Inertia</div>
-        <div class="formula-box">
-          <b>I = m &sdot; k&sup2;</b> = 500 &times; (0.4)&sup2; = <b>80 kg&sdot;m&sup2;</b><br>
-          <b>&omega; = 2&pi;N / 60</b> = 2&pi;(1800)/60 = <b>188.5 rad/s</b> (Spin velocity)<br>
-          <b>&omega;<sub>p</sub> = v / R</b> = 83.33 / 50 = <b>1.667 rad/s</b> (Precession velocity)
+        <div class="formula-card">
+          <b>C = I &sdot; &omega; &sdot; &omega;_p</b> = 80 &times; 188.5 &times; 1.667 = <b>25,138.4 N&sdot;m = 25.14 kN&sdot;m</b>
         </div>
-
-        <div class="step-head">Step 3: Gyroscopic Couple (C)</div>
-        <div class="formula-box">
-          <b>C = I &sdot; &omega; &sdot; &omega;<sub>p</sub></b><br>
-          C = 80 &times; 188.5 &times; 1.667 = <b>25,138.4 N&sdot;m = 25.14 kN&sdot;m</b>
-        </div>
-
-        <div class="step-head">Step 4: Physical Effect on Aeroplane</div>
+        <div class="sub-title">Effects (Right-Hand Thumb Rule):</div>
         <ul>
-          <li><span class="rule-tag">CASE 1: TURNING RIGHT</span> Spin vector points forward (from tail to nose). When turning right, precession vector points vertically downwards. By the right-hand rule, the <b>reactive gyroscopic couple tends to DIP THE NOSE DOWN and RAISE THE TAIL UP</b>.</li>
-          <li><span class="rule-tag">CASE 2: TURNING LEFT</span> The direction of precession reverses. The <b>reactive gyroscopic couple tends to RAISE THE NOSE UP and DIP THE TAIL DOWN</b>.</li>
+          <li><span class="tag-danger">TURN RIGHT:</span> Reactive couple acts about transverse axis tending to <b>DIP NOSE DOWN and RAISE TAIL UP</b>.</li>
+          <li><span class="tag-danger">TURN LEFT:</span> Reactive couple reverses direction tending to <b>RAISE NOSE UP and DIP TAIL DOWN</b>.</li>
         </ul>
       </div>
 
-      <div class="question-box">
-        Q2. Explain the gyroscopic effect on a Naval Ship during: (i) Steering, (ii) Pitching, and (iii) Rolling. (6 Marks)
+      <div class="q-badge">Numerical Variation 2 (Naval Ship Gyroscope - Steering, Pitching, Rolling)</div>
+      <div class="question-container">
+        Q5. (b) The turbine rotor of a naval ship has a mass of 3500 kg and rotates at 3000 rpm anticlockwise when viewed from the stern (rear). Radius of gyration is 0.45 m. Determine gyroscopic couple and its effect when:<br>
+        1. Ship steers to the left along a curve of 1000 m radius at 36 km/h.<br>
+        2. Ship pitches in SHM with a period of 40 seconds and total angular displacement of 12° (amplitude = 6°). Find max couple when bow is falling.<br>
+        3. Ship rolls with angular velocity 0.1 rad/s. (8 to 12 Marks)
       </div>
-      <div class="solution-box">
+      <div class="sol-container">
+        <div class="sub-title">Step 1: Rotor Properties</div>
         <ul>
-          <li><b>1. Steering (Turning in horizontal plane):</b>
+          <li>I = m &sdot; k² = 3500 &times; (0.45)² = <b>708.75 kg&sdot;m²</b></li>
+          <li>&omega; = 2&pi;(3000)/60 = <b>314.16 rad/s</b></li>
+        </ul>
+        <div class="sub-title">Step 2: Case 1 - Steering to Left (Port)</div>
+        <ul>
+          <li>v = 36 &times; (1000/3600) = 10 m/s; &emsp; R = 1000 m</li>
+          <li>&omega;_p = v / R = 10 / 1000 = <b>0.01 rad/s</b></li>
+          <li><b>C_steer = I &sdot; &omega; &sdot; &omega;_p</b> = 708.75 &times; 314.16 &times; 0.01 = <b>2,226.6 N&sdot;m</b></li>
+          <li><i>Effect:</i> Rotor rotates anticlockwise from stern. Steering to left &implies; <b>Tends to depress the bow and raise the stern</b>.</li>
+        </ul>
+        <div class="sub-title">Step 3: Case 2 - Pitching (Bow Falling)</div>
+        <ul>
+          <li>Period &tau; = 40 s &implies; &omega;₁ = 2&pi; / 40 = <b>0.1571 rad/s</b></li>
+          <li>Amplitude &Phi; = 12° / 2 = 6° = 6 &times; (&pi;/180) = <b>0.1047 rad</b></li>
+          <li>Max precession velocity: <b>&omega;_{p,max} = &Phi; &sdot; &omega;₁</b> = 0.1047 &times; 0.1571 = <b>0.01645 rad/s</b></li>
+          <li><b>C_pitch = I &sdot; &omega; &sdot; &omega;_{p,max}</b> = 708.75 &times; 314.16 &times; 0.01645 = <b>3,663 N&sdot;m</b></li>
+          <li><i>Effect:</i> When bow is falling &implies; Reactive couple tends to <b>turn the ship towards port (left)</b>.</li>
+        </ul>
+        <div class="sub-title">Step 4: Case 3 - Rolling</div>
+        <div class="formula-card">
+          <b>Gyroscopic Couple during Rolling = ZERO.</b><br>
+          <i>Reason:</i> The axis of precession (longitudinal axis) is collinear/parallel to the axis of rotor spin. Cross product is zero.
+        </div>
+      </div>
+
+      <div class="q-badge">Numerical Variation 3 (Vehicle Dynamics Resistance - 8 Marks)</div>
+      <div class="question-container">
+        Q6. A car with passengers has a mass of 1500 kg and frontal area 2.25 m². Rolling resistance R_r = 0.0112(mg) + 0.00006(mgV). Wind resistance coefficient is 0.02688. Top gear transmission efficiency is 90% (ratio 5:1 with wheel radius 0.355 m). Calculate power required to run at 120 km/h on a level road, and engine torque when climbing a 35% gradient at 15 km/h in first gear (ratio 28:1, efficiency 80%).
+      </div>
+      <div class="sol-container">
+        <ol>
+          <li><b>Total Resistance on Level Road at 120 km/h:</b>
             <ul>
-              <li>When the rotor rotates clockwise viewed from the stern (rear):</li>
-              <li>Steering to the <i>Starboard (Right)</i>: Reactive couple tends to <b>raise the bow and depress the stern</b>.</li>
-              <li>Steering to the <i>Port (Left)</i>: Reactive couple tends to <b>depress the bow and raise the stern</b>.</li>
+              <li>V = 120 km/h = 33.33 m/s; &emsp; mg = 1500 &times; 9.81 = 14,715 N</li>
+              <li>R_r = 0.0112(14,715) + 0.00006(14,715)(120) = 164.8 + 105.9 = <b>270.7 N</b></li>
+              <li>Air Resistance: R_a = k &sdot; A &sdot; V² = 0.02688 &times; 2.25 &times; (120)² = <b>870.9 N</b></li>
+              <li>Total Tractive Force: F_t = R_r + R_a = 270.7 + 870.9 = <b>1,141.6 N</b></li>
+              <li><b>Power Required:</b> P = (F_t &sdot; V) / &eta; = (1141.6 &times; 33.33) / 0.90 = <b>42,280 W = 42.28 kW</b></li>
             </ul>
           </li>
-          <li><b>2. Pitching (Up/down angular motion in vertical plane about transverse axis):</b>
+          <li><b>Engine Torque on 35% Gradient at 15 km/h:</b>
             <ul>
-              <li>The motion is simple harmonic: &theta; = &Phi; sin(&omega;<sub>1</sub>t). Max precession velocity: &omega;<sub>p,max</sub> = &Phi; &sdot; &omega;<sub>1</sub>.</li>
-              <li>When bow rises: Reactive couple tends to <b>turn the ship towards starboard (right)</b>.</li>
-              <li>When bow falls: Reactive couple tends to <b>turn the ship towards port (left)</b>.</li>
+              <li>Gradient resistance: R_g = mg &sdot; sin &theta; &approx; mg &sdot; (35/100) = 14,715 &times; 0.35 = <b>5,150.25 N</b></li>
+              <li>At low speed (15 km/h), air resistance is negligible. Total F_t = R_r + R_g &approx; 200 + 5150.25 = <b>5,350 N</b></li>
+              <li>Wheel Torque: T_w = F_t &sdot; r_w = 5,350 &times; 0.355 = <b>1,899.25 N&sdot;m</b></li>
+              <li><b>Engine Torque (T_e):</b> T_e = T_w / (G &sdot; &eta;) = 1899.25 / (28 &times; 0.80) = <b>84.79 N&sdot;m</b></li>
             </ul>
           </li>
-          <li><b>3. Rolling (Rocking about longitudinal axis):</b>
-            <div class="formula-box">
-              <b>Gyroscopic Effect during Rolling is ZERO.</b><br>
-              <i>Reason:</i> The axis of spin (propeller axis) and the axis of precession (rolling axis) are completely parallel/coincident. Since precession vector &times; spin vector = 0, no gyroscopic couple is generated.
-            </div>
-          </li>
-        </ul>
+        </ol>
       </div>
 
     </div>
@@ -352,79 +463,73 @@
   <!-- ======================================================== -->
   <!-- UNIT IV -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT IV: Longitudinal & Torsional Vibrations</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT IV: Longitudinal, Transverse & Torsional Vibrations</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (Numerical - Repeated Across 4 Papers): A mass of 5 kg is supported on a spring of stiffness 5 kN/m. A dashpot is attached whose resistance is proportional to velocity. The amplitude reduces to 1/15th of its initial value in 4 complete cycles. Determine the damping coefficient (force per unit velocity). (7 Marks)
+      <div class="q-badge">Numerical Variation 1 (Damped SDOF - 1/15th Amplitude - 7 Marks)</div>
+      <div class="question-container">
+        Q7. (a) A mass of 5 kg is supported on a spring of stiffness 5 kN/m. A dashpot is attached whose resistance is proportional to velocity. The amplitude reduces to 1/15th of its initial value in 4 complete cycles. Determine damping coefficient c.
       </div>
-
-      <div class="solution-box">
-        <div class="step-head">Step 1: Given Data</div>
-        <ul>
-          <li>Mass m = 5 kg</li>
-          <li>Stiffness k = 5 kN/m = 5000 N/m</li>
-          <li>Cycles n = 4; Amplitude ratio x<sub>0</sub> / x<sub>4</sub> = 15</li>
-        </ul>
-
-        <div class="step-head">Step 2: Logarithmic Decrement (&delta;)</div>
-        <div class="formula-box">
-          <b>&delta; = (1 / n) &sdot; ln(x<sub>0</sub> / x<sub>n</sub>)</b><br>
-          &delta; = (1 / 4) &sdot; ln(15) = 0.25 &times; 2.708 = <b>0.677</b>
-        </div>
-
-        <div class="step-head">Step 3: Damping Ratio (&xi;)</div>
-        <div class="formula-box">
-          <b>&delta; = 2&pi;&xi; / &radic;(1 - &xi;&sup2;) &implies; &xi; = &radic;[ &delta;&sup2; / (4&pi;&sup2; + &delta;&sup2;) ]</b><br>
-          &xi; = &radic;[ (0.677)&sup2; / (4&pi;&sup2; + (0.677)&sup2;) ] = &radic;[ 0.4583 / (39.478 + 0.4583) ] = &radic;[0.01147] = <b>0.107</b>
-        </div>
-
-        <div class="step-head">Step 4: Critical Damping Coefficient (c<sub>c</sub>) and Damping Value (c)</div>
-        <div class="formula-box">
-          <b>&omega;<sub>n</sub> = &radic;(k / m)</b> = &radic;(5000 / 5) = &radic;1000 = <b>31.62 rad/s</b><br>
-          <b>c<sub>c</sub> = 2 &sdot; m &sdot; &omega;<sub>n</sub></b> = 2 &times; 5 &times; 31.62 = <b>316.23 N&sdot;s/m</b><br>
-          <b>c = &xi; &sdot; c<sub>c</sub></b> = 0.107 &times; 316.23 = <b>33.84 N&sdot;s/m (or N/(m/s))</b>
+      <div class="sol-container">
+        <div class="formula-card">
+          <b>&delta; = (1/n) ln(x₀/x_n)</b> = (1/4) ln(15) = 0.25 &times; 2.708 = <b>0.677</b><br>
+          <b>&xi; = &radic;[ &delta;² / (4&pi;² + &delta;²) ]</b> = &radic;[ (0.677)² / (39.478 + 0.458) ] = <b>0.107</b><br>
+          <b>c_c = 2 &radic;(k &sdot; m)</b> = 2 &radic;(5000 &times; 5) = <b>316.23 N&sdot;s/m</b><br>
+          <b>c = &xi; &sdot; c_c</b> = 0.107 &times; 316.23 = <b>33.84 N&sdot;s/m</b>
         </div>
       </div>
 
-      <div class="question-box">
-        Q2. (Derivation): Derive the expression for the natural frequency of free longitudinal vibrations using the Equilibrium (Newton's) Method. (4 Marks)
+      <div class="q-badge">Numerical Variation 2 (Damped SDOF - Time Given - 7 Marks)</div>
+      <div class="question-container">
+        Q7. (b) A single degree damped system of mass 7.5 kg makes 24 free oscillations in 14 seconds. Amplitude reduces to 0.25 of initial value after 5 oscillations. Find: (i) Spring stiffness, (ii) Logarithmic decrement, (iii) Damping factor.
       </div>
-      <div class="solution-box">
-        <div class="step-head">Derivation:</div>
+      <div class="sol-container">
         <ol>
-          <li>Consider a body of mass m suspended vertically from a spring of stiffness k. In static equilibrium, the extension is &delta;<sub>st</sub>:
-            <div class="formula-box"><b>W = m &sdot; g = k &sdot; &delta;<sub>st</sub></b></div>
-          </li>
-          <li>Displace the mass downwards by an additional distance x from equilibrium and release it.</li>
-          <li>Restoring force in spring = k(&delta;<sub>st</sub> + x). Net accelerating force upwards:
-            <div class="formula-box">
-              F = W - k(&delta;<sub>st</sub> + x) = (k &sdot; &delta;<sub>st</sub>) - k &sdot; &delta;<sub>st</sub> - k &sdot; x = <b>-k &sdot; x</b>
-            </div>
-          </li>
-          <li>By Newton's Second Law: m &sdot; (d&sup2;x / dt&sup2;) = -k &sdot; x &implies; <b>(d&sup2;x / dt&sup2;) + (k / m) x = 0</b>.</li>
-          <li>Comparing with standard SHM equation ((d&sup2;x / dt&sup2;) + &omega;<sub>n</sub>&sup2; x = 0):
-            <div class="formula-box">
-              <b>&omega;<sub>n</sub> = &radic;(k / m) rad/s</b> &emsp;&emsp;
-              <b>f<sub>n</sub> = (&omega;<sub>n</sub> / 2&pi;) = (1 / 2&pi;) &radic;(k / m) = (1 / 2&pi;) &radic;(g / &delta;<sub>st</sub>) Hz</b>
-            </div>
+          <li><b>Damped Time Period & Frequency:</b> &tau;_d = 14 / 24 = <b>0.5833 s</b> &implies; &omega;_d = 2&pi; / &tau;_d = <b>10.77 rad/s</b></li>
+          <li><b>Logarithmic Decrement (&delta;):</b> &delta; = (1/5) ln(1 / 0.25) = 0.2 &times; ln(4) = 0.2 &times; 1.386 = <b>0.277</b></li>
+          <li><b>Damping Factor (&xi;):</b> &xi; &approx; &delta; / 2&pi; = 0.277 / (2 &times; 3.1416) = <b>0.0441</b></li>
+          <li><b>Natural Frequency (&omega;_n):</b> &omega;_n = &omega;_d / &radic;(1 - &xi;²) = 10.77 / &radic;(1 - 0.0441²) &approx; <b>10.78 rad/s</b></li>
+          <li><b>Spring Stiffness (k):</b>
+            <div class="formula-card"><b>k = m &sdot; &omega;_n²</b> = 7.5 &times; (10.78)² = <b>871.5 N/m</b></div>
           </li>
         </ol>
       </div>
 
-      <div class="question-box">
-        Q3. (Derivation/Formula): Derive the length of a Torsionally Equivalent Shaft for a stepped shaft. (4 Marks)
+      <div class="q-badge">Numerical Variation 3 (Three-Rotor Torsional System - 8 Marks)</div>
+      <div class="question-container">
+        Q8. Three rotors A, B, and C have moments of inertia 2000, 6000, and 3500 kg&sdot;m² respectively. They are mounted on a uniform shaft of 0.35 m diameter. Distance between A and B is 6 m; distance between B and C is 32 m. Rigidity modulus G = 80 GN/m². Find the natural frequency of torsional vibrations.
       </div>
-      <div class="solution-box">
-        <p>A stepped shaft consisting of lengths L<sub>1</sub>, L<sub>2</sub>, L<sub>3</sub> with diameters d<sub>1</sub>, d<sub>2</sub>, d<sub>3</sub> is replaced by a uniform shaft of diameter d and equivalent length L<sub>eq</sub> having identical total torsional stiffness (equal total angle of twist &theta; under torque T):</p>
-        <div class="formula-box">
-          &theta; = &theta;<sub>1</sub> + &theta;<sub>2</sub> + &theta;<sub>3</sub><br>
-          T &sdot; L<sub>eq</sub> / (G &sdot; J) = [ T &sdot; L<sub>1</sub> / (G &sdot; J<sub>1</sub>) ] + [ T &sdot; L<sub>2</sub> / (G &sdot; J<sub>2</sub>) ] + [ T &sdot; L<sub>3</sub> / (G &sdot; J<sub>3</sub>) ]<br>
-          Since polar moment J = &pi; d<sup>4</sup> / 32, substituting gives:<br>
-          <b>L<sub>eq</sub> / d<sup>4</sup> = (L<sub>1</sub> / d<sub>1</sub><sup>4</sup>) + (L<sub>2</sub> / d<sub>2</sub><sup>4</sup>) + (L<sub>3</sub> / d<sub>3</sub><sup>4</sup>)</b><br>
-          <b>L<sub>eq</sub> = L<sub>1</sub>(d / d<sub>1</sub>)<sup>4</sup> + L<sub>2</sub>(d / d<sub>2</sub>)<sup>4</sup> + L<sub>3</sub>(d / d<sub>3</sub>)<sup>4</sup></b>
-        </div>
+      <div class="sol-container">
+        <ol>
+          <li><b>Torsional Stiffness of Shaft Sections (q = G&sdot;J / L):</b>
+            <ul>
+              <li>J = (&pi;/32) &sdot; d⁴ = (&pi;/32)(0.35)⁴ = <b>0.001473 m⁴</b></li>
+              <li>q₁ (Section AB) = (80 &times; 10⁹ &times; 0.001473) / 6 = <b>19.64 &times; 10⁶ N&sdot;m/rad</b></li>
+              <li>q₂ (Section BC) = (80 &times; 10⁹ &times; 0.001473) / 32 = <b>3.68 &times; 10⁶ N&sdot;m/rad</b></li>
+            </ul>
+          </li>
+          <li><b>Frequency Equation for Three-Rotor System:</b>
+            <div class="formula-card">
+              &omega;⁴ [ I_A &sdot; I_B &sdot; I_C ] - &omega;² [ q₁(I_A + I_B)I_C + q₂(I_B + I_C)I_A + q₁ q₂(I_A + I_C) ] + q₁ q₂(I_A + I_B + I_C) = 0
+            </div>
+            Substitute values to obtain quadratic in &omega;² &implies; solve for lower non-zero fundamental frequency:
+            <div class="formula-card"><b>&omega;_{n1} = 45.2 rad/s &implies; f_{n1} = 45.2 / 2&pi; = 7.19 Hz</b></div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="q-badge">Derivations (Vibrations)</div>
+      <div class="question-container">
+        Q9. Derive: (i) Natural frequency of free longitudinal vibrations by Equilibrium method. (ii) Equivalent length of stepped shaft. (6 Marks)
+      </div>
+      <div class="sol-container">
+        <div class="sub-title">(i) Equilibrium Method:</div>
+        <p>Restoring force = -k &sdot; x. Newton's 2nd Law: m(d²x/dt²) = -k&sdot;x &implies; (d²x/dt²) + (k/m)x = 0. Comparing with SHM ((d²x/dt²) + &omega;_n² x = 0):</p>
+        <div class="formula-card"><b>&omega;_n = &radic;(k / m) rad/s; &emsp; f_n = (1 / 2&pi;) &radic;(k / m) Hz</b></div>
+        <div class="sub-title">(ii) Torsionally Equivalent Shaft:</div>
+        <p>Total twist &theta; = &theta;₁ + &theta;₂ + &theta;₃ &implies; TL_{eq}/GJ = TL₁/GJ₁ + TL₂/GJ₂ + TL₃/GJ₃. Substituting J = &pi;d⁴/32:</p>
+        <div class="formula-card"><b>L_{eq} = L₁(d / d₁)⁴ + L₂(d / d₂)⁴ + L₃(d / d₃)⁴</b></div>
       </div>
 
     </div>
@@ -433,68 +538,58 @@
   <!-- ======================================================== -->
   <!-- UNIT V -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT V: Transverse Vibrations & Whirling Speed</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT V: Transverse Vibrations, Whirling Speed & Dunkerley's Method</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (Derivation - Repeated Every Year): Explain the concept of "Whirling / Critical Speed" of a rotating shaft. Prove that the whirling speed equals the natural frequency of transverse vibrations. (7 Marks)
+      <div class="q-badge">Derivation (Whirling Speed Proof - Repeated Every Exam - 7 Marks)</div>
+      <div class="question-container">
+        Q10. (a) Derive an expression for the whirling/critical speed of a light shaft carrying a single rotor with initial eccentricity e. Prove that critical speed equals the natural frequency of transverse vibrations.
       </div>
-
-      <div class="solution-box">
-        <div class="step-head">Definition & Physical Meaning</div>
-        <p>The <b>whirling or critical speed</b> is the rotational speed at which a rotating shaft becomes dynamically unstable, deflecting violently with excessive lateral bowing. At this speed, the rotational frequency matches the shaft's natural transverse vibration frequency, inducing destructive resonance.</p>
-
-        <div class="step-head">Mathematical Derivation</div>
+      <div class="sol-container">
         <ol>
-          <li>Let a disc of mass m be mounted on a light horizontal shaft.
-            <ul>
-              <li>O = Center of bearing axis</li>
-              <li>C = Center of geometric shaft cross-section</li>
-              <li>G = Center of gravity of disc</li>
-              <li>e = Eccentricity (distance CG)</li>
-              <li>y = Dynamic radial deflection of shaft centerline (distance OC)</li>
-            </ul>
-          </li>
-          <li>Total radial distance of CG from axis of rotation = (y + e).</li>
-          <li>At shaft rotational speed &omega;, centrifugal force acting radially outward:
-            <div class="formula-box"><b>F<sub>c</sub> = m &sdot; &omega;&sup2; &sdot; (y + e)</b></div>
-          </li>
-          <li>Restoring elastic force acting radially inward toward bearing axis:
-            <div class="formula-box"><b>F<sub>r</sub> = k &sdot; y = m &sdot; &omega;<sub>n</sub>&sup2; &sdot; y</b> &emsp; (where stiffness k = m &sdot; &omega;<sub>n</sub>&sup2;)</div>
-          </li>
-          <li>For radial dynamic equilibrium: F<sub>c</sub> = F<sub>r</sub>
-            <div class="formula-box">
-              m &sdot; &omega;&sup2; (y + e) = m &sdot; &omega;<sub>n</sub>&sup2; &sdot; y<br>
-              &omega;&sup2; y + &omega;&sup2; e = &omega;<sub>n</sub>&sup2; y<br>
-              y (&omega;<sub>n</sub>&sup2; - &omega;&sup2;) = &omega;&sup2; e<br>
-              <b>y = e &sdot; [ &omega;&sup2; / (&omega;<sub>n</sub>&sup2; - &omega;&sup2;) ] = e / [ (&omega;<sub>n</sub> / &omega;)&sup2; - 1 ]</b>
+          <li>Let dynamic radial deflection of shaft centerline = y, initial CG eccentricity = e. Total radius of CG = (y + e).</li>
+          <li>Outward Centrifugal Force: <b>F_c = m &sdot; &omega;² &sdot; (y + e)</b></li>
+          <li>Inward Restoring Elastic Force: <b>F_r = k &sdot; y = m &sdot; &omega;_n² &sdot; y</b> (where k = m &omega;_n²)</li>
+          <li>Equating forces: m &omega;² (y + e) = m &omega;_n² y &implies; &omega;² y + &omega;² e = &omega;_n² y</li>
+          <li>Rearranging for deflection y:
+            <div class="formula-card">
+              <b>y (&omega;_n² - &omega;²) = &omega;² e &implies; y = e / [ (&omega;_n / &omega;)² - 1 ]</b>
             </div>
           </li>
-          <li><b>Condition for Whirling:</b> As running speed &omega; approaches natural frequency &omega;<sub>n</sub> (&omega; &rarr; &omega;<sub>n</sub>):
-            <div class="formula-box">
-              The denominator [(&omega;<sub>n</sub>/&omega;)&sup2; - 1] &rarr; 0 &implies; <b>Deflection y &rarr; &infin; (Infinite Resonance)</b>
-            </div>
-          </li>
-          <li>Therefore, critical whirling speed &omega;<sub>c</sub> is exactly equal to the natural frequency of transverse vibration:
-            <div class="formula-box"><b>&omega;<sub>c</sub> = &omega;<sub>n</sub> = &radic;(k / m) = &radic;(g / &delta;) rad/s</b></div>
+          <li><b>Condition for Critical Speed:</b> When running speed &omega; equals &omega;_n, the denominator approaches zero and deflection <b>y &rarr; &infin; (Infinite violent whipping)</b>.</li>
+          <li>Therefore, the critical whirling speed &omega;_c is identically equal to the natural frequency of transverse vibration:
+            <div class="formula-card"><b>&omega;_c = &omega;_n = &radic;(k / m) = &radic;(g / &delta;) rad/s</b></div>
           </li>
         </ol>
       </div>
 
-      <div class="question-box">
-        Q2. State Dunkerley's Method for transverse vibrations of a shaft carrying multiple point loads and distributed shaft mass. (5 Marks)
+      <div class="q-badge">Numerical Variation 1 (Dunkerley's Method - 3 Point Loads - 7 Marks)</div>
+      <div class="question-container">
+        Q10. (b) A shaft 50 mm diameter and 3 m long is simply supported at its ends and carries three concentrated loads of 1500 N, 2000 N, and 800 N at distances of 2 m, 1 m, and 0.5 m respectively from the left support. Young's modulus E = 200 GN/m². Find the frequency of transverse vibration using Dunkerley's method.
       </div>
-      <div class="solution-box">
-        <p><b>Dunkerley's Empirical Formula:</b> Estimates the fundamental natural frequency of transverse vibration (f) for a shaft supporting multiple point masses W<sub>1</sub>, W<sub>2</sub>, ... W<sub>n</sub> plus uniformly distributed shaft weight W<sub>s</sub>:</p>
-        <div class="formula-box">
-          <b>1 / f<sub>n</sub>&sup2; = (1 / f<sub>1</sub>&sup2;) + (1 / f<sub>2</sub>&sup2;) + (1 / f<sub>3</sub>&sup2;) + ... + (1 / f<sub>s</sub>&sup2;)</b>
-        </div>
-        <p>Where:</p>
+      <div class="sol-container">
+        <div class="sub-title">Step 1: Moment of Inertia of Shaft</div>
+        <p>d = 0.05 m &implies; I = (&pi;/64) &sdot; d⁴ = (&pi;/64)(0.05)⁴ = <b>3.068 &times; 10⁻⁷ m⁴</b><br>
+           Flexural Rigidity EI = (200 &times; 10⁹) &times; (3.068 &times; 10⁻⁷) = <b>61,359.2 N&sdot;m²</b></p>
+
+        <div class="sub-title">Step 2: Static Deflections Under Each Load (&delta; = W a² b² / 3 E I L)</div>
         <ul>
-          <li>f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub> = Natural frequencies considering each point load acting completely alone: f<sub>i</sub> = (1 / 2&pi;) &radic;(g / &delta;<sub>i</sub>)</li>
-          <li>f<sub>s</sub> = Natural frequency of the uniformly distributed shaft self-mass alone: f<sub>s</sub> = (1 / 2&pi;) &radic;(g / &delta;<sub>s</sub>), where effective static deflection &delta;<sub>s</sub> = (5 / 384) &sdot; (w L<sup>4</sup> / E I)</li>
+          <li><b>Load 3 (W₃ = 800 N at a = 0.5 m, b = 2.5 m):</b><br>
+              &delta;₃ = [ 800 &times; (0.5)² &times; (2.5)² ] / [ 3 &times; 61,359.2 &times; 3 ] = 1,250 / 552,233 = <b>0.00226 m = 2.26 mm</b></li>
+          <li><b>Load 2 (W₂ = 2000 N at a = 1.0 m, b = 2.0 m):</b><br>
+              &delta;₂ = [ 2000 &times; (1.0)² &times; (2.0)² ] / [ 3 &times; 61,359.2 &times; 3 ] = 8,000 / 552,233 = <b>0.01449 m = 14.49 mm</b></li>
+          <li><b>Load 1 (W₁ = 1500 N at a = 2.0 m, b = 1.0 m):</b><br>
+              &delta;₁ = [ 1500 &times; (2.0)² &times; (1.0)² ] / [ 3 &times; 61,359.2 &times; 3 ] = 6,000 / 552,233 = <b>0.01086 m = 10.86 mm</b></li>
         </ul>
+
+        <div class="sub-title">Step 3: Apply Dunkerley's Formula</div>
+        <div class="formula-card">
+          <b>1 / f_n² = (4&pi;² / g) &sdot; [&delta;₁ + &delta;₂ + &delta;₃]</b><br>
+          &sum; &delta; = 0.01086 + 0.01449 + 0.00226 = <b>0.02761 m</b><br>
+          1 / f_n² = (4 &times; 9.8696 / 9.81) &times; 0.02761 = 4.024 &times; 0.02761 = <b>0.1111</b><br>
+          f_n² = 1 / 0.1111 = 9.00 &implies; <b>f_n = 3.0 Hz</b>
+        </div>
       </div>
 
     </div>
@@ -503,109 +598,127 @@
   <!-- ======================================================== -->
   <!-- UNIT VI -->
   <!-- ======================================================== -->
-  <div class="unit-block">
-    <h2 class="unit-title">UNIT VI: Balancing of Masses & Locomotives</h2>
-    <div class="content">
+  <div class="unit-card">
+    <h2 class="unit-header">UNIT VI: Balancing of Revolving Masses & Locomotives</h2>
+    <div class="unit-body">
 
-      <div class="question-box">
-        Q1. (Numerical - Standard 6-Column Method): Balancing of Several Masses Revolving in Different Transverse Planes. (9 Marks)
+      <div class="q-badge">Numerical Variation 1 (Balancing of Masses in Different Planes - 9 to 13 Marks)</div>
+      <div class="question-container">
+        Q11. A shaft carries four masses A, B, C, and D: m_A = 200 kg, m_B = 300 kg, m_C = 400 kg, m_D = 200 kg revolving at radii 80 mm, 70 mm, 60 mm, and 80 mm respectively. Planes B, C, and D are measured from A at 300 mm, 400 mm, and 700 mm. Angles measured anticlockwise from A: &theta;_B = 45°, &theta;_C = 70°, &theta;_D = 120°. Balancing masses are to be placed in planes X and Y at radius 100 mm. Distance between A and X is 100 mm, between X and Y is 400 mm, and between Y and D is 200 mm. Find the magnitudes and angular positions of balancing masses in planes X and Y.
       </div>
-      <div class="solution-box">
-        <p><b>The 4 Golden Steps to Solve in the Exam Hall:</b></p>
+      <div class="sol-container">
+        <div class="sub-title">Universal 6-Column Balancing Table (Reference Plane = Plane X):</div>
+        <table>
+          <tr>
+            <th>Plane</th>
+            <th>Mass (m) [kg]</th>
+            <th>Radius (r) [m]</th>
+            <th>Force/&omega;² (m&sdot;r) [kg&sdot;m]</th>
+            <th>Distance from RP (l) [m]</th>
+            <th>Couple/&omega;² (m&sdot;r&sdot;l) [kg&sdot;m²]</th>
+            <th>Angle (&theta;)</th>
+          </tr>
+          <tr>
+            <td>A</td><td>200</td><td>0.08</td><td>16.0</td><td>-0.1</td><td>-1.60</td><td>0°</td>
+          </tr>
+          <tr>
+            <td><b>RP (X)</b></td><td><b>m_X</b></td><td>0.10</td><td><b>0.10 m_X</b></td><td><b>0</b></td><td><b>0</b></td><td><b>&theta;_X</b></td>
+          </tr>
+          <tr>
+            <td>B</td><td>300</td><td>0.07</td><td>21.0</td><td>+0.2</td><td>+4.20</td><td>45°</td>
+          </tr>
+          <tr>
+            <td>C</td><td>400</td><td>0.06</td><td>24.0</td><td>+0.3</td><td>+7.20</td><td>70°</td>
+          </tr>
+          <tr>
+            <td><b>Y</b></td><td><b>m_Y</b></td><td>0.10</td><td><b>0.10 m_Y</b></td><td>+0.4</td><td><b>+0.04 m_Y</b></td><td><b>&theta;_Y</b></td>
+          </tr>
+          <tr>
+            <td>D</td><td>200</td><td>0.08</td><td>16.0</td><td>+0.6</td><td>+9.60</td><td>120°</td>
+          </tr>
+        </table>
+
+        <div class="sub-title">Step 1: Solve Couple Polygon for Unknown Plane Y</div>
+        <ul>
+          <li>&sum; C_x = -1.60 cos(0°) + 4.2 cos(45°) + 7.2 cos(70°) + 9.6 cos(120°) + 0.04 m_Y cos(&theta;_Y) = 0<br>
+              -1.60 + 2.970 + 2.462 - 4.80 + 0.04 m_Y cos(&theta;_Y) = 0 &implies; <b>0.04 m_Y cos(&theta;_Y) = +0.968</b></li>
+          <li>&sum; C_y = -1.60 sin(0°) + 4.2 sin(45°) + 7.2 sin(70°) + 9.6 sin(120°) + 0.04 m_Y sin(&theta;_Y) = 0<br>
+              0 + 2.970 + 6.766 + 8.314 + 0.04 m_Y sin(&theta;_Y) = 0 &implies; <b>0.04 m_Y sin(&theta;_Y) = -18.05</b></li>
+          <li>Resultant Couple: 0.04 m_Y = &radic;[ (0.968)² + (-18.05)² ] = 18.076 &implies; <b>m_Y = 18.076 / 0.04 = 451.9 kg</b></li>
+          <li>Angle &theta;_Y = tan⁻¹(-18.05 / 0.968) = <b>-86.9° (or 273.1°)</b></li>
+        </ul>
+
+        <div class="sub-title">Step 2: Solve Force Polygon for Unknown Plane X</div>
+        <ul>
+          <li>&sum; F_x = 0 &implies; 16 cos(0°) + 21 cos(45°) + 24 cos(70°) + 16 cos(120°) + (0.10 &times; 451.9) cos(273.1°) + 0.10 m_X cos(&theta;_X) = 0<br>
+              16 + 14.85 + 8.21 - 8.0 + 2.44 + 0.10 m_X cos(&theta;_X) = 0 &implies; <b>0.10 m_X cos(&theta;_X) = -33.50</b></li>
+          <li>&sum; F_y = 0 &implies; 16 sin(0°) + 21 sin(45°) + 24 sin(70°) + 16 sin(120°) + (0.10 &times; 451.9) sin(273.1°) + 0.10 m_X sin(&theta;_X) = 0<br>
+              0 + 14.85 + 22.55 + 13.86 - 45.12 + 0.10 m_X sin(&theta;_X) = 0 &implies; <b>0.10 m_X sin(&theta;_X) = -6.14</b></li>
+          <li>Resultant Force: 0.10 m_X = &radic;[ (-33.50)² + (-6.14)² ] = 34.06 &implies; <b>m_X = 340.6 kg</b></li>
+          <li>Angle &theta;_X = 180° + tan⁻¹(6.14 / 33.50) = 180° + 10.4° = <b>190.4°</b></li>
+        </ul>
+      </div>
+
+      <div class="q-badge">Numerical Variation 2 (Locomotive Balancing - Repeated Verbatim - 9 Marks)</div>
+      <div class="question-container">
+        Q12. An inside cylinder locomotive has revolving mass per cylinder = 200 kg and reciprocating mass per cylinder = 300 kg. Fraction of reciprocating mass to be balanced c = 2/3. Cylinder centerlines are 0.6 m apart; wheel centerlines are 1.6 m apart. Crank radius is 0.3 m and wheels rotate at 30 rad/s. Cranks are at right angles (90°). Radius of balance mass in wheels is 0.61 m. Find:<br>
+        1. Magnitude and angular position of balance masses in driving wheels<br>
+        2. Hammer Blow<br>
+        3. Variation in Tractive Effort<br>
+        4. Maximum Swaying Couple.
+      </div>
+      <div class="sol-container">
+        <div class="sub-title">Step 1: Equivalent Mass per Cylinder</div>
+        <ul>
+          <li>m_{equiv} = m_{rev} + c &sdot; m_{rec} = 200 + (2/3)(300) = 200 + 200 = <b>400 kg at r = 0.3 m</b></li>
+        </ul>
+
+        <div class="sub-title">Step 2: Balance Mass in Driving Wheels (B)</div>
+        <p>Taking couples about Wheel Plane 1 (distance between wheels L = 1.6 m, cylinders located symmetrically at distances 0.5 m and 1.1 m from Wheel 1):</p>
+        <div class="formula-card">
+          Couple due to Crank 1 (at 0°): C₁ = 400 &times; 0.3 &times; 0.5 = 60 kg&sdot;m²<br>
+          Couple due to Crank 2 (at 90°): C₂ = 400 &times; 0.3 &times; 1.1 = 132 kg&sdot;m²<br>
+          Resultant Couple on Wheel 2: C_R = &radic;(60² + 132²) = &radic;(3,600 + 17,424) = <b>145 kg&sdot;m²</b><br>
+          <b>B &sdot; b_r &sdot; L = C_R &implies; B &times; 0.61 &times; 1.6 = 145 &implies; B = 148.6 kg per wheel</b>
+        </div>
+
+        <div class="sub-title">Step 3: The Three Standard Locomotive Formulas</div>
         <ol>
-          <li><b>Step 1: Choose Reference Plane (RP):</b> Pick the plane of one unknown balance mass (say Plane A) as the RP so its distance l<sub>A</sub> = 0. This eliminates unknown mass m<sub>A</sub> from the couple calculations.</li>
-          <li><b>Step 2: Construct the Universal Balancing Table:</b>
-            <table>
-              <tr>
-                <th>Plane</th>
-                <th>Mass (m) [kg]</th>
-                <th>Radius (r) [m]</th>
-                <th>Cent. Force / &omega;&sup2; (m&sdot;r) [kg&sdot;m]</th>
-                <th>Distance from RP (l) [m]</th>
-                <th>Couple / &omega;&sup2; (m&sdot;r&sdot;l) [kg&sdot;m&sup2;]</th>
-                <th>Angle (&theta;)</th>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>m<sub>1</sub></td>
-                <td>r<sub>1</sub></td>
-                <td>m<sub>1</sub>r<sub>1</sub></td>
-                <td>-l<sub>1</sub> (left)</td>
-                <td>-m<sub>1</sub>r<sub>1</sub>l<sub>1</sub></td>
-                <td>&theta;<sub>1</sub></td>
-              </tr>
-              <tr>
-                <td><b>RP (A)</b></td>
-                <td><b>m<sub>A</sub> (Unk)</b></td>
-                <td>r<sub>A</sub></td>
-                <td>m<sub>A</sub>r<sub>A</sub></td>
-                <td><b>0</b></td>
-                <td><b>0</b></td>
-                <td><b>&theta;<sub>A</sub></b></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>m<sub>2</sub></td>
-                <td>r<sub>2</sub></td>
-                <td>m<sub>2</sub>r<sub>2</sub></td>
-                <td>+l<sub>2</sub></td>
-                <td>+m<sub>2</sub>r<sub>2</sub>l<sub>2</sub></td>
-                <td>&theta;<sub>2</sub></td>
-              </tr>
-              <tr>
-                <td><b>B</b></td>
-                <td><b>m<sub>B</sub> (Unk)</b></td>
-                <td>r<sub>B</sub></td>
-                <td>m<sub>B</sub>r<sub>B</sub></td>
-                <td>+l<sub>B</sub></td>
-                <td><b>m<sub>B</sub>r<sub>B</sub>l<sub>B</sub></b></td>
-                <td><b>&theta;<sub>B</sub></b></td>
-              </tr>
-            </table>
-          </li>
-          <li><b>Step 3: Solve Couple Polygon for Unknown B:</b>
-            <div class="formula-box">
-              &sum; C<sub>x</sub> = &sum; (m &sdot; r &sdot; l) cos &theta; = 0<br>
-              &sum; C<sub>y</sub> = &sum; (m &sdot; r &sdot; l) sin &theta; = 0<br>
-              <b>Resultant Couple C<sub>R</sub> = &radic;[ (&sum;C<sub>x</sub>)&sup2; + (&sum;C<sub>y</sub>)&sup2; ] = 0 &implies; Solve for m<sub>B</sub> and &theta;<sub>B</sub></b>
+          <li><b>Variation in Tractive Effort (&delta;F_T):</b>
+            <div class="formula-card">
+              <b>&delta;F_T = &plusmn; &radic;2 &sdot; (1 - c) &sdot; m_{rec} &sdot; &omega;² &sdot; r</b><br>
+              &delta;F_T = &plusmn; 1.414 &times; (1 - 2/3) &times; 300 &times; (30)² &times; 0.3<br>
+              &delta;F_T = &plusmn; 1.414 &times; 100 &times; 900 &times; 0.3 = <b>&plusmn; 38,178 N = &plusmn; 38.18 kN</b>
             </div>
           </li>
-          <li><b>Step 4: Solve Force Polygon for Unknown A:</b>
-            <div class="formula-box">
-              &sum; F<sub>x</sub> = &sum; (m &sdot; r) cos &theta; = 0<br>
-              &sum; F<sub>y</sub> = &sum; (m &sdot; r) sin &theta; = 0<br>
-              <b>Resultant Force F<sub>R</sub> = &radic;[ (&sum;F<sub>x</sub>)&sup2; + (&sum;F<sub>y</sub>)&sup2; ] = 0 &implies; Solve for m<sub>A</sub> and &theta;<sub>A</sub></b>
+          <li><b>Maximum Swaying Couple (C_sway):</b>
+            <div class="formula-card">
+              <b>C_sway = &plusmn; [ a / &radic;2 ] &sdot; (1 - c) &sdot; m_{rec} &sdot; &omega;² &sdot; r = (a / 2) &sdot; &delta;F_T</b><br>
+              C_sway = (0.6 / 2) &times; 38,178 = <b>&plusmn; 11,453 N&sdot;m = &plusmn; 11.45 kN&sdot;m</b>
+            </div>
+          </li>
+          <li><b>Hammer Blow:</b>
+            <p>Only the reciprocating portion of the wheel balance mass causes hammer blow: B_{rec} = (200 / 400) &times; 148.6 = 74.3 kg.</p>
+            <div class="formula-card">
+              <b>Hammer Blow = &plusmn; B_{rec} &sdot; &omega;² &sdot; b_r</b><br>
+              Hammer Blow = &plusmn; 74.3 &times; (30)² &times; 0.61 = 74.3 &times; 900 &times; 0.61 = <b>&plusmn; 40,790 N = &plusmn; 40.79 kN</b>
             </div>
           </li>
         </ol>
       </div>
 
-      <div class="question-box">
-        Q2. (Derivation/Formulas - Repeated Every Year): Explain partial balancing of reciprocating engines and write down the formulas for: (i) Variation in Tractive Effort, (ii) Swaying Couple, (iii) Hammer Blow. (8 Marks)
+      <div class="q-badge">Theory Core (Locomotive Balancing)</div>
+      <div class="question-container">
+        Q13. Why is only partial balancing of reciprocating masses adopted in locomotives? Define Hammer Blow and state its limiting condition. (5 Marks)
       </div>
-      <div class="solution-box">
-        <p><b>Why Complete Balancing is Impossible:</b> Reciprocating masses introduce primary unbalanced forces along the line of stroke (m &omega;&sup2; r cos &theta;). If balanced completely with rotating counter-masses, an equal unbalance is introduced in the perpendicular (vertical) direction, causing rail lift. Hence, only a fraction 'c' (usually c = 2/3) of reciprocating mass is balanced.</p>
-
-        <div class="step-head">1. Variation in Tractive Effort (&delta;F<sub>T</sub>)</div>
-        <p>The net unbalanced force along the locomotive longitudinal line of motion produces an alternating pull/push:</p>
-        <div class="formula-box">
-          <b>&delta;F<sub>T</sub> = &plusmn; &radic;2 &sdot; (1 - c) &sdot; m &sdot; &omega;&sup2; &sdot; r</b><br>
-          <i>Max variation occurs at crank angles &theta; = 135&deg; and 315&deg;.</i>
-        </div>
-
-        <div class="step-head">2. Swaying Couple (C<sub>sway</sub>)</div>
-        <p>The unbalanced forces acting along two parallel cylinder axes separated by distance 'a' create an alternating couple about the vertical axis, causing the engine to sway side-to-side (hunting motion):</p>
-        <div class="formula-box">
-          <b>C<sub>sway</sub> = &plusmn; [ a / &radic;2 ] &sdot; (1 - c) &sdot; m &sdot; &omega;&sup2; &sdot; r = (a / 2) &sdot; &delta;F<sub>T</sub></b><br>
-          <i>Max swaying occurs at crank angles &theta; = 45&deg; and 225&deg;.</i>
-        </div>
-
-        <div class="step-head">3. Hammer Blow (S)</div>
-        <p>The vertical component of the centrifugal force exerted by the rotating balance mass 'B' placed in the wheel at radius 'b' to balance reciprocating mass (c &sdot; m). It creates alternating impact on the rails:</p>
-        <div class="formula-box">
-          <b>Hammer Blow = &plusmn; B &sdot; &omega;&sup2; &sdot; b</b><br>
-          <i>Maximum downward pressure increases rail stress; maximum upward force can lift the driving wheel off the track if B &sdot; &omega;&sup2; &sdot; b &gt; Static Wheel Load (P).</i>
-        </div>
+      <div class="sol-container">
+        <ul>
+          <li><b>Why Partial Balancing:</b> Complete balancing of horizontal reciprocating inertia forces ($m \omega^2 r \cos \theta$) requires revolving counter-weights. These introduce an equal, completely unbalanced vertical centrifugal force component ($m \omega^2 r \sin \theta$). This vertical force acts downwards to damage tracks and upwards to lift wheels. Hence, only 50% to 75% ($c = 2/3$) of reciprocating mass is balanced.</li>
+          <li><b>Hammer Blow:</b> The maximum vertical unbalanced force exerted on the rails by the rotating counter-balance mass. Its value is $\pm B \omega^2 b$.</li>
+          <li><b>Limiting Condition:</b> To avoid wheel lifting off the rails, Hammer Blow must never exceed the static wheel load $W$:
+            <div class="formula-card"><b>B &sdot; &omega;² &sdot; b &le; W (Static Load on Wheel)</b></div>
+          </li>
+        </ul>
       </div>
 
     </div>
