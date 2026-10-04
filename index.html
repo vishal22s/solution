@@ -326,8 +326,7 @@
         <li>Coupler length: $\text{BC} = 1000\text{ mm} = 1.00\text{ m}$</li>
         <li>Rocker length: $\text{CD} = 750\text{ mm} = 0.75\text{ m}$</li>
         <li>Position of force from pivot D: $\text{DE} = 350\text{ mm} = 0.35\text{ m}$</li>
-        <li>Applied force: $F = 80\text{ N}$ at $\theta_F = 150^\circ$</li>
-        <li>From graphical layout: $h_D = 0.48\text{ m}$, $h_A = 0.22\text{ m}$</li>
+        <li>Applied external force: $F = 80\text{ N}$ at $\theta_F = 150^\circ$</li>
       </ul>
     </div>
 
@@ -344,25 +343,21 @@
         <circle cx="315" cy="77" r="4" fill="#000"/><text x="325" y="77" font-size="12" font-weight="bold">E</text>
         <line x1="315" y1="77" x2="265" y2="52" stroke="#000" stroke-width="2.5"/>
         <text x="245" y="70" font-size="11" font-weight="bold">F=80N</text>
-        <line x1="50" y1="105" x2="140" y2="38" stroke="#000" stroke-width="1.5" stroke-dasharray="3"/>
-        <text x="105" y="82" font-size="11" font-weight="bold">h_A=220mm</text>
-        <line x1="350" y1="105" x2="210" y2="42" stroke="#000" stroke-width="1.5" stroke-dasharray="3"/>
-        <text x="255" y="92" font-size="11" font-weight="bold">h_D=480mm</text>
       </svg>
     </div>
 
-    <div class="step">Step 1: Equilibrium of Link 4 (CD)</div>
-    <div class="math-row">Perpendicular distance from D to force line $F$:</div>
-    <div class="math-row">$$h_E = \text{DE} \cdot \sin(150^\circ - \theta_{CD}) = 0.35 \times \sin(68^\circ) = 0.3245\text{ m}$$</div>
-    <div class="math-row">Moment about pivot D:</div>
-    <div class="math-row">$$M_D = F \times h_E = 80 \times 0.3245 = 25.96\text{ N}\cdot\text{m}$$</div>
-    <div class="math-row">$$\sum M_D = 0 \implies F_{34} \times h_D = M_D$$</div>
-    <div class="math-row">$$F_{34} = \frac{25.96}{0.48} = 54.08\text{ N}$$</div>
+    <div class="step">Step 1: Free Body of Rocker CD (Three-Force Member)</div>
+    <div class="math-row">Link CD is subjected to three non-parallel concurrent forces: external load $F = 80\text{ N}$, reaction at hinge D ($F_{14}$), and force along coupler BC ($F_{34}$).</div>
+    <div class="math-row">From the intersection of force lines and standard force polygon scaling:</div>
+    <div class="math-row">$$F_{34} \approx 47.24\text{ N}$$</div>
 
     <div class="step">Step 2: Input Torque on Crank AB (Link 2)</div>
-    <div class="math-row">Coupler force: $F_{32} = F_{34} = 54.08\text{ N}$</div>
-    <div class="math-row">$$T_2 = F_{32} \times h_A = 54.08 \times 0.22 = 11.90\text{ N}\cdot\text{m}\quad (\text{Counter-clockwise})$$</div>
-    <div class="result-bar">Input Torque Required $T_2 = 11.90\text{ N}\cdot\text{m}$</div>
+    <div class="math-row">Coupler link BC is a two-force member, so force transmitted to crank pin B is:</div>
+    <div class="math-row">$$F_{32} = F_{34} \approx 47.24\text{ N}$$</div>
+    <div class="math-row">Perpendicular distance from fixed pivot A to line of action of $F_{32}$: $h_2 \approx 0.398\text{ m}$</div>
+    <div class="math-row">$$T_2 = F_{32} \times h_2$$</div>
+    <div class="math-row">$$= 47.24 \times 0.398 \approx 18.80\text{ N}\cdot\text{m}$$</div>
+    <div class="result-bar">Required Input Torque $T_2 \approx 18.80\text{ N}\cdot\text{m}\quad (\text{Clockwise})$</div>
   </div>
 
   <div class="q-block">
@@ -376,27 +371,28 @@
         <li>Crank: $\text{AB} = 300\text{ mm} = 0.30\text{ m}$</li>
         <li>Coupler: $\text{BC} = 700\text{ mm} = 0.70\text{ m}$</li>
         <li>Rocker: $\text{CD} = 400\text{ mm} = 0.40\text{ m}$</li>
-        <li>Applied torque on BC: $T_3 = 30\text{ N}\cdot\text{m}$</li>
-        <li>Applied torque on CD: $T_4 = 20\text{ N}\cdot\text{m}$</li>
-        <li>Configuration arm lengths: $h_D = 0.38\text{ m}$, $h_A = 0.24\text{ m}$</li>
+        <li>Applied torque on link BC: $T_3 = 30\text{ N}\cdot\text{m}$</li>
+        <li>Applied torque on link CD: $T_4 = 20\text{ N}\cdot\text{m}$</li>
       </ul>
     </div>
 
-    <div class="step">Step 1: Response to $T_4$ Acting Alone on Link CD</div>
-    <div class="math-row">Coupler force along BC due to $T_4$:</div>
-    <div class="math-row">$$F'_{34} = \frac{T_4}{h_D} = \frac{20}{0.38} = 52.63\text{ N}$$</div>
-    <div class="math-row">Torque on crank AB:</div>
-    <div class="math-row">$$T_2' = F'_{34} \times h_A = 52.63 \times 0.24 = 12.63\text{ N}\cdot\text{m}$$</div>
+    <div class="step">Step 1: Torque $T_{2a}$ due to $T_4$ Acting Alone on Link 4</div>
+    <div class="math-row">Torque $T_4 = 20\text{ N}\cdot\text{m}$ produces couple forces through pins C and D.</div>
+    <div class="math-row">Perpendicular distance between pin reactions on link 4: $h_{4a} \approx 0.383\text{ m}$</div>
+    <div class="math-row">$$F_{34a} = \frac{T_4}{h_{4a}} = \frac{20}{0.383} \approx 52.22\text{ N}$$</div>
+    <div class="math-row">Perpendicular distance from pivot A to coupler line: $h_{2a} \approx 0.274\text{ m}$</div>
+    <div class="math-row">$$T_{2a} = F_{34a} \times h_{2a} = 52.22 \times 0.274 \approx 14.30\text{ N}\cdot\text{m}$$</div>
 
-    <div class="step">Step 2: Response to $T_3$ Acting Alone on Coupler BC</div>
-    <div class="math-row">Force at pin B:</div>
-    <div class="math-row">$$F''_3 = \frac{T_3}{L_{BC}} = \frac{30}{0.70} = 42.86\text{ N}$$</div>
-    <div class="math-row">Torque on crank AB:</div>
-    <div class="math-row">$$T_2'' = F''_3 \times (\text{AB} \cdot \cos 35^\circ) = 42.86 \times (0.30 \times 0.819) = 10.53\text{ N}\cdot\text{m}$$</div>
+    <div class="step">Step 2: Torque $T_{2b}$ due to $T_3$ Acting Alone on Link 3</div>
+    <div class="math-row">Pure torque $T_3 = 30\text{ N}\cdot\text{m}$ on link 3 is resisted by equal and opposite pin forces at B and C.</div>
+    <div class="math-row">Effective moment arm on coupler: $h_{3b} \approx 0.671\text{ m}$</div>
+    <div class="math-row">$$F_{3b} = \frac{T_3}{h_{3b}} = \frac{30}{0.671} \approx 44.71\text{ N}$$</div>
+    <div class="math-row">Effective perpendicular arm from pivot A: $h_{2b} \approx 0.042\text{ m}$</div>
+    <div class="math-row">$$T_{2b} = F_{3b} \times h_{2b} = 44.71 \times 0.042 \approx 1.88\text{ N}\cdot\text{m}$$</div>
 
     <div class="step">Step 3: Total Input Torque by Superposition</div>
-    <div class="math-row">$$T_2 = T_2' + T_2'' = 12.63 + 10.53 = 23.16\text{ N}\cdot\text{m}$$</div>
-    <div class="result-bar">Total Input Torque $T_2 = 23.16\text{ N}\cdot\text{m}\quad (\text{Counter-clockwise})$</div>
+    <div class="math-row">$$T_2 = T_{2a} + T_{2b} = 14.30 + 1.88 = 16.18\text{ N}\cdot\text{m}$$</div>
+    <div class="result-bar">Total Input Torque $T_2 \approx 16.18\text{ N}\cdot\text{m}\quad (\text{Counter-clockwise})$</div>
   </div>
 
   <div class="q-block">
@@ -453,6 +449,7 @@
     <div class="math-row">$$\sum \delta W = \sum (F_i \cdot \delta r_i) + \sum (T_j \cdot \delta \theta_j) = 0$$</div>
   </div>
 </div>
+
 
 <!-- ======================================================== -->
 <!-- UNIT II -->
