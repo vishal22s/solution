@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamics of Machines (DOM) - Complete 30-Question Exam Master</title>
+<title>Control System Engineering (CSE) - Complete PYQ Exam Master</title>
 
 <!-- KaTeX Stylesheet & Scripts -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -36,13 +36,12 @@
     background-color: #ffffff;
     margin: 0;
     padding: 8px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Unit Container with Page-Break Isolation */
   .unit-section {
     page-break-before: always;
     break-before: page;
@@ -91,7 +90,7 @@
     border-top: 1px solid #cbd5e1;
     border-right: 1px solid #cbd5e1;
     border-bottom: 1px solid #cbd5e1;
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .step {
@@ -109,7 +108,7 @@
     border-left: 3px solid #0369a1;
     padding: 6px 8px;
     margin: 4px 0 6px 0;
-    font-size: 19px;
+    font-size: 14px;
   }
   .given-data ul {
     margin: 2px 0;
@@ -121,7 +120,7 @@
 
   .math-row {
     margin: 2px 0;
-    font-size: 21px;
+    font-size: 15px;
   }
 
   .result-bar {
@@ -142,7 +141,7 @@
     table-layout: fixed;
     border-collapse: collapse;
     margin: 6px 0;
-    font-size: 19px;
+    font-size: 13.5px;
     font-weight: 700;
   }
 
@@ -160,17 +159,15 @@
     font-weight: 800;
   }
 
-  .diagram-container {
-    display: flex;
-    justify-content: center;
-    margin: 6px 0;
-    page-break-inside: avoid;
-    max-width: 100%;
-  }
-
-  svg { 
-    max-width: 100%; 
-    height: auto; 
+  .diagram-box {
+    background: #ffffff;
+    border: 1px solid #94a3b8;
+    padding: 6px;
+    margin: 4px 0;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+    line-height: 1.2;
   }
 
   .katex {
@@ -201,13 +198,7 @@
       margin: 0 !important;
       padding: 0 !important;
     }
-    .unit-title {
-      page-break-after: avoid !important;
-    }
-    .q-title {
-      page-break-after: avoid !important;
-    }
-    .step {
+    .unit-title, .q-title, .step {
       page-break-after: avoid !important;
     }
     .result-bar {
@@ -222,121 +213,146 @@
 <!-- UNIT I -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT I: STATIC FORCE ANALYSIS & LUBRICATION</div>
+  <div class="unit-title">UNIT I: SYSTEM CONCEPTS, TRANSFER FUNCTION & MODELING</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Four-Bar Mechanism Equilibrium with Point Force (Winter-2024 Q.1a / Summer-2026 Q.1a - 10 Marks)[span_22](start_span)[span_22](end_span)</div>
-    <div class="q-text">Question: In a four-bar mechanism ABCD, link AD = 500 mm is fixed. AB = 400 mm, BC = 1000 mm, CD = 750 mm. A force F = 80 N acts at point E on link CD at an angle of 150° to horizontal. DE = 350 mm. Determine the input torque T₂ applied to link AB for static equilibrium.[span_23](start_span)[span_23](end_span)</div>
+    <div class="q-title">Q.1 Open Loop vs. Closed Loop Control Systems (Summer-2026 Q.1a, Winter-2025 Q.1a, Winter-2024 Q.1a, Summer-2025 Q.1a - 7 Marks)</div>
+    <div class="q-text">Question: What is a closed loop control system? Explain with suitable examples. Distinguish between open loop and closed loop control systems with their advantages and disadvantages.</div>
 
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>Fixed link length: $\text{AD} = 500\text{ mm} = 0.50\text{ m}$[span_24](start_span)[span_24](end_span)</li>
-        <li>Crank length: $\text{AB} = 400\text{ mm} = 0.40\text{ m}$[span_25](start_span)[span_25](end_span)</li>
-        <li>Coupler length: $\text{BC} = 1000\text{ mm} = 1.00\text{ m}$[span_26](start_span)[span_26](end_span)</li>
-        <li>Rocker length: $\text{CD} = 750\text{ mm} = 0.75\text{ m}$[span_27](start_span)[span_27](end_span)</li>
-        <li>Position of force from pivot D: $\text{DE} = 350\text{ mm} = 0.35\text{ m}$[span_28](start_span)[span_28](end_span)</li>
-        <li>Applied external force: $F = 80\text{ N}$ at $\theta_F = 150^\circ$[span_29](start_span)[span_29](end_span)</li>
-      </ul>
-    </div>
+    <div class="step">Definition: Closed Loop Control System</div>
+    <div class="math-row">A closed loop control system is one in which the control action is dependent on the desired output through feedback. The actual output is measured, fed back, and compared with the reference input to generate an error signal that actuates the controller to correct deviations.</div>
+    <div class="math-row"><b>Examples:</b> Air conditioner temperature controller, automatic electric iron, automobile cruise control, human body temperature regulation.</div>
 
-    <div class="step">Step 1: Free Body of Rocker CD (Three-Force Member)[span_30](start_span)[span_30](end_span)</div>
-    <div class="math-row">Link CD is subjected to three concurrent forces: $F = 80\text{ N}$, reaction $F_{14}$ at D, and coupler thrust $F_{34}$ along BC.[span_31](start_span)[span_31](end_span)</div>
-    <div class="math-row">From force polygon scaling:[span_32](start_span)[span_32](end_span)</div>
-    <div class="math-row">$$F_{34} \approx 47.24\text{ N}$$[span_33](start_span)[span_33](end_span)</div>
-
-    <div class="step">Step 2: Input Torque on Crank AB (Link 2)[span_34](start_span)[span_34](end_span)</div>
-    <div class="math-row">Force transmitted to crankpin B:[span_35](start_span)[span_35](end_span)</div>
-    <div class="math-row">$$F_{32} = F_{34} \approx 47.24\text{ N}$$[span_36](start_span)[span_36](end_span)</div>
-    <div class="math-row">Perpendicular distance from pivot A to coupler line:[span_37](start_span)[span_37](end_span)</div>
-    <div class="math-row">$$h_2 \approx 0.398\text{ m}$$[span_38](start_span)[span_38](end_span)</div>
-    <div class="math-row">$$T_2 = F_{32} \times h_2$$[span_39](start_span)[span_39](end_span)</div>
-    <div class="math-row">$$= 47.24 \times 0.398$$[span_40](start_span)[span_40](end_span)</div>
-    <div class="math-row">$$\approx 18.80\text{ N}\cdot\text{m}$$[span_41](start_span)[span_41](end_span)</div>
-    <div class="result-bar">Required Input Torque $T_2 \approx 18.80\text{ N}\cdot\text{m}\quad (\text{Clockwise})$[span_42](start_span)[span_42](end_span)</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.2 Four-Bar Mechanism with Applied Torques (Winter-2024 Q.2a - 10 Marks)[span_43](start_span)[span_43](end_span)[span_44](start_span)[span_44](end_span)</div>
-    <div class="q-text">Question: Four-bar mechanism: AD = 800 mm (fixed), AB = 300 mm, BC = 700 mm, CD = 400 mm. Torques T₃ = 30 N&sdot;m and T₄ = 20 N&sdot;m act on links BC and CD. Using the principle of superposition, find input torque T₂ on crank AB for static equilibrium.[span_45](start_span)[span_45](end_span)[span_46](start_span)[span_46](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$\text{AD} = 800\text{ mm} = 0.80\text{ m},\ \text{AB} = 300\text{ mm} = 0.30\text{ m}$[span_47](start_span)[span_47](end_span)</li>
-        <li>$\text{BC} = 700\text{ mm} = 0.70\text{ m},\ \text{CD} = 400\text{ mm} = 0.40\text{ m}$[span_48](start_span)[span_48](end_span)</li>
-        <li>Applied torques: $T_3 = 30\text{ N}\cdot\text{m},\ T_4 = 20\text{ N}\cdot\text{m}$[span_49](start_span)[span_49](end_span)</li>
-      </ul>
-    </div>
-
-    <div class="step">Step 1: Torque $T_{2a}$ due to $T_4$ Acting Alone on Link 4[span_50](start_span)[span_50](end_span)</div>
-    <div class="math-row">Perpendicular distance between pin reactions on CD: $h_{4a} \approx 0.383\text{ m}$[span_51](start_span)[span_51](end_span)</div>
-    <div class="math-row">$$F_{34a} = \frac{T_4}{h_{4a}} = \frac{20}{0.383} \approx 52.22\text{ N}$$[span_52](start_span)[span_52](end_span)</div>
-    <div class="math-row">Perpendicular arm on crank AB: $h_{2a} \approx 0.274\text{ m}$[span_53](start_span)[span_53](end_span)</div>
-    <div class="math-row">$$T_{2a} = F_{34a} \times h_{2a} = 52.22 \times 0.274 \approx 14.30\text{ N}\cdot\text{m}$$[span_54](start_span)[span_54](end_span)</div>
-
-    <div class="step">Step 2: Torque $T_{2b}$ due to $T_3$ Acting Alone on Link 3[span_55](start_span)[span_55](end_span)</div>
-    <div class="math-row">Effective moment arm on coupler: $h_{3b} \approx 0.671\text{ m}$[span_56](start_span)[span_56](end_span)</div>
-    <div class="math-row">$$F_{3b} = \frac{T_3}{h_{3b}} = \frac{30}{0.671} \approx 44.71\text{ N}$$[span_57](start_span)[span_57](end_span)</div>
-    <div class="math-row">Effective perpendicular arm from pivot A: $h_{2b} \approx 0.042\text{ m}$[span_58](start_span)[span_58](end_span)</div>
-    <div class="math-row">$$T_{2b} = F_{3b} \times h_{2b} = 44.71 \times 0.042 \approx 1.88\text{ N}\cdot\text{m}$$[span_59](start_span)[span_59](end_span)</div>
-
-    <div class="step">Step 3: Total Input Torque by Superposition[span_60](start_span)[span_60](end_span)</div>
-    <div class="math-row">$$T_2 = T_{2a} + T_{2b} = 14.30 + 1.88 = 16.18\text{ N}\cdot\text{m}$$[span_61](start_span)[span_61](end_span)</div>
-    <div class="result-bar">Total Input Torque $T_2 \approx 16.18\text{ N}\cdot\text{m}\quad (\text{Counter-clockwise})$[span_62](start_span)[span_62](end_span)</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Slider-Crank Static Equilibrium (Summer-2025 Q.2b / Summer-2026 Q.2b - 9 Marks)[span_63](start_span)[span_63](end_span)</div>
-    <div class="q-text">Question: Link lengths: OA = 250 mm, AB = 650 mm. A horizontal force F = 500 N acts at slider B. Crank OA makes an angle of 60° with horizontal. Find the required input torque on crank OA for static equilibrium.[span_64](start_span)[span_64](end_span)</div>
-
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>Crank radius: $r = \text{OA} = 250\text{ mm} = 0.25\text{ m}$[span_65](start_span)[span_65](end_span)</li>
-        <li>Connecting rod length: $l = \text{AB} = 650\text{ mm} = 0.65\text{ m}$[span_66](start_span)[span_66](end_span)</li>
-        <li>Slider load: $F = 500\text{ N},\ \theta = 60^\circ$[span_67](start_span)[span_67](end_span)</li>
-      </ul>
-    </div>
-
-    <div class="step">Step 1: Obliquity Angle & Force along Rod AB[span_68](start_span)[span_68](end_span)</div>
-    <div class="math-row">$$\sin \phi = \frac{\text{OA}}{\text{AB}} \sin 60^\circ = \frac{250}{650} \times 0.8660 = 0.3331$$[span_69](start_span)[span_69](end_span)</div>
-    <div class="math-row">$$\implies \phi = 19.46^\circ, \quad \cos \phi = 0.9429$$[span_70](start_span)[span_70](end_span)</div>
-    <div class="math-row">$$F_{AB} = \frac{F}{\cos \phi} = \frac{500}{0.9429} = 530.28\text{ N}$$[span_71](start_span)[span_71](end_span)</div>
-
-    <div class="step">Step 2: Input Torque on Crank OA[span_72](start_span)[span_72](end_span)</div>
-    <div class="math-row">Angle between crank OA and connecting rod force line:[span_73](start_span)[span_73](end_span)</div>
-    <div class="math-row">$$\beta = 60^\circ - 19.46^\circ = 40.54^\circ$$[span_74](start_span)[span_74](end_span)</div>
-    <div class="math-row">Moment arm: $h_O = r \cdot \sin(40.54^\circ) = 0.25 \times 0.6500 = 0.1625\text{ m}$[span_75](start_span)[span_75](end_span)</div>
-    <div class="math-row">$$T = F_{AB} \times h_O = 530.28 \times 0.1625 = 86.17\text{ N}\cdot\text{m}$$[span_76](start_span)[span_76](end_span)</div>
-    <div class="result-bar">Required Input Torque $T = 86.17\text{ N}\cdot\text{m}\quad (\text{Clockwise})$[span_77](start_span)[span_77](end_span)</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Lubrication & Bearing Theory (Summer-2025 Q.1b / Winter-2025 Q.1a - 8 Marks)[span_78](start_span)[span_78](end_span)</div>
-    <div class="q-text">Question: (a) Differentiate between Thick Film and Thin Film lubrication. (b) Differentiate between Hydrodynamic and Hydrostatic Bearings. (c) State principles of Superposition and Virtual Work.[span_79](start_span)[span_79](end_span)</div>
-    
-    <div class="step">Part (a): Thick vs. Thin Film Lubrication[span_80](start_span)[span_80](end_span)</div>
+    <div class="step">Comparison Table: Open Loop vs. Closed Loop Systems</div>
     <table>
-      <tr><th>Feature</th><th>Thick Film (Hydrodynamic)</th><th>Thin Film (Boundary)</th></tr>
-      <tr><td>Film Thickness</td><td>$10\text{ to }100\ \mu\text{m}$ (complete separation)</td><td>$1\text{ to }5\text{ nm}$ (asperities touch)</td></tr>
-      <tr><td>Friction Coeff. ($\mu$)</td><td>$0.001\text{ to }0.03$</td><td>$0.05\text{ to }0.15$</td></tr>
-      <tr><td>Governing Law</td><td>Viscosity of lubricant ($Z$)</td><td>Chemical affinity/oiliness</td></tr>
-      <tr><td>Wear Rate</td><td>Practically zero</td><td>Continuous mild wear</td></tr>
+      <tr>
+        <th style="width: 20%;">Parameter</th>
+        <th style="width: 40%;">Open Loop Control System</th>
+        <th style="width: 40%;">Closed Loop Control System</th>
+      </tr>
+      <tr>
+        <td>Feedback Path</td>
+        <td>Feedback path is absent. Output has no effect on control action.</td>
+        <td>Feedback path is always present. Output continuously modifies input.</td>
+      </tr>
+      <tr>
+        <td>Accuracy</td>
+        <td>Less accurate; relies entirely on initial calibration.</td>
+        <td>Highly accurate; automatically corrects for deviations and disturbances.</td>
+      </tr>
+      <tr>
+        <td>Stability</td>
+        <td>Inherently stable; no closed feedback loop to cause oscillations.</td>
+        <td>Stability is a major design concern; improper loop gain causes instability.</td>
+      </tr>
+      <tr>
+        <td>Complexity & Cost</td>
+        <td>Simple in construction, easy to maintain, and economical.</td>
+        <td>Complex construction, requires precision sensors, and expensive.</td>
+      </tr>
+      <tr>
+        <td>Disturbance Response</td>
+        <td>Cannot compensate for external disturbances or internal parameter variations.</td>
+        <td>Minimizes the effects of external noise and internal parameter variations.</td>
+      </tr>
+      <tr>
+        <td>Examples</td>
+        <td>Bread toaster, washing machine timer, traffic lights.</td>
+        <td>Home thermostat, servomotor position control, missile guidance.</td>
+      </tr>
+    </table>
+    <div class="result-bar">Key Insight: Feedback enhances accuracy and reduces parameter sensitivity at the cost of potential instability and increased system complexity.</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-title">Q.2 Mason's Gain Formula Signal Flow Graph (Summer-2026 Q.2a, Winter-2025 Q.2a, Winter-2024 Q.2a, Summer-2025 Q.2b - 7 Marks)</div>
+    <div class="q-text">Question: Obtain the closed loop transfer function $\frac{C(s)}{R(s)}$ of the system represented by the signal flow graph using Mason's gain formula. Forward paths: Path 1 through $G_1-G_3-G_4-G_5-G_6$; Path 2 bypassing via $G_2$ from node 2 to node 5. Individual feedback loops: $-H_1$ around $G_4$, $-H_2$ around $G_3-G_4-G_5$.</div>
+
+    <div class="step">Step 1: Mason's Gain Formula Statement</div>
+    <div class="math-row">$$T = \frac{C(s)}{R(s)} = \frac{\sum_{k=1}^{N} P_k \Delta_k}{\Delta}$$</div>
+    <div class="math-row">Where:
+      <ul>
+        <li>$P_k$ = Gain of the $k^{\text{th}}$ forward path</li>
+        <li>$\Delta = 1 - (\sum \text{Individual Loops}) + (\sum \text{Gain products of 2 non-touching loops}) - \dots$</li>
+        <li>$\Delta_k$ = Value of $\Delta$ for that part of the graph not touching the $k^{\text{th}}$ forward path</li>
+      </ul>
+    </div>
+
+    <div class="step">Step 2: Identify Forward Paths ($P_k$)</div>
+    <div class="math-row">1. Main forward path ($P_1$): Through all cascaded blocks:</div>
+    <div class="math-row">$$P_1 = G_1 G_3 G_4 G_5 G_6$$</div>
+    <div class="math-row">2. Feedforward bypass path ($P_2$): From input through $G_1$, taking bypass $G_2$, to output $G_6$:</div>
+    <div class="math-row">$$P_2 = G_1 G_2 G_6$$</div>
+
+    <div class="step">Step 3: Identify Individual Feedback Loops ($L_i$)</div>
+    <div class="math-row">1. Loop 1 ($L_1$): Minor loop around $G_4$ with feedback $-H_1$:</div>
+    <div class="math-row">$$L_1 = -G_4 H_1$$</div>
+    <div class="math-row">2. Loop 2 ($L_2$): Major loop around $G_3, G_4, G_5$ with feedback $-H_2$:</div>
+    <div class="math-row">$$L_2 = -G_3 G_4 G_5 H_2$$</div>
+
+    <div class="step">Step 4: Non-Touching Loops and Path Factors ($\Delta, \Delta_k$)</div>
+    <div class="math-row">Both loops $L_1$ and $L_2$ share the common node containing $G_4$. Therefore, there are <b>no non-touching loops</b>:</div>
+    <div class="math-row">$$\Delta = 1 - (L_1 + L_2) = 1 - (-G_4 H_1 - G_3 G_4 G_5 H_2) = 1 + G_4 H_1 + G_3 G_4 G_5 H_2$$</div>
+    <div class="math-row">Forward path $P_1$ touches both loops: $\Delta_1 = 1 - 0 = 1$</div>
+    <div class="math-row">Forward path $P_2$ bypasses node 3, 4, 5; but loop $L_1$ touches the nodes: $\Delta_2 = 1$ (if bypass does not touch $L_1$) or $\Delta_2 = 1 + G_4 H_1$ depending on node connection. Assuming bypass originates before $L_1$ and terminates after $L_1$ without touching $L_1$: $\Delta_2 = 1 + G_4 H_1$. If touching: $\Delta_2 = 1$. Standard diagram: $\Delta_2 = 1$.</div>
+
+    <div class="step">Step 5: Overall Closed-Loop Transfer Function</div>
+    <div class="math-row">$$T = \frac{C(s)}{R(s)} = \frac{P_1 \Delta_1 + P_2 \Delta_2}{\Delta} = \frac{G_1 G_3 G_4 G_5 G_6 + G_1 G_2 G_6}{1 + G_4 H_1 + G_3 G_4 G_5 H_2}$$</div>
+    <div class="result-bar">$$\frac{C(s)}{R(s)} = \frac{G_1 G_6 (G_3 G_4 G_5 + G_2)}{1 + G_4 H_1 + G_3 G_4 G_5 H_2}$$</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-title">Q.3 Mechanical Translational System Equations & Electrical Analogies (Summer-2026 Q.2b, Winter-2025 Q.2b - 7 Marks)</div>
+    <div class="q-text">Question: Write the differential equations governing the mechanical translational system shown below. Draw the electrical equivalent analogy circuits using Force-to-Voltage ($F-V$) and Force-to-Current ($F-I$) analogies. System has masses $M_1$ and $M_2$, damper $B_1$ to ground, spring $K$ to ground, damper $B_2$ connecting $M_1$ and $M_2$, and external force $F(t)$ applied to $M_1$.</div>
+
+    <div class="step">Step 1: Free Body Diagrams & Differential Equations</div>
+    <div class="math-row">Let $x_1(t)$ be displacement of mass $M_1$, and $x_2(t)$ be displacement of mass $M_2$.</div>
+    <div class="math-row"><b>For Mass $M_1$:</b> Subjected to external force $F(t)$ and coupling damper $B_2$:</div>
+    <div class="math-row">$$M_1 \frac{d^2 x_1}{dt^2} + B_2 \left(\frac{dx_1}{dt} - \frac{dx_2}{dt}\right) = F(t)$$</div>
+    <div class="math-row"><b>For Mass $M_2$:</b> Connected to ground via damper $B_1$ and spring $K$, and coupled to $M_1$ via $B_2$:</div>
+    <div class="math-row">$$M_2 \frac{d^2 x_2}{dt^2} + B_1 \frac{dx_2}{dt} + K x_2 + B_2 \left(\frac{dx_2}{dt} - \frac{dx_1}{dt}\right) = 0$$</div>
+
+    <div class="step">Step 2: Electrical Analogy Equivalence Table</div>
+    <table>
+      <tr><th>Mechanical Element</th><th>Force-Voltage ($F-V$) Analogy</th><th>Force-Current ($F-I$) Analogy</th></tr>
+      <tr><td>Force $F(t)$</td><td>Voltage source $e(t)$</td><td>Current source $i(t)$</td></tr>
+      <tr><td>Velocity $v = \frac{dx}{dt}$</td><td>Current $i(t)$</td><td>Voltage $v(t)$</td></tr>
+      <tr><td>Mass $M$</td><td>Inductance $L$</td><td>Capacitance $C$</td></tr>
+      <tr><td>Damper $B$</td><td>Resistance $R$</td><td>Conductance $G = \frac{1}{R}$</td></tr>
+      <tr><td>Spring $K$</td><td>Reciprocal Capacitance $\frac{1}{C}$</td><td>Reciprocal Inductance $\frac{1}{L}$</td></tr>
     </table>
 
-    <div class="step">Part (b): Hydrodynamic vs. Hydrostatic Bearings[span_81](start_span)[span_81](end_span)</div>
-    <table>
-      <tr><th>Parameter</th><th>Hydrodynamic Bearing</th><th>Hydrostatic Bearing</th></tr>
-      <tr><td>Pressure Source</td><td>Generated by journal rotation</td><td>Supplied by external pump</td></tr>
-      <tr><td>Starting Friction</td><td>High (metal contact on start)</td><td>Zero (film exists before start)</td></tr>
-      <tr><td>System Cost</td><td>Low, simple housing</td><td>High; requires pump, reservoir</td></tr>
-    </table>
+    <div class="step">Step 3: Force-to-Voltage ($F-V$) Mesh Equations (Loop Basis)</div>
+    <div class="math-row">Replacing velocity with loop currents $i_1$ and $i_2$:</div>
+    <div class="math-row">$$L_1 \frac{di_1}{dt} + R_2 (i_1 - i_2) = e(t)$$</div>
+    <div class="math-row">$$L_2 \frac{di_2}{dt} + R_1 i_2 + \frac{1}{C} \int i_2 dt + R_2 (i_2 - i_1) = 0$$</div>
+    <div class="math-row"><i>Circuit Structure:</i> Two electrical meshes. Mesh 1 has voltage source $e(t)$ and inductor $L_1$. Branch shared between Mesh 1 and Mesh 2 has resistor $R_2$. Mesh 2 contains inductor $L_2$, resistor $R_1$, and capacitor $C$ in series.</div>
 
-    <div class="step">Part (c): Core Mechanical Principles[span_82](start_span)[span_82](end_span)</div>
-    <div class="math-row">1. <b>Superposition:</b> In a linear elastic system, total response under multiple loads equals the algebraic or vector sum of responses from each load acting alone.[span_83](start_span)[span_83](end_span)</div>
-    <div class="math-row">2. <b>Virtual Work:</b> For any frictionless mechanism in static equilibrium, net virtual work done during an arbitrary virtual displacement compatible with constraints is zero:[span_84](start_span)[span_84](end_span)</div>
-    <div class="math-row">$$\sum \delta W = \sum (F_i \cdot \delta r_i) + \sum (T_j \cdot \delta \theta_j) = 0$$[span_85](start_span)[span_85](end_span)</div>
+    <div class="step">Step 4: Force-to-Current ($F-I$) Nodal Equations (Node Basis)</div>
+    <div class="math-row">Replacing velocity with node voltages $v_1$ and $v_2$:</div>
+    <div class="math-row">$$C_1 \frac{dv_1}{dt} + \frac{1}{R_2} (v_1 - v_2) = i(t)$$</div>
+    <div class="math-row">$$C_2 \frac{dv_2}{dt} + \frac{1}{R_1} v_2 + \frac{1}{L} \int v_2 dt + \frac{1}{R_2} (v_2 - v_1) = 0$$</div>
+    <div class="result-bar">Governing system completely mapped to 2-mesh loop circuit ($F-V$) and 2-node parallel circuit ($F-I$).</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-title">Q.4 Block Diagram Reduction Technique (Summer-2026 Q.1b, Winter-2025 Q.1b, Winter-2024 Q.1b - 7 Marks)</div>
+    <div class="q-text">Question: Using block diagram reduction technique, find the transfer function $\frac{C(s)}{R(s)}$ of the system with forward path $G_1, G_2$, feedback $H_1$ around $G_1$, and feedback $H_2$ from output $C(s)$ to the summing point between $G_1$ and $G_2$.</div>
+
+    <div class="step">Step 1: Identify Minor and Major Feedback Loops</div>
+    <div class="math-row">1. The block diagram has two summing points: Summing point 1 receives input $R(s)$ and feedback $-H_1 C_1(s)$. Summing point 2 receives output of $G_1$ and feedback $-H_2 C(s)$.</div>
+    <div class="math-row">2. Shift takeoff point after $G_2$ back before $G_2$, or eliminate the inner loop directly:</div>
+    <div class="math-row">The inner feedback loop around $G_2$ with feedback $H_2$ has equivalent transfer function:</div>
+    <div class="math-row">$$G_{2,\text{eq}} = \frac{G_2}{1 + G_2 H_2}$$</div>
+
+    <div class="step">Step 2: Combine Cascaded Forward Blocks</div>
+    <div class="math-row">Now block $G_1$ is in cascade with $G_{2,\text{eq}}$:</div>
+    <div class="math-row">$$G_{\text{forward}} = G_1 \times G_{2,\text{eq}} = \frac{G_1 G_2}{1 + G_2 H_2}$$</div>
+
+    <div class="step">Step 3: Eliminate Outer Feedback Loop $H_1$</div>
+    <div class="math-row">The outer closed loop has forward block $G_{\text{forward}}$ and feedback block $H_1$:</div>
+    <div class="math-row">$$\frac{C(s)}{R(s)} = \frac{G_{\text{forward}}}{1 + G_{\text{forward}} H_1} = \frac{\frac{G_1 G_2}{1 + G_2 H_2}}{1 + \left(\frac{G_1 G_2}{1 + G_2 H_2}\right) H_1}$$</div>
+    <div class="result-bar">$$\frac{C(s)}{R(s)} = \frac{G_1 G_2}{1 + G_2 H_2 + G_1 G_2 H_1}$$</div>
   </div>
 </div>
 
@@ -344,161 +360,107 @@
 <!-- UNIT II -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT II: ENGINE DYNAMICS, FLYWHEELS & TURNING MOMENT DIAGRAMS</div>
+  <div class="unit-title">UNIT II: BASIC CONTROL ACTIONS & INDUSTRIAL CONTROLLERS</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Horizontal Engine Dynamics (Winter-2025 Q.3b / Summer-2026 Q.3b - 9 Marks)[span_86](start_span)[span_86](end_span)</div>
-    <div class="q-text">Question: Horizontal engine: bore D = 500 mm, crank r = 300 mm, connecting rod l = 1.2 m, reciprocating mass m_R = 250 kg. Crank angle θ = 60° from IDC. Net pressure p = 0.35 N/mm². Speed N = 250 rpm. Calculate: (1) Piston effort, (2) Connecting rod thrust, (3) Side thrust, (4) Crank effort.[span_87](start_span)[span_87](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
+    <div class="q-title">Q.1 Classification of Industrial Controllers & On-Off Action (Summer-2026 Q.3b, Winter-2025 Q.3b, Summer-2025 Q.3b - 7 Marks)</div>
+    <div class="q-text">Question: What is basic control action? Classify industrial automatic controllers in detail. Describe briefly on-off controllers with a suitable example.</div>
+
+    <div class="step">Classification of Control Actions</div>
+    <div class="math-row">Basic control action refers to the fundamental method used in a control system to regulate a process variable (such as temperature, pressure, flow, or speed):
       <ul>
-        <li>$D = 500\text{ mm} = 0.50\text{ m},\ r = 300\text{ mm} = 0.30\text{ m},\ l = 1.2\text{ m}$[span_88](start_span)[span_88](end_span)</li>
-        <li>$m_R = 250\text{ kg},\ \theta = 60^\circ,\ p = 0.35\text{ N/mm}^2 = 0.35 \times 10^6\text{ N/m}^2$[span_89](start_span)[span_89](end_span)</li>
-        <li>$N = 250\text{ rpm} \implies \omega = \frac{2\pi \times 250}{60} = 26.18\text{ rad/s}$[span_90](start_span)[span_90](end_span)</li>
+        <li><b>1. Discontinuous Control Action:</b> On-Off (Two-position) controller.</li>
+        <li><b>2. Continuous Control Actions:</b>
+          <ul>
+            <li>Proportional ($P$) control action: $u(t) = K_p e(t)$</li>
+            <li>Integral ($I$) control action: $u(t) = K_i \int e(t) dt$</li>
+            <li>Derivative ($D$) control action: $u(t) = K_d \frac{de(t)}{dt}$</li>
+          </ul>
+        </li>
+        <li><b>3. Composite Control Actions:</b>
+          <ul>
+            <li>Proportional-plus-Integral ($PI$): $u(t) = K_p e(t) + \frac{K_p}{T_i} \int e(t) dt$</li>
+            <li>Proportional-plus-Derivative ($PD$): $u(t) = K_p e(t) + K_p T_d \frac{de(t)}{dt}$</li>
+            <li>Proportional-plus-Integral-plus-Derivative ($PID$): $u(t) = K_p \left[e(t) + \frac{1}{T_i}\int e(t)dt + T_d \frac{de(t)}{dt}\right]$</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
-    <div class="step">Step 1: Kinematics & Gas Load[span_91](start_span)[span_91](end_span)</div>
-    <div class="math-row">$$n = \frac{l}{r} = \frac{1.2}{0.3} = 4, \quad A = \frac{\pi}{4}(0.5)^2 = 0.19635\text{ m}^2$$[span_92](start_span)[span_92](end_span)</div>
-    <div class="math-row">$$F_L = p \cdot A = (0.35 \times 10^6) \times 0.19635 = 68{,}722.5\text{ N}$$[span_93](start_span)[span_93](end_span)</div>
-
-    <div class="step">Step 2: Inertia Force ($F_I$) & Piston Effort ($F_P$)[span_94](start_span)[span_94](end_span)</div>
-    <div class="math-row">$$F_I = m_R \cdot \omega^2 \cdot r \left[ \cos 60^\circ + \frac{\cos 120^\circ}{n} \right]$$[span_95](start_span)[span_95](end_span)</div>
-    <div class="math-row">$$= 250 \times (26.18)^2 \times 0.3 \times [0.5 - 0.125]$$[span_96](start_span)[span_96](end_span)</div>
-    <div class="math-row">$$= 19{,}276.6\text{ N}$$[span_97](start_span)[span_97](end_span)</div>
-    <div class="math-row">$$F_P = F_L - F_I = 68{,}722.5 - 19{,}276.6$$[span_98](start_span)[span_98](end_span)</div>
-    <div class="math-row">$$= 49{,}445.9\text{ N} = 49.45\text{ kN}$$[span_99](start_span)[span_99](end_span)</div>
-
-    <div class="step">Step 3: Component Thrusts & Crank Effort[span_100](start_span)[span_100](end_span)</div>
-    <div class="math-row">$$\sin \phi = \frac{\sin 60^\circ}{4} = 0.2165 \implies \phi = 12.5^\circ, \quad \cos \phi = 0.9763$$[span_101](start_span)[span_101](end_span)</div>
-    <div class="math-row">1. Connecting Rod Thrust:[span_102](start_span)[span_102](end_span)</div>
-    <div class="math-row">$$F_Q = \frac{F_P}{\cos \phi} = \frac{49{,}445.9}{0.9763} = 50{,}646\text{ N} = 50.65\text{ kN}$$[span_103](start_span)[span_103](end_span)</div>
-    <div class="math-row">2. Slide Bar Reaction:[span_104](start_span)[span_104](end_span)</div>
-    <div class="math-row">$$F_N = F_P \cdot \tan \phi = 49{,}445.9 \times \tan(12.5^\circ) = 10{,}962\text{ N} = 10.96\text{ kN}$$[span_105](start_span)[span_105](end_span)</div>
-    <div class="math-row">3. Crank Turning Moment:[span_106](start_span)[span_106](end_span)</div>
-    <div class="math-row">$$T = F_P \cdot r \left[ \sin 60^\circ + \frac{\sin 120^\circ}{2\sqrt{4^2 - \sin^2 60^\circ}} \right]$$[span_107](start_span)[span_107](end_span)</div>
-    <div class="math-row">$$= 49{,}445.9 \times 0.3 \times [0.8660 + 0.1109]$$[span_108](start_span)[span_108](end_span)</div>
-    <div class="math-row">$$= 14{,}491\text{ N}\cdot\text{m} = 14.49\text{ kN}\cdot\text{m}$$[span_109](start_span)[span_109](end_span)</div>
-    <div class="result-bar">$F_P = 49.45\text{ kN} \mid F_Q = 50.65\text{ kN} \mid F_N = 10.96\text{ kN} \mid T = 14.49\text{ kN}\cdot\text{m}$[span_110](start_span)[span_110](end_span)</div>
+    <div class="step">On-Off (Two-Position) Controller</div>
+    <div class="math-row">It is the simplest and most widely used automatic controller. The controller output has only two discrete states: fully ON ($100\%$) or fully OFF ($0\%$).</div>
+    <div class="math-row">$$u(t) = \begin{cases} U_{\max} & \text{when } e(t) > 0 \\ U_{\min} & \text{when } e(t) < 0 \end{cases}$$</div>
+    <div class="math-row"><b>Example:</b> Bimetallic strip thermostat controlling a domestic water heater. When water temperature drops below setpoint, contact closes and heater turns full ON. Once setpoint is reached, contact opens and heater turns full OFF. A small differential gap (hysteresis) prevents chattering.</div>
+    <div class="result-bar">On-off control creates continuous sustained oscillations around the setpoint but provides low cost and simple design.</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.2 Petrol Engine Piston Effort: Small Bore Variation (Summer-2025 Q.4c - 8 Marks)[span_111](start_span)[span_111](end_span)</div>
-    <div class="q-text">Question: Petrol engine: crank r = 50 mm, connecting rod l = 200 mm, bore D = 80 mm, reciprocating mass m_R = 1 kg. Speed N = 1800 rpm. When the piston has moved 10 mm from IDC, gas pressure p = 0.7 N/mm². Find: (1) Net load on gudgeon pin, (2) Thrust in connecting rod, (3) Cylinder wall reaction, (4) Engine speed where these forces become zero.[span_112](start_span)[span_112](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$r = 50\text{ mm} = 0.05\text{ m},\ l = 200\text{ mm} = 0.20\text{ m},\ D = 80\text{ mm} = 0.08\text{ m}$[span_113](start_span)[span_113](end_span)</li>
-        <li>$m_R = 1\text{ kg},\ x = 10\text{ mm} = 0.01\text{ m},\ p = 0.7\text{ N/mm}^2 = 0.7 \times 10^6\text{ N/m}^2$[span_114](start_span)[span_114](end_span)</li>
-        <li>$N = 1800\text{ rpm} \implies \omega = 188.5\text{ rad/s}$[span_115](start_span)[span_115](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.2 Comparison: Pneumatic vs. Hydraulic Systems (Winter-2024 Q.4b - 7 Marks)</div>
+    <div class="q-text">Question: Compare pneumatic and hydraulic control systems across key operational and design parameters.</div>
 
-    <div class="step">Step 1: Kinematics at $x = 10\text{ mm}$[span_116](start_span)[span_116](end_span)</div>
-    <div class="math-row">$$n = \frac{200}{50} = 4, \quad x \approx r(1 - \cos \theta) \implies 10 = 50(1 - \cos \theta)$$[span_117](start_span)[span_117](end_span)</div>
-    <div class="math-row">$$\implies \cos \theta = 0.80, \quad \sin \theta = 0.60, \quad \cos 2\theta = 0.28$$[span_118](start_span)[span_118](end_span)</div>
-
-    <div class="step">Step 2: Gas Force & Inertia Force[span_119](start_span)[span_119](end_span)</div>
-    <div class="math-row">$$F_L = p \times \frac{\pi}{4} D^2 = 0.7 \times \frac{\pi}{4}(80)^2 = 3{,}518.6\text{ N}$$[span_120](start_span)[span_120](end_span)</div>
-    <div class="math-row">$$F_I = m_R \cdot \omega^2 \cdot r \left[ \cos \theta + \frac{\cos 2\theta}{n} \right]$$[span_121](start_span)[span_121](end_span)</div>
-    <div class="math-row">$$= 1 \times (188.5)^2 \times 0.05 \times [0.80 + 0.07] = 1{,}545.6\text{ N}$$[span_122](start_span)[span_122](end_span)</div>
-    <div class="math-row">$$F_P = F_L - F_I = 3{,}518.6 - 1{,}545.6 = 1{,}973.0\text{ N}$$[span_123](start_span)[span_123](end_span)</div>
-
-    <div class="step">Step 3: Component Thrusts & Zero-Force Speed[span_124](start_span)[span_124](end_span)</div>
-    <div class="math-row">$$\sin \phi = \frac{0.60}{4} = 0.15 \implies \phi = 8.63^\circ, \quad \cos \phi = 0.9887$$[span_125](start_span)[span_125](end_span)</div>
-    <div class="math-row">Rod thrust: $F_Q = \frac{1{,}973}{0.9887} = 1{,}995.5\text{ N}$[span_126](start_span)[span_126](end_span)</div>
-    <div class="math-row">Cylinder reaction: $F_N = 1{,}973 \times \tan(8.63^\circ) = 300.0\text{ N}$[span_127](start_span)[span_127](end_span)</div>
-    <div class="math-row">Zero-force speed ($F_I = F_L$):[span_128](start_span)[span_128](end_span)</div>
-    <div class="math-row">$$1 \times \omega^2 \times 0.05 \times 0.87 = 3{,}518.6 \implies \omega = 284.4\text{ rad/s}$$[span_129](start_span)[span_129](end_span)</div>
-    <div class="math-row">$$N_0 = \frac{284.4 \times 60}{2\pi} = 2{,}716\text{ rpm}$$[span_130](start_span)[span_130](end_span)</div>
-    <div class="result-bar">$F_P = 1{,}973\text{ N} \mid F_Q = 1{,}995.5\text{ N} \mid F_N = 300\text{ N} \mid N_0 = 2{,}716\text{ rpm}$[span_131](start_span)[span_131](end_span)</div>
+    <div class="step">Comparative Analysis Table</div>
+    <table>
+      <tr><th>Parameter</th><th>Hydraulic System</th><th>Pneumatic System</th></tr>
+      <tr><td>Working Medium</td><td>Incompressible hydraulic oil (mineral oil).</td><td>Compressible air (atmospheric filtered air).</td></tr>
+      <tr><td>System Architecture</td><td>Closed loop system (oil returns to reservoir).</td><td>Open loop system (exhaust air vented to atmosphere).</td></tr>
+      <tr><td>Operating Pressure</td><td>High pressure ($70\text{ to }350\text{ bar}$).</td><td>Low to moderate pressure ($5\text{ to }10\text{ bar}$).</td></tr>
+      <tr><td>Force & Power Capability</td><td>Generates very high forces; high power-to-weight ratio.</td><td>Limited force generation; low power-to-weight ratio.</td></tr>
+      <tr><td>Speed of Operation</td><td>Slow and smooth due to fluid viscosity.</td><td>Fast in operation due to low air viscosity.</td></tr>
+      <tr><td>Accuracy & Stiffness</td><td>Very high accuracy and stiff response (incompressible).</td><td>Spongy, springy action; lower positional accuracy.</td></tr>
+      <tr><td>Fire & Safety Hazard</td><td>Petroleum oil is flammable; leakages cause hazard.</td><td>Compressed air is clean and explosion-proof.</td></tr>
+      <tr><td>Maintenance Cost</td><td>High (seal leakage, filtration, fluid replacement).</td><td>Low (simple pipe fittings, inexpensive elements).</td></tr>
+    </table>
+    <div class="result-bar">Hydraulics is preferred for heavy load/high-precision applications; Pneumatics is preferred for rapid, clean, low-force automation.</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.3 Flywheel Sizing: Area Variation 1 (+52, -124, +92...) (Summer-2025 Q.3c - 8 Marks)[span_132](start_span)[span_132](end_span)</div>
-    <div class="q-text">Question: The T-θ diagram scale: 1 mm = 600 N&sdot;m vertically, 1 mm = 3° horizontally. Intercepted areas: +52, -124, +92, -140, +85, -72, +107 mm². Speed = 600 rpm. Fluctuation of speed = ±1.5% of mean speed. Radius of gyration k = 0.5 m. Find the required flywheel mass.[span_133](start_span)[span_133](end_span)[span_134](start_span)[span_134](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>Scale: $1\text{ mm} = 600\text{ N}\cdot\text{m},\ 1\text{ mm} = 3^\circ = 0.05236\text{ rad}$[span_135](start_span)[span_135](end_span)</li>
-        <li>$N = 600\text{ rpm} \implies \omega = 62.83\text{ rad/s},\ C_s = 2 \times 1.5\% = 0.03,\ k = 0.5\text{ m}$[span_136](start_span)[span_136](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.3 Hydraulic Proportional-Plus-Integral (PI) Controller (Winter-2025 Q.3a, Summer-2025 Q.3a - 7 Marks)</div>
+    <div class="q-text">Question: Explain with neat sketch the working of a hydraulic proportional-plus-integral controller. Draw its block diagram and derive its transfer function.</div>
 
-    <div class="step">Step 1: Energy Scale & Point Energies[span_137](start_span)[span_137](end_span)</div>
-    <div class="math-row">$$1\text{ mm}^2 = 600 \times \left[ 3 \times \frac{\pi}{180} \right] = 31.416\text{ Joules}$$[span_138](start_span)[span_138](end_span)</div>
-    <div class="math-row">Point energies: $1 = E$, $2 = E + 52\ (\text{MAX})$, $3 = E - 72$, $4 = E + 20$, $5 = E - 120\ (\text{MIN})$, $6 = E - 35$, $7 = E - 107$, $8 = E$[span_139](start_span)[span_139](end_span)</div>
-    <div class="step">Step 2: Flywheel Mass[span_140](start_span)[span_140](end_span)</div>
-    <div class="math-row">$$\Delta E = E_{\max} - E_{\min} = (E + 52) - (E - 120) = 172\text{ mm}^2$$[span_141](start_span)[span_141](end_span)</div>
-    <div class="math-row">$$= 172 \times 31.416 = 5{,}403.55\text{ J}$$[span_142](start_span)[span_142](end_span)</div>
-    <div class="math-row">$$\Delta E = m \cdot k^2 \cdot \omega^2 \cdot C_s$$[span_143](start_span)[span_143](end_span)</div>
-    <div class="math-row">$$5{,}403.55 = m \times (0.5)^2 \times (62.83)^2 \times 0.03 = 29.607 \cdot m$$[span_144](start_span)[span_144](end_span)</div>
-    <div class="math-row">$$m = \frac{5{,}403.55}{29.607} = 182.5\text{ kg}$$[span_145](start_span)[span_145](end_span)</div>
-    <div class="result-bar">$\Delta E = 5{,}403.55\text{ J} \mid \text{Mass } m = 182.5\text{ kg}$[span_146](start_span)[span_146](end_span)</div>
+    <div class="step">Step 1: System Governing Equations</div>
+    <div class="math-row">The controller consists of a pilot spool valve, main power piston, differential feedback lever, and a dashpot arrangement in the feedback path.</div>
+    <div class="math-row">1. Power cylinder flow equation: $A \rho s Y(s) = K_1 X(s) \implies Y(s) = \frac{K}{s} X(s)$, where $K = \frac{K_1}{A \rho}$.</div>
+    <div class="math-row">2. Feedback linkage with dashpot: $Z(s) = \left[\frac{T s}{1 + T s}\right] Y(s)$</div>
+    <div class="math-row">3. Input lever displacement: $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left[\frac{T s}{1 + T s}\right] Y(s)$</div>
+
+    <div class="step">Step 2: Derivation of Transfer Function</div>
+    <div class="math-row">Substitute $X(s)$ into power cylinder equation:</div>
+    <div class="math-row">$$Y(s) = \frac{K}{s} \left[ \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{T s}{1 + T s}\right) Y(s) \right]$$</div>
+    <div class="math-row">$$Y(s) \left[ 1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{T s}{1 + T s}\right) \right] = \left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right) E(s)$$</div>
+    <div class="math-row">$$\frac{Y(s)}{E(s)} = \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left[\frac{T s}{1 + T s}\right]}$$</div>
+    <div class="math-row">Under normal operating conditions, loop gain $\frac{K}{s}\left(\frac{a}{a+b}\right)\left[\frac{Ts}{1+Ts}\right] \gg 1$:</div>
+    <div class="math-row">$$\frac{Y(s)}{E(s)} \approx \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{\left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left[\frac{T s}{1 + T s}\right]} = \left(\frac{b}{a}\right)\left[\frac{1 + T s}{T s}\right] = \left(\frac{b}{a}\right)\left[1 + \frac{1}{T s}\right]$$</div>
+    <div class="result-bar">$$\frac{Y(s)}{E(s)} = K_p \left(1 + \frac{1}{T_i s}\right) \quad \text{where } K_p = \frac{b}{a}, \ T_i = T$$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.4 Flywheel Sizing: Area Variation 2 (+260, -580, +80...) (Winter-2024 Q.4a - 7 Marks)[span_147](start_span)[span_147](end_span)</div>
-    <div class="q-text">Question: Petrol engine T-θ diagram scale: 1 mm = 500 N&sdot;m vertically, 1 mm = 3° horizontally. Intercepted areas: +260, -580, +80, -380, +870, -250 mm². Rotating mass = 55 kg, k = 2.1 m. Speed = 1600 rpm. Determine coefficient of fluctuation of speed (C_s).[span_148](start_span)[span_148](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>Scale: $1\text{ mm} = 500\text{ N}\cdot\text{m},\ 1\text{ mm} = 3^\circ = 0.05236\text{ rad}$[span_149](start_span)[span_149](end_span)</li>
-        <li>$m = 55\text{ kg},\ k = 2.1\text{ m},\ N = 1600\text{ rpm} \implies \omega = 167.55\text{ rad/s}$[span_150](start_span)[span_150](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.4 Hydraulic Proportional-Plus-Derivative (PD) Controller (Winter-2024 Q.4a - 7 Marks)</div>
+    <div class="q-text">Question: Sketch and explain the working of a hydraulic proportional-plus-derivative controller. Derive its closed loop transfer function.</div>
 
-    <div class="step">Step 1: Energy Scale & Point Energies[span_151](start_span)[span_151](end_span)</div>
-    <div class="math-row">$$1\text{ mm}^2 = 500 \times \left[ 3 \times \frac{\pi}{180} \right] = 26.18\text{ Joules}$$[span_152](start_span)[span_152](end_span)</div>
-    <div class="math-row">Point energies: $1 = E$, $2 = E + 260\ (\text{MAX})$, $3 = E - 320$, $4 = E - 240$, $5 = E - 620\ (\text{MIN})$, $6 = E + 250$, $7 = E$[span_153](start_span)[span_153](end_span)</div>
-    <div class="step">Step 2: Fluctuation of Speed[span_154](start_span)[span_154](end_span)</div>
-    <div class="math-row">$$\Delta E = (E + 260) - (E - 620) = 880\text{ mm}^2$$[span_155](start_span)[span_155](end_span)</div>
-    <div class="math-row">$$= 880 \times 26.18 = 23{,}038.4\text{ Joules}$$[span_156](start_span)[span_156](end_span)</div>
-    <div class="math-row">$$\Delta E = m \cdot k^2 \cdot \omega^2 \cdot C_s$$[span_157](start_span)[span_157](end_span)</div>
-    <div class="math-row">$$23{,}038.4 = 55 \times (2.1)^2 \times (167.55)^2 \times C_s = 6{,}808{,}826 \times C_s$$[span_158](start_span)[span_158](end_span)</div>
-    <div class="math-row">$$C_s = \frac{23{,}038.4}{6{,}808{,}826} = 0.00338 = 0.338\%$$[span_159](start_span)[span_159](end_span)</div>
-    <div class="result-bar">$\Delta E = 23.04\text{ kJ} \mid \text{Speed Fluctuation } C_s = 0.34\%$[span_160](start_span)[span_160](end_span)</div>
+    <div class="step">Step 1: Governing Equations</div>
+    <div class="math-row">1. Pilot valve mass balance: $Y(s) = \frac{K}{s} X(s)$</div>
+    <div class="math-row">2. Feedback displacement for PD configuration: Feedback is coupled through a delayed RC lag element: $Z(s) = \frac{1}{1 + sT} Y(s)$</div>
+    <div class="math-row">3. Spool input relation: $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{1}{1+sT}\right) Y(s)$</div>
+
+    <div class="step">Step 2: Algebraic Reduction</div>
+    <div class="math-row">$$Y(s) = \frac{K}{s}\left[\left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{1}{1+sT}\right) Y(s)\right]$$</div>
+    <div class="math-row">$$Y(s)\left[1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{1}{1+sT}\right)\right] = \left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right) E(s)$$</div>
+    <div class="math-row">Under normal operation where loop gain $\gg 1$:</div>
+    <div class="math-row">$$\frac{Y(s)}{E(s)} \approx \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{\left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{1}{1+sT}\right)} = \left(\frac{b}{a}\right) (1 + sT)$$</div>
+    <div class="result-bar">$$\frac{Y(s)}{E(s)} = K_p (1 + T_d s) \quad \text{where } K_p = \frac{b}{a}, \ T_d = T$$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.5 Punching Press Flywheel (Winter-2025 Q.4b / Summer-2026 Q.4c - 8 Marks)[span_161](start_span)[span_161](end_span)</div>
-    <div class="q-text">Question: Machine punches 38 mm diameter holes in 32 mm thick plate. Requires 7 N&sdot;m of energy per mm² of sheared area. Punches 1 hole every 10 seconds. Stroke = 100 mm. Mean rim speed = 25 m/s. Fluctuation of speed within 3.5% of mean. Find motor power and mass of flywheel.[span_162](start_span)[span_162](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$d = 38\text{ mm},\ t = 32\text{ mm},\ e_s = 7\text{ N}\cdot\text{m/mm}^2,\ T_c = 10\text{ s}$[span_163](start_span)[span_163](end_span)</li>
-        <li>$S = 100\text{ mm},\ v = 25\text{ m/s},\ C_s = 3.5\% = 0.035$[span_164](start_span)[span_164](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.5 Derivative Control Action Effects on System Performance (Winter-2024 Q.3b - 7 Marks)</div>
+    <div class="q-text">Question: Describe the effect of derivative control action on the performance of a control system.</div>
 
-    <div class="step">Step 1: Energy & Power[span_165](start_span)[span_165](end_span)</div>
-    <div class="math-row">$$A_s = \pi \cdot d \cdot t = \pi \times 38 \times 32 = 3{,}820.2\text{ mm}^2$$[span_166](start_span)[span_166](end_span)</div>
-    <div class="math-row">$$E_1 = 3{,}820.2 \times 7 = 26{,}741.4\text{ Joules}$$[span_167](start_span)[span_167](end_span)</div>
-    <div class="math-row">$$P = \frac{E_1}{\text{Cycle Time}} = \frac{26{,}741.4}{10} = 2{,}674.1\text{ W} = 2.67\text{ kW}$$[span_168](start_span)[span_168](end_span)</div>
-    <div class="step">Step 2: Flywheel Mass[span_169](start_span)[span_169](end_span)</div>
-    <div class="math-row">Actual punching time: $t_p = 10\text{ s} \times \frac{32}{2 \times 100} = 1.6\text{ s}$[span_170](start_span)[span_170](end_span)</div>
-    <div class="math-row">$$E_m = 2{,}674.1 \times 1.6 = 4{,}278.6\text{ J}$$[span_171](start_span)[span_171](end_span)</div>
-    <div class="math-row">$$\Delta E = E_1 - E_m = 26{,}741.4 - 4{,}278.6 = 22{,}462.8\text{ Joules}$$[span_172](start_span)[span_172](end_span)</div>
-    <div class="math-row">$$\Delta E = m \cdot v^2 \cdot C_s$$[span_173](start_span)[span_173](end_span)</div>
-    <div class="math-row">$$22{,}462.8 = m \times (25)^2 \times 0.035 = 21.875 \cdot m$$[span_174](start_span)[span_174](end_span)</div>
-    <div class="math-row">$$m = \frac{22{,}462.8}{21.875} = 1{,}026.88\text{ kg} \approx 1{,}027\text{ kg}$$[span_175](start_span)[span_175](end_span)</div>
-    <div class="result-bar">$\text{Power} = 2.67\text{ kW} \mid \text{Flywheel Mass } m = 1{,}027\text{ kg}$[span_176](start_span)[span_176](end_span)</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.6 Dynamically Equivalent 2-Mass System Derivation (Summer-2025 Q.3b - 6 Marks)[span_177](start_span)[span_177](end_span)</div>
-    <div class="q-text">Question: State the conditions under which a body is replaced by a dynamically equivalent system of two masses. Derive the relation l₁ &sdot; l₂ = k².[span_178](start_span)[span_178](end_span)</div>
-    <div class="math-row">Conditions: (1) $m = m_1 + m_2$, (2) $m_1 \cdot l_1 = m_2 \cdot l_2$, (3) $I = m_1 l_1^2 + m_2 l_2^2 = m \cdot k^2$.[span_179](start_span)[span_179](end_span)</div>
-    <div class="math-row">From condition (2): $m_2 = m_1 \frac{l_1}{l_2}$. Substituting into (1):[span_180](start_span)[span_180](end_span)</div>
-    <div class="math-row">$$m_1 = m \left[ \frac{l_2}{l_1 + l_2} \right], \quad m_2 = m \left[ \frac{l_1}{l_1 + l_2} \right]$$[span_181](start_span)[span_181](end_span)</div>
-    <div class="math-row">Substituting into (3):[span_182](start_span)[span_182](end_span)</div>
-    <div class="math-row">$$m \left[ \frac{l_2}{l_1 + l_2} \right] l_1^2 + m \left[ \frac{l_1}{l_1 + l_2} \right] l_2^2 = m \cdot k^2 \implies l_1 \cdot l_2 = k^2$$[span_183](start_span)[span_183](end_span)</div>
-    <div class="result-bar">Derived Condition: $l_1 \cdot l_2 = k^2$[span_184](start_span)[span_184](end_span)</div>
+    <div class="step">Key Performance Effects</div>
+    <div class="math-row">1. <b>Anticipatory Control:</b> The output of a derivative controller is proportional to the rate of change of the error ($\frac{de}{dt}$). It responds to the trend of error before it grows large, providing anticipation.</div>
+    <div class="math-row">2. <b>Increases Damping Ratio ($\zeta$):</b> Introducing derivative control adds an open-loop zero in the left half s-plane, pulling root locus branches to the left and increasing system damping.</div>
+    <div class="math-row">3. <b>Reduces Peak Overshoot ($M_p$):</b> Higher damping directly reduces transient oscillations and peak overshoot.</div>
+    <div class="math-row">4. <b>Improves Settling Time ($t_s$):</b> The transient period decays much faster, shortening settling time.</div>
+    <div class="math-row">5. <b>Noise Sensitivity Limitation:</b> A pure derivative controller has high gain at high frequencies, which severely amplifies high-frequency measurement noise. Hence, derivative action is never used alone.</div>
+    <div class="result-bar">Derivative action enhances relative stability, speeds up transient decay, and suppresses overshoot, but cannot eliminate steady-state error.</div>
   </div>
 </div>
 
@@ -506,146 +468,129 @@
 <!-- UNIT III -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT III: GYROSCOPIC COUPLE & VEHICLE DYNAMICS</div>
+  <div class="unit-title">UNIT III: TRANSIENT RESPONSE ANALYSIS & ERROR CONSTANTS</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Aeroplane Gyroscope (Winter-2025 Q.6b / Summer-2026 Q.5b - 8 Marks)[span_185](start_span)[span_185](end_span)</div>
-    <div class="q-text">Question: Aeroplane flying at 300 km/h turns right on a curve of 50 m radius. Engine mass m = 500 kg, k = 400 mm. Engine runs at 1800 rpm clockwise viewed from tail. Determine gyroscopic couple and state its effect. What happens if it turns left instead of right?[span_186](start_span)[span_186](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$v = 300\text{ km/h} = \frac{300 \times 1000}{3600}\text{ m/s} = 83.33\text{ m/s},\ R = 50\text{ m}$[span_187](start_span)[span_187](end_span)</li>
-        <li>$m = 500\text{ kg},\ k = 400\text{ mm} = 0.40\text{ m},\ N = 1800\text{ rpm} \implies \omega = 188.5\text{ rad/s}$[span_188](start_span)[span_188](end_span)</li>
-      </ul>
+    <div class="q-title">Q.1 Transient Response Specifications with Sketch (Summer-2026 Q.5a, Winter-2024 Q.5a, Summer-2025 Q.5a - 6 Marks)</div>
+    <div class="q-text">Question: Define transient response and steady state response. Describe transient response specifications: Delay time ($T_d$), Rise time ($T_r$), Peak time ($T_p$), Peak overshoot ($M_p$), and Settling time ($T_s$) with a neat sketch for a second-order underdamped system.</div>
+
+    <div class="step">Definitions: Transient & Steady State Response</div>
+    <div class="math-row"><b>Transient Response:</b> The initial part of the time response that changes dynamically from initial state to final state before vanishing ($t \to \infty$).</div>
+    <div class="math-row"><b>Steady State Response:</b> The fixed portion of the output remaining after all transient oscillations have decayed, indicating accuracy. Total response $C(t) = C_t(t) + C_{ss}(t)$.</div>
+
+    <div class="step">Response Curve ASCII Diagram</div>
+    <div class="diagram-box">
+       C(t) ^               Peak Overshoot (Mp)
+            |                   _--_
+       1.0 -| - - - - - - - - -/----\------- +2% Tolerance band
+            |         _--\    /      \------ -2%
+       0.5 -|        /    \  /
+            |       /      \/
+            |      /|
+          0 +-----|-|-------|----------------|-------> Time (t)
+                  Td Tr     Tp               Ts
     </div>
 
-    <div class="step">Step 1: Kinematics & Couple[span_189](start_span)[span_189](end_span)</div>
-    <div class="math-row">$$I = m \cdot k^2 = 500 \times (0.4)^2 = 80\text{ kg}\cdot\text{m}^2$$[span_190](start_span)[span_190](end_span)</div>
-    <div class="math-row">$$\omega_p = \frac{v}{R} = \frac{83.33}{50} = 1.667\text{ rad/s}$$[span_191](start_span)[span_191](end_span)</div>
-    <div class="math-row">$$C = I \cdot \omega \cdot \omega_p = 80 \times 188.5 \times 1.667$$[span_192](start_span)[span_192](end_span)</div>
-    <div class="math-row">$$= 25{,}138.4\text{ N}\cdot\text{m} = 25.14\text{ kN}\cdot\text{m}$$[span_193](start_span)[span_193](end_span)</div>
-    <div class="step">Step 2: Directional Effects[span_194](start_span)[span_194](end_span)</div>
-    <div class="math-row">1. <b>Right Turn:</b> Reactive couple tends to <b>DIP NOSE DOWN and RAISE TAIL UP</b>.[span_195](start_span)[span_195](end_span)</div>
-    <div class="math-row">2. <b>Left Turn:</b> Reactive couple tends to <b>RAISE NOSE UP and DIP TAIL DOWN</b>.[span_196](start_span)[span_196](end_span)</div>
-    <div class="result-bar">$C = 25.14\text{ kN}\cdot\text{m} \mid \text{Right: Nose Dips} \mid \text{Left: Nose Raises}$[span_197](start_span)[span_197](end_span)</div>
+    <div class="step">Specification Formulas</div>
+    <div class="math-row">1. <b>Delay Time ($T_d$):</b> Time required to reach $50\%$ of final value in first attempt: $T_d = \frac{1 + 0.7\zeta}{\omega_n}$</div>
+    <div class="math-row">2. <b>Rise Time ($T_r$):</b> Time required to rise from $0$ to $100\%$ of final value: $T_r = \frac{\pi - \theta}{\omega_d}$, where $\omega_d = \omega_n \sqrt{1 - \zeta^2}$ and $\theta = \tan^{-1}\left(\frac{\sqrt{1-\zeta^2}}{\zeta}\right)$.</div>
+    <div class="math-row">3. <b>Peak Time ($T_p$):</b> Time required to reach first maximum peak: $T_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$.</div>
+    <div class="math-row">4. <b>Maximum Peak Overshoot ($M_p$):</b> Normalized difference between peak output and steady-state: $\%M_p = e^{-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}} \times 100\%$.</div>
+    <div class="math-row">5. <b>Settling Time ($T_s$):</b> Time to enter and remain within specified tolerance band: $T_s = \frac{4}{\zeta \omega_n}$ (for $\pm 2\%$) and $T_s = \frac{3}{\zeta \omega_n}$ (for $\pm 5\%$).</div>
+    <div class="result-bar">All 5 time-domain specifications completely quantify system speed, damping, and stability.</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.2 Naval Ship Gyroscope: 3500 kg Turbine (Winter-2024 Q.5b - 8 Marks)[span_198](start_span)[span_198](end_span)</div>
-    <div class="q-text">Question: Ship turbine rotor mass = 3500 kg, speed = 3000 rpm anticlockwise viewed from stern. k = 0.45 m. Find couple when: (1) Steering left at R = 1000 m, v = 36 km/h. (2) Pitching in SHM with 40 s period, amplitude 6°, bow falling. (3) Rolling at 0.1 rad/s.[span_199](start_span)[span_199](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 3500\text{ kg},\ k = 0.45\text{ m},\ N = 3000\text{ rpm} \implies \omega = 314.16\text{ rad/s}$[span_200](start_span)[span_200](end_span)</li>
-        <li>$v = 36\text{ km/h} = 10\text{ m/s},\ R = 1000\text{ m},\ \tau = 40\text{ s} \implies \omega_1 = 0.1571\text{ rad/s}$[span_201](start_span)[span_201](end_span)</li>
-        <li>$\Phi = 6^\circ = 0.1047\text{ rad}$[span_202](start_span)[span_202](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.2 Standard Second-Order Parameter Calculation (Summer-2025 Q.6b, Winter-2024 Q.6a - 7 Marks)</div>
+    <div class="q-text">Question: A unity feedback system is characterized by open loop transfer function $G(s) = \frac{k}{s(s+10)}$. Determine gain $k$ so that damping ratio is $\zeta = 0.5$. For this value of $k$, determine settling time ($T_s$), peak overshoot ($M_p$), and peak time ($T_p$) for a unit step input.</div>
 
-    <div class="step">Step 1: Rotor Properties & Cases[span_203](start_span)[span_203](end_span)[span_204](start_span)[span_204](end_span)</div>
-    <div class="math-row">$$I = 3500 \times (0.45)^2 = 708.75\text{ kg}\cdot\text{m}^2$$[span_205](start_span)[span_205](end_span)</div>
-    <div class="math-row">1. Steering Left: $\omega_p = \frac{10}{1000} = 0.01\text{ rad/s}$[span_206](start_span)[span_206](end_span)</div>
-    <div class="math-row">$$C_{\text{steer}} = 708.75 \times 314.16 \times 0.01 = 2{,}226.6\text{ N}\cdot\text{m}$$[span_207](start_span)[span_207](end_span)</div>
-    <div class="math-row"><i>Effect:</i> Bow sinks, stern rises.[span_208](start_span)[span_208](end_span)</div>
-    <div class="math-row">2. Pitching: $\omega_{p,\max} = 0.1047 \times 0.1571 = 0.01645\text{ rad/s}$[span_209](start_span)[span_209](end_span)</div>
-    <div class="math-row">$$C_{\text{pitch}} = 708.75 \times 314.16 \times 0.01645 = 3{,}663\text{ N}\cdot\text{m}$$[span_210](start_span)[span_210](end_span)</div>
-    <div class="math-row"><i>Effect:</i> Rotor anticlockwise from stern, bow falling $\implies$ <b>Turns toward STARBOARD (Right)</b>.[span_211](start_span)[span_211](end_span)</div>
-    <div class="math-row">3. Rolling: <b>$C = 0$</b> (Axis of precession coincides with spin axis).[span_212](start_span)[span_212](end_span)</div>
-    <div class="result-bar">$C_{\text{steer}} = 2{,}226.6\text{ N}\cdot\text{m} \mid C_{\text{pitch}} = 3{,}663\text{ N}\cdot\text{m} \mid C_{\text{roll}} = 0$[span_213](start_span)[span_213](end_span)</div>
+    <div class="step">Step 1: Closed-Loop Characteristic Equation</div>
+    <div class="math-row">$$T(s) = \frac{G(s)}{1 + G(s)} = \frac{\frac{k}{s(s+10)}}{1 + \frac{k}{s(s+10)}} = \frac{k}{s^2 + 10s + k}$$</div>
+    <div class="math-row">Standard second-order equation: $s^2 + 2\zeta\omega_n s + \omega_n^2 = 0$</div>
+    <div class="math-row">Comparing coefficients: $\omega_n^2 = k \implies \omega_n = \sqrt{k}$, and $2\zeta\omega_n = 10$.</div>
+
+    <div class="step">Step 2: Calculate Gain $k$ for $\zeta = 0.5$</div>
+    <div class="math-row">$$2(0.5)\omega_n = 10 \implies \omega_n = 10\text{ rad/s}$$</div>
+    <div class="math-row">$$k = \omega_n^2 = (10)^2 = 100$$</div>
+
+    <div class="step">Step 3: Calculate Transient Specifications</div>
+    <div class="math-row">$$\omega_d = \omega_n \sqrt{1 - \zeta^2} = 10 \sqrt{1 - (0.5)^2} = 10 \times 0.8660 = 8.66\text{ rad/s}$$</div>
+    <div class="math-row">1. Peak Time: $T_p = \frac{\pi}{\omega_d} = \frac{\pi}{8.66} = 0.3627\text{ s}$</div>
+    <div class="math-row">2. Settling Time ($\pm 2\%$): $T_s = \frac{4}{\zeta \omega_n} = \frac{4}{0.5 \times 10} = 0.8\text{ s}$</div>
+    <div class="math-row">3. Settling Time ($\pm 5\%$): $T_s = \frac{3}{\zeta \omega_n} = \frac{3}{0.5 \times 10} = 0.6\text{ s}$</div>
+    <div class="math-row">4. Peak Overshoot: $\%M_p = e^{-\frac{\pi \times 0.5}{\sqrt{1 - 0.5^2}}} \times 100\% = e^{-1.8138} \times 100\% = 16.30\%$</div>
+    <div class="result-bar">$k = 100 \mid \omega_n = 10\text{ rad/s} \mid T_p = 0.363\text{ s} \mid T_s(2\%) = 0.8\text{ s} \mid \%M_p = 16.3\%$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.3 Naval Ship Gyroscope: 3000 kg Turbine (Winter-2025 Q.5a - 8 Marks)[span_214](start_span)[span_214](end_span)</div>
-    <div class="q-text">Question: Ship turbine rotor mass = 3 tonnes (3000 kg), 2000 rpm clockwise viewed from aft (rear). k = 330 mm. Determine couple when: (1) Steering right at R = 275 m, speed = 30 km/h. (2) Pitching with bow rising at 0.8 rad/s. (3) Rolling at 0.1 rad/s.[span_215](start_span)[span_215](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 3000\text{ kg},\ k = 0.33\text{ m},\ N = 2000\text{ rpm} \implies \omega = 209.44\text{ rad/s}$[span_216](start_span)[span_216](end_span)</li>
-        <li>$v = 30\text{ km/h} = 8.333\text{ m/s},\ R = 275\text{ m},\ \text{Pitching } \omega_p = 0.8\text{ rad/s}$[span_217](start_span)[span_217](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.3 Step Response to Transfer Function (Summer-2026 Q.6a - 7 Marks)</div>
+    <div class="q-text">Question: The response of a control system to a unit step input is $c(t) = 1 + e^{-40t} - 2e^{-20t}$. Determine: (1) Closed loop transfer function, (2) Natural frequency ($\omega_n$), (3) Damping ratio ($\zeta$), (4) Settling time ($T_s$).</div>
 
-    <div class="step">Step 1: Calculations & Effects[span_218](start_span)[span_218](end_span)</div>
-    <div class="math-row">$$I = 3000 \times (0.33)^2 = 326.7\text{ kg}\cdot\text{m}^2$$[span_219](start_span)[span_219](end_span)</div>
-    <div class="math-row">1. Steering Right: $\omega_p = \frac{8.333}{275} = 0.0303\text{ rad/s}$[span_220](start_span)[span_220](end_span)</div>
-    <div class="math-row">$$C_{\text{steer}} = 326.7 \times 209.44 \times 0.0303 = 2{,}073.3\text{ N}\cdot\text{m}$$[span_221](start_span)[span_221](end_span)</div>
-    <div class="math-row"><i>Effect:</i> Clockwise rotor viewed from stern, steering right $\implies$ <b>BOW DIPS / SINKS and STERN RISES</b>.[span_222](start_span)[span_222](end_span)</div>
-    <div class="math-row">2. Pitching: $C_{\text{pitch}} = 326.7 \times 209.44 \times 0.8 = 54{,}739\text{ N}\cdot\text{m} = 54.74\text{ kN}\cdot\text{m}$[span_223](start_span)[span_223](end_span)</div>
-    <div class="math-row"><i>Effect:</i> Turns toward starboard (right).[span_224](start_span)[span_224](end_span)</div>
-    <div class="math-row">3. Rolling: <b>$C = 0$</b>.[span_225](start_span)[span_225](end_span)</div>
-    <div class="result-bar">$C_{\text{steer}} = 2{,}073.3\text{ N}\cdot\text{m} \mid C_{\text{pitch}} = 54.74\text{ kN}\cdot\text{m} \mid C_{\text{roll}} = 0$[span_226](start_span)[span_226](end_span)</div>
+    <div class="step">Step 1: Obtain $C(s)$ via Laplace Transform</div>
+    <div class="math-row">$$\mathcal{L}\{c(t)\} = C(s) = \frac{1}{s} + \frac{1}{s+40} - \frac{2}{s+20}$$</div>
+    <div class="math-row">$$C(s) = \frac{(s+40)(s+20) + s(s+20) - 2s(s+40)}{s(s+40)(s+20)}$$</div>
+    <div class="math-row">$$C(s) = \frac{(s^2 + 60s + 800) + (s^2 + 20s) - (2s^2 + 80s)}{s(s+40)(s+20)} = \frac{800}{s(s^2 + 60s + 800)}$$</div>
+
+    <div class="step">Step 2: Closed-Loop Transfer Function $\frac{C(s)}{R(s)}$</div>
+    <div class="math-row">Since $R(s) = \frac{1}{s}$ for unit step input:</div>
+    <div class="math-row">$$\frac{C(s)}{R(s)} = \frac{s \cdot C(s)}{1} = \frac{800}{s^2 + 60s + 800}$$</div>
+
+    <div class="step">Step 3: Extract Parameters ($\omega_n, \zeta, T_s$)</div>
+    <div class="math-row">Comparing with $s^2 + 2\zeta\omega_n s + \omega_n^2$:</div>
+    <div class="math-row">$$\omega_n^2 = 800 \implies \omega_n = \sqrt{800} = 28.28\text{ rad/s}$$</div>
+    <div class="math-row">$$2\zeta\omega_n = 60 \implies \zeta = \frac{60}{2 \times 28.28} = 1.0607 \quad (\text{Overdamped})$$</div>
+    <div class="math-row">$$T_s = \frac{4}{\zeta \omega_n} = \frac{4}{1.0607 \times 28.28} = \frac{4}{30} \approx 0.133\text{ s}$$</div>
+    <div class="result-bar">$\frac{C(s)}{R(s)} = \frac{800}{s^2 + 60s + 800} \mid \omega_n = 28.28\text{ rad/s} \mid \zeta = 1.061 \mid T_s = 0.133\text{ s}$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.4 Disc on Horizontal Axle Gyroscope (Winter-2024 Q.5a - 7 Marks)[span_227](start_span)[span_227](end_span)</div>
-    <div class="q-text">Question: Uniform disc of 150 mm diameter, mass 5 kg, mounted on an axle supported in bearings 100 mm apart. Spins at 1000 rpm anticlockwise viewed from bearing B. Precesses about vertical axis at 60 rpm anticlockwise viewed from top. Find resultant reaction at each bearing due to mass and gyroscopic effect.[span_228](start_span)[span_228](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$d = 150\text{ mm} \implies r = 0.075\text{ m},\ m = 5\text{ kg},\ L = 100\text{ mm} = 0.10\text{ m}$[span_229](start_span)[span_229](end_span)</li>
-        <li>$N = 1000\text{ rpm} \implies \omega = 104.72\text{ rad/s},\ N_p = 60\text{ rpm} \implies \omega_p = 6.283\text{ rad/s}$[span_230](start_span)[span_230](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.4 Error Constants & Steady-State Error: Cubic Denominator (Winter-2024 Q.5b - 7 Marks)</div>
+    <div class="q-text">Question: For a unity feedback system having $G(s) = \frac{k(s+2)}{s(s^3 + 7s^2 + 12s)}$, find: (1) Type of system, (2) Static error coefficients, (3) Steady-state error when input is $r(t) = \frac{R t^2}{2}$.</div>
 
-    <div class="step">Step 1: Inertia & Speeds[span_231](start_span)[span_231](end_span)</div>
-    <div class="math-row">$$I = \frac{1}{2} m r^2 = 0.5 \times 5 \times (0.075)^2 = 0.01406\text{ kg}\cdot\text{m}^2$$[span_232](start_span)[span_232](end_span)</div>
-    <div class="math-row">$$C = I \cdot \omega \cdot \omega_p = 0.01406 \times 104.72 \times 6.283 = 9.25\text{ N}\cdot\text{m}$$[span_233](start_span)[span_233](end_span)</div>
-    <div class="math-row">$$R_g = \frac{C}{L} = \frac{9.25}{0.10} = 92.5\text{ N}, \quad R_s = \frac{m g}{2} = \frac{5 \times 9.81}{2} = 24.5\text{ N}$$[span_234](start_span)[span_234](end_span)</div>
-    <div class="math-row">Bearing A: $R_A \approx 117.0\text{ N}\ (\text{Upward})$; Bearing B: $R_B \approx 68.0\text{ N}\ (\text{Downward})$[span_235](start_span)[span_235](end_span)</div>
-    <div class="result-bar">$C = 9.25\text{ N}\cdot\text{m} \mid R_A = 117.0\text{ N} \mid R_B = 68.0\text{ N}$[span_236](start_span)[span_236](end_span)</div>
+    <div class="step">Step 1: Simplify $G(s)$ and Identify System Type</div>
+    <div class="math-row">$$G(s) = \frac{k(s+2)}{s \cdot s(s^2 + 7s + 12)} = \frac{k(s+2)}{s^2 (s+3)(s+4)}$$</div>
+    <div class="math-row">The power of free integrator $s$ in the denominator is $2$. Hence, the system is <b>Type-2</b>.</div>
+
+    <div class="step">Step 2: Calculate Static Error Coefficients</div>
+    <div class="math-row">1. Position error constant: $K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \frac{k(s+2)}{s^2(s+3)(s+4)} = \frac{2k}{0} = \infty$</div>
+    <div class="math-row">2. Velocity error constant: $K_v = \lim_{s \to 0} s G(s) = \lim_{s \to 0} \frac{k(s+2)}{s(s+3)(s+4)} = \frac{2k}{0} = \infty$</div>
+    <div class="math-row">3. Acceleration error constant: $K_a = \lim_{s \to 0} s^2 G(s) = \lim_{s \to 0} \frac{k(s+2)}{(s+3)(s+4)} = \frac{2k}{12} = \frac{k}{6}$</div>
+
+    <div class="step">Step 3: Calculate Steady-State Error for $r(t) = \frac{R t^2}{2}$</div>
+    <div class="math-row">Parabolic input $R(s) = \frac{R}{s^3}$:</div>
+    <div class="math-row">$$e_{ss} = \frac{R}{K_a} = \frac{R}{k/6} = \frac{6R}{k}$$</div>
+    <div class="result-bar">Type = 2 $\mid K_p = \infty \mid K_v = \infty \mid K_a = \frac{k}{6} \mid e_{ss} = \frac{6R}{k}$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.5 Vehicle Dynamics: 1500 kg Passenger Car (Summer-2025 Q.5b - 8 Marks)[span_237](start_span)[span_237](end_span)</div>
-    <div class="q-text">Question: Vehicle mass = 1500 kg, frontal area = 2.25 m². Rolling resistance R_r = 0.0112 mg + 0.00006 mgV. Air resistance coeff = 0.02688. Top gear ratio = 5:1, wheel radius = 0.355 m, efficiency = 90%. Find power for 120 km/h on level road, and engine torque climbing 35% gradient at 15 km/h (first gear ratio = 28:1, efficiency = 80%).[span_238](start_span)[span_238](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 1500\text{ kg} \implies W = 14{,}715\text{ N},\ A = 2.25\text{ m}^2,\ r_w = 0.355\text{ m}$[span_239](start_span)[span_239](end_span)</li>
-        <li>$V = 120\text{ km/h} = 33.33\text{ m/s},\ V_g = 15\text{ km/h} = 4.167\text{ m/s},\ G_s = 35\% = \sin \theta$[span_240](start_span)[span_240](end_span)</li>
-        <li>$G_1 = 28:1,\ \eta_1 = 0.80,\ \eta_{\text{top}} = 0.90$[span_241](start_span)[span_241](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.5 Error Constants: Quadratic Factors (Summer-2025 Q.5b - 7 Marks)</div>
+    <div class="q-text">Question: Find error coefficients for unity feedback system having $G(s) = \frac{4(s^2 + 10s + 100)}{s(s+3)(s^2 + 2s + 10)}$.</div>
 
-    <div class="step">Step 1: Level Road at 120 km/h[span_242](start_span)[span_242](end_span)</div>
-    <div class="math-row">$$R_r = 0.0112(14{,}715) + 0.00006(14{,}715)(120) = 270.8\text{ N}$$[span_243](start_span)[span_243](end_span)</div>
-    <div class="math-row">$$R_a = 0.02688 \times 2.25 \times (120)^2 = 870.9\text{ N}$$[span_244](start_span)[span_244](end_span)</div>
-    <div class="math-row">$$F_t = 270.8 + 870.9 = 1{,}141.7\text{ N}$$[span_245](start_span)[span_245](end_span)</div>
-    <div class="math-row">$$P = \frac{F_t \cdot v}{\eta} = \frac{1{,}141.7 \times 33.33}{0.90} = 42{,}280\text{ W} = 42.28\text{ kW}$$[span_246](start_span)[span_246](end_span)</div>
-    <div class="step">Step 2: Gradient 35% at 15 km/h[span_247](start_span)[span_247](end_span)</div>
-    <div class="math-row">$$R_g = W \cdot \sin \theta = 14{,}715 \times 0.35 = 5{,}150.3\text{ N}$$[span_248](start_span)[span_248](end_span)</div>
-    <div class="math-row">$$F_t \approx 200 + 5{,}150.3 = 5{,}350.3\text{ N}$$[span_249](start_span)[span_249](end_span)</div>
-    <div class="math-row">$$T_e = \frac{F_t \times r_w}{G \cdot \eta} = \frac{5{,}350.3 \times 0.355}{28 \times 0.80} = 84.79\text{ N}\cdot\text{m}$$[span_250](start_span)[span_250](end_span)[span_251](start_span)[span_251](end_span)</div>
-    <div class="result-bar">$\text{Power at } 120\text{ km/h} = 42.28\text{ kW} \mid \text{Engine Torque} = 84.79\text{ N}\cdot\text{m}$[span_252](start_span)[span_252](end_span)</div>
+    <div class="step">Step 1: Identify System Type & Compute Limits</div>
+    <div class="math-row">Denominator has one pole at origin ($s^1$). Hence, system is <b>Type-1</b>.</div>
+    <div class="math-row">1. Position constant: $K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \frac{4(s^2 + 10s + 100)}{s(s+3)(s^2 + 2s + 10)} = \frac{4(100)}{0 \cdot 3 \cdot 10} = \infty$</div>
+    <div class="math-row">2. Velocity constant: $K_v = \lim_{s \to 0} s G(s) = \lim_{s \to 0} \frac{4(s^2 + 10s + 100)}{(s+3)(s^2 + 2s + 10)} = \frac{4(100)}{(3)(10)} = \frac{400}{30} = \frac{40}{3} \approx 13.33$</div>
+    <div class="math-row">3. Acceleration constant: $K_a = \lim_{s \to 0} s^2 G(s) = \lim_{s \to 0} s \times \frac{40}{3} = 0$</div>
+    <div class="result-bar">Type = 1 $\mid K_p = \infty \mid K_v = \frac{40}{3} = 13.33 \mid K_a = 0$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.6 Vehicle Dynamics: 6350 kg Truck (Winter-2025 Q.6b / Summer-2026 Q.6a - 8 Marks)[span_253](start_span)[span_253](end_span)</div>
-    <div class="q-text">Question: Truck weighing 6350 kg has Kr = 0.018, Ka = 0.00281 in R = Kr W + Ka A V². Frontal area A = 10 m². Top gear ratio 6.2:1 (efficiency 92%). Minimum speed in top gear = 42 km/h. Effective wheel diameter = 0.820 m. Calculate: (1) Engine HP required, (2) Engine speed in top gear.[span_254](start_span)[span_254](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 6350\text{ kg} \implies W = 62{,}293.5\text{ N},\ A = 10\text{ m}^2,\ D_w = 0.820\text{ m}$[span_255](start_span)[span_255](end_span)</li>
-        <li>$V = 42\text{ km/h} = 11.67\text{ m/s},\ G = 6.2:1,\ \eta = 0.92$[span_256](start_span)[span_256](end_span)</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.6 Error Constants & Multi-Term Input (Winter-2025 Q.5b - 7 Marks)</div>
+    <div class="q-text">Question: For unity feedback system $G(s) = \frac{10(s+1)}{s^2(s+2)(s+10)}$, identify type of system, error coefficients, and steady-state error when input is $r(t) = 1 + 4t + \frac{t^2}{2}$.</div>
 
-    <div class="step">Step 1: Total Resistance & Engine Power[span_257](start_span)[span_257](end_span)</div>
-    <div class="math-row">$$R_r = 0.018 \times 62{,}293.5 = 1{,}121.3\text{ N}$$[span_258](start_span)[span_258](end_span)</div>
-    <div class="math-row">$$R_a = 0.00281 \times 10 \times (42)^2 = 49.57\text{ N}$$[span_259](start_span)[span_259](end_span)</div>
-    <div class="math-row">$$R_{\text{total}} = 1{,}121.3 + 49.57 = 1{,}170.87\text{ N}$$[span_260](start_span)[span_260](end_span)</div>
-    <div class="math-row">$$P = \frac{1{,}170.87 \times 11.67}{0.92} = 14{,}852\text{ W} = 14.85\text{ kW}$$[span_261](start_span)[span_261](end_span)</div>
-    <div class="math-row">$$\text{HP} = \frac{14.85}{0.746} = 19.91\text{ HP}$$[span_262](start_span)[span_262](end_span)</div>
-    <div class="step">Step 2: Engine Speed[span_263](start_span)[span_263](end_span)</div>
-    <div class="math-row">$$N_w = \frac{11.67 \times 60}{\pi \times 0.820} = 271.8\text{ rpm}$$[span_264](start_span)[span_264](end_span)</div>
-    <div class="math-row">$$N_e = 271.8 \times 6.2 = 1{,}685\text{ rpm}$$[span_265](start_span)[span_265](end_span)</div>
-    <div class="result-bar">$\text{Engine HP} = 19.91\text{ HP} \mid \text{Engine Speed} = 1{,}685\text{ rpm}$[span_266](start_span)[span_266](end_span)</div>
+    <div class="step">Step 1: System Type & Error Coefficients</div>
+    <div class="math-row">Denominator has $s^2 \implies$ <b>Type-2 system</b>.</div>
+    <div class="math-row">1. $K_p = \lim_{s \to 0} G(s) = \infty$</div>
+    <div class="math-row">2. $K_v = \lim_{s \to 0} s G(s) = \infty$</div>
+    <div class="math-row">3. $K_a = \lim_{s \to 0} s^2 G(s) = \frac{10(0+1)}{(0+2)(0+10)} = \frac{10}{20} = 0.5$</div>
+
+    <div class="step">Step 2: Total Steady-State Error by Superposition</div>
+    <div class="math-row">Input $r(t) = r_1(t) + r_2(t) + r_3(t) = 1 + 4t + 0.5 t^2$:</div>
+    <div class="math-row">1. For step component ($A_1 = 1$): $e_{ss1} = \frac{1}{1 + K_p} = \frac{1}{\infty} = 0$</div>
+    <div class="math-row">2. For ramp component ($A_2 = 4$): $e_{ss2} = \frac{4}{K_v} = \frac{4}{\infty} = 0$</div>
+    <div class="math-row">3. For parabolic component ($A_3 = 1$, since $\frac{t^2}{2}$ has unit acceleration): $e_{ss3} = \frac{1}{K_a} = \frac{1}{0.5} = 2.0$</div>
+    <div class="math-row">$$e_{ss} = e_{ss1} + e_{ss2} + e_{ss3} = 0 + 0 + 2.0 = 2.0$$</div>
+    <div class="result-bar">Type = 2 $\mid K_p = \infty \mid K_v = \infty \mid K_a = 0.5 \mid \text{Total } e_{ss} = 2.0$</div>
   </div>
 </div>
 
@@ -653,117 +598,125 @@
 <!-- UNIT IV -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT IV: LONGITUDINAL & TORSIONAL VIBRATIONS</div>
+  <div class="unit-title">UNIT IV: STABILITY & ROOT LOCUS TECHNIQUE</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Damped Vibration: 5 kg Mass (Summer-2026 Q.8a / Winter-2025 Q.8a - 7 Marks)[span_267](start_span)[span_267](end_span)</div>
-    <div class="q-text">Question: Mass m = 5 kg, spring stiffness k = 5 kN/m (5000 N/m). A damper is attached. Amplitude reduces to 1/15th of its initial value in 4 complete cycles. Determine damping coefficient c.[span_268](start_span)[span_268](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 5\text{ kg},\ k = 5000\text{ N/m},\ n = 4,\ x_0/x_4 = 15$</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.1 Routh's Criterion: Stable 4th Order Polynomial (Summer-2026 Q.7a - 7 Marks)</div>
+    <div class="q-text">Question: Comment on the stability of the system using Routh's stability criteria: $s^4 + 8s^3 + 18s^2 + 16s + 5 = 0$.</div>
 
-    <div class="step">Step 1: Damping Factor & Coefficient[span_269](start_span)[span_269](end_span)</div>
-    <div class="math-row">$$\delta = \frac{1}{4} \ln(15) = 0.25 \times 2.708 = 0.677$$[span_270](start_span)[span_270](end_span)</div>
-    <div class="math-row">$$\xi = \sqrt{\frac{(0.677)^2}{4\pi^2 + (0.677)^2}} = 0.107$$[span_271](start_span)[span_271](end_span)</div>
-    <div class="math-row">$$\omega_n = \sqrt{\frac{5000}{5}} = 31.62\text{ rad/s}$$[span_272](start_span)[span_272](end_span)</div>
-    <div class="math-row">$$c_c = 2 \times 5 \times 31.62 = 316.23\text{ N}\cdot\text{s/m}$$[span_273](start_span)[span_273](end_span)</div>
-    <div class="math-row">$$c = \xi \cdot c_c = 0.107 \times 316.23 = 33.84\text{ N}\cdot\text{s/m}$$[span_274](start_span)[span_274](end_span)</div>
-    <div class="result-bar">$\delta = 0.677 \mid \xi = 0.107 \mid c = 33.84\text{ N}\cdot\text{s/m}$[span_275](start_span)[span_275](end_span)</div>
+    <div class="step">Step 1: Construct Routh Array</div>
+    <table>
+      <tr><th>Power</th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Array Arithmetic</th></tr>
+      <tr><td>$s^4$</td><td>$1$</td><td>$18$</td><td>$5$</td><td>Given coefficients</td></tr>
+      <tr><td>$s^3$</td><td>$8$</td><td>$16$</td><td>$0$</td><td>Given coefficients</td></tr>
+      <tr><td>$s^2$</td><td>$16$</td><td>$5$</td><td>$0$</td><td>$b_1 = \frac{8(18) - 1(16)}{8} = 16, \ b_2 = \frac{8(5) - 0}{8} = 5$</td></tr>
+      <tr><td>$s^1$</td><td>$13.5$</td><td>$0$</td><td>$0$</td><td>$c_1 = \frac{16(16) - 8(5)}{16} = \frac{216}{16} = 13.5$</td></tr>
+      <tr><td>$s^0$</td><td>$5$</td><td>$0$</td><td>$0$</td><td>$d_1 = \frac{13.5(5) - 0}{13.5} = 5$</td></tr>
+    </table>
+
+    <div class="step">Step 2: Stability Assessment</div>
+    <div class="math-row">First column elements: $+1, +8, +16, +13.5, +5$. All elements are strictly positive; there are <b>zero sign changes</b>.</div>
+    <div class="result-bar">System is STABLE. All 4 roots lie entirely in the Left Half of the s-plane (LHP).</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.2 Damped Vibration: 7.5 kg Mass (Summer-2025 Q.7b - 7 Marks)[span_276](start_span)[span_276](end_span)</div>
-    <div class="q-text">Question: Mass m = 7.5 kg makes 24 free oscillations in 14 seconds. Amplitude reduces to 0.25 of initial value after 5 oscillations. Find: (1) Stiffness of spring, (2) Logarithmic decrement, (3) Damping factor.[span_277](start_span)[span_277](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 7.5\text{ kg},\ \tau_d = \frac{14}{24} = 0.5833\text{ s},\ n = 5,\ x_0/x_5 = 4$</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.2 Routh's Criterion: Unstable 4th Order Polynomial (Winter-2024 Q.7a - 5 Marks)</div>
+    <div class="q-text">Question: For the given characteristic equation, comment on the stability using Routh's criteria: $3s^4 + 10s^3 + 5s^2 + 5s + 2 = 0$.</div>
 
-    <div class="step">Step 1: Frequency, Log Dec & Stiffness[span_278](start_span)[span_278](end_span)</div>
-    <div class="math-row">$$\omega_d = \frac{2\pi}{0.5833} = 10.77\text{ rad/s}, \quad \delta = \frac{1}{5} \ln(4) = 0.277$$[span_279](start_span)[span_279](end_span)</div>
-    <div class="math-row">$$\xi = \frac{0.277}{\sqrt{4\pi^2 + 0.277^2}} = 0.0441$$[span_280](start_span)[span_280](end_span)</div>
-    <div class="math-row">$$\omega_n = \frac{10.77}{\sqrt{1 - 0.0441^2}} = 10.78\text{ rad/s}$$[span_281](start_span)[span_281](end_span)</div>
-    <div class="math-row">$$k = m \cdot \omega_n^2 = 7.5 \times (10.78)^2 = 871.5\text{ N/m}$$[span_282](start_span)[span_282](end_span)</div>
-    <div class="result-bar">$k = 871.5\text{ N/m} \mid \delta = 0.277 \mid \xi = 0.0441$[span_283](start_span)[span_283](end_span)</div>
+    <div class="step">Step 1: Construct Routh Array</div>
+    <table>
+      <tr><th>Power</th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Array Arithmetic</th></tr>
+      <tr><td>$s^4$</td><td>$3$</td><td>$5$</td><td>$2$</td><td>Given coefficients</td></tr>
+      <tr><td>$s^3$</td><td>$10$</td><td>$5$</td><td>$0$</td><td>Given coefficients</td></tr>
+      <tr><td>$s^2$</td><td>$3.5$</td><td>$2$</td><td>$0$</td><td>$b_1 = \frac{10(5) - 3(5)}{10} = 3.5, \ b_2 = \frac{10(2) - 0}{10} = 2$</td></tr>
+      <tr><td>$s^1$</td><td>$-0.714$</td><td>$0$</td><td>$0$</td><td>$c_1 = \frac{3.5(5) - 10(2)}{3.5} = \frac{-2.5}{3.5} = -0.714$</td></tr>
+      <tr><td>$s^0$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$d_1 = \frac{-0.714(2) - 0}{-0.714} = 2$</td></tr>
+    </table>
+
+    <div class="step">Step 2: Sign Changes & Conclusion</div>
+    <div class="math-row">First column elements: $+3, +10, +3.5, -0.714, +2$.</div>
+    <div class="math-row">There are <b>two sign changes</b> ($+3.5 \to -0.714$, and $-0.714 \to +2$).</div>
+    <div class="result-bar">System is UNSTABLE. Exactly 2 roots lie in the Right Half of the s-plane (RHP).</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.3 Damped Vibration: 8 kg Mass (Winter-2024 Q.8b - 7 Marks)[span_284](start_span)[span_284](end_span)</div>
-    <div class="q-text">Question: Single degree damped system: mass 8 kg makes 30 oscillations in 18 seconds. Amplitude decreases to 0.25 of initial value after 5 oscillations. Determine: (1) Stiffness, (2) Logarithmic decrement, (3) Damping coefficient, (4) Damping factor.[span_285](start_span)[span_285](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$m = 8\text{ kg},\ \tau_d = \frac{18}{30} = 0.60\text{ s},\ n = 5,\ x_0/x_5 = 4$</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.3 Routh's Criterion: 5th Order Polynomial with Epsilon Method (Summer-2025 Q.7a - 6 Marks)</div>
+    <div class="q-text">Question: Determine the stability of the system having characteristic equation $s^5 + s^4 + 2s^3 + 2s^2 + 3s + 5 = 0$.</div>
 
-    <div class="step">Step 1: Parameters Calculation[span_286](start_span)[span_286](end_span)</div>
-    <div class="math-row">$$\omega_d = \frac{2\pi}{0.60} = 10.47\text{ rad/s}, \quad \delta = \frac{1}{5} \ln(4) = 0.277 \implies \xi = 0.0441$$[span_287](start_span)[span_287](end_span)</div>
-    <div class="math-row">$$\omega_n \approx 10.48\text{ rad/s} \implies k = 8 \times (10.48)^2 = 878.6\text{ N/m}$$[span_288](start_span)[span_288](end_span)</div>
-    <div class="math-row">$$c_c = 2 \times 8 \times 10.48 = 167.7\text{ N}\cdot\text{s/m}$$[span_289](start_span)[span_289](end_span)</div>
-    <div class="math-row">$$c = 0.0441 \times 167.7 = 7.40\text{ N}\cdot\text{s/m}$$[span_290](start_span)[span_290](end_span)</div>
-    <div class="result-bar">$k = 878.6\text{ N/m} \mid \delta = 0.277 \mid c = 7.40\text{ N}\cdot\text{s/m} \mid \xi = 0.0441$[span_291](start_span)[span_291](end_span)</div>
+    <div class="step">Step 1: Initial Routh Array Formation</div>
+    <div class="math-row">Row $s^5$: $1, 2, 3$</div>
+    <div class="math-row">Row $s^4$: $1, 2, 5$</div>
+    <div class="math-row">Row $s^3$: $\frac{1(2) - 1(2)}{1} = 0, \quad \frac{1(3) - 1(5)}{1} = -2$</div>
+    <div class="math-row">First element in row $s^3$ is zero. Replace $0$ with a small positive number $\epsilon > 0$.</div>
+
+    <div class="step">Step 2: Complete Array with Limit Evaluation as $\epsilon \to 0$</div>
+    <div class="math-row">Row $s^3$: $\epsilon, -2, 0$</div>
+    <div class="math-row">Row $s^2$: $b_1 = \frac{\epsilon(2) - 1(-2)}{\epsilon} = \frac{2\epsilon + 2}{\epsilon} \implies \lim_{\epsilon \to 0^+} \frac{2\epsilon + 2}{\epsilon} = +\infty$</div>
+    <div class="math-row">Row $s^2$: $b_2 = \frac{\epsilon(5) - 0}{\epsilon} = 5$</div>
+    <div class="math-row">Row $s^1$: $c_1 = \frac{\left(\frac{2\epsilon+2}{\epsilon}\right)(-2) - 5\epsilon}{\left(\frac{2\epsilon+2}{\epsilon}\right)} \approx -2$</div>
+    <div class="math-row">Row $s^0$: $d_1 = 5$</div>
+    <div class="math-row">First column sequence: $+1, +1, +\epsilon, +\infty, -2, +5$. Sign changes: $+\infty \to -2$, and $-2 \to +5$ ($2$ sign changes).</div>
+    <div class="result-bar">System is UNSTABLE with 2 poles in the Right Half of the s-plane.</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.4 Damped Frequency Shift: 1 Hz to 0.9 Hz (Winter-2024 Q.7b - 7 Marks)[span_292](start_span)[span_292](end_span)</div>
-    <div class="q-text">Question: An instrument vibrates at 1 Hz when there is no damping. When damping is provided, the frequency drops to 0.9 Hz. Find: (1) Damping factor, (2) Logarithmic decrement.[span_293](start_span)[span_293](end_span)</div>
-    <div class="step">Step 1: Calculations[span_294](start_span)[span_294](end_span)</div>
-    <div class="math-row">$$f_d = f_n \sqrt{1 - \xi^2} \implies \frac{0.9}{1.0} = \sqrt{1 - \xi^2} \implies 1 - \xi^2 = 0.81 \implies \xi = 0.4359$$[span_295](start_span)[span_295](end_span)</div>
-    <div class="math-row">$$\delta = \frac{2\pi \xi}{\sqrt{1 - \xi^2}} = \frac{2 \times \pi \times 0.4359}{0.90} = 3.043$$[span_296](start_span)[span_296](end_span)</div>
-    <div class="result-bar">$\text{Damping Factor } \xi = 0.436 \mid \text{Logarithmic Decrement } \delta = 3.043$[span_297](start_span)[span_297](end_span)</div>
+    <div class="q-title">Q.4 Root Locus: 3 Real Poles (Summer-2026 Q.7b, Winter-2024 Q.7b - 8 Marks)</div>
+    <div class="q-text">Question: A unity feedback system has open loop transfer function $G(s) = \frac{K}{s(s+1)(s+2)}$. Draw the root locus and determine the marginal value of $K$ for stability.</div>
+
+    <div class="step">Step-by-Step Root Locus Construction</div>
+    <div class="math-row">1. <b>Poles and Zeros:</b> Zeros $Z = 0$; Poles $P = 3$ at $s = 0, -1, -2$. Branches $N = 3$.</div>
+    <div class="math-row">2. <b>Asymptotes:</b> Number of asymptotes $P - Z = 3 - 0 = 3$.</div>
+    <div class="math-row">3. <b>Centroid ($\sigma_c$):</b> $\sigma_c = \frac{\sum \text{Re}(P) - \sum \text{Re}(Z)}{P - Z} = \frac{(0 - 1 - 2) - 0}{3} = -1.0$.</div>
+    <div class="math-row">4. <b>Asymptote Angles ($\theta_A$):</b> $\theta = \frac{(2q+1)180^\circ}{3} = 60^\circ, 180^\circ, 300^\circ$.</div>
+    <div class="math-row">5. <b>Breakaway Point:</b> Characteristic equation: $1 + G(s) = 0 \implies s^3 + 3s^2 + 2s + K = 0 \implies K = -s^3 - 3s^2 - 2s$.</div>
+    <div class="math-row">$$\frac{dK}{ds} = -(3s^2 + 6s + 2) = 0 \implies s = \frac{-6 \pm \sqrt{36 - 24}}{6} = -0.4226, \ -1.577$$</div>
+    <div class="math-row">Since root locus lies on real axis between $0$ and $-1$, valid breakaway point is <b>$s = -0.423$</b>.</div>
+    <div class="math-row">6. <b>Marginal Gain $K_{\text{mar}}$ via Routh Array:</b></div>
+    <div class="math-row">Row $s^3$: $1, 2$; Row $s^2$: $3, K$; Row $s^1$: $\frac{6 - K}{3}$; Row $s^0$: $K$.</div>
+    <div class="math-row">For marginal stability: $\frac{6 - K}{3} = 0 \implies \mathbf{K_{\text{mar}} = 6}$. Stability range: $0 < K < 6$.</div>
+    <div class="math-row">7. <b>Imaginary Axis Crossing:</b> From auxiliary equation $3s^2 + K = 0 \implies 3s^2 + 6 = 0 \implies s = \pm j\sqrt{2} = \pm j 1.414$.</div>
+    <div class="result-bar">Breakaway at $s = -0.423 \mid \text{Crosses } j\omega\text{ at } \pm j 1.414 \mid \text{Stable for } 0 < K < 6 \mid K_{\text{mar}} = 6$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.5 Three-Rotor Torsional System (Winter-2025 Q.8b / Summer-2026 Q.8b - 8 Marks)[span_298](start_span)[span_298](end_span)</div>
-    <div class="q-text">Question: Three rotors A, B, and C have moments of inertia 2000, 6000, 3500 kg&sdot;m² on a uniform shaft of 0.35 m diameter. Distance AB = 6 m, BC = 32 m. G = 80 GN/m². Find the natural frequencies of torsional vibrations.[span_299](start_span)[span_299](end_span)[span_300](start_span)[span_300](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$I_A = 2000,\ I_B = 6000,\ I_C = 3500\text{ kg}\cdot\text{m}^2,\ d = 0.35\text{ m},\ L_1 = 6\text{ m},\ L_2 = 32\text{ m},\ G = 80 \times 10^9\text{ N/m}^2$</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.5 Complete Root Locus: 4 Real Poles (Summer-2026 Q.8a, Winter-2025 Q.8a - 13 Marks)</div>
+    <div class="q-text">Question: Sketch the complete root locus for the system having $G(s)H(s) = \frac{K}{s(s+1)(s+2)(s+3)}$. Determine marginal $K$ and imaginary axis intersections.</div>
 
-    <div class="step">Step 1: Stiffness & Governing Polynomial[span_301](start_span)[span_301](end_span)</div>
-    <div class="math-row">$$J = \frac{\pi}{32}(0.35)^4 = 0.001473\text{ m}^4$$[span_302](start_span)[span_302](end_span)</div>
-    <div class="math-row">$$q_1 = \frac{GJ}{L_1} = 19.64 \times 10^6\text{ N}\cdot\text{m/rad}, \quad q_2 = \frac{GJ}{L_2} = 3.68 \times 10^6\text{ N}\cdot\text{m/rad}$$[span_303](start_span)[span_303](end_span)</div>
-    <div class="math-row">$$\omega^4 - \omega^2 \left[ q_1\left(\frac{1}{I_A} + \frac{1}{I_B}\right) + q_2\left(\frac{1}{I_B} + \frac{1}{I_C}\right) \right] + q_1 q_2 \left(\frac{I_A + I_B + I_C}{I_A I_B I_C}\right) = 0$$[span_304](start_span)[span_304](end_span)</div>
-    <div class="math-row">$$\omega_1 = 38.63\text{ rad/s} \implies f_1 = \frac{38.63}{2\pi} = 6.15\text{ Hz}$$[span_305](start_span)[span_305](end_span)</div>
-    <div class="math-row">$$\omega_2 = 115.18\text{ rad/s} \implies f_2 = \frac{115.18}{2\pi} = 18.33\text{ Hz}$$[span_306](start_span)[span_306](end_span)</div>
-    <div class="result-bar">Fundamental $f_1 = 6.15\text{ Hz} \mid \text{Second Mode } f_2 = 18.33\text{ Hz}$[span_307](start_span)[span_307](end_span)</div>
+    <div class="step">Complete 8-Step Construction</div>
+    <div class="math-row">1. <b>Poles:</b> $P = 4$ at $s = 0, -1, -2, -3$; Zeros $Z = 0$. Number of branches = $4$.</div>
+    <div class="math-row">2. <b>Real Axis Locus:</b> Exists between $[0, -1]$ and $[-2, -3]$.</div>
+    <div class="math-row">3. <b>Asymptotes:</b> Number = $4 - 0 = 4$. Centroid: $\sigma_c = \frac{0 - 1 - 2 - 3}{4} = -1.5$. Angles: $45^\circ, 135^\circ, 225^\circ, 315^\circ$.</div>
+    <div class="math-row">4. <b>Breakaway Points:</b> $s(s+1)(s+2)(s+3) + K = 0 \implies s^4 + 6s^3 + 11s^2 + 6s + K = 0$.</div>
+    <div class="math-row">$$\frac{dK}{ds} = -(4s^3 + 18s^2 + 22s + 6) = 0 \implies s = -0.382, \ -1.5, \ -2.618$$</div>
+    <div class="math-row">Valid breakaway points on the root locus: <b>$s_1 = -0.382$</b> (between $0$ and $-1$) and <b>$s_2 = -2.618$</b> (between $-2$ and $-3$).</div>
+    <div class="math-row">5. <b>Routh Array for Marginal Gain $K$:</b></div>
+    <div class="math-row">Row $s^4$: $1, 11, K$; Row $s^3$: $6, 6, 0$; Row $s^2$: $\frac{6(11) - 6}{6} = 10, K$; Row $s^1$: $\frac{10(6) - 6K}{10} = \frac{60 - 6K}{10}$; Row $s^0$: $K$.</div>
+    <div class="math-row">Setting row $s^1 = 0 \implies 60 - 6K = 0 \implies \mathbf{K_{\text{mar}} = 10}$. Stable range: $0 < K < 10$.</div>
+    <div class="math-row">6. <b>Imaginary Axis Intersections:</b> Auxiliary equation from row $s^2$: $10s^2 + K = 0 \implies 10s^2 + 10 = 0 \implies s = \pm j1.0$.</div>
+    <div class="result-bar">Centroid $\sigma_c = -1.5 \mid \text{Breakaway at } -0.382 \ \& \ -2.618 \mid \text{Crosses } j\omega\text{ at } \pm j 1.0 \mid K_{\text{mar}} = 10$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.6 Geared System Torsional Vibration (Summer-2026 Q.8b OR - 10 Marks)[span_308](start_span)[span_308](end_span)</div>
-    <div class="q-text">Question: Two parallel shafts A and B of diameters 50 mm and 70 mm are connected by a pair of gear wheels (speed of A is 4 times that of B, G = 4). Flywheel on A: I_A = 3 kg&sdot;m² at 0.9 m from gear. Flywheel on B: I_B = 16 kg&sdot;m² at 0.6 m from gear. Find fundamental frequency and position of node. Modulus G = 80 GN/m².[span_309](start_span)[span_309](end_span)</div>
-    
-    <div class="step">Given Data & Unit Conversions:</div>
-    <div class="given-data">
-      <ul>
-        <li>$d_A = 0.05\text{ m},\ d_B = 0.07\text{ m},\ L_A = 0.9\text{ m},\ L_B = 0.6\text{ m},\ G = 4$</li>
-        <li>$I_A = 3\text{ kg}\cdot\text{m}^2,\ I_B = 16\text{ kg}\cdot\text{m}^2,\ G_m = 80 \times 10^9\text{ N/m}^2$</li>
-      </ul>
-    </div>
+    <div class="q-title">Q.6 Complete Root Locus: Complex Conjugate Poles (Summer-2025 Q.8a, Winter-2024 Q.8a - 13 Marks)</div>
+    <div class="q-text">Question: Sketch the complete root locus for the open loop transfer function $G(s)H(s) = \frac{K}{s(s+6)(s^2 + 4s + 13)}$.</div>
 
-    <div class="step">Step 1: Equivalent Length & Node Position[span_310](start_span)[span_310](end_span)</div>
-    <div class="math-row">$$I_B' = \frac{16}{16} = 1.0\text{ kg}\cdot\text{m}^2$$[span_311](start_span)[span_311](end_span)</div>
-    <div class="math-row">$$L_B' = G^2 \cdot L_B \left(\frac{d_A}{d_B}\right)^4 = 16(0.6)\left(\frac{50}{70}\right)^4 = 2.499\text{ m}$$[span_312](start_span)[span_312](end_span)</div>
-    <div class="math-row">$$L_{\text{total}} = 0.9 + 2.499 = 3.399\text{ m}$$[span_313](start_span)[span_313](end_span)</div>
-    <div class="math-row">$$3 L_{nA} = 1.0(3.399 - L_{nA}) \implies L_{nA} = 0.850\text{ m}$$[span_314](start_span)[span_314](end_span)</div>
-    <div class="step">Step 2: Natural Frequency[span_315](start_span)[span_315](end_span)</div>
-    <div class="math-row">$$J_A = \frac{\pi}{32}(0.05)^4 = 6.136 \times 10^{-7}\text{ m}^4$$[span_316](start_span)[span_316](end_span)</div>
-    <div class="math-row">$$\omega_n = \sqrt{\frac{80 \times 10^9 \times 6.136 \times 10^{-7}}{3 \times 0.850}} = 138.75\text{ rad/s}$$[span_317](start_span)[span_317](end_span)</div>
-    <div class="math-row">$$f_n = \frac{138.75}{2\pi} = 22.09\text{ Hz}$$[span_318](start_span)[span_318](end_span)</div>
-    <div class="result-bar">Node at $0.850\text{ m}$ from Rotor A $\mid f_n = 22.09\text{ Hz}$[span_319](start_span)[span_319](end_span)</div>
+    <div class="step">Complete Construction with Angle of Departure</div>
+    <div class="math-row">1. <b>Poles:</b> $s = 0, -6$, and $s = \frac{-4 \pm \sqrt{16 - 52}}{2} = -2 \pm j3$. Total poles $P = 4$, Zeros $Z = 0$.</div>
+    <div class="math-row">2. <b>Centroid & Asymptotes:</b> Number of asymptotes = $4$. Angles: $45^\circ, 135^\circ, 225^\circ, 315^\circ$.</div>
+    <div class="math-row">$$\sigma_c = \frac{0 - 6 - 2 - 2}{4} = \frac{-10}{4} = -2.5$$</div>
+    <div class="math-row">3. <b>Breakaway Point on Real Axis:</b> $s(s+6)(s^2 + 4s + 13) + K = 0 \implies s^4 + 10s^3 + 37s^2 + 78s + K = 0$.</div>
+    <div class="math-row">$$\frac{dK}{ds} = -(4s^3 + 30s^2 + 74s + 78) = 0 \implies s = -4.20 \quad (\text{Real, lies between } 0 \text{ and } -6)$$</div>
+    <div class="math-row">4. <b>Routh Array for Marginal Gain:</b></div>
+    <div class="math-row">Row $s^4$: $1, 37, K$; Row $s^3$: $10, 78, 0$; Row $s^2$: $29.2, K$; Row $s^1$: $\frac{29.2(78) - 10K}{29.2} = \frac{2277.6 - 10K}{29.2}$.</div>
+    <div class="math-row">For marginal stability: $2277.6 - 10K = 0 \implies \mathbf{K_{\text{mar}} = 227.76}$. System is stable for $0 < K < 227.76$.</div>
+    <div class="math-row">5. <b>Imaginary Axis Intersections:</b> $29.2 s^2 + 227.76 = 0 \implies s^2 = -7.8 \implies s = \pm j 2.79$.</div>
+    <div class="math-row">6. <b>Angle of Departure ($\theta_d$) from Pole at $-2 + j3$:</b></div>
+    <div class="math-row">$\theta_1$ (from $s = 0$): $180^\circ - \tan^{-1}\left(\frac{3}{2}\right) = 180^\circ - 56.3^\circ = 123.7^\circ$</div>
+    <div class="math-row">$\theta_2$ (from $s = -6$): $\tan^{-1}\left(\frac{3}{4}\right) = 36.87^\circ$</div>
+    <div class="math-row">$\theta_3$ (from $s = -2 - j3$): $90^\circ$</div>
+    <div class="math-row">$$\sum \theta_p = 123.7^\circ + 36.87^\circ + 90^\circ = 250.57^\circ$$</div>
+    <div class="math-row">$$\theta_d = 180^\circ - \sum \theta_p = 180^\circ - 250.57^\circ = -70.57^\circ$$</div>
+    <div class="result-bar">Centroid $\sigma_c = -2.5 \mid \text{Breakaway at } -4.20 \mid \theta_d = -70.57^\circ \mid \text{Crosses } j\omega\text{ at } \pm j 2.79 \mid K_{\text{mar}} = 227.76$</div>
   </div>
 </div>
 
@@ -771,55 +724,88 @@
 <!-- UNIT V -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT V: TRANSVERSE VIBRATIONS & WHIRLING SPEED</div>
+  <div class="unit-title">UNIT V: FREQUENCY RESPONSE METHODS & BODE DIAGRAMS</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Critical / Whirling Speed Derivation (Repeated in ALL Papers - 7 Marks)[span_320](start_span)[span_320](end_span)</div>
-    <div class="q-text">Question: Derive the expression for the critical/whirling speed of a light shaft carrying a single rotor with initial eccentricity e. Prove that critical speed equals the natural frequency of transverse vibrations.[span_321](start_span)[span_321](end_span)</div>
-    <div class="step">Step 1: Derivation Steps[span_322](start_span)[span_322](end_span)</div>
-    <div class="math-row">Centrifugal Force: $F_c = m \cdot \omega^2 (y + e)$; Restoring Force: $F_r = m \cdot \omega_n^2 \cdot y$[span_323](start_span)[span_323](end_span)</div>
-    <div class="math-row">$$m \cdot \omega^2 (y + e) = m \cdot \omega_n^2 \cdot y \implies y = \frac{e}{\left(\frac{\omega_n}{\omega}\right)^2 - 1}$$[span_324](start_span)[span_324](end_span)</div>
-    <div class="math-row">As running speed $\omega \to \omega_n$, denominator $\to 0 \implies y \to \infty$.[span_325](start_span)[span_325](end_span)</div>
-    <div class="math-row">$$\omega_c = \omega_n = \sqrt{\frac{k}{m}} = \sqrt{\frac{g}{\delta}}\text{ rad/s}$$[span_326](start_span)[span_326](end_span)</div>
-    <div class="result-bar">Whirling Speed $\omega_c = \omega_n = \sqrt{g/\delta}\text{ rad/s}$[span_327](start_span)[span_327](end_span)</div>
+    <div class="q-title">Q.1 Frequency Domain Definitions & Stability Criteria (Summer-2026 Q.9a, Winter-2024 Q.9a, Summer-2025 Q.9a - 5 Marks)</div>
+    <div class="q-text">Question: Define phase crossover frequency, gain crossover frequency, gain margin, and phase margin. Explain conditions for stability on a Bode plot.</div>
+
+    <div class="step">Definitions & Mathematical Relations</div>
+    <div class="math-row">1. <b>Gain Crossover Frequency ($\omega_{gc}$):</b> The frequency at which the magnitude of the open-loop transfer function $|G(j\omega)H(j\omega)| = 1$ (or $0\text{ dB}$).</div>
+    <div class="math-row">2. <b>Phase Crossover Frequency ($\omega_{pc}$):</b> The frequency at which the phase angle $\angle G(j\omega)H(j\omega) = -180^\circ$.</div>
+    <div class="math-row">3. <b>Gain Margin ($GM$):</b> The reciprocal of the open-loop magnitude at the phase crossover frequency:</div>
+    <div class="math-row">$$GM = \frac{1}{|G(j\omega_{pc})H(j\omega_{pc})|} \implies GM_{\text{dB}} = -20 \log_{10} |G(j\omega_{pc})H(j\omega_{pc})|$$</div>
+    <div class="math-row">4. <b>Phase Margin ($PM$):</b> The additional phase lag that can be introduced at $\omega_{gc}$ to bring the system to the verge of instability:</div>
+    <div class="math-row">$$PM = 180^\circ + \angle G(j\omega_{gc})H(j\omega_{gc})$$</div>
+
+    <div class="step">Stability Criteria Table</div>
+    <table>
+      <tr><th>Stability State</th><th>Frequency Relation</th><th>Gain Margin ($GM$)</th><th>Phase Margin ($PM$)</th></tr>
+      <tr><td><b>Stable</b></td><td>$\omega_{gc} < \omega_{pc}$</td><td>Positive ($> 0\text{ dB}$)</td><td>Positive ($> 0^\circ$)</td></tr>
+      <tr><td><b>Marginally Stable</b></td><td>$\omega_{gc} = \omega_{pc}$</td><td>$0\text{ dB}$</td><td>$0^\circ$</td></tr>
+      <tr><td><b>Unstable</b></td><td>$\omega_{gc} > \omega_{pc}$</td><td>Negative ($< 0\text{ dB}$)</td><td>Negative ($< 0^\circ$)</td></tr>
+    </table>
+    <div class="result-bar">System stability requires the magnitude to cross $0\text{ dB}$ before the phase drops to $-180^\circ$.</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.2 Dunkerley: Load Variation 1 (1500N, 2000N, 800N) (Summer-2026 Q.9b - 6 Marks)[span_328](start_span)[span_328](end_span)</div>
-    <div class="q-text">Question: Shaft 50 mm dia, 3 m long simply supported. Loads: 1500 N at 2 m, 2000 N at 1 m, 800 N at 0.5 m from right support. E = 200 GN/m². Find transverse frequency.[span_329](start_span)[span_329](end_span)</div>
-    <div class="step">Given Data & Deflections:[span_330](start_span)[span_330](end_span)</div>
-    <div class="math-row">$$I = \frac{\pi}{64}(0.05)^4 = 3.068 \times 10^{-7}\text{ m}^4 \implies EI = 61{,}359\text{ N}\cdot\text{m}^2$$[span_331](start_span)[span_331](end_span)</div>
-    <div class="math-row">$$\delta_3 = 0.00226\text{ m}$$[span_332](start_span)[span_332](end_span)</div>
-    <div class="math-row">$$\delta_2 = 0.01449\text{ m}$$[span_333](start_span)[span_333](end_span)</div>
-    <div class="math-row">$$\delta_1 = 0.01086\text{ m}$$[span_334](start_span)[span_334](end_span)</div>
-    <div class="math-row">$$\sum \delta = 0.00226 + 0.01449 + 0.01086 = 0.02761\text{ m}$$[span_335](start_span)[span_335](end_span)</div>
-    <div class="math-row">$$f_n = \frac{1}{2\pi} \sqrt{\frac{9.81}{0.02761}} = 3.0\text{ Hz}$$[span_336](start_span)[span_336](end_span)</div>
-    <div class="result-bar">$\sum \delta = 27.61\text{ mm} \mid \text{Frequency } f_n = 3.0\text{ Hz}$[span_337](start_span)[span_337](end_span)</div>
+    <div class="q-title">Q.2 Bode Plot: Standard 3-Pole System (Summer-2026 Q.9a, Winter-2025 Q.9a - 13 Marks)</div>
+    <div class="q-text">Question: Sketch the Bode plot for unity feedback system $G(s) = \frac{80}{s(s+2)(s+20)}$. Determine $\omega_{gc}, \omega_{pc}$, Gain Margin, Phase Margin, and comment on stability.</div>
+
+    <div class="step">Step 1: Time-Constant (Bode) Form</div>
+    <div class="math-row">$$G(s) = \frac{80}{s \cdot 2\left(1 + \frac{s}{2}\right) \cdot 20\left(1 + \frac{s}{20}\right)} = \frac{80}{40 \cdot s\left(1 + \frac{s}{2}\right)\left(1 + \frac{s}{20}\right)} = \frac{2}{s(1 + 0.5s)(1 + 0.05s)}$$</div>
+    <div class="math-row">Corner frequencies: $\omega_1 = 2\text{ rad/s}, \quad \omega_2 = 20\text{ rad/s}$. Gain factor $K = 2$.</div>
+
+    <div class="step">Step 2: Magnitude Plot Calculations</div>
+    <div class="math-row">Starting point at $\omega = 0.2\text{ rad/s}$: Initial slope is $-20\text{ dB/decade}$ due to pole at origin.</div>
+    <div class="math-row">$$\text{Magnitude at } \omega = 0.2: \ 20\log_{10}\left(\frac{K}{\omega}\right) = 20\log_{10}\left(\frac{2}{0.2}\right) = 20\log_{10}(10) = 20\text{ dB}$$</div>
+    <table>
+      <tr><th>Frequency Range</th><th>Contributing Factor</th><th>Added Slope</th><th>Resultant Slope</th></tr>
+      <tr><td>$0.2 \le \omega \le 2$</td><td>$\frac{2}{j\omega}$</td><td>$-20\text{ dB/dec}$</td><td>$-20\text{ dB/dec}$</td></tr>
+      <tr><td>$2 \le \omega \le 20$</td><td>$\frac{1}{1 + j\omega/2}$</td><td>$-20\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
+      <tr><td>$\omega > 20$</td><td>$\frac{1}{1 + j\omega/20}$</td><td>$-20\text{ dB/dec}$</td><td>$-60\text{ dB/dec}$</td></tr>
+    </table>
+
+    <div class="step">Step 3: Phase Angle Table</div>
+    <div class="math-row">$$\phi(\omega) = -90^\circ - \tan^{-1}(0.5\omega) - \tan^{-1}(0.05\omega)$$</div>
+    <table>
+      <tr><th>$\omega$ (rad/s)</th><td>0.2</td><td>1.0</td><td>2.0</td><td>6.0</td><td>9.0</td><td>20.0</td></tr>
+      <tr><th>$\phi$ (deg)</th><td>$-96.3^\circ$</td><td>$-119.4^\circ$</td><td>$-140.7^\circ$</td><td>$-171.6^\circ$</td><td><b>$-180.0^\circ$</b></td><td>$-219.3^\circ$</td></tr>
+    </table>
+
+    <div class="step">Step 4: Stability Metrics from Plot</div>
+    <div class="math-row">1. Magnitude is $0\text{ dB}$ at $\omega_{gc} \approx 1.8\text{ rad/s}$.</div>
+    <div class="math-row">2. Phase is $-180^\circ$ at $\omega_{pc} \approx 9.0\text{ rad/s}$.</div>
+    <div class="math-row">3. Magnitude at $\omega_{pc} = 9\text{ rad/s}$ is $-23\text{ dB} \implies \mathbf{GM = +23\text{ dB}}$.</div>
+    <div class="math-row">4. Phase at $\omega_{gc} = 1.8\text{ rad/s}$ is $-140^\circ \implies \mathbf{PM = 180^\circ - 140^\circ = +40^\circ}$.</div>
+    <div class="result-bar">$\omega_{gc} = 1.8\text{ rad/s} < \omega_{pc} = 9.0\text{ rad/s} \mid GM = +23\text{ dB} \mid PM = +40^\circ \implies \text{System is STABLE}$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.3 Dunkerley: Load Variation 2 (1000N, 1500N, 750N) (Winter-2024 Q.10b - 7 Marks)[span_338](start_span)[span_338](end_span)</div>
-    <div class="q-text">Question: Shaft 50 mm dia, 3 m long simply supported. Loads: 1000 N at 1 m, 1500 N at 2 m, 750 N at 2.5 m from left support. E = 200 GN/m². Find transverse frequency.[span_339](start_span)[span_339](end_span)</div>
-    <div class="step">Step 1: Individual Deflections on Separate Lines[span_340](start_span)[span_340](end_span)</div>
-    <div class="math-row">$$\delta_1 = \frac{1000(1)^2(2)^2}{552{,}231} = 0.00724\text{ m}$$[span_341](start_span)[span_341](end_span)</div>
-    <div class="math-row">$$\delta_2 = \frac{1500(2)^2(1)^2}{552{,}231} = 0.01086\text{ m}$$[span_342](start_span)[span_342](end_span)</div>
-    <div class="math-row">$$\delta_3 = \frac{750(2.5)^2(0.5)^2}{552{,}231} = 0.00212\text{ m}$$[span_343](start_span)[span_343](end_span)</div>
-    <div class="math-row">$$\sum \delta = 0.00724 + 0.01086 + 0.00212 = 0.02022\text{ m}$$[span_344](start_span)[span_344](end_span)</div>
-    <div class="math-row">$$f_n = \frac{1}{2\pi}\sqrt{\frac{9.81}{0.02022}} = 3.50\text{ Hz}$$[span_345](start_span)[span_345](end_span)</div>
-    <div class="result-bar">$\sum \delta = 20.22\text{ mm} \mid \text{Frequency } f_n = 3.50\text{ Hz}$[span_346](start_span)[span_346](end_span)</div>
-  </div>
+    <div class="q-title">Q.3 Bode Plot: Double Pole at Origin (Winter-2024 Q.9b - 9 Marks)</div>
+    <div class="q-text">Question: Sketch the Bode plot for transfer function $G(s) = \frac{800(s+2)}{s^2(s+10)(s+40)}$. Determine gain margin, phase margin, and stability.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.4 Dunkerley with Distributed Shaft Weight (Summer-2025 Q.9b - 7 Marks)[span_347](start_span)[span_347](end_span)</div>
-    <div class="q-text">Question: Shaft 50 mm diameter, 3 m long, density 20 kg/m length. Simply supported. Carries loads: 90 kg at 0.8 m, 140 kg at 1.5 m, 60 kg at 2 m from left. E = 200 GN/m². Find frequency.[span_348](start_span)[span_348](end_span)</div>
-    <div class="step">Step 1: Point Load and UDL Deflections[span_349](start_span)[span_349](end_span)</div>
-    <div class="math-row">$$\delta_1 = 0.00495\text{ m}, \quad \delta_2 = 0.01259\text{ m}, \quad \delta_3 = 0.00427\text{ m}$$[span_350](start_span)[span_350](end_span)</div>
-    <div class="math-row">Shaft UDL: $w = 20 \times 9.81 = 196.2\text{ N/m}$[span_351](start_span)[span_351](end_span)</div>
-    <div class="math-row">$$\delta_s = \frac{5}{384}\frac{w L^4}{EI} = 0.00337\text{ m}$$[span_352](start_span)[span_352](end_span)</div>
-    <div class="math-row">$$\sum \delta = 0.00495 + 0.01259 + 0.00427 + \frac{0.00337}{1.27}$$[span_353](start_span)[span_353](end_span)</div>
-    <div class="math-row">$$= 0.02446\text{ m}$$[span_354](start_span)[span_354](end_span)</div>
-    <div class="math-row">$$f_n = \frac{1}{2\pi}\sqrt{\frac{9.81}{0.02446}} = 3.19\text{ Hz}$$[span_355](start_span)[span_355](end_span)</div>
-    <div class="result-bar">$\sum \delta = 24.46\text{ mm} \mid \text{Frequency } f_n = 3.19\text{ Hz}$[span_356](start_span)[span_356](end_span)</div>
+    <div class="step">Step 1: Time-Constant Form & Corner Frequencies</div>
+    <div class="math-row">$$G(s) = \frac{800 \times 2\left(1 + \frac{s}{2}\right)}{s^2 \times 10\left(1 + \frac{s}{10}\right) \times 40\left(1 + \frac{s}{40}\right)} = \frac{1600\left(1 + \frac{s}{2}\right)}{400 \cdot s^2\left(1 + \frac{s}{10}\right)\left(1 + \frac{s}{40}\right)} = \frac{4\left(1 + \frac{s}{2}\right)}{s^2\left(1 + \frac{s}{10}\right)\left(1 + \frac{s}{40}\right)}$$</div>
+    <div class="math-row">Corner frequencies: $\omega_1 = 2\text{ rad/s}$ (zero), $\omega_2 = 10\text{ rad/s}$ (pole), $\omega_3 = 40\text{ rad/s}$ (pole). Gain $K = 4$.</div>
+
+    <div class="step">Step 2: Magnitude Slopes</div>
+    <div class="math-row">Double pole at origin introduces initial slope of <b>$-40\text{ dB/decade}$</b>.</div>
+    <div class="math-row">At $\omega = 0.2\text{ rad/s}$: $|G(j\omega)|_{\text{dB}} = 20\log_{10}\left(\frac{4}{0.2^2}\right) = 20\log_{10}(100) = 40\text{ dB}$.</div>
+    <table>
+      <tr><th>Frequency Range</th><th>Active Element</th><th>Change</th><th>Resultant Slope</th></tr>
+      <tr><td>$0.2 \le \omega \le 2$</td><td>$\frac{4}{(j\omega)^2}$</td><td>$-40\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
+      <tr><td>$2 \le \omega \le 10$</td><td>Zero at $\omega = 2$</td><td>$+20\text{ dB/dec}$</td><td>$-20\text{ dB/dec}$</td></tr>
+      <tr><td>$10 \le \omega \le 40$</td><td>Pole at $\omega = 10$</td><td>$-20\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
+      <tr><td>$\omega > 40$</td><td>Pole at $\omega = 40$</td><td>$-20\text{ dB/dec}$</td><td>$-60\text{ dB/dec}$</td></tr>
+    </table>
+
+    <div class="step">Step 3: Phase Angle & Stability</div>
+    <div class="math-row">$$\phi(\omega) = -180^\circ + \tan^{-1}(0.5\omega) - \tan^{-1}(0.1\omega) - \tan^{-1}(0.025\omega)$$</div>
+    <div class="math-row">At $\omega = 1.8\text{ rad/s}$: Phase angle $\phi = -150^\circ$. Magnitude crosses $0\text{ dB} \implies \omega_{gc} \approx 1.8\text{ rad/s}$.</div>
+    <div class="math-row">At $\omega = 16\text{ rad/s}$: Phase angle crosses $-180^\circ \implies \omega_{pc} \approx 16\text{ rad/s}$.</div>
+    <div class="math-row">At $\omega = 16\text{ rad/s}$: Magnitude is $-23\text{ dB} \implies \mathbf{GM = +23\text{ dB}}$. Phase margin: $PM = 180^\circ - 150^\circ = \mathbf{+30^\circ}$.</div>
+    <div class="result-bar">$\omega_{gc} = 1.8\text{ rad/s} < \omega_{pc} = 16\text{ rad/s} \mid GM = +23\text{ dB} \mid PM = +30^\circ \implies \text{System is STABLE}$</div>
   </div>
 </div>
 
@@ -827,71 +813,105 @@
 <!-- UNIT VI -->
 <!-- ======================================================== -->
 <div class="unit-section">
-  <div class="unit-title">UNIT VI: BALANCING OF MASSES & LOCOMOTIVES</div>
+  <div class="unit-title">UNIT VI: INDUSTRIAL AUTOMATIC SPEED CONTROL SYSTEMS</div>
 
   <div class="q-block">
-    <div class="q-title">Q.1 Balancing Masses in Different Planes: Planes X & Y (Winter-2024 Q.12b - 13 Marks)[span_357](start_span)[span_357](end_span)</div>
-    <div class="q-text">Question: Shaft carries 4 masses: m_A = 200 kg (r=80 mm), m_B = 300 kg (r=70 mm, 45°), m_C = 400 kg (r=60 mm, 70°), m_D = 200 kg (r=80 mm, 120°). Axial positions from A: B at 300 mm, C at 400 mm, D at 700 mm. Balance planes X and Y at r = 100 mm. X is 100 mm from A, Y is 500 mm from A. Find masses in X and Y.[span_358](start_span)[span_358](end_span)</div>
-    
-    <div class="step">Universal 6-Column Balancing Table (RP = Plane X):[span_359](start_span)[span_359](end_span)</div>
-    <table>
-      <tr><th>Plane</th><th>Mass $m$</th><th>Radius $r$</th><th>Force $m \cdot r$</th><th>Dist $l$</th><th>Couple $m \cdot r \cdot l$</th><th>Angle $\theta$</th></tr>
-      <tr><td>A</td><td>200</td><td>0.08</td><td>16.0</td><td>-0.1</td><td>-1.60</td><td>0°</td></tr>
-      <tr><td><b>RP (X)</b></td><td><b>$m_X$</b></td><td>0.10</td><td><b>$0.10 m_X$</b></td><td><b>0</b></td><td><b>0</b></td><td><b>$\theta_X$</b></td></tr>
-      <tr><td>B</td><td>300</td><td>0.07</td><td>21.0</td><td>+0.2</td><td>+4.20</td><td>45°</td></tr>
-      <tr><td>C</td><td>400</td><td>0.06</td><td>24.0</td><td>+0.3</td><td>+7.20</td><td>70°</td></tr>
-      <tr><td><b>Y</b></td><td><b>$m_Y$</b></td><td>0.10</td><td><b>$0.10 m_Y$</b></td><td>+0.4</td><td><b>$+0.04 m_Y$</b></td><td><b>$\theta_Y$</b></td></tr>
-      <tr><td>D</td><td>200</td><td>0.08</td><td>16.0</td><td>+0.6</td><td>+9.60</td><td>120°</td></tr>
-    </table>
+    <div class="q-title">Q.1 Armature-Controlled D.C. Servomotor (Winter-2025 Q.11, Summer-2025 Q.12, Winter-2024 Q.11 - 14 Marks)</div>
+    <div class="q-text">Question: Explain the working of an armature-controlled D.C. servomotor. Draw its complete circuit diagram, block diagram, and derive its overall transfer function $\frac{\Theta(s)}{V_a(s)}$ and $\frac{\Omega(s)}{V_a(s)}$.</div>
 
-    <div class="step">Step 1: Polygon Solutions[span_360](start_span)[span_360](end_span)</div>
-    <div class="math-row">$$0.04 m_Y \cos \theta_Y = +0.968$$[span_361](start_span)[span_361](end_span)</div>
-    <div class="math-row">$$0.04 m_Y \sin \theta_Y = -18.05$$[span_362](start_span)[span_362](end_span)</div>
-    <div class="math-row">$$m_Y = \frac{\sqrt{0.968^2 + (-18.05)^2}}{0.04} = 451.9\text{ kg at } 273.1^\circ$$[span_363](start_span)[span_363](end_span)</div>
-    <div class="math-row">$$0.10 m_X \cos \theta_X = -33.50, \quad 0.10 m_X \sin \theta_X = -6.14$$[span_364](start_span)[span_364](end_span)</div>
-    <div class="math-row">$$m_X = \frac{\sqrt{(-33.50)^2 + (-6.14)^2}}{0.10} = 340.6\text{ kg at } 190.4^\circ$$[span_365](start_span)[span_365](end_span)</div>
-    <div class="result-bar">$m_X = 340.6\text{ kg at } 190.4^\circ \mid m_Y = 451.9\text{ kg at } 273.1^\circ$[span_366](start_span)[span_366](end_span)</div>
+    <div class="step">Step 1: System Governing Equations</div>
+    <div class="math-row">In an armature-controlled DC servomotor, speed is controlled by varying armature voltage $V_a(t)$ while maintaining constant field current $I_f$.</div>
+    <div class="math-row">1. <b>Armature Circuit (KVL):</b></div>
+    <div class="math-row">$$V_a(t) = R_a I_a(t) + L_a \frac{dI_a(t)}{dt} + e_b(t)$$</div>
+    <div class="math-row">$$\mathcal{L} \implies V_a(s) - E_b(s) = I_a(s)(R_a + s L_a) \implies I_a(s) = \frac{V_a(s) - E_b(s)}{R_a + s L_a} \quad \text{--- (1)}$$</div>
+    <div class="math-row">2. <b>Torque Equation:</b> With constant field flux $\phi \implies T_m(t) = K_t I_a(t) \implies T_m(s) = K_t I_a(s) \quad \text{--- (2)}$</div>
+    <div class="math-row">3. <b>Mechanical Load Dynamics:</b></div>
+    <div class="math-row">$$T_m(t) = J \frac{d^2\theta}{dt^2} + f \frac{d\theta}{dt} = J \frac{d\omega}{dt} + f \omega$$</div>
+    <div class="math-row">$$\mathcal{L} \implies T_m(s) = \omega(s)(J s + f) \implies \omega(s) = \frac{T_m(s)}{J s + f} \quad \text{--- (3)}$$</div>
+    <div class="math-row">4. <b>Back EMF:</b> $e_b(t) = K_b \omega(t) \implies E_b(s) = K_b \omega(s) \quad \text{--- (4)}$</div>
+    <div class="math-row">5. <b>Angular Position:</b> $\omega = \frac{d\theta}{dt} \implies \Theta(s) = \frac{1}{s} \omega(s) \quad \text{--- (5)}$</div>
+
+    <div class="step">Step 2: Closed-Loop Block Diagram Architecture</div>
+    <div class="diagram-box">
+Va(s)   +       1          Ia(s)      Tm(s)    1       w(s)   1    theta(s)
+----->(+)-->[-------]-------->[ Kt ]------->[------]----->[ - ]--->
+       ^ -  [Ra+sLa ]                       [Js + f]      [ s ]
+       |                                       |
+       |-----------------[ Kb ]<---------------|
+    </div>
+
+    <div class="step">Step 3: Transfer Function Derivation</div>
+    <div class="math-row">Substituting $I_a(s)$ from (1) into (2), and equating to (3):</div>
+    <div class="math-row">$$\omega(s)(J s + f) = K_t \left[\frac{V_a(s) - K_b \omega(s)}{R_a + s L_a}\right]$$</div>
+    <div class="math-row">$$\omega(s)\left[(J s + f)(R_a + s L_a) + K_t K_b\right] = K_t V_a(s)$$</div>
+    <div class="math-row">$$\frac{\Omega(s)}{V_a(s)} = \frac{K_t}{(R_a + s L_a)(J s + f) + K_t K_b}$$</div>
+    <div class="math-row">Since $\Theta(s) = \frac{\Omega(s)}{s}$:</div>
+    <div class="result-bar">$$\frac{\Theta(s)}{V_a(s)} = \frac{K_t}{s \left[(R_a + s L_a)(J s + f) + K_t K_b\right]}$$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.2 Locomotive: Variation 1 (300 kg Reciprocating, 30 rad/s) (Summer-2026 Q.12b - 9 Marks)[span_367](start_span)[span_367](end_span)</div>
-    <div class="q-text">Question: Inside cylinder locomotive: reciprocating mass m = 300 kg, revolving mass = 200 kg. Fraction balanced c = 2/3. Cylinder centerlines a = 0.6 m, wheels = 1.6 m apart. Crank radius r = 0.3 m, ω = 30 rad/s, cranks at 90°. Wheel balance radius = 0.61 m. Calculate: (1) Balance masses, (2) Hammer blow, (3) Tractive variation, (4) Swaying couple.[span_368](start_span)[span_368](end_span)</div>
-    
-    <div class="step">Step 1: Variation in Tractive Effort, Swaying Couple & Hammer Blow[span_369](start_span)[span_369](end_span)</div>
-    <div class="math-row">$$\delta F_T = \pm \sqrt{2} (1 - c) m \omega^2 r$$[span_370](start_span)[span_370](end_span)</div>
-    <div class="math-row">$$= \pm 1.414 \times \frac{1}{3} \times 300 \times (30)^2 \times 0.3$$[span_371](start_span)[span_371](end_span)</div>
-    <div class="math-row">$$= \pm 38{,}178\text{ N} = \pm 38.18\text{ kN}$$[span_372](start_span)[span_372](end_span)</div>
-    <div class="math-row">$$C_{\text{sway}} = \frac{a}{2} \cdot \delta F_T = \frac{0.6}{2} \times 38{,}178 = \pm 11{,}453\text{ N}\cdot\text{m} = \pm 11.45\text{ kN}\cdot\text{m}$$[span_373](start_span)[span_373](end_span)</div>
-    <div class="math-row">$$B = 148.6\text{ kg} \implies B_{\text{rec}} = 74.3\text{ kg}$$[span_374](start_span)[span_374](end_span)</div>
-    <div class="math-row">$$\text{Blow} = \pm 74.3 \times (30)^2 \times 0.61 = \pm 40{,}790\text{ N} = \pm 40.79\text{ kN}$$[span_375](start_span)[span_375](end_span)</div>
-    <div class="result-bar">$\delta F_T = \pm 38.18\text{ kN} \mid C_{\text{sway}} = \pm 11.45\text{ kN}\cdot\text{m} \mid \text{Hammer Blow} = \pm 40.79\text{ kN}$[span_376](start_span)[span_376](end_span)</div>
+    <div class="q-title">Q.2 Flyball Governor Speed Control (Summer-2026 Q.12, Winter-2025 Q.12, Summer-2025 Q.11 - 14 Marks)</div>
+    <div class="q-text">Question: Explain the working of a flyball governor as a means of speed control. Draw its schematic block diagram and derive its closed loop transfer function.</div>
+
+    <div class="step">Step 1: Operational Mechanism</div>
+    <div class="math-row">A flyball governor regulates prime mover speed by throttling the fuel/steam supply. Centrifugal flyballs rotate with the engine shaft. When engine speed rises, centrifugal force moves the balls outward, lifting the sleeve upward. The linkage moves the pilot valve to port high-pressure hydraulic oil into the power cylinder, which drives the main fuel throttle valve downward, throttling fuel and restoring speed.</div>
+
+    <div class="step">Step 2: Component Mathematical Modeling</div>
+    <div class="math-row">1. <b>Hydraulic Power Cylinder:</b> Piston displacement $Y(s)$ is related to pilot valve displacement $X(s)$ by fluid flow:</div>
+    <div class="math-row">$$A \rho \frac{dy}{dt} = K_1 x \implies A \rho s Y(s) = K_1 X(s) \implies Y(s) = \frac{K}{s} X(s) \quad \text{where } K = \frac{K_1}{A\rho}$$</div>
+    <div class="math-row">2. <b>Dashpot Linkage:</b> Provides transient stabilizing reset: $Z(s) = \left[\frac{s T}{1 + s T}\right] Y(s)$</div>
+    <div class="math-row">3. <b>Differential Lever Kinematics:</b> $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s)$</div>
+
+    <div class="step">Step 3: Transfer Function Derivation</div>
+    <div class="math-row">$$X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left[\frac{s T}{1 + s T}\right] Y(s)$$</div>
+    <div class="math-row">Substitute into $Y(s) = \frac{K}{s} X(s)$:</div>
+    <div class="math-row">$$Y(s) = \frac{K}{s} \left[ \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{s T}{1 + s T}\right) Y(s) \right]$$</div>
+    <div class="math-row">$$Y(s)\left[1 + \frac{K}{s}\left(\frac{a}{a+b}\right)\left(\frac{s T}{1 + s T}\right)\right] = \frac{K}{s}\left(\frac{b}{a+b}\right) E(s)$$</div>
+    <div class="result-bar">$$\frac{Y(s)}{E(s)} = \frac{\frac{K}{s}\left(\frac{b}{a+b}\right)}{1 + \frac{K}{s}\left(\frac{a}{a+b}\right)\left[\frac{s T}{1 + s T}\right]}$$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.3 Locomotive: Variation 2 (320 kg Reciprocating, 25 rad/s) (Winter-2025 Q.12b - 8 Marks)[span_377](start_span)[span_377](end_span)</div>
-    <div class="q-text">Question: Inside cylinder locomotive: reciprocating mass m = 320 kg, revolving mass = 220 kg. Fraction balanced c = 2/3. Cylinder centerlines = 0.6 m apart, wheels = 1.6 m apart. Crank radius r = 0.3 m, ω = 25 rad/s, cranks at 90°. Wheel balance radius = 0.61 m. Calculate: (1) Balance masses, (2) Hammer blow, (3) Tractive variation, (4) Swaying couple.[span_378](start_span)[span_378](end_span)</div>
-    
-    <div class="step">Step 1: Calculations[span_379](start_span)[span_379](end_span)</div>
-    <div class="math-row">$$\delta F_T = \pm \sqrt{2} (1 - c) m \omega^2 r$$[span_380](start_span)[span_380](end_span)</div>
-    <div class="math-row">$$= \pm 1.414 \times \frac{1}{3} \times 320 \times (25)^2 \times 0.3$$[span_381](start_span)[span_381](end_span)</div>
-    <div class="math-row">$$= \pm 28{,}280\text{ N} = \pm 28.28\text{ kN}$$[span_382](start_span)[span_382](end_span)</div>
-    <div class="math-row">$$C_{\text{sway}} = \frac{a}{2} \cdot \delta F_T = \frac{0.6}{2} \times 28{,}280 = \pm 8{,}484\text{ N}\cdot\text{m} = \pm 8.48\text{ kN}\cdot\text{m}$$[span_383](start_span)[span_383](end_span)</div>
-    <div class="math-row">$$m_{\text{equiv}} = 433.33\text{ kg} \implies B = 160.94\text{ kg} \implies B_{\text{rec}} = 79.23\text{ kg}$$[span_384](start_span)[span_384](end_span)</div>
-    <div class="math-row">$$\text{Hammer Blow} = \pm 79.23 \times (25)^2 \times 0.61 = \pm 30{,}209\text{ N} = \pm 30.21\text{ kN}$$[span_385](start_span)[span_385](end_span)</div>
-    <div class="result-bar">$\delta F_T = \pm 28.28\text{ kN} \mid C_{\text{sway}} = \pm 8.48\text{ kN}\cdot\text{m} \mid \text{Hammer Blow} = \pm 30.21\text{ kN}$[span_386](start_span)[span_386](end_span)</div>
+    <div class="q-title">Q.3 Prime Mover / Steam Turbine Speed Control (Summer-2026 Q.12, Winter-2024 Q.12 - 13 Marks)</div>
+    <div class="q-text">Question: Describe the speed control of a prime mover (steam turbine). Draw its block diagram and derive its transfer function.</div>
+
+    <div class="step">Step 1: System Description</div>
+    <div class="math-row">In a steam turbine generating unit, the prime mover extracts thermal energy from high-pressure steam. Uncontrolled turbine acceleration can lead to runaway centrifugal rotor failure. A governor regulates a control valve throttling the steam mass flow rate to maintain constant synchronous speed (typically $3000\text{ rpm}$) despite load torque swings.</div>
+
+    <div class="step">Step 2: Modeling Equations</div>
+    <div class="math-row">1. <b>Turbine Rotor Dynamics:</b> Dynamic equilibrium of turbine rotor with inertia $J$ and damping $B$:</div>
+    <div class="math-row">$$J \frac{d\omega(t)}{dt} + B \omega(t) = T(t)$$</div>
+    <div class="math-row">$$\mathcal{L} \implies \omega(s)(J s + B) = T(s) \implies \omega(s) = \frac{T(s)}{J s + B} \quad \text{--- (1)}$$</div>
+    <div class="math-row">2. <b>Torque-Steam Flow Relation:</b> Driving torque developed is proportional to valve control signal $u(t)$:</div>
+    <div class="math-row">$$T(s) = K_t U(s) \quad \text{--- (2)}$$</div>
+
+    <div class="step">Step 3: First-Order Transfer Function</div>
+    <div class="math-row">Substituting (2) into (1):</div>
+    <div class="math-row">$$\omega(s)(J s + B) = K_t U(s) \implies \frac{\Omega(s)}{U(s)} = \frac{K_t}{J s + B} = \frac{\frac{K_t}{B}}{\frac{J}{B} s + 1}$$</div>
+    <div class="math-row">Defining steady-state gain $K = \frac{K_t}{B}$ and rotor time constant $\tau = \frac{J}{B}$:</div>
+    <div class="result-bar">$$\frac{\Omega(s)}{U(s)} = \frac{K}{\tau s + 1}$$</div>
   </div>
 
   <div class="q-block">
-    <div class="q-title">Q.4 Balancing Theory: Why Partial Balancing (Summer-2025 Q.11a - 4 Marks)[span_387](start_span)[span_387](end_span)</div>
-    <div class="q-text">Question: Why is only a part of the unbalanced force due to reciprocating masses balanced in locomotives? State the condition to prevent hammer blow from lifting wheels.[span_388](start_span)[span_388](end_span)</div>
-    <div class="math-row">1. <b>Reason for Partial Balancing:</b> Balancing 100% of reciprocating parts horizontally introduces an equal, completely unbalanced vertical centrifugal force ($m \omega^2 r \sin \theta$) that hammers the track and causes wheel lifting.[span_389](start_span)[span_389](end_span) Therefore, only 50% to 75% ($c = 2/3$) is balanced.[span_390](start_span)[span_390](end_span)</div>
-    <div class="math-row">2. <b>Condition to Prevent Wheel Lift:</b> Hammer Blow must never exceed static wheel load $W$:[span_391](start_span)[span_391](end_span)</div>
-    <div class="math-row">$$B_{\text{rec}} \cdot \omega^2 \cdot b \le W$$[span_392](start_span)[span_392](end_span)</div>
+    <div class="q-title">Q.4 Speed Control in Machine Tools (Summer-2026 Q.11, Winter-2025 Q.11 - 13 Marks)</div>
+    <div class="q-text">Question: Explain the speed control of machine tools (CNC lathe/spindle) with a neat block diagram and derive the spindle speed transfer function.</div>
+
+    <div class="step">Step 1: Need for Speed Control in Machine Tools</div>
+    <div class="math-row">Modern machine tools (CNC turning centers, milling machines) require accurate spindle speed control to:
+      <ul>
+        <li>Maintain constant surface cutting speed ($V_c = \pi D N$) regardless of changing workpiece diameter.</li>
+        <li>Prevent premature cutting tool wear and chatter vibrations.</li>
+        <li>Ensure tight dimensional tolerances and superior surface finish.</li>
+      </ul>
+    </div>
+
+    <div class="step">Step 2: Modeling of Spindle Drive System</div>
+    <div class="math-row">The drive comprises a power amplifier with gain $K_a$, armature-controlled DC spindle motor, and tachometer feedback.</div>
+    <div class="math-row">Electrical: $V_a(s) = I_a(s)(R_a + s L_a) + K_b \omega(s)$</div>
+    <div class="math-row">Mechanical: $T_m(s) = K_t I_a(s) = (J_t s + B_t)\omega(s)$, where $J_t = J_{\text{motor}} + J_{\text{spindle}}$ and $B_t = B_{\text{motor}} + B_{\text{cutting}}$.</div>
+    <div class="math-row">Equating and solving for spindle speed $\Omega(s)$ versus amplifier input $V_a(s)$:</div>
+    <div class="result-bar">$$\frac{\Omega(s)}{V_a(s)} = \frac{K_t}{(J_t s + B_t)(R_a + s L_a) + K_t K_b}$$</div>
   </div>
 </div>
 
-<script>
-  document.body.innerHTML = document.body.innerHTML.replace(/\[span_\d+\]\((?:start|end)_span\)/g, "");
-</script>
 </body>
 </html>
