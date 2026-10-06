@@ -1,917 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Control System Engineering (CSE) - Complete PYQ Exam Master</title>
-
-<!-- KaTeX Stylesheet & Scripts -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body, {
-    delimiters: [
-      {left: '$$', right: '$$', display: true},
-      {left: '$', right: '$', display: false}
-    ],
-    throwOnError: false
-  });"></script>
-
-<style>
-  @page {
-    size: A4 portrait;
-    margin: 10mm 10mm 10mm 10mm;
-  }
-  
-  * { 
-    box-sizing: border-box; 
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-
-  body {
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
-    line-height: 1.42;
-    color: #000000;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .unit-section {
-    page-break-before: always;
-    break-before: page;
-    margin-bottom: 24px;
-  }
-  .unit-section:first-of-type {
-    page-break-before: avoid;
-    break-before: avoid;
-  }
-
-  .unit-title {
-    background: #1e3a5f;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 800;
-    padding: 6px 10px;
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-radius: 2px;
-    page-break-after: avoid;
-  }
-
-  .q-block {
-    margin-bottom: 14px;
-    border-bottom: 2px solid #000000;
-    padding-bottom: 12px;
-    page-break-inside: auto;
-  }
-
-  .q-title {
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #1e3a5f;
-    margin: 0 0 4px 0;
-    page-break-after: avoid;
-  }
-
-  .q-text {
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 8px;
-    background: #f8fafc;
-    padding: 6px 8px;
-    border-left: 4px solid #1e3a5f;
-    border-top: 1px solid #cbd5e1;
-    border-right: 1px solid #cbd5e1;
-    border-bottom: 1px solid #cbd5e1;
-    font-size: 14px;
-  }
-
-  .step {
-    font-weight: 800;
-    color: #0369a1;
-    margin-top: 6px;
-    margin-bottom: 2px;
-    text-decoration: underline;
-    page-break-after: avoid;
-  }
-
-  .given-data {
-    background: #f1f5f9;
-    border: 1px dashed #64748b;
-    border-left: 3px solid #0369a1;
-    padding: 6px 8px;
-    margin: 4px 0 6px 0;
-    font-size: 14px;
-  }
-  .given-data ul {
-    margin: 2px 0;
-    padding-left: 18px;
-  }
-  .given-data li {
-    margin-bottom: 2px;
-  }
-
-  .math-row {
-    margin: 2px 0;
-    font-size: 15px;
-  }
-
-  .result-bar {
-    background: #f0fdf4;
-    border: 1.5px solid #16a34a;
-    color: #166534;
-    padding: 4px 8px;
-    margin-top: 6px;
-    font-weight: 800;
-    display: block;
-    width: 100%;
-    border-radius: 2px;
-  }
-
-  table {
-    width: 100% !important;
-    max-width: 100% !important;
-    table-layout: fixed;
-    border-collapse: collapse;
-    margin: 6px 0;
-    font-size: 13.5px;
-    font-weight: 700;
-  }
-
-  th, td {
-    border: 1.5px solid #000000;
-    padding: 4px 5px;
-    text-align: left;
-    color: #000000;
-    word-break: break-word;
-  }
-
-  th { 
-    background: #f1f5f9; 
-    color: #000000; 
-    font-weight: 800;
-  }
-
-  .diagram-box {
-    background: #ffffff;
-    border: 1px solid #94a3b8;
-    padding: 6px;
-    margin: 4px 0;
-    font-family: monospace;
-    font-size: 12px;
-    white-space: pre;
-    line-height: 1.2;
-  }
-
-  .katex {
-    font-size: 1.05em;
-    color: #000000;
-  }
-
-  .katex-display {
-    margin: 3px 0 !important;
-    text-align: left !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-  }
-
-  @media print {
-    .unit-section {
-      page-break-before: always !important;
-      break-before: page !important;
-      margin-bottom: 0 !important;
-    }
-    .unit-section:first-of-type {
-      page-break-before: avoid !important;
-      break-before: avoid !important;
-    }
-    html, body {
-      width: 100% !important;
-      max-width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .unit-title, .q-title, .step {
-      page-break-after: avoid !important;
-    }
-    .result-bar {
-      page-break-inside: avoid;
-    }
-  }
-</style>
-</head>
-<body>
-
 <!-- ======================================================== -->
-<!-- UNIT I -->
+<!-- UNIT I ADDITIONS -->
 <!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT I: SYSTEM CONCEPTS, TRANSFER FUNCTION & MODELING</div>
+<div class="q-block">
+  <div class="q-title">Q.5 Transfer Function: Definition, Significance & Properties (Winter-2024 Q.2b - 7 Marks)</div>
+  <div class="q-text">Question: What is transfer function? State its significance and what must be the properties of transfer function.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Open Loop vs. Closed Loop Control Systems (Summer-2026 Q.1a, Winter-2025 Q.1a, Winter-2024 Q.1a, Summer-2025 Q.1a - 7 Marks)</div>
-    <div class="q-text">Question: What is a closed loop control system? Explain with suitable examples. Distinguish between open loop and closed loop control systems with their advantages and disadvantages.</div>
+  <div class="step">Definition</div>
+  <div class="math-row">The transfer function of a linear time-invariant (LTI) system is defined as the ratio of the Laplace transform of the output variable to the Laplace transform of the input variable, assuming all initial conditions are zero.</div>
+  <div class="math-row">$$G(s) = \frac{\mathcal{L}\{\text{Output}\}}{\mathcal{L}\{\text{Input}\}}\Bigg|_{\text{initial conditions} = 0} = \frac{C(s)}{R(s)}$$</div>
 
-    <div class="step">Definition: Closed Loop Control System</div>
-    <div class="math-row">A closed loop control system is one in which the control action is dependent on the desired output through feedback. The actual output is measured, fed back, and compared with the reference input to generate an error signal that actuates the controller to correct deviations.</div>
-    <div class="math-row"><b>Examples:</b> Air conditioner temperature controller, automatic electric iron, automobile cruise control, human body temperature regulation.</div>
+  <div class="step">Significance of Transfer Function</div>
+  <div class="math-row">1. <b>Mathematical Model:</b> It provides a compact algebraic representation of an LTI differential system in the complex frequency ($s$) domain.</div>
+  <div class="math-row">2. <b>System Independence:</b> It is an inherent property of the system itself, entirely independent of the magnitude or nature of the applied input.</div>
+  <div class="math-row">3. <b>Poles and Zeros Analysis:</b> The roots of the denominator (poles) determine transient stability, while roots of the numerator (zeros) dictate response shaping.</div>
+  <div class="math-row">4. <b>Impulse Response Equivalence:</b> The inverse Laplace transform of the transfer function equals the unit impulse response: $g(t) = \mathcal{L}^{-1}\{G(s)\}$.</div>
 
-    <div class="step">Comparison Table: Open Loop vs. Closed Loop Systems</div>
-    <table>
-      <tr>
-        <th style="width: 20%;">Parameter</th>
-        <th style="width: 40%;">Open Loop Control System</th>
-        <th style="width: 40%;">Closed Loop Control System</th>
-      </tr>
-      <tr>
-        <td>Feedback Path</td>
-        <td>Feedback path is absent. Output has no effect on control action.</td>
-        <td>Feedback path is always present. Output continuously modifies input.</td>
-      </tr>
-      <tr>
-        <td>Accuracy</td>
-        <td>Less accurate; relies entirely on initial calibration.</td>
-        <td>Highly accurate; automatically corrects for deviations and disturbances.</td>
-      </tr>
-      <tr>
-        <td>Stability</td>
-        <td>Inherently stable; no closed feedback loop to cause oscillations.</td>
-        <td>Stability is a major design concern; improper loop gain causes instability.</td>
-      </tr>
-      <tr>
-        <td>Complexity & Cost</td>
-        <td>Simple in construction, easy to maintain, and economical.</td>
-        <td>Complex construction, requires precision sensors, and expensive.</td>
-      </tr>
-      <tr>
-        <td>Disturbance Response</td>
-        <td>Cannot compensate for external disturbances or internal parameter variations.</td>
-        <td>Minimizes the effects of external noise and internal parameter variations.</td>
-      </tr>
-      <tr>
-        <td>Examples</td>
-        <td>Bread toaster, washing machine timer, traffic lights.</td>
-        <td>Home thermostat, servomotor position control, missile guidance.</td>
-      </tr>
-    </table>
-    <div class="result-bar">Key Insight: Feedback enhances accuracy and reduces parameter sensitivity at the cost of potential instability and increased system complexity.</div>
-  </div>
+  <div class="step">Properties of Transfer Function</div>
+  <div class="math-row">1. Applicable strictly to <b>Linear Time-Invariant (LTI)</b> systems.</div>
+  <div class="math-row">2. Defined <b>only when all initial conditions are set to zero</b>.</div>
+  <div class="math-row">3. For physically realizable systems, the transfer function is a <b>proper rational function</b> (order of denominator $n \ge$ order of numerator $m$).</div>
+  <div class="math-row">4. It does not provide any information regarding the physical nature of the system (electrical, mechanical, or thermal systems can have identical transfer functions).</div>
+  <div class="result-bar">Transfer function fully describes system dynamics in the s-domain independent of input excitation.</div>
+</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.2 Mason's Gain Formula Signal Flow Graph (Summer-2026 Q.2a, Winter-2025 Q.2a, Winter-2024 Q.2a, Summer-2025 Q.2b - 7 Marks)</div>
-    <div class="q-text">Question: Obtain the closed loop transfer function $\frac{C(s)}{R(s)}$ of the system represented by the signal flow graph using Mason's gain formula. Forward paths: Path 1 through $G_1-G_3-G_4-G_5-G_6$; Path 2 bypassing via $G_2$ from node 2 to node 5. Individual feedback loops: $-H_1$ around $G_4$, $-H_2$ around $G_3-G_4-G_5$.</div>
+<div class="q-block">
+  <div class="q-title">Q.6 Linear vs. Nonlinear Systems & System Classification (Summer-2025 Q.1a, Q.2a - 6 Marks)</div>
+  <div class="q-text">Question: Distinguish between linear and nonlinear control systems. Discuss how control systems are classified.</div>
 
-    <div class="step">Step 1: Mason's Gain Formula Statement</div>
-    <div class="math-row">$$T = \frac{C(s)}{R(s)} = \frac{\sum_{k=1}^{N} P_k \Delta_k}{\Delta}$$</div>
-    <div class="math-row">Where:
-      <ul>
-        <li>$P_k$ = Gain of the $k^{\text{th}}$ forward path</li>
-        <li>$\Delta = 1 - (\sum \text{Individual Loops}) + (\sum \text{Gain products of 2 non-touching loops}) - \dots$</li>
-        <li>$\Delta_k$ = Value of $\Delta$ for that part of the graph not touching the $k^{\text{th}}$ forward path</li>
-      </ul>
-    </div>
+  <div class="step">Distinction: Linear vs. Nonlinear Systems</div>
+  <table>
+    <tr><th>Parameter</th><th>Linear Control System</th><th>Nonlinear Control System</th></tr>
+    <tr><td>Superposition Principle</td><td>Strictly obeys homogeneity and additivity: $f(x_1 + x_2) = f(x_1) + f(x_2)$.</td><td>Does not obey the principle of superposition.</td></tr>
+    <tr><td>Mathematical Analysis</td><td>Governed by linear differential equations; solvable via Laplace transform.</td><td>Governed by nonlinear differential equations; requires phase-plane or describing function methods.</td></tr>
+    <tr><td>Stability Dependence</td><td>Stability depends solely on system parameters and pole locations, not on input magnitude.</td><td>Stability depends strongly on initial conditions and input amplitude (can exhibit limit cycles).</td></tr>
+    <tr><td>Practical Realization</td><td>Idealized approximation over a narrow operating range.</td><td>True representation of real-world hardware (saturation, dead zone, backlash, friction).</td></tr>
+  </table>
 
-    <div class="step">Step 2: Identify Forward Paths ($P_k$)</div>
-    <div class="math-row">1. Main forward path ($P_1$): Through all cascaded blocks:</div>
-    <div class="math-row">$$P_1 = G_1 G_3 G_4 G_5 G_6$$</div>
-    <div class="math-row">2. Feedforward bypass path ($P_2$): From input through $G_1$, taking bypass $G_2$, to output $G_6$:</div>
-    <div class="math-row">$$P_2 = G_1 G_2 G_6$$</div>
-
-    <div class="step">Step 3: Identify Individual Feedback Loops ($L_i$)</div>
-    <div class="math-row">1. Loop 1 ($L_1$): Minor loop around $G_4$ with feedback $-H_1$:</div>
-    <div class="math-row">$$L_1 = -G_4 H_1$$</div>
-    <div class="math-row">2. Loop 2 ($L_2$): Major loop around $G_3, G_4, G_5$ with feedback $-H_2$:</div>
-    <div class="math-row">$$L_2 = -G_3 G_4 G_5 H_2$$</div>
-
-    <div class="step">Step 4: Non-Touching Loops and Path Factors ($\Delta, \Delta_k$)</div>
-    <div class="math-row">Both loops $L_1$ and $L_2$ share the common node containing $G_4$. Therefore, there are <b>no non-touching loops</b>:</div>
-    <div class="math-row">$$\Delta = 1 - (L_1 + L_2) = 1 - (-G_4 H_1 - G_3 G_4 G_5 H_2) = 1 + G_4 H_1 + G_3 G_4 G_5 H_2$$</div>
-    <div class="math-row">Forward path $P_1$ touches both loops: $\Delta_1 = 1 - 0 = 1$</div>
-    <div class="math-row">Forward path $P_2$ bypasses node 3, 4, 5; but loop $L_1$ touches the nodes: $\Delta_2 = 1$ (if bypass does not touch $L_1$) or $\Delta_2 = 1 + G_4 H_1$ depending on node connection. Assuming bypass originates before $L_1$ and terminates after $L_1$ without touching $L_1$: $\Delta_2 = 1 + G_4 H_1$. If touching: $\Delta_2 = 1$. Standard diagram: $\Delta_2 = 1$.</div>
-
-    <div class="step">Step 5: Overall Closed-Loop Transfer Function</div>
-    <div class="math-row">$$T = \frac{C(s)}{R(s)} = \frac{P_1 \Delta_1 + P_2 \Delta_2}{\Delta} = \frac{G_1 G_3 G_4 G_5 G_6 + G_1 G_2 G_6}{1 + G_4 H_1 + G_3 G_4 G_5 H_2}$$</div>
-    <div class="result-bar">$$\frac{C(s)}{R(s)} = \frac{G_1 G_6 (G_3 G_4 G_5 + G_2)}{1 + G_4 H_1 + G_3 G_4 G_5 H_2}$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Mechanical Translational System Equations & Electrical Analogies (Summer-2026 Q.2b, Winter-2025 Q.2b - 7 Marks)</div>
-    <div class="q-text">Question: Write the differential equations governing the mechanical translational system shown below. Draw the electrical equivalent analogy circuits using Force-to-Voltage ($F-V$) and Force-to-Current ($F-I$) analogies. System has masses $M_1$ and $M_2$, damper $B_1$ to ground, spring $K$ to ground, damper $B_2$ connecting $M_1$ and $M_2$, and external force $F(t)$ applied to $M_1$.</div>
-
-    <div class="step">Step 1: Free Body Diagrams & Differential Equations</div>
-    <div class="math-row">Let $x_1(t)$ be displacement of mass $M_1$, and $x_2(t)$ be displacement of mass $M_2$.</div>
-    <div class="math-row"><b>For Mass $M_1$:</b> Subjected to external force $F(t)$ and coupling damper $B_2$:</div>
-    <div class="math-row">$$M_1 \frac{d^2 x_1}{dt^2} + B_2 \left(\frac{dx_1}{dt} - \frac{dx_2}{dt}\right) = F(t)$$</div>
-    <div class="math-row"><b>For Mass $M_2$:</b> Connected to ground via damper $B_1$ and spring $K$, and coupled to $M_1$ via $B_2$:</div>
-    <div class="math-row">$$M_2 \frac{d^2 x_2}{dt^2} + B_1 \frac{dx_2}{dt} + K x_2 + B_2 \left(\frac{dx_2}{dt} - \frac{dx_1}{dt}\right) = 0$$</div>
-
-    <div class="step">Step 2: Electrical Analogy Equivalence Table</div>
-    <table>
-      <tr><th>Mechanical Element</th><th>Force-Voltage ($F-V$) Analogy</th><th>Force-Current ($F-I$) Analogy</th></tr>
-      <tr><td>Force $F(t)$</td><td>Voltage source $e(t)$</td><td>Current source $i(t)$</td></tr>
-      <tr><td>Velocity $v = \frac{dx}{dt}$</td><td>Current $i(t)$</td><td>Voltage $v(t)$</td></tr>
-      <tr><td>Mass $M$</td><td>Inductance $L$</td><td>Capacitance $C$</td></tr>
-      <tr><td>Damper $B$</td><td>Resistance $R$</td><td>Conductance $G = \frac{1}{R}$</td></tr>
-      <tr><td>Spring $K$</td><td>Reciprocal Capacitance $\frac{1}{C}$</td><td>Reciprocal Inductance $\frac{1}{L}$</td></tr>
-    </table>
-
-    <div class="step">Step 3: Force-to-Voltage ($F-V$) Mesh Equations (Loop Basis)</div>
-    <div class="math-row">Replacing velocity with loop currents $i_1$ and $i_2$:</div>
-    <div class="math-row">$$L_1 \frac{di_1}{dt} + R_2 (i_1 - i_2) = e(t)$$</div>
-    <div class="math-row">$$L_2 \frac{di_2}{dt} + R_1 i_2 + \frac{1}{C} \int i_2 dt + R_2 (i_2 - i_1) = 0$$</div>
-    <div class="math-row"><i>Circuit Structure:</i> Two electrical meshes. Mesh 1 has voltage source $e(t)$ and inductor $L_1$. Branch shared between Mesh 1 and Mesh 2 has resistor $R_2$. Mesh 2 contains inductor $L_2$, resistor $R_1$, and capacitor $C$ in series.</div>
-
-    <div class="step">Step 4: Force-to-Current ($F-I$) Nodal Equations (Node Basis)</div>
-    <div class="math-row">Replacing velocity with node voltages $v_1$ and $v_2$:</div>
-    <div class="math-row">$$C_1 \frac{dv_1}{dt} + \frac{1}{R_2} (v_1 - v_2) = i(t)$$</div>
-    <div class="math-row">$$C_2 \frac{dv_2}{dt} + \frac{1}{R_1} v_2 + \frac{1}{L} \int v_2 dt + \frac{1}{R_2} (v_2 - v_1) = 0$$</div>
-    <div class="result-bar">Governing system completely mapped to 2-mesh loop circuit ($F-V$) and 2-node parallel circuit ($F-I$).</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Block Diagram Reduction Technique (Summer-2026 Q.1b, Winter-2025 Q.1b, Winter-2024 Q.1b - 7 Marks)</div>
-    <div class="q-text">Question: Using block diagram reduction technique, find the transfer function $\frac{C(s)}{R(s)}$ of the system with forward path $G_1, G_2$, feedback $H_1$ around $G_1$, and feedback $H_2$ from output $C(s)$ to the summing point between $G_1$ and $G_2$.</div>
-
-    <div class="step">Step 1: Identify Minor and Major Feedback Loops</div>
-    <div class="math-row">1. The block diagram has two summing points: Summing point 1 receives input $R(s)$ and feedback $-H_1 C_1(s)$. Summing point 2 receives output of $G_1$ and feedback $-H_2 C(s)$.</div>
-    <div class="math-row">2. Shift takeoff point after $G_2$ back before $G_2$, or eliminate the inner loop directly:</div>
-    <div class="math-row">The inner feedback loop around $G_2$ with feedback $H_2$ has equivalent transfer function:</div>
-    <div class="math-row">$$G_{2,\text{eq}} = \frac{G_2}{1 + G_2 H_2}$$</div>
-
-    <div class="step">Step 2: Combine Cascaded Forward Blocks</div>
-    <div class="math-row">Now block $G_1$ is in cascade with $G_{2,\text{eq}}$:</div>
-    <div class="math-row">$$G_{\text{forward}} = G_1 \times G_{2,\text{eq}} = \frac{G_1 G_2}{1 + G_2 H_2}$$</div>
-
-    <div class="step">Step 3: Eliminate Outer Feedback Loop $H_1$</div>
-    <div class="math-row">The outer closed loop has forward block $G_{\text{forward}}$ and feedback block $H_1$:</div>
-    <div class="math-row">$$\frac{C(s)}{R(s)} = \frac{G_{\text{forward}}}{1 + G_{\text{forward}} H_1} = \frac{\frac{G_1 G_2}{1 + G_2 H_2}}{1 + \left(\frac{G_1 G_2}{1 + G_2 H_2}\right) H_1}$$</div>
-    <div class="result-bar">$$\frac{C(s)}{R(s)} = \frac{G_1 G_2}{1 + G_2 H_2 + G_1 G_2 H_1}$$</div>
-  </div>
+  <div class="step">Classification of Control Systems</div>
+  <div class="math-row">1. <b>Based on Feedback:</b> Open loop (no feedback) vs. Closed loop (with feedback).</div>
+  <div class="math-row">2. <b>Based on Time Dependence:</b> Continuous-time systems vs. Discrete-time (sampled data) systems.</div>
+  <div class="math-row">3. <b>Based on Parameter Variation:</b> Time-invariant systems (constant parameters) vs. Time-variant systems.</div>
+  <div class="math-row">4. <b>Based on Number of Inputs/Outputs:</b> SISO (Single-Input Single-Output) vs. MIMO (Multi-Input Multi-Output).</div>
+  <div class="result-bar">Superposition separates linear from nonlinear systems; feedback separates open from closed systems.</div>
 </div>
 
 <!-- ======================================================== -->
-<!-- UNIT II -->
+<!-- UNIT II ADDITIONS -->
 <!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT II: BASIC CONTROL ACTIONS & INDUSTRIAL CONTROLLERS</div>
+<div class="q-block">
+  <div class="q-title">Q.6 Advantages & Disadvantages of Hydraulic Systems (Summer-2025 Q.4a - 6 Marks)</div>
+  <div class="q-text">Question: List out the advantages and disadvantages of hydraulic systems.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Classification of Industrial Controllers & On-Off Action (Summer-2026 Q.3b, Winter-2025 Q.3b, Summer-2025 Q.3b - 7 Marks)</div>
-    <div class="q-text">Question: What is basic control action? Classify industrial automatic controllers in detail. Describe briefly on-off controllers with a suitable example.</div>
+  <div class="step">Advantages of Hydraulic Systems</div>
+  <div class="math-row">1. <b>High Force Generation:</b> Force levels can be made exceptionally high due to high operating fluid pressures ($70\text{ to }350\text{ bar}$).</div>
+  <div class="math-row">2. <b>High Power-to-Size Ratio:</b> Compact actuators produce high torque and power compared to electric or pneumatic actuators.</div>
+  <div class="math-row">3. <b>Rapid Reversal & Smooth Operation:</b> Motion can be reversed quickly and smoothly without mechanical shock.</div>
+  <div class="math-row">4. <b>Self-Lubricating:</b> Hydraulic mineral oil continuously lubricates internal moving components and carries away heat.</div>
+  <div class="math-row">5. <b>Safe Overload Protection:</b> Pressure relief valves protect the system against mechanical overload; when overloaded, actuators stall safely.</div>
 
-    <div class="step">Classification of Control Actions</div>
-    <div class="math-row">Basic control action refers to the fundamental method used in a control system to regulate a process variable (such as temperature, pressure, flow, or speed):
-      <ul>
-        <li><b>1. Discontinuous Control Action:</b> On-Off (Two-position) controller.</li>
-        <li><b>2. Continuous Control Actions:</b>
-          <ul>
-            <li>Proportional ($P$) control action: $u(t) = K_p e(t)$</li>
-            <li>Integral ($I$) control action: $u(t) = K_i \int e(t) dt$</li>
-            <li>Derivative ($D$) control action: $u(t) = K_d \frac{de(t)}{dt}$</li>
-          </ul>
-        </li>
-        <li><b>3. Composite Control Actions:</b>
-          <ul>
-            <li>Proportional-plus-Integral ($PI$): $u(t) = K_p e(t) + \frac{K_p}{T_i} \int e(t) dt$</li>
-            <li>Proportional-plus-Derivative ($PD$): $u(t) = K_p e(t) + K_p T_d \frac{de(t)}{dt}$</li>
-            <li>Proportional-plus-Integral-plus-Derivative ($PID$): $u(t) = K_p \left[e(t) + \frac{1}{T_i}\int e(t)dt + T_d \frac{de(t)}{dt}\right]$</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+  <div class="step">Disadvantages of Hydraulic Systems</div>
+  <div class="math-row">1. <b>Leakage & Cleanliness:</b> Oil leakage creates dirty surroundings, slippery floors, and loss of efficiency.</div>
+  <div class="math-row">2. <b>Fire Hazard:</b> Petroleum-based hydraulic oils are flammable when exposed to hot surfaces or sparks.</div>
+  <div class="math-row">3. <b>Temperature Sensitivity:</b> Fluid viscosity changes with operating temperature, affecting system damping and response speed.</div>
+  <div class="math-row">4. <b>High Maintenance & Component Cost:</b> Requires high-precision seals, continuous fluid filtration, and robust pumps.</div>
+  <div class="result-bar">Hydraulics deliver unmatched power density and stiff positioning, offset by leakage risks and higher maintenance.</div>
+</div>
 
-    <div class="step">On-Off (Two-Position) Controller</div>
-    <div class="math-row">It is the simplest and most widely used automatic controller. The controller output has only two discrete states: fully ON ($100\%$) or fully OFF ($0\%$).</div>
-    <div class="math-row">$$u(t) = \begin{cases} U_{\max} & \text{when } e(t) > 0 \\ U_{\min} & \text{when } e(t) < 0 \end{cases}$$</div>
-    <div class="math-row"><b>Example:</b> Bimetallic strip thermostat controlling a domestic water heater. When water temperature drops below setpoint, contact closes and heater turns full ON. Once setpoint is reached, contact opens and heater turns full OFF. A small differential gap (hysteresis) prevents chattering.</div>
-    <div class="result-bar">On-off control creates continuous sustained oscillations around the setpoint but provides low cost and simple design.</div>
-  </div>
+<div class="q-block">
+  <div class="q-title">Q.7 Pneumatic Proportional Controller (Summer-2026 Q.4b - 7 Marks)</div>
+  <div class="q-text">Question: Sketch and explain the working of a pneumatic proportional controller.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.2 Comparison: Pneumatic vs. Hydraulic Systems (Winter-2024 Q.4b - 7 Marks)</div>
-    <div class="q-text">Question: Compare pneumatic and hydraulic control systems across key operational and design parameters.</div>
-
-    <div class="step">Comparative Analysis Table</div>
-    <table>
-      <tr><th>Parameter</th><th>Hydraulic System</th><th>Pneumatic System</th></tr>
-      <tr><td>Working Medium</td><td>Incompressible hydraulic oil (mineral oil).</td><td>Compressible air (atmospheric filtered air).</td></tr>
-      <tr><td>System Architecture</td><td>Closed loop system (oil returns to reservoir).</td><td>Open loop system (exhaust air vented to atmosphere).</td></tr>
-      <tr><td>Operating Pressure</td><td>High pressure ($70\text{ to }350\text{ bar}$).</td><td>Low to moderate pressure ($5\text{ to }10\text{ bar}$).</td></tr>
-      <tr><td>Force & Power Capability</td><td>Generates very high forces; high power-to-weight ratio.</td><td>Limited force generation; low power-to-weight ratio.</td></tr>
-      <tr><td>Speed of Operation</td><td>Slow and smooth due to fluid viscosity.</td><td>Fast in operation due to low air viscosity.</td></tr>
-      <tr><td>Accuracy & Stiffness</td><td>Very high accuracy and stiff response (incompressible).</td><td>Spongy, springy action; lower positional accuracy.</td></tr>
-      <tr><td>Fire & Safety Hazard</td><td>Petroleum oil is flammable; leakages cause hazard.</td><td>Compressed air is clean and explosion-proof.</td></tr>
-      <tr><td>Maintenance Cost</td><td>High (seal leakage, filtration, fluid replacement).</td><td>Low (simple pipe fittings, inexpensive elements).</td></tr>
-    </table>
-    <div class="result-bar">Hydraulics is preferred for heavy load/high-precision applications; Pneumatics is preferred for rapid, clean, low-force automation.</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Hydraulic Proportional-Plus-Integral (PI) Controller (Winter-2025 Q.3a, Summer-2025 Q.3a - 7 Marks)</div>
-    <div class="q-text">Question: Explain with neat sketch the working of a hydraulic proportional-plus-integral controller. Draw its block diagram and derive its transfer function.</div>
-
-    <div class="step">Step 1: System Governing Equations</div>
-    <div class="math-row">The controller consists of a pilot spool valve, main power piston, differential feedback lever, and a dashpot arrangement in the feedback path.</div>
-    <div class="math-row">1. Power cylinder flow equation: $A \rho s Y(s) = K_1 X(s) \implies Y(s) = \frac{K}{s} X(s)$, where $K = \frac{K_1}{A \rho}$.</div>
-    <div class="math-row">2. Feedback linkage with dashpot: $Z(s) = \left[\frac{T s}{1 + T s}\right] Y(s)$</div>
-    <div class="math-row">3. Input lever displacement: $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left[\frac{T s}{1 + T s}\right] Y(s)$</div>
-
-    <div class="step">Step 2: Derivation of Transfer Function</div>
-    <div class="math-row">Substitute $X(s)$ into power cylinder equation:</div>
-    <div class="math-row">$$Y(s) = \frac{K}{s} \left[ \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{T s}{1 + T s}\right) Y(s) \right]$$</div>
-    <div class="math-row">$$Y(s) \left[ 1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{T s}{1 + T s}\right) \right] = \left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right) E(s)$$</div>
-    <div class="math-row">$$\frac{Y(s)}{E(s)} = \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left[\frac{T s}{1 + T s}\right]}$$</div>
-    <div class="math-row">Under normal operating conditions, loop gain $\frac{K}{s}\left(\frac{a}{a+b}\right)\left[\frac{Ts}{1+Ts}\right] \gg 1$:</div>
-    <div class="math-row">$$\frac{Y(s)}{E(s)} \approx \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{\left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left[\frac{T s}{1 + T s}\right]} = \left(\frac{b}{a}\right)\left[\frac{1 + T s}{T s}\right] = \left(\frac{b}{a}\right)\left[1 + \frac{1}{T s}\right]$$</div>
-    <div class="result-bar">$$\frac{Y(s)}{E(s)} = K_p \left(1 + \frac{1}{T_i s}\right) \quad \text{where } K_p = \frac{b}{a}, \ T_i = T$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Hydraulic Proportional-Plus-Derivative (PD) Controller (Winter-2024 Q.4a - 7 Marks)</div>
-    <div class="q-text">Question: Sketch and explain the working of a hydraulic proportional-plus-derivative controller. Derive its closed loop transfer function.</div>
-
-    <div class="step">Step 1: Governing Equations</div>
-    <div class="math-row">1. Pilot valve mass balance: $Y(s) = \frac{K}{s} X(s)$</div>
-    <div class="math-row">2. Feedback displacement for PD configuration: Feedback is coupled through a delayed RC lag element: $Z(s) = \frac{1}{1 + sT} Y(s)$</div>
-    <div class="math-row">3. Spool input relation: $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{1}{1+sT}\right) Y(s)$</div>
-
-    <div class="step">Step 2: Algebraic Reduction</div>
-    <div class="math-row">$$Y(s) = \frac{K}{s}\left[\left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{1}{1+sT}\right) Y(s)\right]$$</div>
-    <div class="math-row">$$Y(s)\left[1 + \left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{1}{1+sT}\right)\right] = \left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right) E(s)$$</div>
-    <div class="math-row">Under normal operation where loop gain $\gg 1$:</div>
-    <div class="math-row">$$\frac{Y(s)}{E(s)} \approx \frac{\left(\frac{b}{a+b}\right)\left(\frac{K}{s}\right)}{\left(\frac{a}{a+b}\right)\left(\frac{K}{s}\right)\left(\frac{1}{1+sT}\right)} = \left(\frac{b}{a}\right) (1 + sT)$$</div>
-    <div class="result-bar">$$\frac{Y(s)}{E(s)} = K_p (1 + T_d s) \quad \text{where } K_p = \frac{b}{a}, \ T_d = T$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.5 Derivative Control Action Effects on System Performance (Winter-2024 Q.3b - 7 Marks)</div>
-    <div class="q-text">Question: Describe the effect of derivative control action on the performance of a control system.</div>
-
-    <div class="step">Key Performance Effects</div>
-    <div class="math-row">1. <b>Anticipatory Control:</b> The output of a derivative controller is proportional to the rate of change of the error ($\frac{de}{dt}$). It responds to the trend of error before it grows large, providing anticipation.</div>
-    <div class="math-row">2. <b>Increases Damping Ratio ($\zeta$):</b> Introducing derivative control adds an open-loop zero in the left half s-plane, pulling root locus branches to the left and increasing system damping.</div>
-    <div class="math-row">3. <b>Reduces Peak Overshoot ($M_p$):</b> Higher damping directly reduces transient oscillations and peak overshoot.</div>
-    <div class="math-row">4. <b>Improves Settling Time ($t_s$):</b> The transient period decays much faster, shortening settling time.</div>
-    <div class="math-row">5. <b>Noise Sensitivity Limitation:</b> A pure derivative controller has high gain at high frequencies, which severely amplifies high-frequency measurement noise. Hence, derivative action is never used alone.</div>
-    <div class="result-bar">Derivative action enhances relative stability, speeds up transient decay, and suppresses overshoot, but cannot eliminate steady-state error.</div>
-  </div>
+  <div class="step">Working Principle & Flapper-Nozzle Mechanism</div>
+  <div class="math-row">A pneumatic proportional controller uses a flapper-nozzle amplifier paired with a negative feedback bellows. Regulated supply air ($P_s \approx 1.4\text{ bar}$) passes through an orifice to a nozzle. The error signal $e(t)$ deflects a flapper, changing nozzle back-pressure $P_c$.</div>
+  <div class="math-row">1. When error $e(t)$ increases, the flapper moves closer to the nozzle, restricting airflow and causing output back-pressure $P_c$ to rise.</div>
+  <div class="math-row">2. The rising back-pressure $P_c$ expands the feedback bellows, pushing the flapper back away from the nozzle (negative feedback).</div>
+  <div class="math-row">3. Force equilibrium between input deflection and bellows displacement yields an output pressure directly proportional to input error:</div>
+  <div class="math-row">$$P_c(s) = K_p E(s) \quad \text{where } K_p = \frac{b}{a} \cdot \frac{A_b}{K_b}$$</div>
+  <div class="result-bar">Output pressure $P_c(t)$ varies linearly with error $e(t)$ over standard $0.2\text{ to }1.0\text{ bar}$ ($3\text{ to }15\text{ psi}$) instrumentation ranges.</div>
 </div>
 
 <!-- ======================================================== -->
-<!-- UNIT III -->
+<!-- UNIT III ADDITIONS -->
 <!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT III: TRANSIENT RESPONSE ANALYSIS & ERROR CONSTANTS</div>
+<div class="q-block">
+  <div class="q-title">Q.7 Standard Test Signals in Time Response Analysis (Winter-2024, Winter-2025 - 6 Marks)</div>
+  <div class="q-text">Question: Explain various types of standard test signals used in time response analysis with mathematical definitions and sketches.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Transient Response Specifications with Sketch (Summer-2026 Q.5a, Winter-2024 Q.5a, Summer-2025 Q.5a - 6 Marks)</div>
-    <div class="q-text">Question: Define transient response and steady state response. Describe transient response specifications: Delay time ($T_d$), Rise time ($T_r$), Peak time ($T_p$), Peak overshoot ($M_p$), and Settling time ($T_s$) with a neat sketch for a second-order underdamped system.</div>
+  <div class="step">Definitions & Laplace Transforms</div>
+  <div class="math-row">1. <b>Step Input (Displacement function):</b> Represents sudden, instantaneous changes in input:</div>
+  <div class="math-row">$$r(t) = A \quad (t \ge 0), \quad r(t) = 0 \quad (t < 0) \implies R(s) = \frac{A}{s}$$</div>
+  <div class="math-row">2. <b>Ramp Input (Velocity function):</b> Represents signals that change linearly at a constant rate:</div>
+  <div class="math-row">$$r(t) = A t \quad (t \ge 0), \quad r(t) = 0 \quad (t < 0) \implies R(s) = \frac{A}{s^2}$$</div>
+  <div class="math-row">3. <b>Parabolic Input (Acceleration function):</b> Represents constant acceleration:</div>
+  <div class="math-row">$$r(t) = \frac{A}{2} t^2 \quad (t \ge 0), \quad r(t) = 0 \quad (t < 0) \implies R(s) = \frac{A}{s^3}$$</div>
+  <div class="math-row">4. <b>Impulse Input (Shock function):</b> Generates high energy over an infinitesimally short duration:</div>
+  <div class="math-row">$$r(t) = \delta(t) \quad \text{where } \int_{-\infty}^\infty \delta(t)dt = 1 \implies R(s) = 1$$</div>
+  <div class="result-bar">Step tests position, ramp tests tracking velocity, parabolic tests acceleration, and impulse tests natural dynamics.</div>
+</div>
 
-    <div class="step">Definitions: Transient & Steady State Response</div>
-    <div class="math-row"><b>Transient Response:</b> The initial part of the time response that changes dynamically from initial state to final state before vanishing ($t \to \infty$).</div>
-    <div class="math-row"><b>Steady State Response:</b> The fixed portion of the output remaining after all transient oscillations have decayed, indicating accuracy. Total response $C(t) = C_t(t) + C_{ss}(t)$.</div>
+<div class="q-block">
+  <div class="q-title">Q.8 Cutoff Paper Numerical: Error Constants for $G(s) = \frac{50}{(1+0.1s)(s+10)}$ (Summer-2026 Q.5b - 7 Marks)</div>
+  <div class="q-text">Question: A unity feedback system has open loop transfer function $G(s) = \frac{50}{(1+0.1s)(s+10)}$. Determine system type and static error coefficients $K_p, K_v, K_a$.</div>
 
-    <div class="step">Response Curve ASCII Diagram</div>
-    <div class="diagram-box">
-       C(t) ^               Peak Overshoot (Mp)
-            |                   _--_
-       1.0 -| - - - - - - - - -/----\------- +2% Tolerance band
-            |         _--\    /      \------ -2%
-       0.5 -|        /    \  /
-            |       /      \/
-            |      /|
-          0 +-----|-|-------|----------------|-------> Time (t)
-                  Td Tr     Tp               Ts
-    </div>
+  <div class="step">Step 1: Identify System Type</div>
+  <div class="math-row">The denominator has no free integrator pole at the origin ($s^0$). Hence, the system is <b>Type-0</b>.</div>
 
-    <div class="step">Specification Formulas</div>
-    <div class="math-row">1. <b>Delay Time ($T_d$):</b> Time required to reach $50\%$ of final value in first attempt: $T_d = \frac{1 + 0.7\zeta}{\omega_n}$</div>
-    <div class="math-row">2. <b>Rise Time ($T_r$):</b> Time required to rise from $0$ to $100\%$ of final value: $T_r = \frac{\pi - \theta}{\omega_d}$, where $\omega_d = \omega_n \sqrt{1 - \zeta^2}$ and $\theta = \tan^{-1}\left(\frac{\sqrt{1-\zeta^2}}{\zeta}\right)$.</div>
-    <div class="math-row">3. <b>Peak Time ($T_p$):</b> Time required to reach first maximum peak: $T_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$.</div>
-    <div class="math-row">4. <b>Maximum Peak Overshoot ($M_p$):</b> Normalized difference between peak output and steady-state: $\%M_p = e^{-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}} \times 100\%$.</div>
-    <div class="math-row">5. <b>Settling Time ($T_s$):</b> Time to enter and remain within specified tolerance band: $T_s = \frac{4}{\zeta \omega_n}$ (for $\pm 2\%$) and $T_s = \frac{3}{\zeta \omega_n}$ (for $\pm 5\%$).</div>
-    <div class="result-bar">All 5 time-domain specifications completely quantify system speed, damping, and stability.</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.2 Standard Second-Order Parameter Calculation (Summer-2025 Q.6b, Winter-2024 Q.6a - 7 Marks)</div>
-    <div class="q-text">Question: A unity feedback system is characterized by open loop transfer function $G(s) = \frac{k}{s(s+10)}$. Determine gain $k$ so that damping ratio is $\zeta = 0.5$. For this value of $k$, determine settling time ($T_s$), peak overshoot ($M_p$), and peak time ($T_p$) for a unit step input.</div>
-
-    <div class="step">Step 1: Closed-Loop Characteristic Equation</div>
-    <div class="math-row">$$T(s) = \frac{G(s)}{1 + G(s)} = \frac{\frac{k}{s(s+10)}}{1 + \frac{k}{s(s+10)}} = \frac{k}{s^2 + 10s + k}$$</div>
-    <div class="math-row">Standard second-order equation: $s^2 + 2\zeta\omega_n s + \omega_n^2 = 0$</div>
-    <div class="math-row">Comparing coefficients: $\omega_n^2 = k \implies \omega_n = \sqrt{k}$, and $2\zeta\omega_n = 10$.</div>
-
-    <div class="step">Step 2: Calculate Gain $k$ for $\zeta = 0.5$</div>
-    <div class="math-row">$$2(0.5)\omega_n = 10 \implies \omega_n = 10\text{ rad/s}$$</div>
-    <div class="math-row">$$k = \omega_n^2 = (10)^2 = 100$$</div>
-
-    <div class="step">Step 3: Calculate Transient Specifications</div>
-    <div class="math-row">$$\omega_d = \omega_n \sqrt{1 - \zeta^2} = 10 \sqrt{1 - (0.5)^2} = 10 \times 0.8660 = 8.66\text{ rad/s}$$</div>
-    <div class="math-row">1. Peak Time: $T_p = \frac{\pi}{\omega_d} = \frac{\pi}{8.66} = 0.3627\text{ s}$</div>
-    <div class="math-row">2. Settling Time ($\pm 2\%$): $T_s = \frac{4}{\zeta \omega_n} = \frac{4}{0.5 \times 10} = 0.8\text{ s}$</div>
-    <div class="math-row">3. Settling Time ($\pm 5\%$): $T_s = \frac{3}{\zeta \omega_n} = \frac{3}{0.5 \times 10} = 0.6\text{ s}$</div>
-    <div class="math-row">4. Peak Overshoot: $\%M_p = e^{-\frac{\pi \times 0.5}{\sqrt{1 - 0.5^2}}} \times 100\% = e^{-1.8138} \times 100\% = 16.30\%$</div>
-    <div class="result-bar">$k = 100 \mid \omega_n = 10\text{ rad/s} \mid T_p = 0.363\text{ s} \mid T_s(2\%) = 0.8\text{ s} \mid \%M_p = 16.3\%$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Step Response to Transfer Function (Summer-2026 Q.6a - 7 Marks)</div>
-    <div class="q-text">Question: The response of a control system to a unit step input is $c(t) = 1 + e^{-40t} - 2e^{-20t}$. Determine: (1) Closed loop transfer function, (2) Natural frequency ($\omega_n$), (3) Damping ratio ($\zeta$), (4) Settling time ($T_s$).</div>
-
-    <div class="step">Step 1: Obtain $C(s)$ via Laplace Transform</div>
-    <div class="math-row">$$\mathcal{L}\{c(t)\} = C(s) = \frac{1}{s} + \frac{1}{s+40} - \frac{2}{s+20}$$</div>
-    <div class="math-row">$$C(s) = \frac{(s+40)(s+20) + s(s+20) - 2s(s+40)}{s(s+40)(s+20)}$$</div>
-    <div class="math-row">$$C(s) = \frac{(s^2 + 60s + 800) + (s^2 + 20s) - (2s^2 + 80s)}{s(s+40)(s+20)} = \frac{800}{s(s^2 + 60s + 800)}$$</div>
-
-    <div class="step">Step 2: Closed-Loop Transfer Function $\frac{C(s)}{R(s)}$</div>
-    <div class="math-row">Since $R(s) = \frac{1}{s}$ for unit step input:</div>
-    <div class="math-row">$$\frac{C(s)}{R(s)} = \frac{s \cdot C(s)}{1} = \frac{800}{s^2 + 60s + 800}$$</div>
-
-    <div class="step">Step 3: Extract Parameters ($\omega_n, \zeta, T_s$)</div>
-    <div class="math-row">Comparing with $s^2 + 2\zeta\omega_n s + \omega_n^2$:</div>
-    <div class="math-row">$$\omega_n^2 = 800 \implies \omega_n = \sqrt{800} = 28.28\text{ rad/s}$$</div>
-    <div class="math-row">$$2\zeta\omega_n = 60 \implies \zeta = \frac{60}{2 \times 28.28} = 1.0607 \quad (\text{Overdamped})$$</div>
-    <div class="math-row">$$T_s = \frac{4}{\zeta \omega_n} = \frac{4}{1.0607 \times 28.28} = \frac{4}{30} \approx 0.133\text{ s}$$</div>
-    <div class="result-bar">$\frac{C(s)}{R(s)} = \frac{800}{s^2 + 60s + 800} \mid \omega_n = 28.28\text{ rad/s} \mid \zeta = 1.061 \mid T_s = 0.133\text{ s}$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Error Constants & Steady-State Error: Cubic Denominator (Winter-2024 Q.5b - 7 Marks)</div>
-    <div class="q-text">Question: For a unity feedback system having $G(s) = \frac{k(s+2)}{s(s^3 + 7s^2 + 12s)}$, find: (1) Type of system, (2) Static error coefficients, (3) Steady-state error when input is $r(t) = \frac{R t^2}{2}$.</div>
-
-    <div class="step">Step 1: Simplify $G(s)$ and Identify System Type</div>
-    <div class="math-row">$$G(s) = \frac{k(s+2)}{s \cdot s(s^2 + 7s + 12)} = \frac{k(s+2)}{s^2 (s+3)(s+4)}$$</div>
-    <div class="math-row">The power of free integrator $s$ in the denominator is $2$. Hence, the system is <b>Type-2</b>.</div>
-
-    <div class="step">Step 2: Calculate Static Error Coefficients</div>
-    <div class="math-row">1. Position error constant: $K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \frac{k(s+2)}{s^2(s+3)(s+4)} = \frac{2k}{0} = \infty$</div>
-    <div class="math-row">2. Velocity error constant: $K_v = \lim_{s \to 0} s G(s) = \lim_{s \to 0} \frac{k(s+2)}{s(s+3)(s+4)} = \frac{2k}{0} = \infty$</div>
-    <div class="math-row">3. Acceleration error constant: $K_a = \lim_{s \to 0} s^2 G(s) = \lim_{s \to 0} \frac{k(s+2)}{(s+3)(s+4)} = \frac{2k}{12} = \frac{k}{6}$</div>
-
-    <div class="step">Step 3: Calculate Steady-State Error for $r(t) = \frac{R t^2}{2}$</div>
-    <div class="math-row">Parabolic input $R(s) = \frac{R}{s^3}$:</div>
-    <div class="math-row">$$e_{ss} = \frac{R}{K_a} = \frac{R}{k/6} = \frac{6R}{k}$$</div>
-    <div class="result-bar">Type = 2 $\mid K_p = \infty \mid K_v = \infty \mid K_a = \frac{k}{6} \mid e_{ss} = \frac{6R}{k}$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.5 Error Constants: Quadratic Factors (Summer-2025 Q.5b - 7 Marks)</div>
-    <div class="q-text">Question: Find error coefficients for unity feedback system having $G(s) = \frac{4(s^2 + 10s + 100)}{s(s+3)(s^2 + 2s + 10)}$.</div>
-
-    <div class="step">Step 1: Identify System Type & Compute Limits</div>
-    <div class="math-row">Denominator has one pole at origin ($s^1$). Hence, system is <b>Type-1</b>.</div>
-    <div class="math-row">1. Position constant: $K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \frac{4(s^2 + 10s + 100)}{s(s+3)(s^2 + 2s + 10)} = \frac{4(100)}{0 \cdot 3 \cdot 10} = \infty$</div>
-    <div class="math-row">2. Velocity constant: $K_v = \lim_{s \to 0} s G(s) = \lim_{s \to 0} \frac{4(s^2 + 10s + 100)}{(s+3)(s^2 + 2s + 10)} = \frac{4(100)}{(3)(10)} = \frac{400}{30} = \frac{40}{3} \approx 13.33$</div>
-    <div class="math-row">3. Acceleration constant: $K_a = \lim_{s \to 0} s^2 G(s) = \lim_{s \to 0} s \times \frac{40}{3} = 0$</div>
-    <div class="result-bar">Type = 1 $\mid K_p = \infty \mid K_v = \frac{40}{3} = 13.33 \mid K_a = 0$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.6 Error Constants & Multi-Term Input (Winter-2025 Q.5b - 7 Marks)</div>
-    <div class="q-text">Question: For unity feedback system $G(s) = \frac{10(s+1)}{s^2(s+2)(s+10)}$, identify type of system, error coefficients, and steady-state error when input is $r(t) = 1 + 4t + \frac{t^2}{2}$.</div>
-
-    <div class="step">Step 1: System Type & Error Coefficients</div>
-    <div class="math-row">Denominator has $s^2 \implies$ <b>Type-2 system</b>.</div>
-    <div class="math-row">1. $K_p = \lim_{s \to 0} G(s) = \infty$</div>
-    <div class="math-row">2. $K_v = \lim_{s \to 0} s G(s) = \infty$</div>
-    <div class="math-row">3. $K_a = \lim_{s \to 0} s^2 G(s) = \frac{10(0+1)}{(0+2)(0+10)} = \frac{10}{20} = 0.5$</div>
-
-    <div class="step">Step 2: Total Steady-State Error by Superposition</div>
-    <div class="math-row">Input $r(t) = r_1(t) + r_2(t) + r_3(t) = 1 + 4t + 0.5 t^2$:</div>
-    <div class="math-row">1. For step component ($A_1 = 1$): $e_{ss1} = \frac{1}{1 + K_p} = \frac{1}{\infty} = 0$</div>
-    <div class="math-row">2. For ramp component ($A_2 = 4$): $e_{ss2} = \frac{4}{K_v} = \frac{4}{\infty} = 0$</div>
-    <div class="math-row">3. For parabolic component ($A_3 = 1$, since $\frac{t^2}{2}$ has unit acceleration): $e_{ss3} = \frac{1}{K_a} = \frac{1}{0.5} = 2.0$</div>
-    <div class="math-row">$$e_{ss} = e_{ss1} + e_{ss2} + e_{ss3} = 0 + 0 + 2.0 = 2.0$$</div>
-    <div class="result-bar">Type = 2 $\mid K_p = \infty \mid K_v = \infty \mid K_a = 0.5 \mid \text{Total } e_{ss} = 2.0$</div>
-  </div>
+  <div class="step">Step 2: Calculate Static Error Coefficients</div>
+  <div class="math-row">1. Position error coefficient ($K_p$):</div>
+  <div class="math-row">$$K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \frac{50}{(1 + 0.1s)(s + 10)} = \frac{50}{(1 + 0)(0 + 10)} = \frac{50}{10} = \mathbf{5}$$</div>
+  <div class="math-row">2. Velocity error coefficient ($K_v$):</div>
+  <div class="math-row">$$K_v = \lim_{s \to 0} s G(s) = \lim_{s \to 0} s \times \frac{50}{(1 + 0.1s)(s + 10)} = 0 \times 5 = \mathbf{0}$$</div>
+  <div class="math-row">3. Acceleration error coefficient ($K_a$):</div>
+  <div class="math-row">$$K_a = \lim_{s \to 0} s^2 G(s) = \lim_{s \to 0} s^2 \times \frac{50}{(1 + 0.1s)(s + 10)} = 0 \times 5 = \mathbf{0}$$</div>
+  <div class="result-bar">Type = 0 $\mid K_p = 5 \mid K_v = 0 \mid K_a = 0 \mid e_{ss}(\text{step}) = \frac{1}{1 + K_p} = \frac{1}{6} = 0.167$</div>
 </div>
 
 <!-- ======================================================== -->
-<!-- UNIT IV -->
+<!-- UNIT IV ADDITIONS -->
 <!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT IV: STABILITY & ROOT LOCUS TECHNIQUE</div>
+<div class="q-block">
+  <div class="q-title">Q.7 Routh Criterion: 4th Order Polynomial with Zeros (Summer-2026 Q.7a / IMG_3870 - 6 Marks)</div>
+  <div class="q-text">Question: Check the stability by Routh's criterion for characteristic equation $s^4 + 6s^3 + 26s^2 + 56s + 80 = 0$.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Routh's Criterion: Stable 4th Order Polynomial (Summer-2026 Q.7a - 7 Marks)</div>
-    <div class="q-text">Question: Comment on the stability of the system using Routh's stability criteria: $s^4 + 8s^3 + 18s^2 + 16s + 5 = 0$.</div>
+  <div class="step">Step 1: Construct Routh Array</div>
+  <table>
+    <tr><th>Power</th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Calculations</th></tr>
+    <tr><td>$s^4$</td><td>$1$</td><td>$26$</td><td>$80$</td><td>Given coefficients</td></tr>
+    <tr><td>$s^3$</td><td>$6$</td><td>$56$</td><td>$0$</td><td>Given coefficients</td></tr>
+    <tr><td>$s^2$</td><td>$16.67$</td><td>$80$</td><td>$0$</td><td>$b_1 = \frac{6(26) - 1(56)}{6} = \frac{100}{6} = 16.67, \ b_2 = \frac{6(80) - 0}{6} = 80$</td></tr>
+    <tr><td>$s^1$</td><td>$27.2$</td><td>$0$</td><td>$0$</td><td>$c_1 = \frac{16.67(56) - 6(80)}{16.67} = \frac{933.52 - 480}{16.67} = 27.2$</td></tr>
+    <tr><td>$s^0$</td><td>$80$</td><td>$0$</td><td>$0$</td><td>$d_1 = \frac{27.2(80) - 0}{27.2} = 80$</td></tr>
+  </table>
 
-    <div class="step">Step 1: Construct Routh Array</div>
-    <table>
-      <tr><th>Power</th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Array Arithmetic</th></tr>
-      <tr><td>$s^4$</td><td>$1$</td><td>$18$</td><td>$5$</td><td>Given coefficients</td></tr>
-      <tr><td>$s^3$</td><td>$8$</td><td>$16$</td><td>$0$</td><td>Given coefficients</td></tr>
-      <tr><td>$s^2$</td><td>$16$</td><td>$5$</td><td>$0$</td><td>$b_1 = \frac{8(18) - 1(16)}{8} = 16, \ b_2 = \frac{8(5) - 0}{8} = 5$</td></tr>
-      <tr><td>$s^1$</td><td>$13.5$</td><td>$0$</td><td>$0$</td><td>$c_1 = \frac{16(16) - 8(5)}{16} = \frac{216}{16} = 13.5$</td></tr>
-      <tr><td>$s^0$</td><td>$5$</td><td>$0$</td><td>$0$</td><td>$d_1 = \frac{13.5(5) - 0}{13.5} = 5$</td></tr>
-    </table>
+  <div class="step">Step 2: Stability Assessment</div>
+  <div class="math-row">First column elements: $+1, +6, +16.67, +27.2, +80$. All elements are positive; there are <b>zero sign changes</b>.</div>
+  <div class="result-bar">System is STABLE. All roots lie in the Left Half of the s-plane.</div>
+</div>
 
-    <div class="step">Step 2: Stability Assessment</div>
-    <div class="math-row">First column elements: $+1, +8, +16, +13.5, +5$. All elements are strictly positive; there are <b>zero sign changes</b>.</div>
-    <div class="result-bar">System is STABLE. All 4 roots lie entirely in the Left Half of the s-plane (LHP).</div>
-  </div>
+<div class="q-block">
+  <div class="q-title">Q.8 Root Locus: Real Poles at 0, -3, -6 (Summer-2026 Q.7b / IMG_3870 - 7 Marks)</div>
+  <div class="q-text">Question: Draw the root locus for the system having $G(s)H(s) = \frac{K}{s(s+3)(s+6)}$ and obtain marginal value of $K$.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.2 Routh's Criterion: Unstable 4th Order Polynomial (Winter-2024 Q.7a - 5 Marks)</div>
-    <div class="q-text">Question: For the given characteristic equation, comment on the stability using Routh's criteria: $3s^4 + 10s^3 + 5s^2 + 5s + 2 = 0$.</div>
-
-    <div class="step">Step 1: Construct Routh Array</div>
-    <table>
-      <tr><th>Power</th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Array Arithmetic</th></tr>
-      <tr><td>$s^4$</td><td>$3$</td><td>$5$</td><td>$2$</td><td>Given coefficients</td></tr>
-      <tr><td>$s^3$</td><td>$10$</td><td>$5$</td><td>$0$</td><td>Given coefficients</td></tr>
-      <tr><td>$s^2$</td><td>$3.5$</td><td>$2$</td><td>$0$</td><td>$b_1 = \frac{10(5) - 3(5)}{10} = 3.5, \ b_2 = \frac{10(2) - 0}{10} = 2$</td></tr>
-      <tr><td>$s^1$</td><td>$-0.714$</td><td>$0$</td><td>$0$</td><td>$c_1 = \frac{3.5(5) - 10(2)}{3.5} = \frac{-2.5}{3.5} = -0.714$</td></tr>
-      <tr><td>$s^0$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$d_1 = \frac{-0.714(2) - 0}{-0.714} = 2$</td></tr>
-    </table>
-
-    <div class="step">Step 2: Sign Changes & Conclusion</div>
-    <div class="math-row">First column elements: $+3, +10, +3.5, -0.714, +2$.</div>
-    <div class="math-row">There are <b>two sign changes</b> ($+3.5 \to -0.714$, and $-0.714 \to +2$).</div>
-    <div class="result-bar">System is UNSTABLE. Exactly 2 roots lie in the Right Half of the s-plane (RHP).</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Routh's Criterion: 5th Order Polynomial with Epsilon Method (Summer-2025 Q.7a - 6 Marks)</div>
-    <div class="q-text">Question: Determine the stability of the system having characteristic equation $s^5 + s^4 + 2s^3 + 2s^2 + 3s + 5 = 0$.</div>
-
-    <div class="step">Step 1: Initial Routh Array Formation</div>
-    <div class="math-row">Row $s^5$: $1, 2, 3$</div>
-    <div class="math-row">Row $s^4$: $1, 2, 5$</div>
-    <div class="math-row">Row $s^3$: $\frac{1(2) - 1(2)}{1} = 0, \quad \frac{1(3) - 1(5)}{1} = -2$</div>
-    <div class="math-row">First element in row $s^3$ is zero. Replace $0$ with a small positive number $\epsilon > 0$.</div>
-
-    <div class="step">Step 2: Complete Array with Limit Evaluation as $\epsilon \to 0$</div>
-    <div class="math-row">Row $s^3$: $\epsilon, -2, 0$</div>
-    <div class="math-row">Row $s^2$: $b_1 = \frac{\epsilon(2) - 1(-2)}{\epsilon} = \frac{2\epsilon + 2}{\epsilon} \implies \lim_{\epsilon \to 0^+} \frac{2\epsilon + 2}{\epsilon} = +\infty$</div>
-    <div class="math-row">Row $s^2$: $b_2 = \frac{\epsilon(5) - 0}{\epsilon} = 5$</div>
-    <div class="math-row">Row $s^1$: $c_1 = \frac{\left(\frac{2\epsilon+2}{\epsilon}\right)(-2) - 5\epsilon}{\left(\frac{2\epsilon+2}{\epsilon}\right)} \approx -2$</div>
-    <div class="math-row">Row $s^0$: $d_1 = 5$</div>
-    <div class="math-row">First column sequence: $+1, +1, +\epsilon, +\infty, -2, +5$. Sign changes: $+\infty \to -2$, and $-2 \to +5$ ($2$ sign changes).</div>
-    <div class="result-bar">System is UNSTABLE with 2 poles in the Right Half of the s-plane.</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Root Locus: 3 Real Poles (Summer-2026 Q.7b, Winter-2024 Q.7b - 8 Marks)</div>
-    <div class="q-text">Question: A unity feedback system has open loop transfer function $G(s) = \frac{K}{s(s+1)(s+2)}$. Draw the root locus and determine the marginal value of $K$ for stability.</div>
-
-    <div class="step">Step-by-Step Root Locus Construction</div>
-    <div class="math-row">1. <b>Poles and Zeros:</b> Zeros $Z = 0$; Poles $P = 3$ at $s = 0, -1, -2$. Branches $N = 3$.</div>
-    <div class="math-row">2. <b>Asymptotes:</b> Number of asymptotes $P - Z = 3 - 0 = 3$.</div>
-    <div class="math-row">3. <b>Centroid ($\sigma_c$):</b> $\sigma_c = \frac{\sum \text{Re}(P) - \sum \text{Re}(Z)}{P - Z} = \frac{(0 - 1 - 2) - 0}{3} = -1.0$.</div>
-    <div class="math-row">4. <b>Asymptote Angles ($\theta_A$):</b> $\theta = \frac{(2q+1)180^\circ}{3} = 60^\circ, 180^\circ, 300^\circ$.</div>
-    <div class="math-row">5. <b>Breakaway Point:</b> Characteristic equation: $1 + G(s) = 0 \implies s^3 + 3s^2 + 2s + K = 0 \implies K = -s^3 - 3s^2 - 2s$.</div>
-    <div class="math-row">$$\frac{dK}{ds} = -(3s^2 + 6s + 2) = 0 \implies s = \frac{-6 \pm \sqrt{36 - 24}}{6} = -0.4226, \ -1.577$$</div>
-    <div class="math-row">Since root locus lies on real axis between $0$ and $-1$, valid breakaway point is <b>$s = -0.423$</b>.</div>
-    <div class="math-row">6. <b>Marginal Gain $K_{\text{mar}}$ via Routh Array:</b></div>
-    <div class="math-row">Row $s^3$: $1, 2$; Row $s^2$: $3, K$; Row $s^1$: $\frac{6 - K}{3}$; Row $s^0$: $K$.</div>
-    <div class="math-row">For marginal stability: $\frac{6 - K}{3} = 0 \implies \mathbf{K_{\text{mar}} = 6}$. Stability range: $0 < K < 6$.</div>
-    <div class="math-row">7. <b>Imaginary Axis Crossing:</b> From auxiliary equation $3s^2 + K = 0 \implies 3s^2 + 6 = 0 \implies s = \pm j\sqrt{2} = \pm j 1.414$.</div>
-    <div class="result-bar">Breakaway at $s = -0.423 \mid \text{Crosses } j\omega\text{ at } \pm j 1.414 \mid \text{Stable for } 0 < K < 6 \mid K_{\text{mar}} = 6$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.5 Complete Root Locus: 4 Real Poles (Summer-2026 Q.8a, Winter-2025 Q.8a - 13 Marks)</div>
-    <div class="q-text">Question: Sketch the complete root locus for the system having $G(s)H(s) = \frac{K}{s(s+1)(s+2)(s+3)}$. Determine marginal $K$ and imaginary axis intersections.</div>
-
-    <div class="step">Complete 8-Step Construction</div>
-    <div class="math-row">1. <b>Poles:</b> $P = 4$ at $s = 0, -1, -2, -3$; Zeros $Z = 0$. Number of branches = $4$.</div>
-    <div class="math-row">2. <b>Real Axis Locus:</b> Exists between $[0, -1]$ and $[-2, -3]$.</div>
-    <div class="math-row">3. <b>Asymptotes:</b> Number = $4 - 0 = 4$. Centroid: $\sigma_c = \frac{0 - 1 - 2 - 3}{4} = -1.5$. Angles: $45^\circ, 135^\circ, 225^\circ, 315^\circ$.</div>
-    <div class="math-row">4. <b>Breakaway Points:</b> $s(s+1)(s+2)(s+3) + K = 0 \implies s^4 + 6s^3 + 11s^2 + 6s + K = 0$.</div>
-    <div class="math-row">$$\frac{dK}{ds} = -(4s^3 + 18s^2 + 22s + 6) = 0 \implies s = -0.382, \ -1.5, \ -2.618$$</div>
-    <div class="math-row">Valid breakaway points on the root locus: <b>$s_1 = -0.382$</b> (between $0$ and $-1$) and <b>$s_2 = -2.618$</b> (between $-2$ and $-3$).</div>
-    <div class="math-row">5. <b>Routh Array for Marginal Gain $K$:</b></div>
-    <div class="math-row">Row $s^4$: $1, 11, K$; Row $s^3$: $6, 6, 0$; Row $s^2$: $\frac{6(11) - 6}{6} = 10, K$; Row $s^1$: $\frac{10(6) - 6K}{10} = \frac{60 - 6K}{10}$; Row $s^0$: $K$.</div>
-    <div class="math-row">Setting row $s^1 = 0 \implies 60 - 6K = 0 \implies \mathbf{K_{\text{mar}} = 10}$. Stable range: $0 < K < 10$.</div>
-    <div class="math-row">6. <b>Imaginary Axis Intersections:</b> Auxiliary equation from row $s^2$: $10s^2 + K = 0 \implies 10s^2 + 10 = 0 \implies s = \pm j1.0$.</div>
-    <div class="result-bar">Centroid $\sigma_c = -1.5 \mid \text{Breakaway at } -0.382 \ \& \ -2.618 \mid \text{Crosses } j\omega\text{ at } \pm j 1.0 \mid K_{\text{mar}} = 10$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.6 Complete Root Locus: Complex Conjugate Poles (Summer-2025 Q.8a, Winter-2024 Q.8a - 13 Marks)</div>
-    <div class="q-text">Question: Sketch the complete root locus for the open loop transfer function $G(s)H(s) = \frac{K}{s(s+6)(s^2 + 4s + 13)}$.</div>
-
-    <div class="step">Complete Construction with Angle of Departure</div>
-    <div class="math-row">1. <b>Poles:</b> $s = 0, -6$, and $s = \frac{-4 \pm \sqrt{16 - 52}}{2} = -2 \pm j3$. Total poles $P = 4$, Zeros $Z = 0$.</div>
-    <div class="math-row">2. <b>Centroid & Asymptotes:</b> Number of asymptotes = $4$. Angles: $45^\circ, 135^\circ, 225^\circ, 315^\circ$.</div>
-    <div class="math-row">$$\sigma_c = \frac{0 - 6 - 2 - 2}{4} = \frac{-10}{4} = -2.5$$</div>
-    <div class="math-row">3. <b>Breakaway Point on Real Axis:</b> $s(s+6)(s^2 + 4s + 13) + K = 0 \implies s^4 + 10s^3 + 37s^2 + 78s + K = 0$.</div>
-    <div class="math-row">$$\frac{dK}{ds} = -(4s^3 + 30s^2 + 74s + 78) = 0 \implies s = -4.20 \quad (\text{Real, lies between } 0 \text{ and } -6)$$</div>
-    <div class="math-row">4. <b>Routh Array for Marginal Gain:</b></div>
-    <div class="math-row">Row $s^4$: $1, 37, K$; Row $s^3$: $10, 78, 0$; Row $s^2$: $29.2, K$; Row $s^1$: $\frac{29.2(78) - 10K}{29.2} = \frac{2277.6 - 10K}{29.2}$.</div>
-    <div class="math-row">For marginal stability: $2277.6 - 10K = 0 \implies \mathbf{K_{\text{mar}} = 227.76}$. System is stable for $0 < K < 227.76$.</div>
-    <div class="math-row">5. <b>Imaginary Axis Intersections:</b> $29.2 s^2 + 227.76 = 0 \implies s^2 = -7.8 \implies s = \pm j 2.79$.</div>
-    <div class="math-row">6. <b>Angle of Departure ($\theta_d$) from Pole at $-2 + j3$:</b></div>
-    <div class="math-row">$\theta_1$ (from $s = 0$): $180^\circ - \tan^{-1}\left(\frac{3}{2}\right) = 180^\circ - 56.3^\circ = 123.7^\circ$</div>
-    <div class="math-row">$\theta_2$ (from $s = -6$): $\tan^{-1}\left(\frac{3}{4}\right) = 36.87^\circ$</div>
-    <div class="math-row">$\theta_3$ (from $s = -2 - j3$): $90^\circ$</div>
-    <div class="math-row">$$\sum \theta_p = 123.7^\circ + 36.87^\circ + 90^\circ = 250.57^\circ$$</div>
-    <div class="math-row">$$\theta_d = 180^\circ - \sum \theta_p = 180^\circ - 250.57^\circ = -70.57^\circ$$</div>
-    <div class="result-bar">Centroid $\sigma_c = -2.5 \mid \text{Breakaway at } -4.20 \mid \theta_d = -70.57^\circ \mid \text{Crosses } j\omega\text{ at } \pm j 2.79 \mid K_{\text{mar}} = 227.76$</div>
-  </div>
+  <div class="step">Construction Steps</div>
+  <div class="math-row">1. <b>Poles and Zeros:</b> Poles $P = 3$ at $s = 0, -3, -6$. Zeros $Z = 0$. Number of branches = $3$.</div>
+  <div class="math-row">2. <b>Centroid & Asymptotes:</b> Number of asymptotes = $3 - 0 = 3$. Angles: $60^\circ, 180^\circ, 300^\circ$.</div>
+  <div class="math-row">$$\sigma_c = \frac{(0 - 3 - 6) - 0}{3} = \frac{-9}{3} = -3.0$$</div>
+  <div class="math-row">3. <b>Breakaway Point:</b> Characteristic equation: $s(s+3)(s+6) + K = 0 \implies s^3 + 9s^2 + 18s + K = 0$.</div>
+  <div class="math-row">$$\frac{dK}{ds} = -(3s^2 + 18s + 18) = 0 \implies s^2 + 6s + 6 = 0 \implies s = -1.268, \ -4.732$$</div>
+  <div class="math-row">Locus exists on real axis between $0$ and $-3$, and between $-6$ and $-\infty$. Hence, valid breakaway point is <b>$s = -1.268$</b>.</div>
+  <div class="math-row">4. <b>Routh Array for Marginal Gain $K$:</b></div>
+  <div class="math-row">Row $s^3$: $1, 18$; Row $s^2$: $9, K$; Row $s^1$: $\frac{9(18) - K}{9} = \frac{162 - K}{9}$; Row $s^0$: $K$.</div>
+  <div class="math-row">For marginal stability: $162 - K = 0 \implies \mathbf{K_{\text{mar}} = 162}$. Stable range: $0 < K < 162$.</div>
+  <div class="math-row">5. <b>Imaginary Axis Crossing:</b> $9s^2 + 162 = 0 \implies s^2 = -18 \implies s = \pm j\sqrt{18} = \pm j 4.24$.</div>
+  <div class="result-bar">Centroid $\sigma_c = -3.0 \mid \text{Breakaway at } -1.268 \mid \text{Crosses } j\omega\text{ at } \pm j 4.24 \mid K_{\text{mar}} = 162</div>
 </div>
 
 <!-- ======================================================== -->
-<!-- UNIT V -->
+<!-- UNIT V ADDITIONS -->
 <!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT V: FREQUENCY RESPONSE METHODS & BODE DIAGRAMS</div>
+<div class="q-block">
+  <div class="q-title">Q.4 Procedure for Construction of Bode Plot (Winter-2025 Q.9a - 5 Marks)</div>
+  <div class="q-text">Question: State and explain the general procedure for construction of Bode plot.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Frequency Domain Definitions & Stability Criteria (Summer-2026 Q.9a, Winter-2024 Q.9a, Summer-2025 Q.9a - 5 Marks)</div>
-    <div class="q-text">Question: Define phase crossover frequency, gain crossover frequency, gain margin, and phase margin. Explain conditions for stability on a Bode plot.</div>
-
-    <div class="step">Definitions & Mathematical Relations</div>
-    <div class="math-row">1. <b>Gain Crossover Frequency ($\omega_{gc}$):</b> The frequency at which the magnitude of the open-loop transfer function $|G(j\omega)H(j\omega)| = 1$ (or $0\text{ dB}$).</div>
-    <div class="math-row">2. <b>Phase Crossover Frequency ($\omega_{pc}$):</b> The frequency at which the phase angle $\angle G(j\omega)H(j\omega) = -180^\circ$.</div>
-    <div class="math-row">3. <b>Gain Margin ($GM$):</b> The reciprocal of the open-loop magnitude at the phase crossover frequency:</div>
-    <div class="math-row">$$GM = \frac{1}{|G(j\omega_{pc})H(j\omega_{pc})|} \implies GM_{\text{dB}} = -20 \log_{10} |G(j\omega_{pc})H(j\omega_{pc})|$$</div>
-    <div class="math-row">4. <b>Phase Margin ($PM$):</b> The additional phase lag that can be introduced at $\omega_{gc}$ to bring the system to the verge of instability:</div>
-    <div class="math-row">$$PM = 180^\circ + \angle G(j\omega_{gc})H(j\omega_{gc})$$</div>
-
-    <div class="step">Stability Criteria Table</div>
-    <table>
-      <tr><th>Stability State</th><th>Frequency Relation</th><th>Gain Margin ($GM$)</th><th>Phase Margin ($PM$)</th></tr>
-      <tr><td><b>Stable</b></td><td>$\omega_{gc} < \omega_{pc}$</td><td>Positive ($> 0\text{ dB}$)</td><td>Positive ($> 0^\circ$)</td></tr>
-      <tr><td><b>Marginally Stable</b></td><td>$\omega_{gc} = \omega_{pc}$</td><td>$0\text{ dB}$</td><td>$0^\circ$</td></tr>
-      <tr><td><b>Unstable</b></td><td>$\omega_{gc} > \omega_{pc}$</td><td>Negative ($< 0\text{ dB}$)</td><td>Negative ($< 0^\circ$)</td></tr>
-    </table>
-    <div class="result-bar">System stability requires the magnitude to cross $0\text{ dB}$ before the phase drops to $-180^\circ$.</div>
+  <div class="step">Step-by-Step Construction Procedure</div>
+  <div class="math-row">1. <b>Convert to Time-Constant Form:</b> Express $G(s)H(s)$ in standard Bode form: $G(j\omega)H(j\omega) = \frac{K(1 + j\omega T_a)\dots}{(j\omega)^N (1 + j\omega T_1)\dots}$.</div>
+  <div class="math-row">2. <b>Identify Corner Frequencies:</b> Determine corner frequencies for each factor: $\omega_{c} = \frac{1}{T}$, and arrange in ascending order.</div>
+  <div class="math-row">3. <b>Determine Initial Magnitude Slope:</b> Governed by type number $N$ (poles/zeros at origin): Initial slope is $-20N\text{ dB/decade}$. Point at $\omega = 1\text{ rad/s}$ is $20\log_{10} K$.</div>
+  <div class="math-row">4. <b>Construct Magnitude Table:</b> As frequency increases past each corner frequency:
+    <ul>
+      <li>Pole $(1 + j\omega T)^{-1}$ adds <b>$-20\text{ dB/decade}$</b> to current slope.</li>
+      <li>Zero $(1 + j\omega T)$ adds <b>$+20\text{ dB/decade}$</b> to current slope.</li>
+      <li>Quadratic complex poles add <b>$-40\text{ dB/decade}$</b>.</li>
+    </ul>
   </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.2 Bode Plot: Standard 3-Pole System (Summer-2026 Q.9a, Winter-2025 Q.9a - 13 Marks)</div>
-    <div class="q-text">Question: Sketch the Bode plot for unity feedback system $G(s) = \frac{80}{s(s+2)(s+20)}$. Determine $\omega_{gc}, \omega_{pc}$, Gain Margin, Phase Margin, and comment on stability.</div>
-
-    <div class="step">Step 1: Time-Constant (Bode) Form</div>
-    <div class="math-row">$$G(s) = \frac{80}{s \cdot 2\left(1 + \frac{s}{2}\right) \cdot 20\left(1 + \frac{s}{20}\right)} = \frac{80}{40 \cdot s\left(1 + \frac{s}{2}\right)\left(1 + \frac{s}{20}\right)} = \frac{2}{s(1 + 0.5s)(1 + 0.05s)}$$</div>
-    <div class="math-row">Corner frequencies: $\omega_1 = 2\text{ rad/s}, \quad \omega_2 = 20\text{ rad/s}$. Gain factor $K = 2$.</div>
-
-    <div class="step">Step 2: Magnitude Plot Calculations</div>
-    <div class="math-row">Starting point at $\omega = 0.2\text{ rad/s}$: Initial slope is $-20\text{ dB/decade}$ due to pole at origin.</div>
-    <div class="math-row">$$\text{Magnitude at } \omega = 0.2: \ 20\log_{10}\left(\frac{K}{\omega}\right) = 20\log_{10}\left(\frac{2}{0.2}\right) = 20\log_{10}(10) = 20\text{ dB}$$</div>
-    <table>
-      <tr><th>Frequency Range</th><th>Contributing Factor</th><th>Added Slope</th><th>Resultant Slope</th></tr>
-      <tr><td>$0.2 \le \omega \le 2$</td><td>$\frac{2}{j\omega}$</td><td>$-20\text{ dB/dec}$</td><td>$-20\text{ dB/dec}$</td></tr>
-      <tr><td>$2 \le \omega \le 20$</td><td>$\frac{1}{1 + j\omega/2}$</td><td>$-20\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
-      <tr><td>$\omega > 20$</td><td>$\frac{1}{1 + j\omega/20}$</td><td>$-20\text{ dB/dec}$</td><td>$-60\text{ dB/dec}$</td></tr>
-    </table>
-
-    <div class="step">Step 3: Phase Angle Table</div>
-    <div class="math-row">$$\phi(\omega) = -90^\circ - \tan^{-1}(0.5\omega) - \tan^{-1}(0.05\omega)$$</div>
-    <table>
-      <tr><th>$\omega$ (rad/s)</th><td>0.2</td><td>1.0</td><td>2.0</td><td>6.0</td><td>9.0</td><td>20.0</td></tr>
-      <tr><th>$\phi$ (deg)</th><td>$-96.3^\circ$</td><td>$-119.4^\circ$</td><td>$-140.7^\circ$</td><td>$-171.6^\circ$</td><td><b>$-180.0^\circ$</b></td><td>$-219.3^\circ$</td></tr>
-    </table>
-
-    <div class="step">Step 4: Stability Metrics from Plot</div>
-    <div class="math-row">1. Magnitude is $0\text{ dB}$ at $\omega_{gc} \approx 1.8\text{ rad/s}$.</div>
-    <div class="math-row">2. Phase is $-180^\circ$ at $\omega_{pc} \approx 9.0\text{ rad/s}$.</div>
-    <div class="math-row">3. Magnitude at $\omega_{pc} = 9\text{ rad/s}$ is $-23\text{ dB} \implies \mathbf{GM = +23\text{ dB}}$.</div>
-    <div class="math-row">4. Phase at $\omega_{gc} = 1.8\text{ rad/s}$ is $-140^\circ \implies \mathbf{PM = 180^\circ - 140^\circ = +40^\circ}$.</div>
-    <div class="result-bar">$\omega_{gc} = 1.8\text{ rad/s} < \omega_{pc} = 9.0\text{ rad/s} \mid GM = +23\text{ dB} \mid PM = +40^\circ \implies \text{System is STABLE}$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Bode Plot: Double Pole at Origin (Winter-2024 Q.9b - 9 Marks)</div>
-    <div class="q-text">Question: Sketch the Bode plot for transfer function $G(s) = \frac{800(s+2)}{s^2(s+10)(s+40)}$. Determine gain margin, phase margin, and stability.</div>
-
-    <div class="step">Step 1: Time-Constant Form & Corner Frequencies</div>
-    <div class="math-row">$$G(s) = \frac{800 \times 2\left(1 + \frac{s}{2}\right)}{s^2 \times 10\left(1 + \frac{s}{10}\right) \times 40\left(1 + \frac{s}{40}\right)} = \frac{1600\left(1 + \frac{s}{2}\right)}{400 \cdot s^2\left(1 + \frac{s}{10}\right)\left(1 + \frac{s}{40}\right)} = \frac{4\left(1 + \frac{s}{2}\right)}{s^2\left(1 + \frac{s}{10}\right)\left(1 + \frac{s}{40}\right)}$$</div>
-    <div class="math-row">Corner frequencies: $\omega_1 = 2\text{ rad/s}$ (zero), $\omega_2 = 10\text{ rad/s}$ (pole), $\omega_3 = 40\text{ rad/s}$ (pole). Gain $K = 4$.</div>
-
-    <div class="step">Step 2: Magnitude Slopes</div>
-    <div class="math-row">Double pole at origin introduces initial slope of <b>$-40\text{ dB/decade}$</b>.</div>
-    <div class="math-row">At $\omega = 0.2\text{ rad/s}$: $|G(j\omega)|_{\text{dB}} = 20\log_{10}\left(\frac{4}{0.2^2}\right) = 20\log_{10}(100) = 40\text{ dB}$.</div>
-    <table>
-      <tr><th>Frequency Range</th><th>Active Element</th><th>Change</th><th>Resultant Slope</th></tr>
-      <tr><td>$0.2 \le \omega \le 2$</td><td>$\frac{4}{(j\omega)^2}$</td><td>$-40\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
-      <tr><td>$2 \le \omega \le 10$</td><td>Zero at $\omega = 2$</td><td>$+20\text{ dB/dec}$</td><td>$-20\text{ dB/dec}$</td></tr>
-      <tr><td>$10 \le \omega \le 40$</td><td>Pole at $\omega = 10$</td><td>$-20\text{ dB/dec}$</td><td>$-40\text{ dB/dec}$</td></tr>
-      <tr><td>$\omega > 40$</td><td>Pole at $\omega = 40$</td><td>$-20\text{ dB/dec}$</td><td>$-60\text{ dB/dec}$</td></tr>
-    </table>
-
-    <div class="step">Step 3: Phase Angle & Stability</div>
-    <div class="math-row">$$\phi(\omega) = -180^\circ + \tan^{-1}(0.5\omega) - \tan^{-1}(0.1\omega) - \tan^{-1}(0.025\omega)$$</div>
-    <div class="math-row">At $\omega = 1.8\text{ rad/s}$: Phase angle $\phi = -150^\circ$. Magnitude crosses $0\text{ dB} \implies \omega_{gc} \approx 1.8\text{ rad/s}$.</div>
-    <div class="math-row">At $\omega = 16\text{ rad/s}$: Phase angle crosses $-180^\circ \implies \omega_{pc} \approx 16\text{ rad/s}$.</div>
-    <div class="math-row">At $\omega = 16\text{ rad/s}$: Magnitude is $-23\text{ dB} \implies \mathbf{GM = +23\text{ dB}}$. Phase margin: $PM = 180^\circ - 150^\circ = \mathbf{+30^\circ}$.</div>
-    <div class="result-bar">$\omega_{gc} = 1.8\text{ rad/s} < \omega_{pc} = 16\text{ rad/s} \mid GM = +23\text{ dB} \mid PM = +30^\circ \implies \text{System is STABLE}$</div>
-  </div>
+  <div class="math-row">5. <b>Tabulate Phase Angle:</b> Write expression for $\phi(\omega) = \sum \angle \text{Zeros} - \sum \angle \text{Poles} - N(90^\circ)$, compute values over frequencies spanning $\omega_{c,\min}$ to $\omega_{c,\max}$, and plot on semi-log paper.</div>
+  <div class="math-row">6. <b>Extract Margins:</b> Read $\omega_{gc}$ (where magnitude $= 0\text{ dB}$) and $\omega_{pc}$ (where phase $= -180^\circ$). Compute $GM = -|G(j\omega_{pc})|_{\text{dB}}$ and $PM = 180^\circ + \phi(\omega_{gc})$.</div>
+  <div class="result-bar">Bode plot decomposes complex frequency response into asymptotic straight-line magnitude segments and phase curves.</div>
 </div>
 
-<!-- ======================================================== -->
-<!-- UNIT VI -->
-<!-- ======================================================== -->
-<div class="unit-section">
-  <div class="unit-title">UNIT VI: INDUSTRIAL AUTOMATIC SPEED CONTROL SYSTEMS</div>
+<div class="q-block">
+  <div class="q-title">Q.5 Bode Plot: Standard 3-Pole System $G(s) = \frac{10}{s(s+1)(s+10)}$ (Winter-2025 Q.9b - 9 Marks)</div>
+  <div class="q-text">Question: For $G(s) = \frac{10}{s(s+1)(s+10)}$, state whether the system is stable or unstable using Bode plot.</div>
 
-  <div class="q-block">
-    <div class="q-title">Q.1 Armature-Controlled D.C. Servomotor (Winter-2025 Q.11, Summer-2025 Q.12, Winter-2024 Q.11 - 14 Marks)</div>
-    <div class="q-text">Question: Explain the working of an armature-controlled D.C. servomotor. Draw its complete circuit diagram, block diagram, and derive its overall transfer function $\frac{\Theta(s)}{V_a(s)}$ and $\frac{\Omega(s)}{V_a(s)}$.</div>
+  <div class="step">Step 1: Time-Constant Form</div>
+  <div class="math-row">$$G(s) = \frac{10}{s(s+1) \cdot 10\left(1 + \frac{s}{10}\right)} = \frac{1}{s(1 + s)(1 + 0.1s)}$$</div>
+  <div class="math-row">Corner frequencies: $\omega_1 = 1\text{ rad/s}, \quad \omega_2 = 10\text{ rad/s}$. Gain factor $K = 1$.</div>
 
-    <div class="step">Step 1: System Governing Equations</div>
-    <div class="math-row">In an armature-controlled DC servomotor, speed is controlled by varying armature voltage $V_a(t)$ while maintaining constant field current $I_f$.</div>
-    <div class="math-row">1. <b>Armature Circuit (KVL):</b></div>
-    <div class="math-row">$$V_a(t) = R_a I_a(t) + L_a \frac{dI_a(t)}{dt} + e_b(t)$$</div>
-    <div class="math-row">$$\mathcal{L} \implies V_a(s) - E_b(s) = I_a(s)(R_a + s L_a) \implies I_a(s) = \frac{V_a(s) - E_b(s)}{R_a + s L_a} \quad \text{--- (1)}$$</div>
-    <div class="math-row">2. <b>Torque Equation:</b> With constant field flux $\phi \implies T_m(t) = K_t I_a(t) \implies T_m(s) = K_t I_a(s) \quad \text{--- (2)}$</div>
-    <div class="math-row">3. <b>Mechanical Load Dynamics:</b></div>
-    <div class="math-row">$$T_m(t) = J \frac{d^2\theta}{dt^2} + f \frac{d\theta}{dt} = J \frac{d\omega}{dt} + f \omega$$</div>
-    <div class="math-row">$$\mathcal{L} \implies T_m(s) = \omega(s)(J s + f) \implies \omega(s) = \frac{T_m(s)}{J s + f} \quad \text{--- (3)}$$</div>
-    <div class="math-row">4. <b>Back EMF:</b> $e_b(t) = K_b \omega(t) \implies E_b(s) = K_b \omega(s) \quad \text{--- (4)}$</div>
-    <div class="math-row">5. <b>Angular Position:</b> $\omega = \frac{d\theta}{dt} \implies \Theta(s) = \frac{1}{s} \omega(s) \quad \text{--- (5)}$</div>
-
-    <div class="step">Step 2: Closed-Loop Block Diagram Architecture</div>
-    <div class="diagram-box">
-Va(s)   +       1          Ia(s)      Tm(s)    1       w(s)   1    theta(s)
------>(+)-->[-------]-------->[ Kt ]------->[------]----->[ - ]--->
-       ^ -  [Ra+sLa ]                       [Js + f]      [ s ]
-       |                                       |
-       |-----------------[ Kb ]<---------------|
-    </div>
-
-    <div class="step">Step 3: Transfer Function Derivation</div>
-    <div class="math-row">Substituting $I_a(s)$ from (1) into (2), and equating to (3):</div>
-    <div class="math-row">$$\omega(s)(J s + f) = K_t \left[\frac{V_a(s) - K_b \omega(s)}{R_a + s L_a}\right]$$</div>
-    <div class="math-row">$$\omega(s)\left[(J s + f)(R_a + s L_a) + K_t K_b\right] = K_t V_a(s)$$</div>
-    <div class="math-row">$$\frac{\Omega(s)}{V_a(s)} = \frac{K_t}{(R_a + s L_a)(J s + f) + K_t K_b}$$</div>
-    <div class="math-row">Since $\Theta(s) = \frac{\Omega(s)}{s}$:</div>
-    <div class="result-bar">$$\frac{\Theta(s)}{V_a(s)} = \frac{K_t}{s \left[(R_a + s L_a)(J s + f) + K_t K_b\right]}$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.2 Flyball Governor Speed Control (Summer-2026 Q.12, Winter-2025 Q.12, Summer-2025 Q.11 - 14 Marks)</div>
-    <div class="q-text">Question: Explain the working of a flyball governor as a means of speed control. Draw its schematic block diagram and derive its closed loop transfer function.</div>
-
-    <div class="step">Step 1: Operational Mechanism</div>
-    <div class="math-row">A flyball governor regulates prime mover speed by throttling the fuel/steam supply. Centrifugal flyballs rotate with the engine shaft. When engine speed rises, centrifugal force moves the balls outward, lifting the sleeve upward. The linkage moves the pilot valve to port high-pressure hydraulic oil into the power cylinder, which drives the main fuel throttle valve downward, throttling fuel and restoring speed.</div>
-
-    <div class="step">Step 2: Component Mathematical Modeling</div>
-    <div class="math-row">1. <b>Hydraulic Power Cylinder:</b> Piston displacement $Y(s)$ is related to pilot valve displacement $X(s)$ by fluid flow:</div>
-    <div class="math-row">$$A \rho \frac{dy}{dt} = K_1 x \implies A \rho s Y(s) = K_1 X(s) \implies Y(s) = \frac{K}{s} X(s) \quad \text{where } K = \frac{K_1}{A\rho}$$</div>
-    <div class="math-row">2. <b>Dashpot Linkage:</b> Provides transient stabilizing reset: $Z(s) = \left[\frac{s T}{1 + s T}\right] Y(s)$</div>
-    <div class="math-row">3. <b>Differential Lever Kinematics:</b> $X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right) Z(s)$</div>
-
-    <div class="step">Step 3: Transfer Function Derivation</div>
-    <div class="math-row">$$X(s) = \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left[\frac{s T}{1 + s T}\right] Y(s)$$</div>
-    <div class="math-row">Substitute into $Y(s) = \frac{K}{s} X(s)$:</div>
-    <div class="math-row">$$Y(s) = \frac{K}{s} \left[ \left(\frac{b}{a+b}\right) E(s) - \left(\frac{a}{a+b}\right)\left(\frac{s T}{1 + s T}\right) Y(s) \right]$$</div>
-    <div class="math-row">$$Y(s)\left[1 + \frac{K}{s}\left(\frac{a}{a+b}\right)\left(\frac{s T}{1 + s T}\right)\right] = \frac{K}{s}\left(\frac{b}{a+b}\right) E(s)$$</div>
-    <div class="result-bar">$$\frac{Y(s)}{E(s)} = \frac{\frac{K}{s}\left(\frac{b}{a+b}\right)}{1 + \frac{K}{s}\left(\frac{a}{a+b}\right)\left[\frac{s T}{1 + s T}\right]}$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.3 Prime Mover / Steam Turbine Speed Control (Summer-2026 Q.12, Winter-2024 Q.12 - 13 Marks)</div>
-    <div class="q-text">Question: Describe the speed control of a prime mover (steam turbine). Draw its block diagram and derive its transfer function.</div>
-
-    <div class="step">Step 1: System Description</div>
-    <div class="math-row">In a steam turbine generating unit, the prime mover extracts thermal energy from high-pressure steam. Uncontrolled turbine acceleration can lead to runaway centrifugal rotor failure. A governor regulates a control valve throttling the steam mass flow rate to maintain constant synchronous speed (typically $3000\text{ rpm}$) despite load torque swings.</div>
-
-    <div class="step">Step 2: Modeling Equations</div>
-    <div class="math-row">1. <b>Turbine Rotor Dynamics:</b> Dynamic equilibrium of turbine rotor with inertia $J$ and damping $B$:</div>
-    <div class="math-row">$$J \frac{d\omega(t)}{dt} + B \omega(t) = T(t)$$</div>
-    <div class="math-row">$$\mathcal{L} \implies \omega(s)(J s + B) = T(s) \implies \omega(s) = \frac{T(s)}{J s + B} \quad \text{--- (1)}$$</div>
-    <div class="math-row">2. <b>Torque-Steam Flow Relation:</b> Driving torque developed is proportional to valve control signal $u(t)$:</div>
-    <div class="math-row">$$T(s) = K_t U(s) \quad \text{--- (2)}$$</div>
-
-    <div class="step">Step 3: First-Order Transfer Function</div>
-    <div class="math-row">Substituting (2) into (1):</div>
-    <div class="math-row">$$\omega(s)(J s + B) = K_t U(s) \implies \frac{\Omega(s)}{U(s)} = \frac{K_t}{J s + B} = \frac{\frac{K_t}{B}}{\frac{J}{B} s + 1}$$</div>
-    <div class="math-row">Defining steady-state gain $K = \frac{K_t}{B}$ and rotor time constant $\tau = \frac{J}{B}$:</div>
-    <div class="result-bar">$$\frac{\Omega(s)}{U(s)} = \frac{K}{\tau s + 1}$$</div>
-  </div>
-
-  <div class="q-block">
-    <div class="q-title">Q.4 Speed Control in Machine Tools (Summer-2026 Q.11, Winter-2025 Q.11 - 13 Marks)</div>
-    <div class="q-text">Question: Explain the speed control of machine tools (CNC lathe/spindle) with a neat block diagram and derive the spindle speed transfer function.</div>
-
-    <div class="step">Step 1: Need for Speed Control in Machine Tools</div>
-    <div class="math-row">Modern machine tools (CNC turning centers, milling machines) require accurate spindle speed control to:
-      <ul>
-        <li>Maintain constant surface cutting speed ($V_c = \pi D N$) regardless of changing workpiece diameter.</li>
-        <li>Prevent premature cutting tool wear and chatter vibrations.</li>
-        <li>Ensure tight dimensional tolerances and superior surface finish.</li>
-      </ul>
-    </div>
-
-    <div class="step">Step 2: Modeling of Spindle Drive System</div>
-    <div class="math-row">The drive comprises a power amplifier with gain $K_a$, armature-controlled DC spindle motor, and tachometer feedback.</div>
-    <div class="math-row">Electrical: $V_a(s) = I_a(s)(R_a + s L_a) + K_b \omega(s)$</div>
-    <div class="math-row">Mechanical: $T_m(s) = K_t I_a(s) = (J_t s + B_t)\omega(s)$, where $J_t = J_{\text{motor}} + J_{\text{spindle}}$ and $B_t = B_{\text{motor}} + B_{\text{cutting}}$.</div>
-    <div class="math-row">Equating and solving for spindle speed $\Omega(s)$ versus amplifier input $V_a(s)$:</div>
-    <div class="result-bar">$$\frac{\Omega(s)}{V_a(s)} = \frac{K_t}{(J_t s + B_t)(R_a + s L_a) + K_t K_b}$$</div>
-  </div>
+  <div class="step">Step 2: Magnitude & Phase Angles</div>
+  <div class="math-row">Initial slope: $-20\text{ dB/decade}$ (Type-1). At $\omega = 1$: $|G|_{\text{dB}} = 20\log_{10}(1) = 0\text{ dB}$.</div>
+  <div class="math-row">Slope shifts to $-40\text{ dB/decade}$ at $\omega = 1$, then to $-60\text{ dB/decade}$ at $\omega = 10$.</div>
+  <div class="math-row">$$\phi(\omega) = -90^\circ - \tan^{-1}(\omega) - \tan^{-1}(0.1\omega)$$</div>
+  <div class="math-row">Phase cross-over frequency occurs where $\tan^{-1}(\omega) + \tan^{-1}(0.1\omega) = 90^\circ$:</div>
+  <div class="math-row">$$\omega_{pc} = \sqrt{\frac{1}{T_1 T_2}} = \sqrt{\frac{1}{1 \times 0.1}} = \sqrt{10} \approx \mathbf{3.16\text{ rad/s}}$$</div>
+  <div class="math-row">At $\omega_{pc} = 3.16\text{ rad/s}$: Magnitude is $|G(j3.16)| = \frac{1}{3.16 \times \sqrt{1 + 3.16^2} \times \sqrt{1 + 0.316^2}} = \frac{1}{3.16 \times 3.31 \times 1.05} \approx \frac{1}{11} \implies \mathbf{-20.8\text{ dB}}$.</div>
+  <div class="math-row">Gain Margin: $GM = -(-20.8\text{ dB}) = \mathbf{+20.8\text{ dB}}$. Since magnitude crosses $0\text{ dB}$ at $\omega_{gc} < 1\text{ rad/s}$ and $\omega_{gc} < \omega_{pc}$:</div>
+  <div class="result-bar">$\omega_{gc} \approx 0.8\text{ rad/s} < \omega_{pc} \approx 3.16\text{ rad/s} \mid GM = +20.8\text{ dB} \implies \text{System is STABLE}$</div>
 </div>
-
-</body>
-</html>
